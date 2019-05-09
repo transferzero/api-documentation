@@ -1,0 +1,13 @@
+@startuml
+
+title "Senders KYC flow"
+
+actor User
+
+User -> "Partner website": Register
+"Partner website" -> User: Registered
+"Partner website" -> TransferZero: Create TransferZero Sender
+TransferZero -> "Partner website": Sender ID
+TransferZero --> "Partner website": (Some time later) Sender Approved
+User -> "Partner website": Can transact using TransferZero with Sender ID
+@enduml

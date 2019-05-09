@@ -1,0 +1,15 @@
+@startuml
+
+title Transaction Callbacks - Cancel flow
+
+actor User
+database Api
+actor Recipient
+
+User --> Api : Transaction create
+Api -> User : transaction.created 
+
+User --> Api : Recipient Cancel (or no payin for 1 hour)
+Api -> User : transaction.canceled
+
+@enduml

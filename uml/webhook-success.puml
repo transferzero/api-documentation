@@ -1,0 +1,20 @@
+@startuml
+
+title Transaction Callbacks - Success flow
+
+actor User
+database Api
+actor Recipient
+
+User --> Api : Transaction create
+Api -> User : transaction.created 
+
+User --> Api : Account Debit
+Api -> User : transaction.paid_in
+
+Api --> Recipient : Credit account
+Recipient --> Api : Payment confirmed
+
+Api -> User : transaction.paid_out
+
+@enduml

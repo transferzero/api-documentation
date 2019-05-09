@@ -1,0 +1,25 @@
+@startuml
+
+title Transaction Callbacks - Refund flow (simple)
+
+actor User
+database Api
+actor Recipient
+
+User --> Api : Transaction create
+Api -> User : transaction.created 
+
+User --> Api : Account debit
+Api -> User : transaction.paid_in
+
+Api --> Recipient : Credit account
+Recipient --> Api : Payment error
+
+Api -> User : transaction.error
+
+User --> Api : Recipient delete
+Api --> User : Account credit
+
+Api -> User : transaction.refunded
+
+@enduml
