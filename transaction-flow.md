@@ -811,7 +811,6 @@ If you choose to include the optional currency and/or amount params:
 * The `currency` needs to be the same as the `input_currency` on the transaction.
 * The `amount` has to be the same as the `input_amount` on the transaction
 
-
 Once the transaction is funded, we will immediately start trying to pay out the recipient(s).
 
 ## Checking the state of the transaction
