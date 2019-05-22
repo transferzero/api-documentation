@@ -802,7 +802,6 @@ with *optional* currency and amount params
 }
 ```
 
-
 To successfully fund a transaction:
 
 * The `to_id` is the `id` of the transaction
