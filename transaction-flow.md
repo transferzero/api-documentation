@@ -342,7 +342,9 @@ Jaiz Bank: 301
 Keystone: 082
 Polaris Bank: 076
 Stanbic IBTC Bank: 039
+Standard Chartered Bank PLC: 068
 Sterling bank: 232
+Suntrust Bank: 100
 Union Bank: 032
 United Bank for Africa: 033
 Unity Bank: 215
