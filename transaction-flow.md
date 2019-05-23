@@ -19,6 +19,7 @@
         - [GBP::Bank](#gbpbank)
         - [MAD::Cash](#madcash)
         - [XOF::Mobile](#xofmobile)
+        - [XOF::Cash](#xofcash)
     - [Metadata](#metadata)
     - [External ID](#external-id)
   - [Transaction object](#transaction-object)
@@ -253,6 +254,7 @@ Commonly used payout types are:
 * `UGX::Mobile`: for Ugandan mobile money payments
 * `TZS::Mobile`: for Tanzanian mobile money payments
 * `XOF::Mobile`: for Senegalese mobile money payments
+* `XOF::Cash`: for Senegalese cash payments
 * `MAD::Cash`: for Moroccan cash remittance payments
 * `EUR::Bank`: for IBAN bank transfers in EUR
 * `GBP::Bank`: for IBAN bank transfers in GBP
@@ -487,6 +489,29 @@ Please note when sending `MAD::Cash` payments you should subscribe to the `recip
 ```
 
 The payment reference can also be provided in the recipient details hash optionally for `MAD::Cash` in which case it will be used instead of the one we generate. The field you have to provide in the hash is called `reference`. If you wish to use this functionality, please contact us for more details.
+
+##### XOF::Cash
+
+```javascript
+"details": {
+  "first_name": "First",
+  "last_name": "Last",
+  "phone_number": "774044436" // local Senegalese format
+}
+```
+
+Please note when sending `XOF::Cash` payments you should subscribe to the `recipient.pending` webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt:
+
+```javascript
+{
+   (...)
+   "state":"pending",
+   "metadata": {
+     "payment_reference":"9M5GJRJUBCY"
+   },
+   (...)
+}
+```
 
 ##### XOF::Mobile
 
