@@ -792,7 +792,7 @@ Funding transactions can be done using the `POST /v1/accounts/debits` endpoint, 
 }
 ```
 
-with *optional* currency and amount params
+You can also supply the `currency` and `amount` parameters, in which case we'll verify if they match the amount on the transaction and only fund it if they do
 ```json
 {
   "currency": "NGN",
