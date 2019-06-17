@@ -814,6 +814,13 @@ Funding transactions can be done using the `POST /v1/accounts/debits` endpoint, 
 
 ```json
 {
+  "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
+  "to_type": "Transaction"
+}
+```
+You can also supply the `currency` and `amount` parameters, in which case we'll verify if they match the amount on the transaction and only fund it if they do
+```json
+{
   "currency": "NGN",
   "amount": "2000.0",
   "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
@@ -823,10 +830,12 @@ Funding transactions can be done using the `POST /v1/accounts/debits` endpoint, 
 
 To successfully fund a transaction:
 
-* The `currency` needs to be the same as the `input_currency` on the transaction.
-* The `amount` has to be the same as the `input_amount` on the transaction
 * The `to_id` is the `id` of the transaction
 * You need to have enough balance of the appropriate currency inside your wallet.
+
+If you choose to include the optional currency and/or amount params:
+* The `currency` needs to be the same as the `input_currency` on the transaction.
+* The `amount` has to be the same as the `input_amount` on the transaction
 
 Once the transaction is funded, we will immediately start trying to pay out the recipient(s).
 
