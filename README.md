@@ -132,7 +132,7 @@ The senders model stores information about who sends the money for the transacti
 
 If your site already does KYC on the senders, then let us know as we might waive the requirement to send us sender documents to ease the usage of our API. Otherwise you will have to send us documents for each sender which we will validate.
 
-As with transactions, external IDs can also be included for senders when a transaction is created. If this ID already exists in our system, the transaction will fail to validate.
+As with transactions, external IDs can also be included for senders when a transaction is created. If this ID already exists in our system, any details sent along with the external ID are used to update the sender.
 
 You can read more on creating senders in the [Transaction flow documentation](transaction-flow.md).
 

@@ -186,7 +186,8 @@ The `external_id` field is optional, allowing you to add a custom ID for the sen
 * Only an `id` is provided - we will search for the corresponding sender and use this reference.
 * An `id` is provided along with additional fields - we will update the corresponding sender with the information contained as parameters if the id exists on our system. Otherwise an error will be returned if the `id` does not exist.
 * Only an `external_id` is provided - we will search for the corresponding sender and use this reference.
-* An `external_id` is provided along with additional fields - we will create a new sender with this reference. This process is subject to duplicate validation, and an error will be returned with the corresponding sender if a duplicate `external_id` is found to already exist on our system.
+* An `external_id` is provided along with additional fields - we will create a new sender with this reference. This process is subject to duplicate validation, and an error will be returned with the corresponding sender if a duplicate `external_id` is found to already exist on our system.\
+An exception to this is if the `external_id` is provided along with additional fields **when a transaction is being created**. In this case, any details sent along with the external ID are used to update the sender.
 
 Please note that sending both an `id` and `external_id` at once is invalid and will result in an error.
 
