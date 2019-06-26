@@ -25,7 +25,7 @@ There is also a more complete reference of the available API calls available at 
 To use our API please register and obtain valid API keys on the [TransferZero developer portal](https://developers.transferzero.com).
 
 Initially the keys will only be valid to be used on our sandbox environment at https://api-sandbox.transferzero.com
- You can read more about what is available on our sandbox environment in the [sandbox testing](sandbox-testing.mg) documentation.
+ You can read more about what is available on our sandbox environment in the [sandbox testing](sandbox-testing.md) documentation.
 
 Once development is finished against our API, please contact TransferZero where our representatives will validate your implementation and if successful allow access to the live environment.
 
