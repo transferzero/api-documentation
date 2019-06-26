@@ -33,6 +33,10 @@ To facilitate easier integration with our API, we have SDKs available for the fo
 
 Please read our [README](README.md) and the [Transaction Flow Guide](transaction-flow.md) before going through the implementation, but to make the process of creating a minimum approved integration easier, we encourage you to make use of our SDKs and implement the required steps in this order:
 
+## The sandbox environment
+
+All development has to be done on our sandbox environment, which is a fully-fledged environment with some limitations, and some features that can be used to help testing. Please read about these features in out [Sandbox environment documentation](sandbox-testing.md)
+
 ## Authentication
 
 Please read our [Authentication guide](authentication.md) on how to register for an API key and how to use it on our site. You can also find example implementations around authentication for some of the major programming languages.
