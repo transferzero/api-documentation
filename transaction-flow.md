@@ -156,6 +156,8 @@ This section contains the details of the sender. The first time a specific sende
   "birth_date": "1970-01-01",
   "documents": [ ],
   "ip": "127.0.0.1",
+  "identification_number": "AB123456",
+  "identification_type": "ID",
   "external_id": "76f69f5e-912f-43e5-bf3a-9081dbc476f4",
   "metadata": {}
 }
@@ -198,6 +200,18 @@ If a sender has been assigned an `external_id`, this value can be used to find s
   * If you already do KYC on your system, then please contact us and we can waive this requirement from you. In this case you should send us an empty list of documents: `"documents": [ ]` in the request. All of the senders you create in the system will be immediately set to the `approved` state and you won't need to wait for them to get approved.
   * If when creating senders or transactions you get the following error in the response: `"errors":{"documents":[{"error":"blank"}]}` it means that KYC requirements are not yet waived for your account. If we already approved your KYC process and so they should be, then please contact us so we can rectify the issue and update your account accordingly.
   * In case you don't do KYC on your site, then you will need to send us documents that we can use to verify the sender's identity, for more details on this please see the [API reference documentation](https://api.transferzero.com/documentation#documents).
+* Identification number: Identification number of document used with a 4-character minimum length.
+* Identification type:
+  - `DL`: Driving License
+  - `PP`: International Passport
+  - `ID`: National ID
+  - `OT`: Other
+* There are three different sets of fields:
+  - 'identification_number' and 'identification_type'
+  - 'city', 'street', 'postal_code'
+  - 'birth_date'
+* The sender only needs to contain one of the set of fields from above.
+  E.g.: if the sender contains the birth date, then it does not need to contain anything from the first or the second set of the fields.
 * The `metadata` field can store any information you wish to store with the sender. If you don't wish to store anything simply specify `{}`.
 
 Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes. In this case the sender inside the transaction creation call would look like the following:
