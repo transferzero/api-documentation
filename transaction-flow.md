@@ -19,6 +19,7 @@
         - [GBP::Bank](#gbpbank)
         - [MAD::Cash](#madcash)
         - [XOF::Mobile](#xofmobile)
+        - [XOF::Cash](#xofcash)
     - [Metadata](#metadata)
     - [External ID](#external-id)
   - [Transaction object](#transaction-object)
@@ -187,7 +188,8 @@ The `external_id` field is optional, allowing you to add a custom ID for the sen
 * Only an `id` is provided - we will search for the corresponding sender and use this reference.
 * An `id` is provided along with additional fields - we will update the corresponding sender with the information contained as parameters if the id exists on our system. Otherwise an error will be returned if the `id` does not exist.
 * Only an `external_id` is provided - we will search for the corresponding sender and use this reference.
-* An `external_id` is provided along with additional fields - we will create a new sender with this reference. This process is subject to duplicate validation, and an error will be returned with the corresponding sender if a duplicate `external_id` is found to already exist on our system.
+* An `external_id` is provided along with additional fields - we will create a new sender with this reference. This process is subject to duplicate validation, and an error will be returned with the corresponding sender if a duplicate `external_id` is found to already exist on our system.\
+An exception to this is if the `external_id` is provided along with additional fields **when a transaction is being created**. In this case, any details sent along with the external ID are used to update the sender.
 
 Please note that sending both an `id` and `external_id` at once is invalid and will result in an error.
 
@@ -267,6 +269,7 @@ Commonly used payout types are:
 * `UGX::Mobile`: for Ugandan mobile money payments
 * `TZS::Mobile`: for Tanzanian mobile money payments
 * `XOF::Mobile`: for Senegalese mobile money payments
+* `XOF::Cash`: for Senegalese cash payments
 * `MAD::Cash`: for Moroccan cash remittance payments
 * `EUR::Bank`: for IBAN bank transfers in EUR
 * `GBP::Bank`: for IBAN bank transfers in GBP
@@ -356,7 +359,9 @@ Jaiz Bank: 301
 Keystone: 082
 Polaris Bank: 076
 Stanbic IBTC Bank: 039
+Standard Chartered Bank PLC: 068
 Sterling bank: 232
+Suntrust Bank: 100
 Union Bank: 032
 United Bank for Africa: 033
 Unity Bank: 215
@@ -499,6 +504,29 @@ Please note when sending `MAD::Cash` payments you should subscribe to the `recip
 ```
 
 The payment reference can also be provided in the recipient details hash optionally for `MAD::Cash` in which case it will be used instead of the one we generate. The field you have to provide in the hash is called `reference`. If you wish to use this functionality, please contact us for more details.
+
+##### XOF::Cash
+
+```javascript
+"details": {
+  "first_name": "First",
+  "last_name": "Last",
+  "phone_number": "774044436" // local Senegalese format
+}
+```
+
+Please note when sending `XOF::Cash` payments you should subscribe to the `recipient.pending` webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt:
+
+```javascript
+{
+   (...)
+   "state":"pending",
+   "metadata": {
+     "payment_reference":"9M5GJRJUBCY"
+   },
+   (...)
+}
+```
 
 ##### XOF::Mobile
 
@@ -801,6 +829,13 @@ Funding transactions can be done using the `POST /v1/accounts/debits` endpoint, 
 
 ```json
 {
+  "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
+  "to_type": "Transaction"
+}
+```
+You can also supply the `currency` and `amount` parameters, in which case we'll verify if they match the amount on the transaction and only fund it if they do
+```json
+{
   "currency": "NGN",
   "amount": "2000.0",
   "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
@@ -810,10 +845,12 @@ Funding transactions can be done using the `POST /v1/accounts/debits` endpoint, 
 
 To successfully fund a transaction:
 
-* The `currency` needs to be the same as the `input_currency` on the transaction.
-* The `amount` has to be the same as the `input_amount` on the transaction
 * The `to_id` is the `id` of the transaction
 * You need to have enough balance of the appropriate currency inside your wallet.
+
+If you choose to include the optional currency and/or amount params:
+* The `currency` needs to be the same as the `input_currency` on the transaction.
+* The `amount` has to be the same as the `input_amount` on the transaction
 
 Once the transaction is funded, we will immediately start trying to pay out the recipient(s).
 
