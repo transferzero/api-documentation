@@ -25,6 +25,7 @@ There is also a more complete reference of the available API calls available at 
 To use our API please register and obtain valid API keys on the [TransferZero developer portal](https://developers.transferzero.com).
 
 Initially the keys will only be valid to be used on our sandbox environment at https://api-sandbox.transferzero.com
+ You can read more about what is available on our sandbox environment in the [sandbox testing](sandbox-testing.md) documentation.
 
 Once development is finished against our API, please contact TransferZero where our representatives will validate your implementation and if successful allow access to the live environment.
 
@@ -132,7 +133,7 @@ The senders model stores information about who sends the money for the transacti
 
 If your site already does KYC on the senders, then let us know as we might waive the requirement to send us sender documents to ease the usage of our API. Otherwise you will have to send us documents for each sender which we will validate.
 
-As with transactions, external IDs can also be included for senders when a transaction is created. If this ID already exists in our system, the transaction will fail to validate.
+As with transactions, external IDs can also be included for senders when a transaction is created. If this ID already exists in our system, any details sent along with the external ID are used to update the sender.
 
 You can read more on creating senders in the [Transaction flow documentation](transaction-flow.md).
 
