@@ -202,11 +202,8 @@ If a sender has been assigned an `external_id`, this value can be used to find s
   * If you already do KYC on your system, then please contact us and we can waive this requirement from you. In this case you should send us an empty list of documents: `"documents": [ ]` in the request. All of the senders you create in the system will be immediately set to the `approved` state and you won't need to wait for them to get approved.
   * If when creating senders or transactions you get the following error in the response: `"errors":{"documents":[{"error":"blank"}]}` it means that KYC requirements are not yet waived for your account. If we already approved your KYC process and so they should be, then please contact us so we can rectify the issue and update your account accordingly.
   * In case you don't do KYC on your site, then you will need to send us documents that we can use to verify the sender's identity, for more details on this please see the [API reference documentation](https://api.transferzero.com/documentation#documents).
-* WTR2 (Wire Transfer Regulations) was put into place to tackle financial crime and fraudulent activities
-  primarily by capturing sender and payee information. For your operations this means that now in order to create
-  a transaction you will need to provide one of the set of fields below.
-  <br />
-  (NOTE: WTR2 can only be enabled if you do not wish to use Cashplus or MAD::Cash as corridor)
+* If you do not wish to use Cashplus or MAD:Cash as corridor, then we can enable WTR2 rules for you to identify the `sender`.
+* If WTR2 is enabled, all you need in order to identify a `sender` is to provide one of the set of documentation fields defined below.
 * Identification number: Identification number of document used with a 4-character minimum length.
 * Identification type:
   - `DL`: Driving License
