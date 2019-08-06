@@ -204,19 +204,26 @@ If a sender has been assigned an `external_id`, this value can be used to find s
   * In case you don't do KYC on your site, then you will need to send us documents that we can use to verify the sender's identity, for more details on this please see the [API reference documentation](https://api.transferzero.com/documentation#documents).
 * We also support sender validation based on WTR2 rules:
   * If you do not wish to use `Cashplus` or `MAD::Cash` as corridor, then we can enable WTR2 rules for you to identify the `sender`.
-  * If WTR2 is enabled, all you need in order to identify a `sender` is to provide one of the set of documentation fields defined below.
-  * Identification number: Identification number of document used with a 4-character minimum length.
-  * Identification type:
-    - `DL`: Driving License
-    - `PP`: International Passport
-    - `ID`: National ID
-    - `OT`: Other
-  * There are three different set of fields:
-    - 'identification_number' and 'identification_type'
-    - 'street', 'city' and 'postal_code'
-    - 'birth_date'
-  * The sender only needs to contain one of the set of fields from above.
-    E.g.: if the `sender` contains the birth date, then it does not need to contain anything from the first or the second set of the fields.
+  * If WTR2 is enabled, all you need in order to identify a `sender` is to provide one of the set of details defined below:
+    * There are three different set of details:
+      - 'identification_number' and 'identification_type'
+      - 'street', 'city' and 'postal_code'
+      - 'birth_date'
+    * The sender only needs to contain one of the set of details from above.
+      E.g.: if the `sender` contains the birth date, then it does not need to contain anything from the first or the second set of the details.
+  * Example using **Identification Document**:
+    * Identification number: Identification number of document used with a 4-character minimum length.
+    * Identification type:
+      - `DL`: Driving License
+      - `PP`: International Passport
+      - `ID`: National ID
+      - `OT`: Other
+  * Example using **Address**:
+    * Street: Street 17-3
+    * City: London
+    * Postal Code: NW123ET
+  * Example using **Birthdate**:
+    * Birthdate: 1989-01-31
 * Please note that if WTR2 is not enabled, the `sender` will need to be provided with all of the following:
   - phone_number
   - email
