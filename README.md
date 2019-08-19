@@ -75,6 +75,11 @@ Whenever possible we prefer using webhooks to listen on events (for example when
 
 Webhooks will always generate a `POST` request to the specified endpoint, and will also include the same authentication headers as described in the [authentication documentation](authentication.md), so their validity can be verified on the receiver end.
 
+Please ensure that you have whitelisted the following IP addresses. The following is for each of our environments:
+
+52.50.88.9 - Production
+52.30.76.100 - Sandbox
+
 The structure of the body we send will always follow the following template:
 
 ```javascript
