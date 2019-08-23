@@ -563,7 +563,7 @@ tigo
 ```
 
 ##### XOF::Bank
-Currently in beta phase. We currently offer this in Senegal and Benin.
+Please note that XOF::Bank payouts are currently in beta phase. At this time, we offer payouts to accounts in Senegal and Benin only.
 
 ```javascript
 "details" : {
