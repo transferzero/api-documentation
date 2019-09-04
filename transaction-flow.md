@@ -20,6 +20,7 @@
         - [MAD::Cash](#madcash)
         - [XOF::Mobile](#xofmobile)
         - [XOF::Cash](#xofcash)
+        - [XOF::Bank](#xofbank)
     - [Metadata](#metadata)
     - [External ID](#external-id)
   - [Transaction object](#transaction-object)
@@ -559,6 +560,26 @@ The valid `mobile_provider` values are:
 ```
 orange
 tigo
+```
+
+##### XOF::Bank
+Please note that XOF::Bank payouts are currently in beta phase. At this time, we offer payouts to accounts in Senegal and Benin only.
+
+```javascript
+"details" : {
+  "first_name": "First",
+  "last_name": "Last",
+  "bank_name": "BRM",
+  "bank_account": "SN144-12345",
+  "bank_country": "SN" // "SN" or "BJ"
+}
+```
+
+The valid `bank_country` values are:
+
+```
+SN
+BJ
 ```
 
 ### Metadata
