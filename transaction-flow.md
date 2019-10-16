@@ -570,7 +570,7 @@ Please note that XOF::Bank payouts are currently in beta phase. At this time, we
   "first_name": "First",
   "last_name": "Last",
   "bank_name": "BRM",
-  "bank_account": "SN144-12345",
+  "iban": "SN08SN0000000000000000000000",
   "bank_country": "SN" // "SN" or "BJ"
 }
 ```
