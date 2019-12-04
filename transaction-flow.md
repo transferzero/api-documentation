@@ -136,6 +136,11 @@ A full example transaction creation request with sender creation from EUR to NGN
 }
 ```
 
+### Creating and funding a transaction simultaneously
+
+If you wish to create a transaction and fund it immediately, it is possible to do so by using the `POST /v1/transactions/create_and_fund` endpoint. This functions in the same way as creating a transaction above, except that the `external_id` field is required.
+In order to use this endpoint, you must first establish an account with us in the input currency of the transactions you wish to create, and ensure that this account is funded appropriately.
+
 ### Input currency
 
 The input currency describes what currency the transaction will be paid in. For example if you wish to create an `EUR` to `NGN` transaction then input currency should be set to `EUR`.
