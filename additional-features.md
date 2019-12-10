@@ -19,15 +19,30 @@ request more details about an account number, before creating a transaction.
 
 To do this initiate a call to the following endpoint:
 
+### For Bank Accounts:
+
 ```ruby
 POST /v1/account_validations
 
 {
   "bank_account": "12345678", # account number to query
   "bank_code": "000", # bank code to query - same codes are used as for creating the transactions
-  "country": "NG"   # Only "NG" and "GH" is supported for now
-  "currency": "NGN" # Only "NGN" and "GHS" is supported for now
-  "method": "bank"  # Only "bank" is supported for now
+  "country": "NG",   # Only "NG" and "GH" is supported for now
+  "currency": "NGN", # Only "NGN" and "GHS" is supported for now
+  "method": "bank",
+}
+```
+
+### For Mobile Accounts:
+
+```ruby
+POST /v1/account_validations
+
+{
+  "phone_number": "+233000000000", # mobile phone number to query
+  "country": "GH",   # Only "GH" is supported for now
+  "currency": "GHS", # Only "GHS" is supported for now
+  "method": "mobile",
 }
 ```
 
