@@ -12,7 +12,7 @@
   - [Auto cancellation and refund of transactions](#auto-cancellation-and-refund-of-transactions)
   - [Editing recipients](#editing-recipients)
 
-## Bank account name enquiry
+## Account name enquiry
 
 Since it's easy to mistype the account number for a recipient, we provide a feature where you can
 request more details about an account number, before creating a transaction.
@@ -29,7 +29,7 @@ POST /v1/account_validations
   "bank_code": "000", # bank code to query - same codes are used as for creating the transactions
   "country": "NG",   # Only "NG" and "GH" is supported for now
   "currency": "NGN", # Only "NGN" and "GHS" is supported for now
-  "method": "bank",
+  "method": "bank"
 }
 ```
 
@@ -42,7 +42,7 @@ POST /v1/account_validations
   "phone_number": "+233000000000", # mobile phone number to query
   "country": "GH",   # Only "GH" is supported for now
   "currency": "GHS", # Only "GHS" is supported for now
-  "method": "mobile",
+  "method": "mobile"
 }
 ```
 
