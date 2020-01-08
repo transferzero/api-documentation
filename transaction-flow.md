@@ -446,7 +446,7 @@ Please note that UGX::Mobile payouts are currently in beta phase.
   "first_name": "First",
   "last_name": "Last",
   "phone_number": "256772123456"
-    // local Ugandan format
+    // local or international Ugandan format
 }
 ```
 
