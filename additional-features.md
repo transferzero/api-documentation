@@ -73,6 +73,8 @@ Once you have the account title you can compare that with the recipient details 
 
 Note that an error on name enquiry might both mean that the account doesn't exist, or that there is a connectivity issue with the banking system. Because of this if you get an error message you might need to retry the call a few minutes later.
 
+Also note that GHS mobile validation currently only works for Airtel Tigo and MTN, so mobile numbers belonging to other operators will always return an error.
+
 ## Name validation in transactions
 
 Another feature to limit mispayments because of mistyped account numbers is enabling name validation on transactions. This feature will block payouts if the account holder's name and the recipient name provided don't match. The feature is currently available for `NGN::Bank` and `GHS::Bank` payouts only.
