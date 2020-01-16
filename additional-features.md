@@ -5,7 +5,7 @@
   - [Name validation in transactions](#name-validation-in-transactions)
   - [Collections from senders](#collections-from-senders)
     - [NGN card collection requests through Interswitch](#ngn-card-collection-requests-through-interswitch)
-    - [NGN card and mobile collection requests through Paga](#ngn-card-and-mobile-collection-requests-through-paga)
+    - [NGN card, bank or mobile collection requests through Paga](#ngn-card-bank-or-mobile-collection-requests-through-paga)
     - [GHS mobile collections through Interpay](#ghs-mobile-collections-through-interpay)
     - [TZS and UGX mobile collection using Beyonic](#tzs-and-ugx-mobile-collection-using-beyonic)
     - [GBP and EUR IBAN collections](#gbp-and-eur-iban-collections)
