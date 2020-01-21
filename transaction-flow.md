@@ -439,13 +439,14 @@ Fidelity Bank: 240100
 ```
 
 ##### UGX::Mobile
+Please note that UGX::Mobile payouts are currently in beta phase.
 
 ```javascript
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "phone_number": "414123456"
-    // local Ugandan format
+  "phone_number": "256772123456"
+    // local or international Ugandan format
 }
 ```
 
