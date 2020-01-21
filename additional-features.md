@@ -5,7 +5,7 @@
   - [Name validation in transactions](#name-validation-in-transactions)
   - [Collections from senders](#collections-from-senders)
     - [NGN card collection requests through Interswitch](#ngn-card-collection-requests-through-interswitch)
-    - [NGN card and mobile collection requests through Paga](#ngn-card-and-mobile-collection-requests-through-paga)
+    - [NGN card, bank or mobile collection requests through Paga](#ngn-card-bank-or-mobile-collection-requests-through-paga)
     - [GHS mobile collections through Interpay](#ghs-mobile-collections-through-interpay)
     - [TZS and UGX mobile collection using Beyonic](#tzs-and-ugx-mobile-collection-using-beyonic)
     - [GBP and EUR IBAN collections](#gbp-and-eur-iban-collections)
@@ -273,7 +273,9 @@ Once the details are filled out dependent on the card, the user might also be re
 
 Once the details have been entered the user will be redirected back to the `redirect_url` URL that was set up in the request. If the transaction was successful we will send a `transaction.paid_in` webhook as well.
 
-### NGN card and mobile collection requests through Paga
+### NGN card, bank or mobile collection requests through Paga
+
+Paga supports collections through their own mobile wallet system. They also support collections through some banks and some debit cards in Nigeria. Regardless of collection method the user has to be registered with Paga on https://www.mypaga.com in order to use the system.
 
 To initiate an NGN collection through Paga please use the following details:
 
@@ -292,37 +294,55 @@ The `out_details` will be:
 ```javascript
 "out_details":{
   "style": "info",
-  "url": "https://www.mypaga.com/paga-web/customer/payMerchant/home?merchantId=2b38ad0a-30c8-428c-a38d-836035b58718",
-  "Merchant": "TransferZero",
+  "url": "https://www.mypaga.com/paga-web/customer/login",
+  "Merchant": "BitPesa",
   "Reference": "187464"
 }
 ```
 
-The user should be sent to the URL provided where they have to enter the appropriate reference number, amount, and personal details to finish the payment.
+Once the transaction is initated the user should either login to their Paga account on the website, or alternatively use the Paga mobile app. They have to send the specific amount of funds to the merchant (usually "BitPesa") and reference number (usually a 6 digit number) provided in the response.
 
 Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
 
-The Paga payment process looks like the following:
+The Paga payment process looks like the following on the website: (Paying through the mobile app has similar steps as well)
+
+![Paga login page 1](images/paga_mobile_login_1.png)
+
+First the user has to log in if they are not already.
+
+![Paga login page 2](images/paga_mobile_login_2.png)
+
+Once logged in they should select the "pay bill or merchant" option
+
+![Paga login page 3](images/paga_mobile_login_3.png)
+
+Once selected, they should scroll to the bottom and search for the Merchant returned in the response above. This is usuall called "BitPesa".
 
 ![Paga transaction page 1](images/paga_mobile_page_1.png)
 
-Here the user has to enter the exact amount and reference number, as well as their phone number. These fields will not be pre-filled, so it's important that they are filled out by the customer properly otherwise the payments could not be linked to the transaction appropariately.
+Next the user has to enter the exact amount and reference number in the next page. These fields will not be pre-filled, so it's important that they are filled out by the customer properly otherwise the payments could not be linked to the transaction appropariately.
 
 Once the details have been filled out there's a confirmation page:
 
 ![Paga transaction page 2](images/paga_mobile_page_2.png)
 
-And afterwards the user can choose how to pay the transaction. The options are mobile payments through paga:
+Note that on the confirmation page there's an extra fee added to the amount. The customer should double check that the reference number and the amount (without the extra fee) matches the transaction details, otherwise the payment will not be linked properly.
+
+Once the Pay button is pressed the user can choose how to pay the transaction. They can either use their Paga mobile wallet:
 
 ![Paga transaction page 3a](images/paga_mobile_page_3a.png)
 
-Bank transfer:
+Or select bank collection (note that not all banks are supported by Paga for collection):
 
 ![Paga transaction page 3b](images/paga_mobile_page_3b.png)
 
-Or card payments:
+Or card payments (note that not all debit cards are supported by Paga for collection):
 
 ![Paga transaction page 3c](images/paga_mobile_page_3c.png)
+
+Finally once the payment goes through the customer will see a success page:
+
+![Paga transaction page 4](images/paga_mobile_page_4.png)
 
 ### GHS mobile collections through Interpay
 
