@@ -34,4 +34,4 @@ apiInstance.infoCurrencies().then((data) => {
 });
 ```
 
-Full examples for all steps required by our [quick integration guide]({{ "/docs/quick-integration/" | prepend: site.baseurl }}) can be found at: https://github.com/transferzero/transferzero-sdk-javascript/blob/master/examples/examples.js
+Full examples for all steps required by our [quick integration guide]({{ "/docs/quick-integration/" | prepend: site.baseurl }}) can be found at: <https://github.com/transferzero/transferzero-sdk-javascript/blob/master/examples/examples.js>

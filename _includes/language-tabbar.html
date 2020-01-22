@@ -1,0 +1,23 @@
+<div id="{{ include.prefix }}" class="example-tabbar">
+    <ul class="nav nav-tabs" role="tablist">
+        {% if include.raw %}<li role="presentation" class="active"><a href="#tab-{{ include.prefix }}-raw" aria-controls="tab-{{ include.prefix }}-raw" role="tab" data-toggle="tab">Plain API</a></li>{% endif %}
+        {% if include.csharp %}<li role="presentation"><a href="#tab-{{ include.prefix }}-csharp" aria-controls="tab-{{ include.prefix }}-csharp" role="tab" data-toggle="tab">C#</a></li>{% endif %}
+        {% if include.vb %}<li role="presentation"><a href="#tab-{{ include.prefix }}-vb" aria-controls="tab-{{ include.prefix }}-vb" role="tab" data-toggle="tab">VB.NET</a></li>{% endif %}
+        {% if include.java %}<li role="presentation"><a href="#tab-{{ include.prefix }}-java" aria-controls="tab-{{ include.prefix }}-java" role="tab" data-toggle="tab">Java</a></li>{% endif %}
+        {% if include.java7 %}<li role="presentation"><a href="#tab-{{ include.prefix }}-java7" aria-controls="tab-{{ include.prefix }}-java7" role="tab" data-toggle="tab">Java 7</a></li>{% endif %}
+        {% if include.js %}<li role="presentation"><a href="#tab-{{ include.prefix }}-js" aria-controls="tab-{{ include.prefix }}-js" role="tab" data-toggle="tab">JavaScript</a></li>{% endif %}
+        {% if include.php %}<li role="presentation"><a href="#tab-{{ include.prefix }}-php" aria-controls="tab-{{ include.prefix }}-php" role="tab" data-toggle="tab">PHP</a></li>{% endif %}
+        {% if include.ruby %}<li role="presentation"><a href="#tab-{{ include.prefix }}-ruby" aria-controls="tab-{{ include.prefix }}-ruby" role="tab" data-toggle="tab">Ruby</a></li>{% endif %}
+    </ul>
+
+    <div class="tab-content">
+        {% if include.raw %}<div role="tabpanel" class="tab-pane panel panel-default active" id="tab-{{ include.prefix }}-raw"><div class="panel-body">{{ include.raw | markdownify }}</div></div>{% endif %}
+        {% if include.csharp %}<div role="tabpanel" class="tab-pane panel panel-default" id="tab-{{ include.prefix }}-csharp"><div class="panel-body">{{ include.csharp | markdownify}}</div></div>{% endif %}
+        {% if include.vb %}<div role="tabpanel" class="tab-pane panel panel-default" id="tab-{{ include.prefix }}-vb"><div class="panel-body">{{ include.vb | markdownify}}</div></div>{% endif %}
+        {% if include.java %}<div role="tabpanel" class="tab-pane panel panel-default" id="tab-{{ include.prefix }}-java"><div class="panel-body">{{ include.java | markdownify}}</div></div>{% endif %}
+        {% if include.java7 %}<div role="tabpanel" class="tab-pane panel panel-default" id="tab-{{ include.prefix }}-java7"><div class="panel-body">{{ include.java7 | markdownify}}</div></div>{% endif %}
+        {% if include.js %}<div role="tabpanel" class="tab-pane panel panel-default" id="tab-{{ include.prefix }}-js"><div class="panel-body">{{ include.js | markdownify}}</div></div>{% endif %}
+        {% if include.php %}<div role="tabpanel" class="tab-pane panel panel-default" id="tab-{{ include.prefix }}-php"><div class="panel-body">{{ include.php | markdownify}}</div></div>{% endif %}
+        {% if include.ruby %}<div role="tabpanel" class="tab-pane panel panel-default" id="tab-{{ include.prefix }}-ruby"><div class="panel-body">{{ include.ruby | markdownify}}</div></div>{% endif %}
+    </div>
+</div>

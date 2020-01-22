@@ -84,3 +84,8 @@ body {
 .navbar-form .has-feedback .form-control-feedback{
   top:10px
 }
+
+.example-tabbar .tab-pane {
+  max-height: 400px;
+  overflow: auto;
+}

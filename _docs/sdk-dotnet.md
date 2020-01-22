@@ -92,4 +92,4 @@ Module Example
     End Sub
 End Module
 ```
-Full examples for all steps required by our [quick integration guide]({{ "/docs/quick-integration/" | prepend: site.baseurl }}) can be found at: https://github.com/transferzero/transferzero-sdk-dotnet/tree/master/examples
+Full examples for all steps required by our [quick integration guide]({{ "/docs/quick-integration/" | prepend: site.baseurl }}) can be found at: <https://github.com/transferzero/transferzero-sdk-dotnet/tree/master/examples>

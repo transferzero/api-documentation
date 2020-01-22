@@ -38,4 +38,4 @@ try {
 ?>
 ```
 
-Full examples for all steps required by our [quick integration guide]({{ "/docs/quick-integration/" | prepend: site.baseurl }}) can be found at: https://github.com/transferzero/transferzero-sdk-php/blob/master/examples/client.php
+Full examples for all steps required by our [quick integration guide]({{ "/docs/quick-integration/" | prepend: site.baseurl }}) can be found at: <https://github.com/transferzero/transferzero-sdk-php/blob/master/examples/client.php>

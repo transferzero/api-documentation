@@ -39,4 +39,4 @@ try {
 }
 ```
 
-Full examples for all steps required by our [quick integration guide]({{ "/docs/quick-integration/" | prepend: site.baseurl }}) can be found at: https://github.com/transferzero/transferzero-sdk-java8/blob/master/example/src/main/java/com/transferzero/test/Application.java
+Full examples for all steps required by our [quick integration guide]({{ "/docs/quick-integration/" | prepend: site.baseurl }}) can be found at: <https://github.com/transferzero/transferzero-sdk-java8/blob/master/example/src/main/java/com/transferzero/test/Application.java>

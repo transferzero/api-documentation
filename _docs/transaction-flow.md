@@ -27,6 +27,7 @@ Unfortunately not all transactions are successful. The main causes of issues are
 
 Transactions can be created by calling the `POST /v1/transactions` endpoint. The template of transaction requests is the following:
 
+{% capture data-raw %}
 ```javascript
 {
    "transaction":{
@@ -51,59 +52,406 @@ Transactions can be created by calling the `POST /v1/transactions` endpoint. The
    }
 }
 ```
+{% endcapture %}
 
-Note that the `external_id` field is optional. Please see [external ID](#external-id) for further information.
+{% include language-tabbar.html prefix="transaction-structure" raw=data-raw %}
 
-A full example transaction creation request with sender creation from EUR to NGN would look like the following:
+Note that the `external_id` field is optional but we prefer if you use it. Please see [external ID](#external-id) for further information.
 
-```json
+A full example transaction creation request with sender creation from `USD` to `NGN` would look like the following:
+
+{::comment}
+CODE_EXAMPLE_START transaction-example
+JSON_START
 {
   "transaction": {
-    "input_currency": "EUR",
     "sender": {
-      "country": "US",
+      "first_name": "Jane",
+      "last_name": "Doe",
       "phone_country": "US",
-      "phone_number": "1234234234",
-      "email": "test@example.com",
-      "first_name": "Text",
-      "last_name": "Example",
-      "city": "City",
-      "street": "Street",
-      "postal_code": "12345",
-      "birth_date": "1970-01-01",
+      "phone_number": "5555551234",
+      "country": "US",
+      "city": "New York",
+      "street": "20 W 34th St",
+      "postal_code": "10001",
+      "address_description": "",
+      "birth_date": "1974-12-24",
+      "email": "info@transferzero.com",
+      "external_id": "Sender:US:234523",
       "documents": [ ],
       "ip": "127.0.0.1",
-      "external_id": "76f69f5e-912f-43e5-bf3a-9081dbc476f4",
-      "metadata": {
-        "local_id": "SENDER-1234"
-      }
+      "metadata": {}
     },
     "recipients": [
       {
-        "requested_amount": "7040",
-        "requested_currency": "NGN",
+        "requested_amount": "100",
+        "requested_currency": "USD",
         "payout_method": {
           "type": "NGN::Bank",
           "details": {
-            "first_name": "Name",
-            "last_name": "Name",
-            "bank_code": "058",
-            "bank_account": "123456789",
-            "bank_account_type": "10"
+            "first_name": "John",
+            "last_name": "Doe",
+            "bank_account": "1234567890",
+            "bank_code": "082",
+            "bank_account_type": "20"
           }
         }
       }
     ],
+    "input_currency": "USD",
     "metadata": {},
-    "external_id": "806ec63a-a5a7-43cc-9d75-1ee74fbcc026"
+    "external_id": "Transaction:NGN:17523"
+  }
+}
+JSON_END
+
+CODE_START
+CREATE_START sender Sender
+SET LIT first_name "Jane"
+SET LIT last_name "Doe"
+SET LIT phone_country "US"
+SET LIT phone_number "5555551234"
+SET LIT country "US"
+SET LIT city "New York"
+SET LIT street "20 W 34th St"
+SET LIT postal_code "10001"
+SET LIT address_description ""
+SET DATE birth_date "1974-12-24"
+SET LIT email "info@transferzero.com"
+SET LIT external_id "Sender:US:234523"
+SET LIT ip "127.0.0.1"
+SET EMPTY_ARRAY documents Document
+CREATE_END
+
+CREATE_START details PayoutMethodDetails
+SET LIT first_name "John"
+SET LIT last_name "Doe"
+SET LIT bank_account "1234567890"
+SET LIT bank_code "082"
+SET ENUM bank_account_type PayoutMethodBankAccountTypeEnum 20
+CREATE_END
+
+CREATE_START payout PayoutMethod
+SET LIT type "NGN::Bank"
+SET VAR details details
+CREATE_END
+
+CREATE_START recipient Recipient
+SET BIGNUM requested_amount 100000
+SET LIT requested_currency "NGN"
+SET VAR payout_method payout
+CREATE_END
+
+CREATE_START transaction Transaction
+SET VAR sender sender
+SET VAR_ARRAY recipients Recipient recipient
+SET LIT input_currency "NGN"
+SET LIT external_id "Transaction:NGN:17523"
+CREATE_END
+CODE_END
+CODE_EXAMPLE_END
+{:/comment}
+
+{::comment}AUTO_GENERATED_CONTENT_START{:/comment}
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+    "sender": {
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "phone_country": "US",
+      "phone_number": "5555551234",
+      "country": "US",
+      "city": "New York",
+      "street": "20 W 34th St",
+      "postal_code": "10001",
+      "address_description": "",
+      "birth_date": "1974-12-24",
+      "email": "info@transferzero.com",
+      "external_id": "Sender:US:234523",
+      "documents": [ ],
+      "ip": "127.0.0.1",
+      "metadata": {}
+    },
+    "recipients": [
+      {
+        "requested_amount": "100",
+        "requested_currency": "USD",
+        "payout_method": {
+          "type": "NGN::Bank",
+          "details": {
+            "first_name": "John",
+            "last_name": "Doe",
+            "bank_account": "1234567890",
+            "bank_code": "082",
+            "bank_account_type": "20"
+          }
+        }
+      }
+    ],
+    "input_currency": "USD",
+    "metadata": {},
+    "external_id": "Transaction:NGN:17523"
   }
 }
 ```
+{% endcapture %}
 
-## Creating and funding a transaction simultaneously
+{% capture data-csharp %}
+```csharp
+Sender sender = new Sender(
+  firstName: "Jane",
+  lastName: "Doe",
+  phoneCountry: "US",
+  phoneNumber: "5555551234",
+  country: "US",
+  city: "New York",
+  street: "20 W 34th St",
+  postalCode: "10001",
+  addressDescription: "",
+  birthDate: DateTime.Parse("1974-12-24"),
+  email: "info@transferzero.com",
+  externalId: "Sender:US:234523",
+  ip: "127.0.0.1",
+  documents: new List<Document>());
 
-If you wish to create a transaction and fund it immediately, it is possible to do so by using the `POST /v1/transactions/create_and_fund` endpoint. This functions in the same way as creating a transaction above, except that the `external_id` field is required.
-In order to use this endpoint, you must first establish an account with us in the input currency of the transactions you wish to create, and ensure that this account is funded appropriately.
+PayoutMethodDetails details = new PayoutMethodDetails(
+  firstName: "John",
+  lastName: "Doe",
+  bankAccount: "1234567890",
+  bankCode: "082",
+  bankAccountType: PayoutMethodBankAccountTypeEnum._20);
+
+PayoutMethod payout = new PayoutMethod(
+  type: "NGN::Bank",
+  details: details);
+
+Recipient recipient = new Recipient(
+  requestedAmount: 100000,
+  requestedCurrency: "NGN",
+  payoutMethod: payout);
+
+Transaction transaction = new Transaction(
+  sender: sender,
+  recipients: new List<Recipient>() { recipient },
+  inputCurrency: "NGN",
+  externalId: "Transaction:NGN:17523");
+```
+{% endcapture %}
+
+{% capture data-vb %}
+```vb
+Dim sender as Sender = New Sender(
+  firstName:="Jane",
+  lastName:="Doe",
+  phoneCountry:="US",
+  phoneNumber:="5555551234",
+  country:="US",
+  city:="New York",
+  street:="20 W 34th St",
+  postalCode:="10001",
+  addressDescription:="",
+  birthDate:=DateTime.Parse("1974-12-24"),
+  email:="info@transferzero.com",
+  externalId:="Sender:US:234523",
+  ip:="127.0.0.1",
+  documents:=New List(Of Document)()))
+
+Dim details as PayoutMethodDetails = New PayoutMethodDetails(
+  firstName:="John",
+  lastName:="Doe",
+  bankAccount:="1234567890",
+  bankCode:="082",
+  bankAccountType:=PayoutMethodBankAccountTypeEnum._20)
+
+Dim payout as PayoutMethod = New PayoutMethod(
+  type:="NGN::Bank",
+  details:=details)
+
+Dim recipient as Recipient = New Recipient(
+  requestedAmount:=100000,
+  requestedCurrency:="NGN",
+  payoutMethod:=payout)
+
+Dim transaction as Transaction = New Transaction(
+  sender:=sender,
+  recipients:=New List(Of Recipient)() From { recipient },
+  inputCurrency:="NGN",
+  externalId:="Transaction:NGN:17523")
+```
+{% endcapture %}
+
+{% capture data-java %}
+```java
+Sender sender = new Sender();
+sender.setFirstName("Jane");
+sender.setLastName("Doe");
+sender.setPhoneCountry("US");
+sender.setPhoneNumber("5555551234");
+sender.setCountry("US");
+sender.setCity("New York");
+sender.setStreet("20 W 34th St");
+sender.setPostalCode("10001");
+sender.setAddressDescription("");
+sender.setBirthDate(LocalDate.parse("1974-12-24"));
+sender.setEmail("info@transferzero.com");
+sender.setExternalId("Sender:US:234523");
+sender.setIp("127.0.0.1");
+sender.setDocuments(new ArrayList<>());
+
+PayoutMethodDetails details = new PayoutMethodDetails();
+details.setFirstName("John");
+details.setLastName("Doe");
+details.setBankAccount("1234567890");
+details.setBankCode("082");
+details.setBankAccountType(PayoutMethodBankAccountTypeEnum._20);
+
+PayoutMethod payout = new PayoutMethod();
+payout.setType("NGN::Bank");
+payout.setDetails(details);
+
+Recipient recipient = new Recipient();
+recipient.setRequestedAmount(new BigDecimal("100000"));
+recipient.setRequestedCurrency("NGN");
+recipient.setPayoutMethod(payout);
+
+Transaction transaction = new Transaction();
+transaction.setSender(sender);
+transaction.addRecipientsItem(recipient);
+transaction.setInputCurrency("NGN");
+transaction.setExternalId("Transaction:NGN:17523");
+```
+{% endcapture %}
+
+{% capture data-js %}
+```js
+const sender = new TransferZeroSdk.Sender();
+sender.first_name = "Jane";
+sender.last_name = "Doe";
+sender.phone_country = "US";
+sender.phone_number = "5555551234";
+sender.country = "US";
+sender.city = "New York";
+sender.street = "20 W 34th St";
+sender.postal_code = "10001";
+sender.address_description = "";
+sender.birth_date = "1974-12-24";
+sender.email = "info@transferzero.com";
+sender.external_id = "Sender:US:234523";
+sender.ip = "127.0.0.1";
+sender.documents = [];
+
+const details = new TransferZeroSdk.PayoutMethodDetails();
+details.first_name = "John";
+details.last_name = "Doe";
+details.bank_account = "1234567890";
+details.bank_code = "082";
+details.bank_account_type = "20";
+
+const payout = new TransferZeroSdk.PayoutMethod();
+payout.type = "NGN::Bank";
+payout.details = details;
+
+const recipient = new TransferZeroSdk.Recipient();
+recipient.requested_amount = 100000;
+recipient.requested_currency = "NGN";
+recipient.payout_method = payout;
+
+const transaction = new TransferZeroSdk.Transaction();
+transaction.sender = sender;
+transaction.recipients = [recipient];
+transaction.input_currency = "NGN";
+transaction.external_id = "Transaction:NGN:17523";
+```
+{% endcapture %}
+
+{% capture data-php %}
+```php
+$sender = new Sender();
+$sender->setFirstName("Jane");
+$sender->setLastName("Doe");
+$sender->setPhoneCountry("US");
+$sender->setPhoneNumber("5555551234");
+$sender->setCountry("US");
+$sender->setCity("New York");
+$sender->setStreet("20 W 34th St");
+$sender->setPostalCode("10001");
+$sender->setAddressDescription("");
+$sender->setBirthDate("1974-12-24");
+$sender->setEmail("info@transferzero.com");
+$sender->setExternalId("Sender:US:234523");
+$sender->setIp("127.0.0.1");
+$sender->setDocuments([]);
+
+$details = new PayoutMethodDetails();
+$details->setFirstName("John");
+$details->setLastName("Doe");
+$details->setBankAccount("1234567890");
+$details->setBankCode("082");
+$details->setBankAccountType("20");
+
+$payout = new PayoutMethod();
+$payout->setType("NGN::Bank");
+$payout->setDetails($details);
+
+$recipient = new Recipient();
+$recipient->setRequestedAmount(100000);
+$recipient->setRequestedCurrency("NGN");
+$recipient->setPayoutMethod($payout);
+
+$transaction = new Transaction();
+$transaction->setSender($sender);
+$transaction->setRecipients([recipient]);
+$transaction->setInputCurrency("NGN");
+$transaction->setExternalId("Transaction:NGN:17523");
+```
+{% endcapture %}
+
+{% capture data-ruby %}
+```ruby
+sender = TransferZero::Sender.new
+sender.first_name = "Jane"
+sender.last_name = "Doe"
+sender.phone_country = "US"
+sender.phone_number = "5555551234"
+sender.country = "US"
+sender.city = "New York"
+sender.street = "20 W 34th St"
+sender.postal_code = "10001"
+sender.address_description = ""
+sender.birth_date = "1974-12-24"
+sender.email = "info@transferzero.com"
+sender.external_id = "Sender:US:234523"
+sender.ip = "127.0.0.1"
+sender.documents = []
+
+details = TransferZero::PayoutMethodDetails.new
+details.first_name = "John"
+details.last_name = "Doe"
+details.bank_account = "1234567890"
+details.bank_code = "082"
+details.bank_account_type = "20"
+
+payout = TransferZero::PayoutMethod.new
+payout.type = "NGN::Bank"
+payout.details = details
+
+recipient = TransferZero::Recipient.new
+recipient.requested_amount = 100000
+recipient.requested_currency = "NGN"
+recipient.payout_method = payout
+
+transaction = TransferZero::Transaction.new
+transaction.sender = sender
+transaction.recipients = [recipient]
+transaction.input_currency = "NGN"
+transaction.external_id = "Transaction:NGN:17523"
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="gen-transaction-example" raw=data-raw csharp=data-csharp vb=data-vb java=data-java js=data-js php=data-php ruby=data-ruby %}
+{::comment}AUTO_GENERATED_CONTENT_END{:/comment}
 
 ## Input currency
 
@@ -113,118 +461,410 @@ The input currency describes what currency the transaction will be paid in. For 
 
 This section contains the details of the sender. The first time a specific sender is used the full details should be provided, example:
 
+{::comment}
+CODE_EXAMPLE_START sender-creation
+JSON_START
+{
+    "first_name": "Jane",
+    "last_name": "Doe",
+
+    "phone_country": "US",
+    "phone_number": "5555551234",
+
+    "country": "US",
+    "city": "New York",
+    "street": "20 W 34th St",
+    "postal_code": "10001",
+    "address_description": "",
+
+    "birth_date": "1974-12-24",
+
+    "identification_number": "AB123456",
+    "identification_type": "ID",
+
+    "email": "info@transferzero.com",
+
+    "external_id": "Sender:US:234523",
+
+    "documents": [ ],
+    "ip": "127.0.0.1",
+    "metadata": {}
+}
+JSON_END
+
+CODE_START
+CREATE_START sender Sender
+SET LIT first_name "Jane"
+SET LIT last_name "Doe"
+
+SET LIT phone_country "US"
+SET LIT phone_number "5555551234"
+
+SET LIT country "US"
+SET LIT city "New York"
+SET LIT street "20 W 34th St"
+SET LIT postal_code "10001"
+SET LIT address_description "Empire State Building"
+
+SET DATE birth_date "1974-12-24"
+
+SET LIT identification_number "AB123456"
+SET LIT identification_type "ID"
+
+SET LIT email "info@transferzero.com"
+
+SET LIT external_id "Sender:US:234523"
+
+SET LIT ip "127.0.0.1"
+SET EMPTY_ARRAY documents Document
+CREATE_END
+CODE_END
+CODE_EXAMPLE_END
+{:/comment}
+
+{::comment}AUTO_GENERATED_CONTENT_START{:/comment}
+{% capture data-raw %}
 ```javascript
 {
-  "country": "US",
-  "phone_country": "US",
-  "phone_number": "1234234234",
-  "email": "test@example.com",
-  "first_name": "Text",
-  "last_name": "Example",
-  "city": "City",
-  "street": "Street",
-  "postal_code": "12345",
-  "birth_date": "1970-01-01",
-  "documents": [ ],
-  "ip": "127.0.0.1",
-  "identification_number": "AB123456",
-  "identification_type": "ID",
-  "external_id": "76f69f5e-912f-43e5-bf3a-9081dbc476f4",
-  "metadata": {}
+    "first_name": "Jane",
+    "last_name": "Doe",
+
+    "phone_country": "US",
+    "phone_number": "5555551234",
+
+    "country": "US",
+    "city": "New York",
+    "street": "20 W 34th St",
+    "postal_code": "10001",
+    "address_description": "",
+
+    "birth_date": "1974-12-24",
+
+    "identification_number": "AB123456",
+    "identification_type": "ID",
+
+    "email": "info@transferzero.com",
+
+    "external_id": "Sender:US:234523",
+
+    "documents": [ ],
+    "ip": "127.0.0.1",
+    "metadata": {}
 }
 ```
+{% endcapture %}
 
+{% capture data-csharp %}
+```csharp
+Sender sender = new Sender(
+  firstName: "Jane",
+  lastName: "Doe",
+
+  phoneCountry: "US",
+  phoneNumber: "5555551234",
+
+  country: "US",
+  city: "New York",
+  street: "20 W 34th St",
+  postalCode: "10001",
+  addressDescription: "Empire State Building",
+
+  birthDate: DateTime.Parse("1974-12-24"),
+
+  identificationNumber: "AB123456",
+  identificationType: "ID",
+
+  email: "info@transferzero.com",
+
+  externalId: "Sender:US:234523",
+
+  ip: "127.0.0.1",
+  documents: new List<Document>());
+```
+{% endcapture %}
+
+{% capture data-vb %}
+```vb
+Dim sender as Sender = New Sender(
+  firstName:="Jane",
+  lastName:="Doe",
+
+  phoneCountry:="US",
+  phoneNumber:="5555551234",
+
+  country:="US",
+  city:="New York",
+  street:="20 W 34th St",
+  postalCode:="10001",
+  addressDescription:="Empire State Building",
+
+  birthDate:=DateTime.Parse("1974-12-24"),
+
+  identificationNumber:="AB123456",
+  identificationType:="ID",
+
+  email:="info@transferzero.com",
+
+  externalId:="Sender:US:234523",
+
+  ip:="127.0.0.1",
+  documents:=New List(Of Document)()))
+```
+{% endcapture %}
+
+{% capture data-java %}
+```java
+Sender sender = new Sender();
+sender.setFirstName("Jane");
+sender.setLastName("Doe");
+
+sender.setPhoneCountry("US");
+sender.setPhoneNumber("5555551234");
+
+sender.setCountry("US");
+sender.setCity("New York");
+sender.setStreet("20 W 34th St");
+sender.setPostalCode("10001");
+sender.setAddressDescription("Empire State Building");
+
+sender.setBirthDate(LocalDate.parse("1974-12-24"));
+
+sender.setIdentificationNumber("AB123456");
+sender.setIdentificationType("ID");
+
+sender.setEmail("info@transferzero.com");
+
+sender.setExternalId("Sender:US:234523");
+
+sender.setIp("127.0.0.1");
+sender.setDocuments(new ArrayList<>());
+```
+{% endcapture %}
+
+{% capture data-js %}
+```js
+const sender = new TransferZeroSdk.Sender();
+sender.first_name = "Jane";
+sender.last_name = "Doe";
+
+sender.phone_country = "US";
+sender.phone_number = "5555551234";
+
+sender.country = "US";
+sender.city = "New York";
+sender.street = "20 W 34th St";
+sender.postal_code = "10001";
+sender.address_description = "Empire State Building";
+
+sender.birth_date = "1974-12-24";
+
+sender.identification_number = "AB123456";
+sender.identification_type = "ID";
+
+sender.email = "info@transferzero.com";
+
+sender.external_id = "Sender:US:234523";
+
+sender.ip = "127.0.0.1";
+sender.documents = [];
+```
+{% endcapture %}
+
+{% capture data-php %}
+```php
+$sender = new Sender();
+$sender->setFirstName("Jane");
+$sender->setLastName("Doe");
+
+$sender->setPhoneCountry("US");
+$sender->setPhoneNumber("5555551234");
+
+$sender->setCountry("US");
+$sender->setCity("New York");
+$sender->setStreet("20 W 34th St");
+$sender->setPostalCode("10001");
+$sender->setAddressDescription("Empire State Building");
+
+$sender->setBirthDate("1974-12-24");
+
+$sender->setIdentificationNumber("AB123456");
+$sender->setIdentificationType("ID");
+
+$sender->setEmail("info@transferzero.com");
+
+$sender->setExternalId("Sender:US:234523");
+
+$sender->setIp("127.0.0.1");
+$sender->setDocuments([]);
+```
+{% endcapture %}
+
+{% capture data-ruby %}
+```ruby
+sender = TransferZero::Sender.new
+sender.first_name = "Jane"
+sender.last_name = "Doe"
+
+sender.phone_country = "US"
+sender.phone_number = "5555551234"
+
+sender.country = "US"
+sender.city = "New York"
+sender.street = "20 W 34th St"
+sender.postal_code = "10001"
+sender.address_description = "Empire State Building"
+
+sender.birth_date = "1974-12-24"
+
+sender.identification_number = "AB123456"
+sender.identification_type = "ID"
+
+sender.email = "info@transferzero.com"
+
+sender.external_id = "Sender:US:234523"
+
+sender.ip = "127.0.0.1"
+sender.documents = []
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="gen-sender-creation" raw=data-raw csharp=data-csharp vb=data-vb java=data-java js=data-js php=data-php ruby=data-ruby %}
+{::comment}AUTO_GENERATED_CONTENT_END{:/comment}
 When a sender is created you will receive a response which contains the sender's status. Possible states for a sender are:
 
-* initial - When a sender is created and has not been through any KYC checking (cannot transact)
-* verified - A sender has passed sanction list checks (cannot transact)
-* approved - The sender has passed both KYC and sanction checks (**can** transact)
-* banned - An admin has banned the sender (cannot transact)
-* rejected - The sender has failed sanction list checks (cannot transact)
-* disabled - A sender is put into this state as a result of a delete request via the API (cannot transact)
+* `initial` - When a sender is created and has not been through any KYC checking (cannot transact)
+* `verified` - A sender has passed sanction list checks (cannot transact)
+* `approved` - The sender has passed both KYC and sanction checks (**can** transact)
+* `banned` - An admin has banned the sender (cannot transact)
+* `rejected` - The sender has failed sanction list checks (cannot transact)
+* `disabled` - A sender is put into this state as a result of a delete request via the API (cannot transact)
 
-In order to transact with TransferZero we need to have an `approved` sender record. The flow for approving senders depend on whether KYC requirements are waived for your integration or not (See the notes section).
+In order to transact with TransferZero we need to have an `approved` sender record. The flow for approving senders depend on whether KYC requirements are waived for your integration or not. In case the KYC requirements are waived then all created senders will be in the `approved` state immediately, and can be immediately used for transactions.
 
-In case the KYC requirements are not waived then the typical flow for approval this will be the following:
+Please see our [KYC](({{ "/docs/kyc/" | prepend: site.baseurl }})) documentation on more details about the KYC sender processes.
 
-![Sender registration flow]({{ "/img/uml/sender-kyc.png" | prepend: site.baseurl }})
-
-In case the KYC requirements are waived then all created senders will be in the `approved` state immediately, and can be immediately used for transactions.
-
-**ID and External ID:**
+### ID and External ID
 
 The `external_id` field is optional, allowing you to add a custom ID for the sender as with the external ID [available for transactions](#external-id). The ID/External ID can be included with the sender in four ways:
 
 * Only an `id` is provided - we will search for the corresponding sender and use this reference.
 * An `id` is provided along with additional fields - we will update the corresponding sender with the information contained as parameters if the id exists on our system. Otherwise an error will be returned if the `id` does not exist.
 * Only an `external_id` is provided - we will search for the corresponding sender and use this reference.
-* An `external_id` is provided along with additional fields - we will create a new sender with this reference. This process is subject to duplicate validation, and an error will be returned with the corresponding sender if a duplicate `external_id` is found to already exist on our system.\
+* An `external_id` is provided along with additional fields - we will create a new sender with this reference. This process is subject to duplicate validation, and an error will be returned with the corresponding sender if a duplicate `external_id` is found to already exist on our system.
+
 An exception to this is if the `external_id` is provided along with additional fields **when a transaction is being created**. In this case, any details sent along with the external ID are used to update the sender.
 
 Please note that sending both an `id` and `external_id` at once is invalid and will result in an error.
 
-If a sender has been assigned an `external_id`, this value can be used to find senders using the `GET v1/senders` endpoint, with `external_id` parameter included as a string. For example: `GET v1/senders?external_id=76f69f5e`
+If a sender has been assigned an `external_id`, this value can be used to find senders using the `GET /v1/senders` endpoint, with `external_id` parameter included as a string. For example: `GET /v1/senders?external_id=76f69f5e`
 
-**Notes:**
+### Metadata
 
-* The sender's phone number is composed of two parts, the `phone_country` (in ISO 2-letter format), and the `phone_number`. The phone number should be specified without the international prefix.
-* The `documents` should contain all documents necessary to KYC the sender.
-  * If you already do KYC on your system, then please contact us and we can waive this requirement from you. In this case you should send us an empty list of documents: `"documents": [ ]` in the request. All of the senders you create in the system will be immediately set to the `approved` state and you won't need to wait for them to get approved.
-  * If when creating senders or transactions you get the following error in the response: `"errors":{"documents":[{"error":"blank"}]}` it means that KYC requirements are not yet waived for your account. If we already approved your KYC process and so they should be, then please contact us so we can rectify the issue and update your account accordingly.
-  * In case you don't do KYC on your site, then you will need to send us documents that we can use to verify the sender's identity, for more details on this please see the [API reference documentation](https://api.transferzero.com/documentation#documents).
-* We also support sender validation based on WTR2 rules:
-  * If you do not wish to use `Cashplus` or `MAD::Cash` as corridor, then we can enable WTR2 rules for you to identify the `sender`.
-  * If WTR2 is enabled, all you need in order to identify a `sender` is to provide one of the set of details defined below:
-    * There are three different set of details:
-      - 'identification_number' and 'identification_type'
-      - 'street', 'city' and 'postal_code'
-      - 'birth_date'
-    * The sender only needs to contain one of the set of details from above.
-      E.g.: if the `sender` contains the birth date, then it does not need to contain anything from the first or the second set of the details.
-  * Example using **Identification Document**:
-    * Identification number: Identification number of document used with a 4-character minimum length.
-    * Identification type:
-      - `DL`: Driving License
-      - `PP`: International Passport
-      - `ID`: National ID
-      - `OT`: Other
-  * Example using **Address**:
-    * Street: Street 17-3
-    * City: London
-    * Postal Code: NW123ET
-  * Example using **Birthdate**:
-    * Birthdate: 1989-01-31
-* Please note that if WTR2 is not enabled, the `sender` will need to be provided with all of the following:
-  - phone_number
-  - email
-  - street, city, postal_code
-  - birth_date
-* The `metadata` field can store any information you wish to store with the sender. If you don't wish to store anything simply specify `{}`.
+The `metadata` field can store any information you wish to store with the sender. If you don't wish to store anything simply specify `{}`.
 
-Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes. In this case the sender inside the transaction creation call would look like the following:
+### Phone number
 
-```json
+The sender's phone number is composed of two parts, the `phone_country` (in ISO 2-letter format), and the `phone_number`. The phone number should be specified without the international prefix.
+
+### Documents
+
+The `documents` should contain all documents necessary to KYC the sender. It is either an empty array ``"documents": [ ]`` in case you don't need to send us the sender documents, or it should contain all of the proof of ID documents that are required. See our [KYC](({{ "/docs/kyc/" | prepend: site.baseurl }})) documentation on more details.
+
+### WTR2
+
+We support sender validation based on the simplified WTR2 rules. If WTR2 is enabled, all you need in order to identify a `sender` is to provide one of the set of details defined below:
+
+* There are three different set of details:
+  - `identification_number` and `identification_type`
+  - `street`, `city` and `postal_code`
+  - `birth_date`
+* The sender only needs to contain one of the set of details from above.
+  E.g.: if the `sender` contains the birth date, then it does not need to contain anything from the first or the second set of the details.
+
+Examples:
+
+* When using **Identification Document**:
+  * Identification number: Identification number of document used with a 4-character minimum length.
+  * Identification type:
+    - `DL`: Driving License
+    - `PP`: International Passport
+    - `ID`: National ID
+    - `OT`: Other
+* When using **Address**:
+  * Street: Street 17-3
+  * City: London
+  * Postal Code: NW123ET
+* When using **Birthdate**:
+  * Birthdate: 1989-01-31
+
+If WTR2 is not enabled, the `sender` will need to be provided with all of the following:
+
+* `phone_number`
+* `email`
+* `street`, `city`, `postal_code`
+* `birth_date`
+
+<div class="alert alert-info" markdown="1">
+**Note!** You'll have to contact us if you wish to use the relaxed WTR2 mode, so we can set this up for you. This is only available if you are doing a full KYC on your senders.
+</div>
+
+<div class="alert alert-warning" markdown="1">
+**Warning!** Due to regulatory requirements the WTR2 mode is not compatible with the `MAD::Cash` corridor. If you wish to use that payment corridor you'll still need to send in full sender details.
+</div>
+
+### Re-using senders
+
+If you're not using external IDs on the sender then once a sender is created and is used, the next time you MUST send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes. In this case the sender inside the transaction creation call would look like the following:
+
+{% capture data-raw %}
+```javascript
 {
   "transaction": {
     "sender": {
       "id": "b6648ba3-1c7b-4f59-8580-684899c84a07"
     },
-    (...)
+    // (...)
   }
 }
 ```
+{% endcapture %}
 
-<div class="alert alert-warning"><b>Warning!</b>
- For your application to get approved you MUST support reusing the sender ID for the same sender across transactions. If the sender's details change in your system then you can use the `PATCH /v1/senders/[sender_id]` endpoint to update the sender details you store in our system to keep them up-to-date.</div>
+{% include language-tabbar.html prefix="using-sender-id" raw=data-raw %}
 
-<div class="alert alert-info"><b>Note</b> Although Senders can also be created separately using the sender creation API call, in order to decrease the amount of distinct calls to the system we prefer if new senders are created with the first transaction they appear in.</div>
+Or using external IDs:
+
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+    "sender": {
+      "external_id": "SENDER_1234"
+    },
+    // (...)
+  }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="using-external-id" raw=data-raw %}
+
+In both cases you can also send in additional sender details which will be used to update the sender if their details have changed in our system.
+
+<div class="alert alert-warning" markdown="1">
+**Warning!** For your application to get approved you MUST support either using external IDs for senders, or you'll have to reuse the sender ID for the same sender across transactions. If the sender's details change in your system then you can either use the `PATCH /v1/senders/[transferzer_sender_id]` endpoint to update the sender details you store in our system to keep them up-to-date, or send in the changed sender details the next time you create a transaction with that sender.
+</div>
+
+<div class="alert alert-info" markdown="1">
+**Note!** Although Senders can also be created separately using the sender creation API call, if you are doing full KYC then in order to decrease the amount of distinct calls to the system we prefer if new senders are created with the first transaction they appear in. If you are not doing a full KYC however then you always need to use the separate sender creation API call, as you need to wait for the sender to get approved before they can transact in the system.
+</div>
 
 ## Recipient
 
-The recipient describes the amount, the currency and the destination where the money should be sent. Although transactions can support paying out multiple recipients, usually one is provided.
+The recipient describes the amount, the currency and the destination where the money should be sent. Although transactions can support paying out multiple recipients, usually only one should be provided.
 
 The template for the recipient is the following:
 
+{% capture data-raw %}
 ```javascript
 {
   "requested_amount": // the amount to pay out,
@@ -237,24 +877,15 @@ The template for the recipient is the following:
   }
 }
 ```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="recipient-structure" raw=data-raw %}
 
 ### Payout type
 
 The payout type contains where the money should be sent to and to what currency. You can find a complete list of supported types at the [API reference documentation](https://api.transferzero.com/documentation#transactions).
 
-Commonly used payout types are:
-
-* `NGN::Bank`: for Nigerian bank account payments
-* `NGN::Mobile`: for Nigerian mobile money payments
-* `GHS::Bank`: for Ghanaian bank account payments
-* `GHS::Mobile`: for Ghanaian mobile money payments
-* `UGX::Mobile`: for Ugandan mobile money payments
-* `TZS::Mobile`: for Tanzanian mobile money payments
-* `XOF::Mobile`: for Senegalese mobile money payments
-* `XOF::Cash`: for Senegalese cash payments
-* `MAD::Cash`: for Moroccan cash remittance payments
-* `EUR::Bank`: for IBAN bank transfers in EUR
-* `GBP::Bank`: for IBAN bank transfers in GBP
+You can find the commonly used payout types at the [payout documentation]({{ "/docs/payout-details/" | prepend: site.baseurl }}).
 
 Unless you hold an internal balance with us, the input currency and payout currency cannot be the same. If you wish to do same-currency transactions please contact our team for further details.
 
@@ -288,266 +919,13 @@ For some currencies however, we are not able to pay out subunits and they will a
 These currencies are KES, TZS, UGX and NGN.
 
 The current list of currencies and associated decimal places is below -
-* AED - 2
-* CAD - 2
-* CHF - 2
-* CNY - 2
-* EUR - 2
-* GHS - 2
-* GBP - 2
-* JPY - 0
-* KES - 0
-* KRW - 0
-* MAD - 2
-* NGN - 0
-* TZS - 0
-* UGX - 0
-* USD - 2
-* XOF - 0
-* ZAR - 2
+
+* `AED`, `CAD`, `CHF`, `CNY`, `EUR`, `GHS`, `GBP`, `MAD`, `USD`, `ZAR`: 2
+* `JPY`, `KES`, `KRW`, `NGN`, `TZS`, `UGX`, `XOF`: 0
 
 ### Payout details
 
-The payout details depend on the chosen payout type. You can find example calls at the [API reference documentation](https://api.transferzero.com/documentation#transactions).
-
-Examples for the most commonly used payout providers:
-
-#### NGN::Bank
-
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "bank_code": "058",
-  "bank_account": "123456789",
-  "bank_account_type": "10"
-    // 10 for saving
-    // 20 for current accounts
-}
-```
-
-The valid `bank_code` values are:
-
-```
-Access Bank: 044
-Diamond Bank: 063
-EcoBank: 050
-FCMB Bank: 214
-Fidelity Bank: 070
-First Bank of Nigeria: 011
-Guaranty Trust Bank : 058
-Heritage Bank: 030
-Jaiz Bank: 301
-Keystone: 082
-Polaris Bank: 076
-Stanbic IBTC Bank: 039
-Standard Chartered Bank PLC: 068
-Sterling bank: 232
-Suntrust Bank: 100
-Union Bank: 032
-United Bank for Africa: 033
-Unity Bank: 215
-Wema Bank: 035
-Zenith International: 057
-```
-
-#### NGN::Mobile
-
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "7087661234"
-    // local Nigerian format
-}
-```
-
-#### GHS::Bank
-
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "bank_code": "030100",
-  "bank_account": "123456789"
-}
-```
-
-The current banks supported and their `bank_codes` values are:
-```
-Access Bank: 280100
-Barclays Bank: 030100
-GCB Bank: 040100
-Ecobank: 130100
-First National Bank: 330100
-Heritage Bank: 370100
-Prudential Bank: 180100
-Stanbic Bank: 190100
-Standard Chartered Bank: 020100
-United Bank for Africa: 060100
-Zenith Bank: 120100
-Fidelity Bank: 240100
-```
-#### GHS::Mobile
-
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "302123456"
-    // local Ghanaian format
-}
-```
-
-#### UGX::Mobile
-Please note that UGX::Mobile payouts are currently in beta phase.
-
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "256772123456"
-    // local or international Ugandan format
-}
-```
-
-#### TZS::Mobile
-
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "221231234"
-    // local Tanzanian format
-}
-```
-
-#### EUR::Bank
-
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "bank_name": "Deutsche Bank",
-  "iban": "DE89370400440532013000",
-  "bic": "DEUTDEBBXXX" // Optional
-}
-```
-
-#### GBP::Bank
-
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "bank_name": "Lloyds Bank",
-  "iban": "GB29LOYD60161331926819",
-  "bic": "LOYDGB2L" // Optional
-}
-```
-
-#### MAD::Cash
-
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "212537718685"
-    // Mandatory; International format preferred
-  "sender_identity_card_type" => "O",
-    // Mandatory; Values: "O": Other, "PP": Passport, "NI": National ID
-  "sender_identity_card_id" => 'AB12345678',
-    // Mandatory
-  "sender_city_of_birth" => "London",
-    // Mandatory
-  "sender_country_of_birth" => "GB",
-    // Mandatory; ISO 2-letter format
-  "sender_gender" => "M",
-    // Mandatory; Values: "M": Male, "F": Female
-  "reason" => "Remittance payment",
-    // Optional; Default value is 'Remittance payment'
-  "identity_card_type" => "NI",
-    // Optional; Values: "PP": Passport, "NI": National ID
-  "identity_card_id" => 'AB12345678'
-    // Optional
-}
-```
-
-Please note when sending `MAD::Cash` payments you should subscribe to the `recipient.pending` webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt:
-
-```javascript
-{
-   (...)
-   "state":"pending",
-   "metadata": {
-     "payment_reference":"9M5GJRJUBCY"
-   },
-   (...)
-}
-```
-
-The payment reference can also be provided in the recipient details hash optionally for `MAD::Cash` in which case it will be used instead of the one we generate. The field you have to provide in the hash is called `reference`. If you wish to use this functionality, please contact us for more details.
-
-#### XOF::Cash
-
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "774044436" // local Senegalese format
-}
-```
-
-Please note when sending `XOF::Cash` payments you should subscribe to the `recipient.pending` webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt:
-
-```javascript
-{
-   (...)
-   "state":"pending",
-   "metadata": {
-     "payment_reference":"9M5GJRJUBCY"
-   },
-   (...)
-}
-```
-
-#### XOF::Mobile
-
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "mobile_provider": "orange", // "orange" or "tigo"
-  "phone_number": "774044436" // local Senegalese format
-}
-```
-
-The valid `mobile_provider` values are:
-
-```
-orange
-tigo
-```
-
-#### XOF::Bank
-Please note that XOF::Bank payouts are currently in beta phase. At this time, we offer payouts to accounts in Senegal and Benin only.
-
-```javascript
-"details" : {
-  "first_name": "First",
-  "last_name": "Last",
-  "bank_name": "BRM",
-  "iban": "SN08SN0000000000000000000000",
-  "bank_country": "SN" // "SN" or "BJ"
-}
-```
-
-The valid `bank_country` values are:
-
-```
-SN
-BJ
-```
+The payout details depend on the chosen payout type. Please check the [Payout documentation]({{ "/docs/payout-details/" | prepend: site.baseurl }}) for more details, and you can also find example calls at the [API reference documentation](https://api.transferzero.com/documentation#transactions).
 
 ## Metadata
 
@@ -559,7 +937,7 @@ External ID is an optional field that allows you to add a custom ID for the tran
 
 If an `external_id` is present when transactions are created, we will validate whether it is a duplicate in our system or not. This functionality provides a safeguard against transactions being assigned the same `external_id`. If a duplicate is found, an error will be returned along with the corresponding transaction.
 
-Once an `external_id` has been set, it can be used to find transactions using the `GET v1/transactions` endpoint, with `external_id` parameter included as a string. For example: `GET v1/transactions?external_id=806ec63a`
+Once an `external_id` has been set, it can be used to find transactions using the `GET /v1/transactions` endpoint, with `external_id` parameter included as a string. For example: `GET /v1/transactions?external_id=806ec63a`
 
 # Transaction object
 
@@ -569,6 +947,7 @@ In case the transaction couldn't be created, you will get back a `422` response 
 
 A transaction object looks like the following:
 
+{% capture data-raw %}
 ```javascript
 {
   "object": {
@@ -736,6 +1115,9 @@ A transaction object looks like the following:
   }
 }
 ```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="transaction-full-example" raw=data-raw %}
 
 As shown, the response contains a lot of information, the most important are the following:
 
@@ -821,23 +1203,29 @@ The external ID of a transaction, if present.
 
 # Funding transactions
 
-By default, when creating a transaction we will collect the money from the sender. For more information on how to handle some collections, please visit [Collections]({{ "/docs/additional-features/" | prepend: site.baseurl }}#collections-from-senders). You can also check the [API reference documentation](https://api.transferzero.com/documentation#fetching-possible-payin-methods
-)
+When using our system to send funds to customers then usually you'll be using your internal account to fund these transactions. Please contact us so we can set up this internal account with us. If this is the case you'll need to explicitly fund transactions once they are created so we know that you are happy with the transaction to go forward.
 
-However, if your site already does collection on the sender's behalf then please contact us and we can set you up with an internal account with us.
-
-Once you have an internal account, you can use that as well to fund transactions.
+<div class="alert alert-info" markdown="1">
+**Note!** You can also use our system to do the collection from the senders. For more information on how to handle some collections, please visit [Collections]({{ "/docs/additional-features/" | prepend: site.baseurl }}#collections-from-senders){: .alert-link}. You can also check the [API reference documentation](https://api.transferzero.com/documentation#fetching-possible-payin-methods){: .alert-link}
+</div>
 
 Funding transactions can be done using the `POST /v1/accounts/debits` endpoint, with the following body:
 
-```json
+{% capture data-raw %}
+```javascript
 {
   "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
   "to_type": "Transaction"
 }
 ```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="fund-example" raw=data-raw %}
+
 You can also supply the `currency` and `amount` parameters, in which case we'll verify if they match the amount on the transaction and only fund it if they do
-```json
+
+{% capture data-raw %}
+```javascript
 {
   "currency": "NGN",
   "amount": "2000.0",
@@ -845,9 +1233,11 @@ You can also supply the `currency` and `amount` parameters, in which case we'll 
   "to_type": "Transaction"
 }
 ```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="fund-example-full" raw=data-raw %}
 
 To successfully fund a transaction:
-
 * The `to_id` is the `id` of the transaction
 * You need to have enough balance of the appropriate currency inside your wallet.
 
@@ -857,13 +1247,21 @@ If you choose to include the optional currency and/or amount params:
 
 Once the transaction is funded, we will immediately start trying to pay out the recipient(s).
 
+## Creating and funding a transaction simultaneously
+
+If you wish to create a transaction and fund it immediately, it is possible to do so by using the `POST /v1/transactions/create_and_fund` endpoint. This functions in the same way as creating a transaction, except that the `external_id` field is required in this case.
+
+In order to use this endpoint, you must first establish an account with us in the input currency of the transactions you wish to create, and ensure that this account is funded appropriately. Also note that by using this endpoint you will miss the two step approval process, as this will be implicitly assumed.
+
 # Checking the state of the transaction
 
-To manually check the state of the transaction, use the `GET /v1/transactions/ID` endpoint, where the `ID` is the id of the transaction. Transactions can also be retrieved using the `external_id`, [as documented here](#external-id).
+To manually check the state of the transaction, use the `GET /v1/transactions/[TRANSFERZERO_TRANSACTION_ID]` endpoint, where the `TRANSFERZERO_TRANSACTION_ID` is the id of the transaction (and not the external id). Using the external id the transactions can be retrieved `external_id`, [as documented here](#external-id).
 
 However to get real-time information on when a transaction's state changes please create webhooks for transaction state changes using the developer portal, or the API, where we will send a response every time the transaction's state is changed.
 
-<div class="alert alert-warning"><b>Warning!</b> For your application to get approved it MUST use primarily the webhook functionality to determine the state of the transaction. Using the `GET` endpoint should only be done occasionally as a fall-back mechanism.</div>
+<div class="alert alert-warning" markdown="1">
+**Warning!** For your application to get approved it MUST use primarily the webhook functionality to determine the state of the transaction. Using the `GET` endpoint should only be done occasionally as a fall-back mechanism.
+</div>
 
 # Receiving error messages
 
@@ -875,7 +1273,8 @@ Note that as the errors are sent on the recipient, you will receive a recipient 
 
 For example, on an error you will receive a webhook like this:
 
-```
+{% capture data-raw %}
+```javascript
 {
   "webhook": "fd599451-4f3c-4045-91e1-d68ed12ffb75",
   "event": "recipient.error",
@@ -913,15 +1312,24 @@ For example, on an error you will receive a webhook like this:
   }
 }
 ```
+{% endcapture %}
 
-<div class="alert alert-warning"><b>Warning!</b> For your application to get approved, it MUST support obtaining the error message from the recipient. It MUST also primarily use the webhook functionality to be notified of any errors, and only fall-back to using `GET` calls against the transaction occasionally.</div>
+{% include language-tabbar.html prefix="webhook-example" raw=data-raw %}
+
+<div class="alert alert-warning" markdown="1">
+**Warning!** For your application to get approved, it MUST support obtaining the error message from the recipient. It MUST also primarily use the webhook functionality to be notified of any errors, and only fall-back to using `GET` calls against the transaction occasionally.
+</div>
 
 # Cancelling recipients and transactions
 
-In case there are errors with the payout and you wish to cancel it, you can do so by calling the `DELETE /v1/recipients/ID` endpoint, where `ID` is the id of the recipient (and NOT the transaction). If the recipient can be cancelled, this request, once processed, will cancel it. If the transaction was funded from an internal balance, it will then also be refunded.
+In case there are errors with the payout and you wish to cancel it, you can do so by calling the `DELETE /v1/recipients/[TRANSFERZERO_RECIPIENT_ID]` endpoint, where `TRANSFERZERO_RECIPIENT_ID` is the id of the recipient (and NOT the transaction). If the recipient can be cancelled, this request, once processed, will cancel it. If the transaction was funded from an internal balance, it will then also be refunded.
 
-<div class="alert alert-info"><b>Note!</b> Cancelling is only available if the <code class="highlighter_rogue">may_cancel</code> field is on the recipient true.</div>
+<div class="alert alert-info" markdown="1">
+**Note!** Cancelling is only available if the `may_cancel` field is on the recipient true.
+</div>
 
-<div class="alert alert-warning"><b>Warning!</b> For your application to get approved it MUST support the cancellation of recipients.</div>
+<div class="alert alert-warning" markdown="1">
+**Warning!** For your application to get approved it MUST support the cancellation of recipients.
+</div>
 
 You can also enable the `auto_refund` trait on the transaction, this will mean your transactions will automatically be cancelled and refunded if they can't be paid out. For more information, please check the [auto cancellation]({{ "/docs/additional-features/" | prepend: site.baseurl }}#auto-cancellation-and-refund-of-transactions) documentation.

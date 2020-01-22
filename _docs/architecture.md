@@ -27,11 +27,14 @@ Webhooks will always generate a `POST` request to the specified endpoint, and wi
 
 Please ensure that you have whitelisted the following IP addresses. The following is for each of our environments:
 
-52.50.88.9 - Production
-52.30.76.100 - Sandbox
+* `52.50.88.9` - Production
+* `52.30.76.100` - Sandbox
+
+In case of a transmission error we will also try to send the webhook again five times before dropping the request. You'll need to reply to the endpoint call with a successful status code (e.g. `200` or `201`), otherwise we'll assume that the webhook was not delivered.
 
 The structure of the body we send will always follow the following template:
 
+{% capture data-raw %}
 ```javascript
 {
   "webhook": // the ID of the webhook
@@ -44,8 +47,9 @@ The structure of the body we send will always follow the following template:
   }
 }
 ```
+{% endcapture %}
 
-If the endpoint we have to call is behind a firewall please let us know so we can tell you the exact IP addresses that you need to whitelist. In case of a transmission error we will also try to send the webhook again five times before dropping the request.
+{% include language-tabbar.html prefix="webhook-structure" raw=data-raw %}
 
 There are examples showing how to parse a received webhook message using our SDKs:
 
@@ -86,7 +90,7 @@ For more information on External IDs, see the [Transaction flow documentation]({
 
 The senders model stores information about who sends the money for the transaction. Only senders that are KYC'd are allowed to pay in money.
 
-If your site already does KYC on the senders, then let us know as we might waive the requirement to send us sender documents to ease the usage of our API. Otherwise you will have to send us documents for each sender which we will validate.
+If your site already does KYC on the senders, then let us know as we might waive the requirement to send us sender documents to ease the usage of our API. Otherwise you will have to send us documents for each sender which we will validate. Please also check our [KYC documentation](({{ "/docs/kyc/" | prepend: site.baseurl }})) for more info.
 
 As with transactions, external IDs can also be included for senders when a transaction is created. If this ID already exists in our system, any details sent along with the external ID are used to update the sender.
 
@@ -108,6 +112,6 @@ By default when creating a transaction we will do both the collection of the mon
 
 Once we approve your request and set up your balance, you can use that balance to fund the payin part of the transaction. You can read more on funding transactions from your internal balance in the [Transaction flow documentation]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}).
 
-If you have a balance with us you can use the `GET /v1/accounts` to get all or `GET /v1/accounts/XXX` endpoint to obtain a specific currency's balance with us (`XXX` is the currency you are interested in).
+If you have a balance with us you can use the `GET /v1/accounts` to get all or `GET /v1/accounts/[CURRENCY_NAME]` endpoint to obtain a specific currency's balance with us.
 
 Please contact us to obtain our list of supported currency pairs for transactions.

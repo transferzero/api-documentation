@@ -12,7 +12,7 @@ git_edit_address: https://github.com/transferzero/api-documentation/blob/gh-page
 
 # Theme options from https://bootswatch.com/
 # comment-out to use default Bootstrap
-bootwatch: flatly
+bootwatch: yeti
 
 # Build settings
 markdown: kramdown
@@ -29,6 +29,7 @@ exclude:
   - .idea/
   - .gitignore
   - README.md
+  - generate_sdk_examples.rb
 timezone: Europe/London
 defaults:
 

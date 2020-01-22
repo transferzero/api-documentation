@@ -2,9 +2,6 @@
   docs:
     - home
     - quick-integration
-
-- title: Examples
-  docs:
     - example-payments
     - example-collections
 
@@ -21,7 +18,10 @@
 - title: More information
   docs:
     - architecture
+    - kyc
     - transaction-flow
+    - payout-details
     - additional-features
+    - collection-details
     - sandbox-testing
     - reference-documentation

@@ -14,6 +14,12 @@ A small example illustrating authenticating and accessing the Currency Info endp
 # load the gem
 require 'transferzero-sdk'
 
+TransferZero.configure do |config|
+  config.api_key = '<key>'
+  config.api_secret = '<secret>'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
+end
+
 api_instance = TransferZero::CurrencyInfoApi.new
 
 begin
@@ -31,4 +37,4 @@ rescue TransferZero::ApiError => e
 end
 ```
 
-Full examples for all steps required by our [quick integration guide]({{ "/docs/quick-integration/" | prepend: site.baseurl }}) can be found at: https://github.com/transferzero/transferzero-sdk-ruby/blob/master/example/client.rb
+Full examples for all steps required by our [quick integration guide]({{ "/docs/quick-integration/" | prepend: site.baseurl }}) can be found at: <https://github.com/transferzero/transferzero-sdk-ruby/blob/master/example/client.rb>

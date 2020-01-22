@@ -6,7 +6,7 @@ permalink: /docs/authentication/
 * Table of contents
 {:toc}
 
-<div class="alert alert-info"><b>Note</b> Instead of implementing authentication on your own please <a href="{{ "/docs/sdks/" | prepend: site.baseurl }}" class="alert-link">try using our SDKs</a> available in multiple frameworks and languages which support our authentication mechanism out of the box</div>
+<div class="alert alert-info"><b>Note!</b> Instead of implementing authentication on your own please <a href="{{ "/docs/sdks/" | prepend: site.baseurl }}" class="alert-link">try using our SDKs</a> available in multiple frameworks and languages which support our authentication mechanism out of the box</div>
 
 Authentication with the TransferZero API relies on correctly setting the headers on each request with the following data:
 
@@ -30,6 +30,7 @@ For the following example, we will assume you are using the following details to
 * Nonce: `00c6a48a-ccb8-4653-a0c8-de7c1ab67529`
 * Request Body:
 
+{% capture data-raw %}
 ```json
 {
   "sender": {
@@ -56,6 +57,9 @@ For the following example, we will assume you are using the following details to
   }
 }
 ```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="auth-structure" raw=data-raw %}
 
 * A `POST` request to `https://api-sandbox.transferzero.com/v1/senders`
 
@@ -88,6 +92,7 @@ This is passed as the `Authorization-Signature` header for sending the request.
 
 # Full sample header
 
+{% capture data-raw %}
 ```
 Accept: application/json
 Content-Type: application/json
@@ -95,10 +100,13 @@ Authorization-Key: YOUR_API_KEY
 Authorization-Nonce: 00c6a48a-ccb8-4653-a0c8-de7c1ab67529
 Authorization-Signature: eb36a61a75a7d78d16a774811122b3bbefd9fd3dfba28ffcb94b39e2c2d857cb6b22d77bb520762c813fe1a991e24862c42027c8b15b11553c03d662ed7d11f1
 ```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="webhook-headers" raw=data-raw %}
 
 # Complete code examples
 
-Please check our SDKs on hohw thhey implement thhe authentication mechanism
+Please check our SDKs on how thhey implement thhe authentication mechanism
 
 # API Environments
 

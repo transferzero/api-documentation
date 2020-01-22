@@ -12,7 +12,7 @@ To facilitate testing our sandbox environment has a few features that can help i
 
 # Forcing transactions to pay out
 
-You can use the `POST /transactions/{Transaction ID}/payout` endpoint with an empty body to force a funded, but not yet paid transaction to succeed. You can use this endpoint to test out if you are receiving successful transaction webhooks properly.
+You can use the `POST /transactions/[TRANSFERZERO_TRANSACTION_ID]/payout` endpoint with an empty body to force a funded, but not yet paid transaction to succeed. You can use this endpoint to test out if you are receiving successful transaction webhooks properly.
 
 # Forcing collections to succeed
 
@@ -20,7 +20,7 @@ When using our [collections feature]({{ "/docs/additional-features/" | prepend: 
 
 # Account validation
 
-When testing our account validation feature for GHS and NGN bank payments any account number starting with a `9` will return a failure. All other account numbers will return a user with name `TEST USER`. This applies to both the [bank account name enquiry]({{ "/docs/additional-features/" | prepend: site.baseurl }}#bank-account-name-enquiry) feature and the [name validation in transactions]({{ "/docs/additional-features/" | prepend: site.baseurl }}#name-validation-in-transactions) feature.
+When testing our account validation feature for GHS and NGN bank payments any account number starting with a `9` will return a failure. All other account numbers will return a user with name `TEST USER`. For GHS mobile similalry phone numbers ending in an `8` or `9` will return a failure, while others return a user with name `TEST USER`. This applies to both the [account name enquiry]({{ "/docs/additional-features/" | prepend: site.baseurl }}#account-name-enquiry) feature and the [name validation in transactions]({{ "/docs/additional-features/" | prepend: site.baseurl }}#name-validation-in-transactions) feature.
 
 # Testing additional scenarios
 
