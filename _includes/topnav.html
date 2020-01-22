@@ -1,0 +1,36 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container navbar-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+            <a class="navbar-brand" href="{{ site.baseurl }}/">
+                <span><img src="{{site.baseurl}}/img/logonav.png"></span> {{ site.title }}
+            </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ "/docs/home/" | prepend: site.baseurl }}">Get started</a></li>
+                <li><a href="{{ "/docs/example-payments/" | prepend: site.baseurl }}">Examples</a></li>
+                <li><a href="{{ "/docs/sdks/" | prepend: site.baseurl }}">SDKs</a></li>
+                <li><a href="{{ "/docs/architecture/" | prepend: site.baseurl }}">Architecture</a></li>
+                <li><a href="{{ "/docs/reference-documentation/" | prepend: site.baseurl }}">Reference</a></li>
+            </ul>
+            <div class="navbar-right">
+                <form class="navbar-form navbar-left" method="get" action="http://www.google.com/search" target="_blank">
+                    <div class="form-group has-feedback">
+                        <input type="hidden" name="sitesearch" value="transferzero.github.io" />
+                        <input id="search-box" class="form-control" type="text" name="q" maxlength="255" placeholder="Search..." />
+                        <i class="fa fa-search form-control-feedback"></i>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ site.git_address }}"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
