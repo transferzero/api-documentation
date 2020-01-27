@@ -1,0 +1,51 @@
+# Site settings
+title: TransferZero
+copyright: AZA Finance
+email: info@transferzero.com
+description: >
+  International payments API for Africa
+
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: https://docs.transferzero.com # the base hostname & protocol for your site
+git_address: https://github.com/transferzero/api-documentation
+git_edit_address: https://github.com/transferzero/api-documentation/blob/gh-pages
+
+# Theme options from https://bootswatch.com/
+# comment-out to use default Bootstrap
+bootwatch: yeti
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+gems:
+  - jekyll-feed
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - .idea/
+  - .gitignore
+  - README.md
+  - generate_sdk_examples.rb
+timezone: Europe/London
+defaults:
+
+- scope:
+    path: _docs
+    type: docs
+  values:
+    layout: docs
+    sectionid: docs
+    seo:
+      type: "WebPage"
+
+collections:
+  docs:
+    permalink: /:collection/:path/
+    output: true
+  about:
+    permalink: /:collection/:path/
+    output: true

@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+<div class="header-container jumbotron">
+    <div class="container">
+        <h1>{{ site.title }}</h1>
+        <p>{{ site.description }}</p>
+        <p><a class="btn btn-primary btn-lg" href="{{ "/docs/home/" | prepend: site.baseurl }}" role="button">Get started</a></p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="header-light regular-pad">About TransferZero</h2>
+          <p><a href="https://transferzero.com/">TransferZero</a> is a comprehensive API for hybrid financial infrastructure across Africa and Europe, offering both foreign exchange and last mile distribution.</p>
+          <p>You can use our system to either send funds to customers across Africa and Europe, or to collect money from them.</p>
+          <p>We can also help safeguard transactions with features like validating the recipient to make sure the funds are only sent to the correct accounts.</p>
+      </div>
+      <div class="col-md-6">
+        <h2 class="header-light regular-pad">Let's start...</h2>
+        <p>Please start by reading the <a href="{{ "/docs/home/" | prepend: site.baseurl }}">Get Started</a> guide. You can also check our examples below for a quick idea on how our system works.</p>
+        <p>There is also a more complete reference of the available API calls found at our <a href="{{ "/docs/reference-documentation/" | prepend: site.baseurl }}">API reference documentation</a></p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-4">
+            <h1 class="text-center"><i class="fa fa-bank" aria-hidden="true"></i></h1>
+            <h3 class="text-center">Payments</h3>
+            <p>Check out the <a href="{{ "/docs/example-payments/" | prepend: site.baseurl }}">payments example</a> to quickly get an idea on how to send funds to your customers using our API.</p>
+        </div>
+        <div class="col-sm-4">
+            <h1 class="text-center"><i class="fa fa-credit-card" aria-hidden="true"></i></h1>
+            <h3 class="text-center">Collections</h3>
+            <p>Check out the <a href="{{ "/docs/example-collections/" | prepend: site.baseurl }}">collections example</a> to quickly get an idea on how to collect funds from your customers using our API.</p>
+        </div>
+        <div class="col-sm-4">
+            <h1 class="text-center"><i class="fa fa-rocket" aria-hidden="true"></i></h1>
+            <h3 class="text-center">Other features</h3>
+            <p>Looking for our advanced features? The <a href="{{ "/docs/additional-features/" | prepend: site.baseurl }}">additional features</a> section shows some advanced funcionality like account validation and name enquiry.</p>
+        </div>
+    </div>
+</div>

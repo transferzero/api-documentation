@@ -1,0 +1,27 @@
+- title: Get started
+  docs:
+    - home
+    - quick-integration
+    - example-payments
+    - example-collections
+
+- title: SDKs
+  docs:
+    - sdks
+    - sdk-dotnet
+    - sdk-java7
+    - sdk-java8
+    - sdk-javascript
+    - sdk-php
+    - sdk-ruby
+
+- title: More information
+  docs:
+    - architecture
+    - kyc
+    - transaction-flow
+    - payout-details
+    - additional-features
+    - collection-details
+    - sandbox-testing
+    - reference-documentation
