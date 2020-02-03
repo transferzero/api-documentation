@@ -1127,6 +1127,8 @@ If there was an error you can find the error description in the `state_reason` f
 **Warning!** Due to how the markets we operate in work we will contantly retry to pay out transactions, so even after you receive a `recipient.error` error webhook we will still keep trying, until it has either paid out successfully (and you receive a `transaction.paid_out` event), or you explicitly cancel the transaction by calling the cancel recipient endpoint. You can also opt in to get the auto cancellation feature enabled in which case we will also cancel any transactions that we could not pay out in the first 24 hours, in which case you'll receive a `transaction.refunded` webhook once the cancellation is processed.
 </div>
 
+You can read more about transaction errors in our [error handling documentation]({{ "/docs/error-handling/" | prepend: site.baseurl }}).
+
 <div class="alert alert-info" markdown="1">
 **Note!** The `recipient.error` webhook only returns the recipient and not the full transaction details. You will receive the transaction id however and you'll be able to query that separately if you need the transaction details as well.
 </div>

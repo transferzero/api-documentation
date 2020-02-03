@@ -1320,6 +1320,8 @@ For example, on an error you will receive a webhook like this:
 **Warning!** For your application to get approved, it MUST support obtaining the error message from the recipient. It MUST also primarily use the webhook functionality to be notified of any errors, and only fall-back to using `GET` calls against the transaction occasionally.
 </div>
 
+You can read more about problems during payments at our [error handling documentation]({{ "/docs/error-handling/" | prepend: site.baseurl }}).
+
 # Cancelling recipients and transactions
 
 In case there are errors with the payout and you wish to cancel it, you can do so by calling the `DELETE /v1/recipients/[TRANSFERZERO_RECIPIENT_ID]` endpoint, where `TRANSFERZERO_RECIPIENT_ID` is the id of the recipient (and NOT the transaction). If the recipient can be cancelled, this request, once processed, will cancel it. If the transaction was funded from an internal balance, it will then also be refunded.
@@ -1332,4 +1334,10 @@ In case there are errors with the payout and you wish to cancel it, you can do s
 **Warning!** For your application to get approved it MUST support the cancellation of recipients.
 </div>
 
+<div class="alert alert-warning" markdown="1">
+**Warning!** Any transaction that is not cancelled - even ones that seemingly have a fatal error in their description could potentially pay out in the future. If you don't wish a transaction to pay out and you'd like to recover the debited funds you HAVE TO cancel the transaction, and then make sure it got cancelled before you update your system.
+</div>
+
 You can also enable the `auto_refund` trait on the transaction, this will mean your transactions will automatically be cancelled and refunded if they can't be paid out. For more information, please check the [auto cancellation]({{ "/docs/additional-features/" | prepend: site.baseurl }}#auto-cancellation-and-refund-of-transactions) documentation.
+
+You can read more about how cancellation works in our [error handling documentation]({{ "/docs/error-handling/" | prepend: site.baseurl }}).

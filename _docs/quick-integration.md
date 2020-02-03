@@ -60,7 +60,9 @@ Once a transaction is funded you can use our webhook facilities to listen in cha
 
 # Handling errors
 
-You need to be sure that you can handle transactions where the payout has failed. For a generic guide please see [how you receive error messages]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#receiving-error-messages) and [how you can cancel recipients and transactions]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#cancelling-recipients-and-transactions). Note that by default we will never cancel funded transactions without your request but [you can enable this feature if you'd like]({{ "/docs/additional-features/" | prepend: site.baseurl }}#auto-cancellation-and-refund-of-transactions).
+You need to be sure that you can handle transactions where the payout has failed. For a generic guide please see [how you receive error messages]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#receiving-error-messages) and [how you can cancel recipients and transactions]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#cancelling-recipients-and-transactions). A more in-debt guide as available in our [error handling documentation]({{ "/docs/error-handling/" | prepend: site.baseurl }}).
+
+Note that by default we will never cancel funded transactions without your request but [you can enable this feature if you'd like]({{ "/docs/additional-features/" | prepend: site.baseurl }}#auto-cancellation-and-refund-of-transactions).
 
 <div class="alert alert-info" markdown="1">
 **Note!** Although enabling the auto cancellation feature makes it much easier to handle failing transactions on your end, we still require that your system can receive error messages from us, and can cancel these transactions manually as well if required.
@@ -73,6 +75,10 @@ If you don't wish to use the auto cancellation feature then note that since ther
 * If it cannot be cancelled please contact our Customer Service team to investigate
 
 Once you have been successfully integrated with us you can add additional logic for a few specific error messages (for example the ability to change the bank account number if the error states it is invalid). However these are not required for a successful integration, and the logic mentioned above works for most of the cases where there was an error.
+
+<div class="alert alert-warning" markdown="1">
+**Warning!** Any transaction that is not cancelled - even ones that seemingly have a fatal error in their description could potentially pay out in the future. If you don't wish a transaction to pay out and you'd like to recover the debited funds you HAVE TO cancel the transaction, and then make sure it got cancelled before you update your system.
+</div>
 
 # Re-using senders
 
