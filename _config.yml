@@ -8,7 +8,7 @@ description: >
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: https://docs.transferzero.com # the base hostname & protocol for your site
 git_address: https://github.com/transferzero/api-documentation
-git_edit_address: https://github.com/transferzero/api-documentation/blob/gh-pages
+git_edit_address: https://github.com/transferzero/api-documentation/blob/master
 
 # Theme options from https://bootswatch.com/
 # comment-out to use default Bootstrap
