@@ -20,8 +20,10 @@
     - architecture
     - kyc
     - transaction-flow
+    - error-handling
     - payout-details
     - additional-features
     - collection-details
     - sandbox-testing
+    - changelog
     - reference-documentation
