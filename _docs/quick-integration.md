@@ -60,7 +60,7 @@ Once a transaction is funded you can use our webhook facilities to listen in cha
 
 # Handling errors
 
-You need to be sure that you can handle transactions where the payout has failed. For a generic guide please see [how you receive error messages]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#receiving-error-messages) and [how you can cancel recipients and transactions]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#cancelling-recipients-and-transactions). A more in-debt guide as available in our [error handling documentation]({{ "/docs/error-handling/" | prepend: site.baseurl }}).
+You need to be sure that you can handle transactions where the payout has failed. For a generic guide please see [how you receive error messages]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#receiving-error-messages) and [how you can cancel recipients and transactions]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#cancelling-recipients-and-transactions). A more in-depth guide as available in our [error handling documentation]({{ "/docs/error-handling/" | prepend: site.baseurl }}).
 
 Note that by default we will never cancel funded transactions without your request but [you can enable this feature if you'd like]({{ "/docs/additional-features/" | prepend: site.baseurl }}#auto-cancellation-and-refund-of-transactions).
 
