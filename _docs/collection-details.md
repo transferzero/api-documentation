@@ -145,6 +145,72 @@ Finally once the payment goes through the customer will see a success page:
 
 ![Paga transaction page 4]({{ "/img/collections/paga_mobile_page_4.png" | prepend: site.baseurl }})
 
+# NGN card or bank collection requests through Providus (Beta)
+
+To initiate an NGN bank or card collections through Providus, use the following details:
+
+{% capture data-raw %}
+```javascript
+"input_currency": "NGN",
+"payin_methods": [
+  {
+    "type": "NGN::Bank",
+    "in_details": {
+      "payment_method": "bank", // or "card"
+      "redirect_url": "http://redirect.back.to"
+    },
+    "provider": "providus"
+  }
+],
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-ngn-card-bank" raw=data-raw %}
+
+Please note:
+- The `redirect_url` which has to be set to an URL where you wish the user to be redirected once the payment has either been done, or the request has been rejected by the user.
+- The `payment_method` options are `bank` or `card`. You can leave it empty to support both.
+
+
+Once the transaction has been created the `out_details` will be:
+
+{% capture data-raw %}
+```javascript
+"out_details": {
+  "Bank Name": "Providus Bank",
+  "Account Number": "yyyyyyyy",
+  "url": "https://sdk.monnify.com/checkout/xxxxxxxx"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-ngn-card-bank-out" raw=data-raw %}
+
+In this case the user needs to be redirected to the url described at `url`.
+
+Once they are redirected there they need to fill out their details on the following pages.
+
+![Providus choose payment method]({{ "/img/collections/providus_choose_method.png" | prepend: site.baseurl }})
+
+The first page is where the user chooses which payment method to choose.
+
+If **Pay with Bank Transfer** method is chosen,
+
+![Providus bank payment]({{ "/img/collections/providus_bank.png" | prepend: site.baseurl }})
+
+This page contains information about the amount, bank account the user should deposit the amount to and the fee applicable.
+
+If **Pay with Card** method is chosen,
+
+![Providus card payment]({{ "/img/collections/providus_card.png" | prepend: site.baseurl }})
+
+This page contains information about the amount  and the fee applicable. The user should fill in their card details.
+
+Once the card details are filled out the user will be redirected to fill out the OTP sent to them:
+
+![Providus OTP]({{ "/img/collections/providus_final.png" | prepend: site.baseurl }})
+
+
 # GHS mobile collections through Interpay
 
 To initiate a GHS mobile collections please use the following details:
