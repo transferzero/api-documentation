@@ -156,7 +156,7 @@ To initiate an NGN bank or card collections through Providus, use the following 
   {
     "type": "NGN::Bank",
     "in_details": {
-      "payment_method": "bank", // or "card"
+      "payment_method": "bank",
       "redirect_url": "http://redirect.back.to"
     },
     "provider": "providus"
@@ -167,10 +167,9 @@ To initiate an NGN bank or card collections through Providus, use the following 
 
 {% include language-tabbar.html prefix="collection-ngn-card-bank" raw=data-raw %}
 
-Please note:
-- The `redirect_url` which has to be set to an URL where you wish the user to be redirected once the payment has either been done, or the request has been rejected by the user.
-- The `payment_method` options are `bank` or `card`. You can leave it empty to support both.
-
+Please note both `redirect_url` and `payment_method` are **optional** and:
+- The `redirect_url` is the URL where you wish the user to be redirected once the payment has either been done, or the request has been rejected by the user.
+- The `payment_method` options are `bank` or `card`. Leaving this empty or omitting entirely will default to support both methods.
 
 Once the transaction has been created the `out_details` will be:
 
@@ -186,27 +185,27 @@ Once the transaction has been created the `out_details` will be:
 
 {% include language-tabbar.html prefix="collection-ngn-card-bank-out" raw=data-raw %}
 
-In this case the user needs to be redirected to the url described at `url`.
+Depending on the payment method:
+- If `bank` payment method, the user won't need to be redirected as the needed details, `Bank Name` and `Account Number`, should be enough to enable the user to deposit funds into the account.
+- If `card` payment method, the user needs to be redirected to the url described at `url`.
 
-Once they are redirected there they need to fill out their details on the following pages.
+Once they are redirected, they will land on the first page where they shall choose which payment method to use.
 
 ![Providus choose payment method]({{ "/img/collections/providus_choose_method.png" | prepend: site.baseurl }})
-
-The first page is where the user chooses which payment method to choose.
 
 If **Pay with Bank Transfer** method is chosen,
 
 ![Providus bank payment]({{ "/img/collections/providus_bank.png" | prepend: site.baseurl }})
 
-This page contains information about the amount, bank account the user should deposit the amount to and the fee applicable.
+This page contains information about the amount and bank account the user should deposit the amount into.
 
 If **Pay with Card** method is chosen,
 
 ![Providus card payment]({{ "/img/collections/providus_card.png" | prepend: site.baseurl }})
 
-This page contains information about the amount  and the fee applicable. The user should fill in their card details.
+This page contains information about the amount. The user should fill in their card details.
 
-Once the card details are filled out the user will be redirected to fill out the OTP sent to them:
+Once the card details are filled out, dependent on the card, the user might also be redirected to fill out a second factor verification page:
 
 ![Providus OTP]({{ "/img/collections/providus_final.png" | prepend: site.baseurl }})
 
