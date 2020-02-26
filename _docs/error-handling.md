@@ -45,10 +45,8 @@ We categorize most errors into the following categories:
 
 Occasionally a transaction has neither errored, nor has paid out. We call these transactions pending. There are two main cases for pending transactions:
 
-* For any kind of cash pickup transactions, pending means that the recipient has received a pickup notice, but didn't pick up the funds yet
-* For other transactions pending means that the recipient's bank or provider is still processing the transaction and will note whether it could deposit the funds or not.
-
-Note that as pending transactions haven't failed yet you cannot cancel them. This is shown on the recipient as well, where the `may_cancel` field will be `false`.
+* For any kind of cash pickup transactions, pending means that the recipient has received a pickup notice, but didn't pick up the funds yet. These transactions can be cancelled, in which case the pickup notice will be invalidated and the recipient will not be able to use it to pick up the funds anymore.
+* For other transactions pending means that the recipient's bank or mobile provider is still processing the transaction and will note whether it could deposit the funds or not. You cannot cancel these transactions, which is shown on the recipient as well, where the `may_cancel` field will be `false`.
 
 <div class="alert alert-info" markdown="1">
 **Note!** Occasionally a transaction can end up in a "pending loop", where once we get confirmation that the transaction has failed we immediately retry the payment - potentially making it pending again. To cancel these transactions you can either use the auto-cancellation feature, or ask our CS team to help cancel them.
