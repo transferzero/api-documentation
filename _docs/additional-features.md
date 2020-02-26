@@ -282,7 +282,7 @@ Please note that if the payout is pending when the 24 hour has been elapsed, we 
 
 # Editing recipients
 
-Occasionally there are errors on payouts that are because the recipient details are wrong, for example the account number entered is invalid. While you can simply cancel the transaction and create a new one with the updated details, occasionally it might be easier to update the recipient.
+Occasionally there are errors on payouts that are because the recipient details are wrong, for example the account number entered is invalid. While you can simply cancel the transaction and create a new one with the updated details, occasionally it might be easier to update the recipient. You can also use this feature for cash pickup transactions to edit the recipient's details while keeping the pickup reference number the same.
 
 To update the recipient you can use the `PATCH /v1/recipients/[TRANSFERZERO_RECIPIENT_ID]` endpoint. Please note that the ID you have to use is for the recipient and not the transaction (similarly to how you can cancel recipients)
 
@@ -305,9 +305,9 @@ To use the endpoint you need to set the fields you wish to update. For example t
 {% include language-tabbar.html prefix="recipient-edit" raw=data-raw %}
 
 <div class="alert alert-info" markdown="1">
-**Note!** Recipients can only be updated when the `editable` flag on the recipient is set to `true`.
+**Note!** For non-cash transactions recipients can only be updated when the `editable` flag on the recipient is set to `true`.
 </div>
 
 <div class="alert alert-info" markdown="1">
-**Note!** If there are no payouts pending then updating recipients will also trigger an immediate retry of a payout with the new details.
+**Note!** For non-cash transactions if the payment is already pending to the bank account or mobile number the change will only be effective if there is an error during payment, in which case we'll use the new details to retry the transaction.
 </div>

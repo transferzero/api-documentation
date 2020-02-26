@@ -1324,10 +1324,10 @@ You can read more about problems during payments at our [error handling document
 
 # Cancelling recipients and transactions
 
-In case there are errors with the payout and you wish to cancel it, you can do so by calling the `DELETE /v1/recipients/[TRANSFERZERO_RECIPIENT_ID]` endpoint, where `TRANSFERZERO_RECIPIENT_ID` is the id of the recipient (and NOT the transaction). If the recipient can be cancelled, this request, once processed, will cancel it. If the transaction was funded from an internal balance, it will then also be refunded.
+In case there are errors with the payout, or you want to revoke the cash pickup reference number for a cash transaction you can initiate a cancellation request. To do that call the `DELETE /v1/recipients/[TRANSFERZERO_RECIPIENT_ID]` endpoint, where `TRANSFERZERO_RECIPIENT_ID` is the id of the recipient (and NOT the transaction). If the recipient can be cancelled, this request, once processed, will cancel it. If the transaction was funded from an internal balance, it will then also be refunded.
 
 <div class="alert alert-info" markdown="1">
-**Note!** Cancelling is only available if the `may_cancel` field is on the recipient true.
+**Note!** You can cancel either cash transactions, or transactions where the `may_cancel` field is on the recipient `true`.
 </div>
 
 <div class="alert alert-warning" markdown="1">
@@ -1335,8 +1335,13 @@ In case there are errors with the payout and you wish to cancel it, you can do s
 </div>
 
 <div class="alert alert-warning" markdown="1">
-**Warning!** Any transaction that is not cancelled - even ones that seemingly have a fatal error in their description could potentially pay out in the future. If you don't wish a transaction to pay out and you'd like to recover the debited funds you HAVE TO cancel the transaction, and then make sure it got cancelled before you update your system.
+**Warning!** Any transaction that is not cancelled - even ones that seemingly have a fatal error in their description could potentially pay out in the future. If you don't wish a transaction to pay out and you'd like to recover the debited funds you HAVE TO cancel the transaction.
 </div>
+
+<div class="alert alert-warning" markdown="1">
+**Warning!** Cancellation is an asynchoronous operation. You should wait for the transaction to change state to `refunded` before updating your system.
+</div>
+
 
 You can also enable the `auto_refund` trait on the transaction, this will mean your transactions will automatically be cancelled and refunded if they can't be paid out. For more information, please check the [auto cancellation]({{ "/docs/additional-features/" | prepend: site.baseurl }}#auto-cancellation-and-refund-of-transactions) documentation.
 
