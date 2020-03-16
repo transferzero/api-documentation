@@ -23,6 +23,10 @@ Unfortunately not all transactions are successful. The main causes of issues are
 * The recipient details might be wrong (for example the destination bank account number is invalid), or there are other issues blocking the successful payout. In these cases the transaction has to be cancelled.
 * Once the transaction is cancelled, we will refund the money to the sender. Funds from account balances are always refunded automatically to the account balance. Funds from other types of payins might require manual processing however.
 
+## Flow Diagram
+
+![api-flow-diagram]({{ "/img/transaction_flow/api-flow-diagram.png" | prepend: site.baseurl }})
+
 # Creating transactions
 
 Transactions can be created by calling the `POST /v1/transactions` endpoint. The template of transaction requests is the following:
