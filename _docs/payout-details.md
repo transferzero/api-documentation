@@ -297,7 +297,7 @@ The payment reference can also be provided in the recipient details hash optiona
 
 # West Africa / XOF
 
-## XOF::Cash
+## XOF::Cash (Beta)
 
 For Senegalese cash pickup requests please use:
 
