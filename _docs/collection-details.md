@@ -280,16 +280,16 @@ If the user does not receive a prompt they are still able to finish the payment.
 
 Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
 
-# GBP and EUR IBAN collections
+# EUR IBAN collections
 
-To initiate GBP or EUR IBAN collections please use the following details:
+To initiate EUR IBAN collections please use the following details:
 
 {% capture data-raw %}
 ```javascript
-"input_currency": "GBP", // or EUR
+"input_currency": "EUR",
 "payin_methods": [
   {
-    "type": "GBP::Bank", // or EUR::Bank
+    "type": "EUR::Bank",
     "provider": "lhv"
   }
 ],
@@ -304,10 +304,10 @@ The user will then need to follow the instructions as shown in the response's `o
 ```javascript
 "out_details": {
   "style": "info",
-  "BIC": "LHVBEE22",
-  "Bank Address": "Tartu mnt 2, 10145 Tallinn, Estonia.",
   "Account Name": "B TRANSFER SERVICES LIMITED",
   "IBAN": "EE087700771002673049",
+  "BIC": "LHVBEE22",
+  "Bank Address": "Tartu mnt 2, 10145 Tallinn, Estonia.",
   "Beneficiary Address": "Tax Assist Accountants, 64 Southwark Bridge Road, London SE1 0AS",
   "Reference": "PDTWTACVNTPC"
 }
@@ -316,4 +316,44 @@ The user will then need to follow the instructions as shown in the response's `o
 
 {% include language-tabbar.html prefix="collection-iban-out" raw=data-raw %}
 
-The user will then need to send the appropriate funds to the IBAN shown above, with the reference number used as "payment details". Note that IBAN  payments can take up to 5 business days to arrive. Once the payment has been received a `transaction.paid_in` webhook will be sent out.
+The user will then need to send the appropriate funds to the IBAN shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example). Note that IBAN  payments can take up to 5 business days to arrive. Once the payment has been received a `transaction.paid_in` webhook will be sent out.
+
+# GBP Faster Payments bank collections
+
+To initiate GBP Faster Payments collections please use the following details:
+
+{% capture data-raw %}
+```javascript
+"input_currency": "GBP", // or EUR
+"payin_methods": [
+  {
+    "type": "GBP::Bank", // or EUR::Bank
+    "provider": "lhv"
+  }
+],
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-fp" raw=data-raw %}
+
+The user will then need to follow the instructions as shown in the response's `out_details` hash:
+
+{% capture data-raw %}
+```javascript
+"out_details": {
+  "style": "info",
+  "Account Name": "B TRANSFER SERVICES LIMITED",
+  "Account Number": "00000478",
+  "Sort Code": "04-03-00",
+  "IBAN": "GB41LHVB04030000000478",
+  "BIC": "LHVBGB2L",
+  "Bank Address": "1 Old Street Yard, London, EC1Y 8AF, United Kingdom",
+  "Beneficiary Address": "Tax Assist Accountants, 64 Southwark Bridge Road, London SE1 0AS",
+  "Reference": "PDTWTACVNTPC"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-fp-out" raw=data-raw %}
+
+The user will then need to send the appropriate funds to the account details shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example). If the payment was sent as a Faster Payments transfer then the collection should arrive within 2 hours (but usually instantly) If Faster Payments transfer is not used, or the funds are sent from outside the UK then however this will be an IBAN payment, which can take up to 5 business days to arrive. Once the payment has been received a `transaction.paid_in` webhook will be sent out.
