@@ -62,10 +62,10 @@ Once a transaction is funded you can use our webhook facilities to listen in cha
 
 You need to be sure that you can handle transactions where the payout has failed. For a generic guide please see [how you receive error messages]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#receiving-error-messages) and [how you can cancel recipients and transactions]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#cancelling-recipients-and-transactions). A more in-depth guide as available in our [error handling documentation]({{ "/docs/error-handling/" | prepend: site.baseurl }}).
 
-Note that by default we will never cancel funded transactions without your request but [you can enable this feature if you'd like]({{ "/docs/additional-features/" | prepend: site.baseurl }}#auto-cancellation-and-refund-of-transactions).
+Note that by default we will cancel funded transactions without your request but [you can disable this feature if you'd like]({{ "/docs/additional-features/" | prepend: site.baseurl }}#auto-cancellation-and-refund-of-transactions).
 
 <div class="alert alert-info" markdown="1">
-**Note!** Although enabling the auto cancellation feature makes it much easier to handle failing transactions on your end, we still require that your system can receive error messages from us, and can cancel these transactions manually as well if required.
+**Note!** Although the auto cancellation feature makes it much easier to handle failing transactions on your end, we still require that your system can receive error messages from us, and can cancel these transactions manually as well if required.
 </div>
 
 If you don't wish to use the auto cancellation feature then note that since there can be a wide range of different errors, as a starting implementation we usually propose the following logic:
