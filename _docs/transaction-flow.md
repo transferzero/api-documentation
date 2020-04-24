@@ -1331,7 +1331,7 @@ You can read more about problems during payments at our [error handling document
 In case there are errors with the payout, or you want to revoke the cash pickup reference number for a cash transaction you can initiate a cancellation request. To do that call the `DELETE /v1/recipients/[TRANSFERZERO_RECIPIENT_ID]` endpoint, where `TRANSFERZERO_RECIPIENT_ID` is the id of the recipient (and NOT the transaction). If the recipient can be cancelled, this request, once processed, will cancel it. If the transaction was funded from an internal balance, it will then also be refunded.
 
 <div class="alert alert-info" markdown="1">
-**Note!** You can cancel either cash transactions, or transactions where the `may_cancel` field is on the recipient `true`. If `may_cancel` field is `false` you can still cancel it, however it will get cancelled the next available time window.
+**Note!** You can cancel either cash transactions, or transactions where the `may_cancel` field is on the recipient `true`. If `may_cancel` field is `false` you can still try to cancel it, however it will only gets cancelled once we have confirmation from our partner that the payment have failed.
 </div>
 
 <div class="alert alert-warning" markdown="1">
