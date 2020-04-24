@@ -49,5 +49,5 @@ Occasionally a transaction has neither errored, nor has paid out. We call these 
 * For other transactions pending means that the recipient's bank or mobile provider is still processing the transaction and will note whether it could deposit the funds or not. These transactions, where `may_cancel` field will be `false` can still be cancelled, however they will get cancelled the next available time window after you have called the `DELETE /v1/recipients/[TRANSFERZERO_RECIPIENT_ID]` endpoint.
 
 <div class="alert alert-info" markdown="1">
-**Note!** Occasionally a transaction can end up in a "pending loop", where once we get confirmation that the transaction has failed we immediately retry the payment - potentially making it pending again. To cancel these transactions you can either use the auto-cancellation feature, or ask our CS team to help cancel them.
+**Note!** Occasionally a transaction can end up in a "pending loop", where once we get confirmation that the transaction has failed we immediately retry the payment - potentially making it pending again. To cancel these transactions you can either use the auto-cancellation feature (which is enabled by default), or ask our CS team to help cancel them.
 </div>

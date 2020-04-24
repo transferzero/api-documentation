@@ -1347,6 +1347,6 @@ In case there are errors with the payout, or you want to revoke the cash pickup 
 </div>
 
 
-You can also enable the `auto_refund` trait on the transaction, this will mean your transactions will automatically be cancelled and refunded if they can't be paid out. For more information, please check the [auto cancellation]({{ "/docs/additional-features/" | prepend: site.baseurl }}#auto-cancellation-and-refund-of-transactions) documentation.
+Note that `auto_refund` trait is enabled by default on the transaction, this means your transactions will automatically be cancelled and refunded if they can't be paid out. For more information, please check the [auto cancellation]({{ "/docs/additional-features/" | prepend: site.baseurl }}#auto-cancellation-and-refund-of-transactions) documentation.
 
 You can read more about how cancellation works in our [error handling documentation]({{ "/docs/error-handling/" | prepend: site.baseurl }}).
