@@ -208,7 +208,11 @@ For EUR IBAN transfers please use:
 </div>
 
 <div class="alert alert-info" markdown="1">
-**Note!** IBAN transfers can take up to a week to arrive.
+**Note!** Transfer is done using the fastest method available on the recipient's bank.
+
+* If the recipient's bank supports the Instant Payment network funds will arrive within 2 hours (but usually within a couple minutes)
+* If the recipient's bank supports the SEPA system, funds will arrive within 1-2 business days
+* If the recipient's bank only supports the Swift system, funds will arrive within 2-5 business days
 </div>
 
 ## GBP::Bank
@@ -234,7 +238,11 @@ For GBP IBAN transfers please use:
 </div>
 
 <div class="alert alert-info" markdown="1">
-**Note!** IBAN transfers can take up to a week to arrive.
+**Note!** Transfer is done using the fastest method available on the recipient's bank.
+
+* If the recipient's bank is in the UK, and supports the Faster Payment network funds will arrive within 2 hours (but usually within a couple minutes)
+* If the recipient's bank supports the SEPA system, funds will arrive within 1-2 business days
+* If the recipient's bank only supports the Swift system, funds will arrive within 2-5 business days
 </div>
 
 # Morocco

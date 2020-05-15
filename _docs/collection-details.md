@@ -316,7 +316,14 @@ The user will then need to follow the instructions as shown in the response's `o
 
 {% include language-tabbar.html prefix="collection-iban-out" raw=data-raw %}
 
-The user will then need to send the appropriate funds to the IBAN shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example). Note that IBAN  payments can take up to 5 business days to arrive. Once the payment has been received a `transaction.paid_in` webhook will be sent out.
+The user will then need to send the appropriate funds to the IBAN shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example).
+
+Settlement times are dependent on what payment network the sender's bank supports:
+* If they support the Instant Payment network funds arrive within 2 hours (but usually within 5 minutes)
+* If they support the SEPA network, then funds arrive within 1-2 business days
+* If they only support the Swift network, then funds arrive within 2-5 business days
+
+Once the payment has been received a `transaction.paid_in` webhook will be sent out.
 
 # GBP Faster Payments bank collections
 
@@ -356,4 +363,4 @@ The user will then need to follow the instructions as shown in the response's `o
 
 {% include language-tabbar.html prefix="collection-fp-out" raw=data-raw %}
 
-The user will then need to send the appropriate funds to the account details shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example). If the payment was sent as a Faster Payments transfer then the collection should arrive within 2 hours (but usually instantly) If Faster Payments transfer is not used, or the funds are sent from outside the UK then however this will be an IBAN payment, which can take up to 5 business days to arrive. Once the payment has been received a `transaction.paid_in` webhook will be sent out.
+The user will then need to send the appropriate funds to the account details shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example). If the payment was sent as a Faster Payments transfer then the collection should arrive within 2 hours (but usually instantly) If Faster Payments transfer is not used, or the funds are sent from outside the UK then however this will be a Swift payment, which can take up to 5 business days to arrive. Once the payment has been received a `transaction.paid_in` webhook will be sent out.
