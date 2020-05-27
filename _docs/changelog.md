@@ -6,8 +6,12 @@ permalink: /docs/changelog/
 * Table of contents
 {:toc}
 
-Current version of the API is `1.5.0`
-Current version of the SDKs are `1.5.0`
+Current version of the API is `1.7.0`
+Current version of the SDKs are `1.7.0`
+
+1.7.0
+-----
+* Add support for bank account and sort code for the `GBP::Bank` corridor.
 
 1.5.0
 -----
