@@ -217,6 +217,27 @@ For EUR IBAN transfers please use:
 
 ## GBP::Bank
 
+For GBP::Bank there are two payout options available:
+
+1. GBP Faster Payments
+2. GBP IBAN transfers
+
+For GBP Faster Payments, only the recipient's account number and sort code is sent:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "first_name": "First",
+  "last_name": "Last",
+  "bank_name": "Lloyds Bank",
+  "bank_account": "12345678",
+  "sort_code": "123456"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="gbp-bank-details" raw=data-raw %}
+
 For GBP IBAN transfers please use:
 
 {% capture data-raw %}
@@ -238,8 +259,10 @@ For GBP IBAN transfers please use:
 </div>
 
 <div class="alert alert-info" markdown="1">
-**Note!** Transfer is done using the fastest method available on the recipient's bank.
+**Note!**
 
+* You can only make use of one of the above options at a time, i.e you can only use either of GBP Faster payment or GBP IBAN transfer method but not both.
+* Transfer is done using the fastest method available on the recipient's bank.
 * If the recipient's bank is in the UK, and supports the Faster Payment network funds will arrive within 2 hours (but usually within a couple minutes)
 * If the recipient's bank supports the SEPA system, funds will arrive within 1-2 business days
 * If the recipient's bank only supports the Swift system, funds will arrive within 2-5 business days
