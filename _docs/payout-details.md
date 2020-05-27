@@ -219,10 +219,10 @@ For EUR IBAN transfers please use:
 
 For GBP::Bank there are two payout options available:
 
-1. GBP Faster Payments
+1. GBP Payments with account number and sort code
 2. GBP IBAN transfers
 
-For GBP Faster Payments, only the recipient's account number and sort code is sent:
+For GBP Payments with account number and sort code please use:
 
 {% capture data-raw %}
 ```javascript
@@ -252,7 +252,7 @@ For GBP IBAN transfers please use:
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="gbp-bank-details" raw=data-raw %}
+{% include language-tabbar.html prefix="gbp-bank-iban-details" raw=data-raw %}
 
 <div class="alert alert-warning" markdown="1">
 **Warning!** If the recipient account is not an `GBP` account then the recipient's bank might charge for converting the received funds from `GBP` to the local currency.
@@ -261,7 +261,7 @@ For GBP IBAN transfers please use:
 <div class="alert alert-info" markdown="1">
 **Note!**
 
-* You can only make use of one of the above options at a time, i.e you can only use either of GBP Faster payment or GBP IBAN transfer method but not both.
+* The customer needs to enter either an IBAN (and an optional BIC), or an account number and sort code.
 * Transfer is done using the fastest method available on the recipient's bank.
 * If the recipient's bank is in the UK, and supports the Faster Payment network funds will arrive within 2 hours (but usually within a couple minutes)
 * If the recipient's bank supports the SEPA system, funds will arrive within 1-2 business days
