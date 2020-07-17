@@ -361,6 +361,8 @@ Please note when sending `XOF::Cash` payments you should subscribe to the `recip
 
 {% include language-tabbar.html prefix="xof-cash-pending" raw=data-raw %}
 
+The payment reference can also be provided in the recipient details hash optionally for `XOF::Cash` in which case it will be used instead of the one we generate. The field you have to provide in the hash is called `reference`. If you wish to use this functionality, please contact us for more details.
+
 ## XOF::Mobile
 
 For Senegalese mobile payments please use:
