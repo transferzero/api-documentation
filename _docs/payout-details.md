@@ -281,16 +281,6 @@ For Cashplus cash pickup requests please use:
   "last_name": "Last",
   "phone_number": "212537718685"
     // Mandatory; International format preferred
-  "sender_identity_card_type" => "O",
-    // Mandatory; Values: "O": Other, "PP": Passport, "NI": National ID
-  "sender_identity_card_id" => 'AB12345678',
-    // Mandatory
-  "sender_city_of_birth" => "London",
-    // Mandatory
-  "sender_country_of_birth" => "GB",
-    // Mandatory; ISO 2-letter format
-  "sender_gender" => "M",
-    // Mandatory; Values: "M": Male, "F": Female
   "reason" => "Remittance payment",
     // Optional; Default value is 'Remittance payment'
   "identity_card_type" => "NI",
@@ -302,6 +292,13 @@ For Cashplus cash pickup requests please use:
 {% endcapture %}
 
 {% include language-tabbar.html prefix="mad-cash-details" raw=data-raw %}
+
+Make sure to include the following sender details when creating the `Sender` object:
+- `"identity_type" => "O"` - Mandatory; Values: `"O"`: Other, `"PP"`: Passport, `"NI"`: National ID
+- `"identity_number" => "AB12345678"` - Mandatory
+- `"city_of_birth" => "London"` - Mandatory
+- `"country_of_birth" => "GB"` - Mandatory; ISO 2-letter format
+- `"gender" => "M"` - Mandatory; Values: `"M"`: Male, `"F"`: Female
 
 Please note when sending `MAD::Cash` payments you should subscribe to the `recipient.pending` webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt:
 
@@ -440,9 +437,7 @@ For South African bank payments please use:
   "city": "Cape Town",
   "bank_code": "334810",
   "bank_account": "12345678",
-  "bank_name": "The Bank Name", // Not required if the bank is included in the list below
   "phone_number": "+27119785313",
-  "entity_type": "6", // Not required if entity type is person
   "transfer_reason_code": "185"
 }
 ```
@@ -450,7 +445,7 @@ For South African bank payments please use:
 
 {% include language-tabbar.html prefix="zar-bank-details" raw=data-raw %}
 
-List of banks and corresponding `bank_code` are:
+The current banks supported and their `bank_codes` values are:
 
 {% capture data-raw %}
 ```
@@ -516,20 +511,8 @@ Proceeds for other business services not included elsewhere: 309
 
 {% include language-tabbar.html prefix="zar-transfer-reason-codes" raw=data-raw %}
 
-List of entity types and corresponding `entity_type` codes are:
-
-{% capture data-raw %}
-```
-Person: 1
-Entity/Sole Proprietor: 2
-Non-Profit Organisation: 4
-School/University/College: 5
-Church: 6
-Municipality/Police/Traffic Department: 7
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="zar-entity_types" raw=data-raw %}
+Please note if you have WTR2 enabled we will anyway require Address details on the sender:
+`street`, `city` and `postal_code`
 
 <div class="alert alert-info" markdown="1">
 **Note** `ZAR::Bank` payouts are currently in beta phase.
