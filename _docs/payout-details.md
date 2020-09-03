@@ -293,12 +293,31 @@ For Cashplus cash pickup requests please use:
 
 {% include language-tabbar.html prefix="mad-cash-details" raw=data-raw %}
 
-Make sure to include the following sender details when creating the `Sender` object:
-- `"identity_type" => "O"` - Mandatory; Values: `"O"`: Other, `"PP"`: Passport, `"NI"`: National ID
-- `"identity_number" => "AB12345678"` - Mandatory
-- `"city_of_birth" => "London"` - Mandatory
-- `"country_of_birth" => "GB"` - Mandatory; ISO 2-letter format
-- `"gender" => "M"` - Mandatory; Values: `"M"`: Male, `"F"`: Female
+Due to regulatory reasons all senders trying to create `MAD::Cash` transactions need to have the following details present:
+- `"identity_type" => "O"` - Values: `"O"`: Other, `"PP"`: Passport, `"NI"`: National ID
+- `"identity_number" => "AB12345678"`
+- `"city_of_birth" => "London"`
+- `"country_of_birth" => "GB"` - ISO 2-letter format
+- `"gender" => "M"` - Values: `"M"`: Male, `"F"`: Female
+
+Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
+
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+      "sender": {
+        "external_id": "<id of sender>",
+        "gender": "M",
+        (...)
+      },
+      (...)
+    }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="mad-cash-sender-details" raw=data-raw %}
 
 Please note when sending `MAD::Cash` payments you should subscribe to the `recipient.pending` webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt:
 
@@ -511,7 +530,7 @@ Proceeds for other business services not included elsewhere: 309
 
 {% include language-tabbar.html prefix="zar-transfer-reason-codes" raw=data-raw %}
 
-Please note if you have WTR2 enabled we will anyway require Address details on the sender:
+Please note that due to regulatory reasons senders trying to create `ZAR::Bank` transactions are required to have the following fields on the sender present:
 `street`, `city` and `postal_code`
 
 <div class="alert alert-info" markdown="1">
