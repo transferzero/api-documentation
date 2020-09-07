@@ -454,6 +454,7 @@ For South African bank payments please use:
   "street": "Main Street",
   "postal_code": "AB0001",
   "city": "Cape Town",
+  "email": "recipient@email.com",
   "bank_code": "334810",
   "bank_account": "12345678",
   "phone_number": "+27119785313",
