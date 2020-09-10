@@ -15,7 +15,7 @@ Let's assume you operate in the US, and would like to use our site to send funds
 Once you have the details collected on your end, you can then initiate the transaction in our system. This example will guide you through the details you need to set and what calls you need to make. Since the easiest way to access our system is through our SDKs this guide is mainly aimed at users of our SDKs.
 
 <div class="alert alert-warning" markdown="1">
-**Warning!** We require that all implementations to our site pass our onboarding test before we allow users to access our prouction site. This example shows the preferred solution to all requirements we have, so following this example will make sure you will adhere to our requirements and will hopefully pass our onboarding test.
+**Warning!** We require that all implementations to our site pass our onboarding test before we allow users to access our production site. This example shows the preferred solution to all requirements we have, so following this example will make sure you will adhere to our requirements and will hopefully pass our onboarding test.
 </div>
 
 <div class="alert alert-info" markdown="1">
