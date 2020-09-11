@@ -281,16 +281,6 @@ For Cashplus cash pickup requests please use:
   "last_name": "Last",
   "phone_number": "212537718685"
     // Mandatory; International format preferred
-  "sender_identity_card_type" => "O",
-    // Mandatory; Values: "O": Other, "PP": Passport, "NI": National ID
-  "sender_identity_card_id" => 'AB12345678',
-    // Mandatory
-  "sender_city_of_birth" => "London",
-    // Mandatory
-  "sender_country_of_birth" => "GB",
-    // Mandatory; ISO 2-letter format
-  "sender_gender" => "M",
-    // Mandatory; Values: "M": Male, "F": Female
   "reason" => "Remittance payment",
     // Optional; Default value is 'Remittance payment'
   "identity_card_type" => "NI",
@@ -302,6 +292,32 @@ For Cashplus cash pickup requests please use:
 {% endcapture %}
 
 {% include language-tabbar.html prefix="mad-cash-details" raw=data-raw %}
+
+Due to regulatory reasons all senders trying to create `MAD::Cash` transactions need to have the following details present:
+- `"identity_type" => "O"` - Values: `"O"`: Other, `"PP"`: Passport, `"NI"`: National ID
+- `"identity_number" => "AB12345678"`
+- `"city_of_birth" => "London"`
+- `"country_of_birth" => "GB"` - ISO 2-letter format
+- `"gender" => "M"` - Values: `"M"`: Male, `"F"`: Female
+
+Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
+
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+      "sender": {
+        "external_id": "<id of sender>",
+        "gender": "M",
+        (...)
+      },
+      (...)
+    }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="mad-cash-sender-details" raw=data-raw %}
 
 Please note when sending `MAD::Cash` payments you should subscribe to the `recipient.pending` webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt:
 
@@ -422,4 +438,102 @@ BJ
 
 <div class="alert alert-info" markdown="1">
 **Note** `XOF::Bank` payouts are currently in beta phase. At this time, we offer payouts to accounts in Senegal and Benin only.
+</div>
+
+# SouthAfrica
+
+## ZAR::Bank
+
+For South African bank payments please use:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "first_name": "First",
+  "last_name": "Last",
+  "street": "Main Street",
+  "postal_code": "AB0001",
+  "city": "Cape Town",
+  "email": "recipient@email.com",
+  "bank_code": "334810",
+  "bank_account": "12345678",
+  "phone_number": "+27119785313",
+  "transfer_reason_code": "185"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="zar-bank-details" raw=data-raw %}
+
+The current banks supported and their `bank_codes` values are:
+
+{% capture data-raw %}
+```
+Standard Bank: 051001
+First National Bank: 250655
+ABSA: 632005
+Nedbank: 198765
+Investec: 580105
+Capitec Bank: 470010
+Bank of Athens: 410506
+Bidvest Bank: 462005
+African Bank: 430000
+Mercantile Bank: 450905
+SA Post Office: 460005
+Tyme Bank: 678910
+Ubank: 431010
+Discovery Bank: 679000
+Bank Zero: 888000
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="zar-bank-codes" raw=data-raw %}
+
+List of transfer reasons and corresponding `transfer_reason_code` are:
+
+{% capture data-raw %}
+```
+Sending money into my own account: 183
+Donations and gifts: 184
+Sending money to a friend, family member or any third party person: 185
+Mortgage repayments: 186
+Business Travel Payments: 187
+Personal Travel Payments: 188
+Tuition fees: 189
+Investment into property by a foreign individual: 192
+Investment by a foreign individual - other: 193
+Legal services: 196
+Accounting services: 197
+Management consulting services: 198
+Advertising & market research services: 200
+Managerial services: 201
+Cultural and recreational services: 205
+Salary paid to South African Resident Temporarily Abroad: 206
+Salary paid to a non-resident employee in South Africa: 207
+Salary paid to a foreign national contract worker in South Africa: 208
+Pensions: 213
+Annuities: 214
+Inheritances: 215
+Alimony: 216
+Tax - Income tax: 217
+Tax - VAT refunds: 218
+Tax - Other: 219
+Dividends: 222
+Commission or brokerage: 224
+Rental: 225
+Income earned abroad by a resident on an individual investment: 226
+Architectural, engineering and other technical services: 245
+Payments for data, news related and news agency fees: 249
+Computer-related services including maintenance, repair and consultancy: 279
+Proceeds for other business services not included elsewhere: 309
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="zar-transfer-reason-codes" raw=data-raw %}
+
+Please note that due to regulatory reasons senders trying to create `ZAR::Bank` transactions are required to have the following fields on the sender present:
+`street`, `city` and `postal_code`
+
+<div class="alert alert-info" markdown="1">
+**Note** `ZAR::Bank` payouts are currently in beta phase.
 </div>
