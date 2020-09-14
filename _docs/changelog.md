@@ -6,8 +6,13 @@ permalink: /docs/changelog/
 * Table of contents
 {:toc}
 
-Current version of the API is `1.7.0`
-Current version of the SDKs are `1.7.0`
+Current version of the API is `1.8.0`
+Current version of the SDKs are `1.8.0`
+
+1.8.0
+-----
+* Add support for the `ZAR::Bank` corridor.
+* Add support for `MAD::Cash` corridor to send sender fields on the `Sender` object.
 
 1.7.0
 -----
