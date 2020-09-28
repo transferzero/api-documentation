@@ -39,7 +39,6 @@ The valid `bank_code` values are:
 {% capture data-raw %}
 ```
 Access Bank: 044
-Diamond Bank: 063
 EcoBank: 050
 FCMB Bank: 214
 Fidelity Bank: 070
@@ -62,6 +61,10 @@ Zenith International: 057
 {% endcapture %}
 
 {% include language-tabbar.html prefix="ngn-bank-details" raw=data-raw %}
+
+<div class="alert alert-info" markdown="1">
+**Note!** Diamond Bank was merged with Access Bank in 2019. For Diamond Bank recipients please use Access Bank as the bank code
+</div>
 
 ## NGN::Mobile
 
