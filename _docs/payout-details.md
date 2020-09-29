@@ -454,10 +454,10 @@ For South African bank payments please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "street": "14 Main Street", # should include house number as well
+  "street": "14 Main Street", // should include house number as well
   "postal_code": "AB0001",
   "city": "Cape Town",
-  "email": "recipient@email.com", # optional, but highly recommended to obtain the mandate form
+  "email": "recipient@email.com", // optional, but highly recommended
   "bank_code": "334810",
   "bank_account": "12345678",
   "phone_number": "+27119785313",
