@@ -127,6 +127,27 @@ Fidelity Bank: 240100
 
 {% include language-tabbar.html prefix="ghs-bank-options" raw=data-raw %}
 
+Please note that there is no standard format across banks for account numbers in this corridor. If you wish to check for correctness you can see the following list:
+
+{% capture data-raw %}
+```
+Access Bank: 13 digits
+Barclays Bank: 10 or 13 digits
+GCB Bank: 13 digits
+Ecobank: 13 or 16 digits
+First National Bank: 11 digits
+Heritage Bank: 13 digits
+Prudential Bank: 13 digits
+Stanbic Bank: 13 digits
+Standard Chartered Bank: 13 digits
+United Bank for Africa: 13 or 14 digits
+Zenith Bank: 10 digits
+Fidelity Bank: 13 digits
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="ghs-bank-digits" raw=data-raw %}
+
 ## GHS::Mobile
 
 For Ghanan mobile payments please use:
