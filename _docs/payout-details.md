@@ -158,12 +158,26 @@ For Ghanan mobile payments please use:
   "first_name": "First",
   "last_name": "Last",
   "phone_number": "302123456"
-    // local Ghanaian format
+  "mobile_provider": "tigo" // optional
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="ghs-mobile-details" raw=data-raw %}
+
+Although the `mobile_provider` field is optional, if you send us the proper value we can provider a quicker and faster settlement. The valid values are:
+
+{% capture data-raw %}
+```
+airtel
+mtn
+tigo
+vodafone
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="ghs-mobile-providers" raw=data-raw %}
+
 
 # Uganda
 

@@ -6,8 +6,13 @@ permalink: /docs/changelog/
 * Table of contents
 {:toc}
 
-Current version of the API is `1.8.0`
-Current version of the SDKs are `1.8.0`
+Current version of the API is `1.9.0`
+Current version of the SDKs are `1.9.0`
+
+1.9.0
+-----
+* Add support for business senders
+* Add support for specifying mobile providers in the `GHS::Mobile` corridor
 
 1.8.0
 -----
