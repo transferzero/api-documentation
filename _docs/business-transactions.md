@@ -82,8 +82,8 @@ SET LIT address_description ""
 
 COMMENT Company Details
 SET ENUM legal_entity_type LegalEntityTypeEnum privately_owned_company
-SET DATE registration_date 2012-01-25",
-SET LIT registration_number "VAT1234567",
+SET DATE registration_date 2012-01-25"
+SET LIT registration_number "VAT1234567"
 SET ENUM nature_of_business NatureOfBusinessEnum retail_trade
 
 COMMENT Contact Details
@@ -120,10 +120,10 @@ CODE_EXAMPLE_END
     "address_description": "",
 
     // Company Details
-    "legal_entity_type": "privately_owned_company",
+    "legal_entity_type": "privately_owned_company", // company type
     "registration_date": "2012-01-25",
     "registration_number": "VAT1234567",
-    "nature_of_business": "retail_trade",
+    "nature_of_business": "retail_trade", // industry
 
     // Contact Details
     "phone_country": "US",
@@ -159,8 +159,8 @@ Sender sender = new Sender(
 
 // Company Details
   legalEntityType: LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY,
-  registrationDate: DateTime.Parse(2012-01-25",),
-  registrationNumber: "VAT1234567",,
+  registrationDate: DateTime.Parse(2012-01-25"),
+  registrationNumber: "VAT1234567",
   natureOfBusiness: NatureOfBusinessEnum.RETAIL_TRADE,
 
 // Contact Details
@@ -195,8 +195,8 @@ Dim sender as Sender = New Sender(
 
 ' Company Details
   legalEntityType:=LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY,
-  registrationDate:=DateTime.Parse(2012-01-25",),
-  registrationNumber:="VAT1234567",,
+  registrationDate:=DateTime.Parse(2012-01-25"),
+  registrationNumber:="VAT1234567",
   natureOfBusiness:=NatureOfBusinessEnum.RETAIL_TRADE,
 
 ' Contact Details
@@ -231,8 +231,8 @@ sender.setAddressDescription("");
 
 // Company Details
 sender.setLegalEntityType(LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY);
-sender.setRegistrationDate(LocalDate.parse(2012-01-25",));
-sender.setRegistrationNumber("VAT1234567",);
+sender.setRegistrationDate(LocalDate.parse(2012-01-25"));
+sender.setRegistrationNumber("VAT1234567");
 sender.setNatureOfBusiness(NatureOfBusinessEnum.RETAIL_TRADE);
 
 // Contact Details
@@ -267,8 +267,8 @@ sender.address_description = "";
 
 // Company Details
 sender.legal_entity_type = "privately_owned_company";
-sender.registration_date = 2012-01-25",;
-sender.registration_number = "VAT1234567",;
+sender.registration_date = 2012-01-25";
+sender.registration_number = "VAT1234567";
 sender.nature_of_business = "retail_trade";
 
 // Contact Details
@@ -303,8 +303,8 @@ $sender->setAddressDescription("");
 
 // Company Details
 $sender->setLegalEntityType("privately_owned_company");
-$sender->setRegistrationDate(2012-01-25",);
-$sender->setRegistrationNumber("VAT1234567",);
+$sender->setRegistrationDate(2012-01-25");
+$sender->setRegistrationNumber("VAT1234567");
 $sender->setNatureOfBusiness("retail_trade");
 
 // Contact Details
@@ -339,8 +339,8 @@ sender.address_description = ""
 
 # Company Details
 sender.legal_entity_type = "privately_owned_company"
-sender.registration_date = 2012-01-25",
-sender.registration_number = "VAT1234567",
+sender.registration_date = 2012-01-25"
+sender.registration_number = "VAT1234567"
 sender.nature_of_business = "retail_trade"
 
 # Contact Details
