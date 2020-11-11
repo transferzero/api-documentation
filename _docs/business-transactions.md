@@ -16,7 +16,16 @@ Our system not only allows transactions from personal senders to personal recipi
 
 ## Business senders
 
-For business senders you need to provide different details than for personal senders. Please see the following example:
+For business senders you need to provide different details than for personal senders. More specifically you need to provide:
+
+* Name of the company
+* Country of incorporation
+* Registration date and number
+* Trading address
+* Company's type
+* Industry / nature of business
+
+Please see the following example on how to provide these fields:
 
 {::comment}
 CODE_EXAMPLE_START business-sender-creation
@@ -36,10 +45,10 @@ JSON_START
     "address_description": "",
 
     // Company Details
-    "legal_entity_type": "privately_owned_company",
+    "legal_entity_type": "privately_owned_company", // company type
     "registration_date": "2012-01-25",
     "registration_number": "VAT1234567",
-    "nature_of_business": "retail_trade",
+    "nature_of_business": "retail_trade", // industry
 
     // Contact Details
     "phone_country": "US",
@@ -351,7 +360,7 @@ sender.documents = []
 {% include language-tabbar.html prefix="gen-business-sender-creation" raw=data-raw csharp=data-csharp vb=data-vb java=data-java js=data-js php=data-php ruby=data-ruby %}
 {::comment}AUTO_GENERATED_CONTENT_END{:/comment}
 
-The valid values for the legal entity type are the following:
+The valid values for the company type / legal entity type are the following:
 
 {% capture data-raw %}
 ```markdown
@@ -373,7 +382,7 @@ The valid values for the legal entity type are the following:
 **Note!** If you select `financial_institution` then the fields `vat_registration_number`, `financial_regulator` and `regulatory_licence_number` will be mandatory for the sender as well.
 </div>
 
-The valid values for the nature of business are the following:
+The valid values for the industry / nature of business are the following:
 
 {% capture data-raw %}
 ```markdown
