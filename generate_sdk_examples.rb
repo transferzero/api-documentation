@@ -280,9 +280,9 @@ def parse_data(prefix, data)
       when "ENUM"
         enum_klass = value.split(" ").first
         enum_value = value.split(" ").last
-        enum_value_conv = enum_value
+        enum_value_conv = enum_value.upcase
         if enum_value[0] =~ /[0-9]/
-          enum_value_conv = "_" + enum_value
+          enum_value_conv = "_" + enum_value.upcase
         end
         code[:csharp] << "  #{var_camel}: #{enum_klass}.#{enum_value_conv},\n"
         code[:vb] << "  #{var_camel}:=#{enum_klass}.#{enum_value_conv},\n"

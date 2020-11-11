@@ -58,7 +58,7 @@ JSON_END
 
 CODE_START
 CREATE_START sender Sender
-SET ENUM type TypeEnum BUSINESS
+SET ENUM type TypeEnum business
 SET LIT name "Company Name"
 
 COMMENT Country of Incorporation
@@ -72,10 +72,10 @@ SET LIT postal_code "10001"
 SET LIT address_description ""
 
 COMMENT Company Details
-SET ENUM legal_entity_type LegalEntityTypeEnum PRIVATELY_OWNED_COMPANY
+SET ENUM legal_entity_type LegalEntityTypeEnum privately_owned_company
 SET DATE registration_date 2012-01-25",
 SET LIT registration_number "VAT1234567",
-SET ENUM nature_of_business NatureOfBusinessEnum RETAIL_TRADE
+SET ENUM nature_of_business NatureOfBusinessEnum retail_trade
 
 COMMENT Contact Details
 SET LIT phone_country "US"
@@ -243,7 +243,7 @@ sender.setDocuments(new ArrayList<>());
 {% capture data-js %}
 ```js
 const sender = new TransferZeroSdk.Sender();
-sender.type = "BUSINESS";
+sender.type = "business";
 sender.name = "Company Name";
 
 // Country of Incorporation
@@ -257,10 +257,10 @@ sender.postal_code = "10001";
 sender.address_description = "";
 
 // Company Details
-sender.legal_entity_type = "PRIVATELY_OWNED_COMPANY";
+sender.legal_entity_type = "privately_owned_company";
 sender.registration_date = 2012-01-25",;
 sender.registration_number = "VAT1234567",;
-sender.nature_of_business = "RETAIL_TRADE";
+sender.nature_of_business = "retail_trade";
 
 // Contact Details
 sender.phone_country = "US";
@@ -279,7 +279,7 @@ sender.documents = [];
 {% capture data-php %}
 ```php
 $sender = new Sender();
-$sender->setType("BUSINESS");
+$sender->setType("business");
 $sender->setName("Company Name");
 
 // Country of Incorporation
@@ -293,10 +293,10 @@ $sender->setPostalCode("10001");
 $sender->setAddressDescription("");
 
 // Company Details
-$sender->setLegalEntityType("PRIVATELY_OWNED_COMPANY");
+$sender->setLegalEntityType("privately_owned_company");
 $sender->setRegistrationDate(2012-01-25",);
 $sender->setRegistrationNumber("VAT1234567",);
-$sender->setNatureOfBusiness("RETAIL_TRADE");
+$sender->setNatureOfBusiness("retail_trade");
 
 // Contact Details
 $sender->setPhoneCountry("US");
@@ -315,7 +315,7 @@ $sender->setDocuments([]);
 {% capture data-ruby %}
 ```ruby
 sender = TransferZero::Sender.new
-sender.type = "BUSINESS"
+sender.type = "business"
 sender.name = "Company Name"
 
 # Country of Incorporation
@@ -329,10 +329,10 @@ sender.postal_code = "10001"
 sender.address_description = ""
 
 # Company Details
-sender.legal_entity_type = "PRIVATELY_OWNED_COMPANY"
+sender.legal_entity_type = "privately_owned_company"
 sender.registration_date = 2012-01-25",
 sender.registration_number = "VAT1234567",
-sender.nature_of_business = "RETAIL_TRADE"
+sender.nature_of_business = "retail_trade"
 
 # Contact Details
 sender.phone_country = "US"
