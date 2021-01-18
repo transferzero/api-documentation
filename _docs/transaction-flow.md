@@ -1187,6 +1187,27 @@ The state of the recipient. Can be one of the following:
 
 If there is a specific error for the recipient, you can find a description of the error here.
 
+### state_reason_details
+
+If there is a specific error for the recipient, you can find details here.
+It contains following fields:
+
+#### code
+
+Status code of failed transaction.
+
+#### category
+
+Main category of error.
+
+#### messages
+
+Tiered messages.
+
+#### description
+
+Public, human readable, detailed error message.
+
 ### editable
 
 Describes whether the recipient can still be edited or not. If it's editable, and the error message describes thet the account number or phone number was invalid, the recipient can be edited to contain the approriate values. Once the recipient is updated we will retry the payouts with the new details.
@@ -1291,6 +1312,12 @@ For example, on an error you will receive a webhook like this:
     "metadata": {},
     "state": "error",
     "state_reason": "Stolen card. Please contact account holder. This transaction is not possible. Please cancel.",
+    "state_reason_details": {
+      "code": "32",
+      "category": "temporary_error",
+      "messages": ["Temporary error", "Bank Error", "Undefined bank error"],
+      "description": "The beneficiary's bank is not accepting payments at the moment. We will retry the transaction. You can also cancel or edit the transaction"
+    },
     "transaction_id": "94581e7a-a35a-430f-be0b-c8269a8acf4c",
     "transaction_state": "received",
     "payout_method": {
