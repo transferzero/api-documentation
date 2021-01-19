@@ -391,7 +391,10 @@ For Senegalese cash pickup requests please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "phone_number": "774044436" // local Senegalese format
+  "phone_number": "774044436", // local Senegalese format
+  "identity_card_id": "2231324232", // optional
+  "identity_card_type": "PP", // optional
+  "cash_provider": "wizall" // optional
 }
 ```
 {% endcapture %}
