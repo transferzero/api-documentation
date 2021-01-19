@@ -1136,6 +1136,7 @@ The state of the transaction, which can be one of the following:
 * `initial`: Transaction is created, but not yet ready to receive payments (waiting for Sender to be KYC'd and approved).
 * `approved`: Transaction is created and the sender is approved. Payment can be received
 * `pending`: Transaction has received a payin, and it's waiting for the funds to clear.
+* `processing`: Transaction is under compliance review. Please expect feedback in 24 hours or less.
 * `received`: Transaction has received the correct payin amount and will start processing the payouts.
 * `mispaid`: Transaction received funds, but not the requested amount. The transaction will be resized, and will start payout based on the received funds.
 * `manual`: Some of the payments to the recipients have run into issues. Please check the recipient statuses for more information.
