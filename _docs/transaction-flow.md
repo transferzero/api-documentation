@@ -1202,7 +1202,7 @@ Main category of error.
 
 #### messages
 
-Tiered messages.
+Tiered messages. There are three tiers each next provide more detailed error message.
 
 #### description
 
@@ -1292,7 +1292,7 @@ However to get real-time information on when a transaction's state changes pleas
 
 Because payouts happen on the recipient level inside our system, any kind of issues with the payouts will appear on the recipient. To get real-time information on issues with payouts, please create webhooks for transaction and recipient state changes using the developer portal, or the API, where we will send a response every time the recipient's state changes to error.
 
-The error message can be found inside the `state_reason` field on the recipient.
+The error message can be found inside the `state_reason` field on the recipient. More information about error can be found inside the `state_reason_details`
 
 Note that as the errors are sent on the recipient, you will receive a recipient object in the webhook and not a full transaction. You can find the transaction id inside the `transaction_id` property of the recipient.
 
@@ -1352,6 +1352,18 @@ For example, on an error you will receive a webhook like this:
 </div>
 
 You can read more about problems during payments at our [error handling documentation]({{ "/docs/error-handling/" | prepend: site.baseurl }}).
+
+## State Reason Details
+
+Contains detailed information about error. `state_reason_details` contains fields: `code`, `category`, `messages`, `description`.
+
+There are six group of errors based on error codes:
+* 0 - everything is ok
+* 1x - transaction is awaiting
+* 2x - recipient action required
+* 3xx - temporary error. We will retry the transaction at a later date.
+* 4xx - recipient error
+* 5xx - sender / regulatory error
 
 # Cancelling recipients and transactions
 

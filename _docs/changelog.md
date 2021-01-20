@@ -9,6 +9,10 @@ permalink: /docs/changelog/
 Current version of the API is `1.9.0`
 Current version of the SDKs are `1.9.0`
 
+new changes
+---
+* Add `state_reason_details` attribute in `recipient` object
+
 1.9.0
 -----
 * Add support for business senders
