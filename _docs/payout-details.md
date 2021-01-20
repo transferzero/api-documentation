@@ -384,7 +384,26 @@ The payment reference can also be provided in the recipient details hash optiona
 
 ## XOF::Cash
 
-For Senegalese cash pickup requests please use:
+For Senegalese cash pickup requests there are two payout provider options available:
+
+1. Wari (default)
+2. Wizall
+
+For Wari cash pickup requests please use:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "first_name": "First",
+  "last_name": "Last",
+  "phone_number": "774044436" // local Senegalese format
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xof-cash-details" raw=data-raw %}
+
+For Wizall cash pickup requests please use:
 
 {% capture data-raw %}
 ```javascript
@@ -392,9 +411,9 @@ For Senegalese cash pickup requests please use:
   "first_name": "First",
   "last_name": "Last",
   "phone_number": "774044436", // local Senegalese format
-  "identity_card_id": "2231324232", // optional
-  "identity_card_type": "PP", // optional
-  "cash_provider": "wizall" // optional
+  "identity_card_id": "2231324232", // Mandatory for Wizall
+  "identity_card_type": "PP", // Mandatory for Wizall; Values: "PP": Passport, "NI": National ID
+  "cash_provider": "wizall" // Mandatory for Wizall
 }
 ```
 {% endcapture %}
