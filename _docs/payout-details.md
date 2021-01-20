@@ -396,31 +396,15 @@ For Wari cash pickup requests please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "phone_number": "774044436" // local Senegalese format
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="xof-cash-details" raw=data-raw %}
-
-For Wizall cash pickup requests please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
   "phone_number": "774044436", // local Senegalese format
-  "identity_card_id": "2231324232", // Mandatory for Wizall
-  "identity_card_type": "PP", // Mandatory for Wizall; Values: "PP": Passport, "NI": National ID
-  "cash_provider": "wizall" // Mandatory for Wizall
+  "cash_provider": "wari" // Optional
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="xof-cash-details" raw=data-raw %}
 
-Please note when sending `XOF::Cash` payments you should subscribe to the `recipient.pending` webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt:
+Please note when sending Wari cash pickup requests you should subscribe to the `recipient.pending` webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt:
 
 {% capture data-raw %}
 ```javascript
@@ -437,7 +421,24 @@ Please note when sending `XOF::Cash` payments you should subscribe to the `recip
 
 {% include language-tabbar.html prefix="xof-cash-pending" raw=data-raw %}
 
-The payment reference can also be provided in the recipient details hash optionally for `XOF::Cash` in which case it will be used instead of the one we generate. The field you have to provide in the hash is called `reference`. If you wish to use this functionality, please contact us for more details.
+The payment reference can also be provided in the recipient details hash optionally for Wari cash pickup requests in which case it will be used instead of the one we generate. The field you have to provide in the hash is called `reference`. If you wish to use this functionality, please contact us for more details.
+
+For Wizall cash pickup requests please use:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "first_name": "First",
+  "last_name": "Last",
+  "phone_number": "774044436", // local Senegalese format
+  "identity_card_id": "2231324232", // Mandatory
+  "identity_card_type": "PP", // Mandatory; Values: "PP": Passport, "NI": National ID
+  "cash_provider": "wizall" // Mandatory
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xof-cash-details" raw=data-raw %}
 
 ## XOF::Mobile
 
