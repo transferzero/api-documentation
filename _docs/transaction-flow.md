@@ -1358,7 +1358,7 @@ You can read more about problems during payments at our [error handling document
 Contains detailed information about error. `state_reason_details` contains fields: `code`, `category`, `messages`, `description`.
 
 There are six group of errors based on error codes:
-* 0 - everything is ok
+* 0 - transaction is paid
 * 1x - transaction is awaiting
 * 2x - recipient action required
 * 3xx - temporary error. We will retry the transaction at a later date.
