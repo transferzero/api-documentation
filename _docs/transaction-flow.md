@@ -1362,7 +1362,7 @@ There are six group of errors based on error codes:
 * 1x - transaction is awaiting
 * 2x - recipient action required
 * 3xx - temporary error. We will retry the transaction at a later date.
-* 4xx - recipient error
+* 4xx - recipient error. Update recipient details or cancel this transaction.
 * 5xx - sender / fatal error hence transaction cannot be processed
 
 # Cancelling recipients and transactions
