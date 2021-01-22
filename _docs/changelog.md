@@ -12,9 +12,6 @@ Current version of the SDKs are `1.10.0`
 1.10.0
 -----
 * Add support for specifying cash providers in the `XOF::Cash` corridor
-
-1.10.0
----
 * Add `state_reason_details` attribute in `recipient` object
 
 1.9.0
