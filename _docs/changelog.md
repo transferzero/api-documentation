@@ -6,8 +6,12 @@ permalink: /docs/changelog/
 * Table of contents
 {:toc}
 
-Current version of the API is `1.9.0`
-Current version of the SDKs are `1.9.0`
+Current version of the API is `1.10.0`
+Current version of the SDKs are `1.10.0`
+
+1.10.0
+-----
+* Add support for specifying cash providers in the `XOF::Cash` corridor
 
 1.9.0
 -----
