@@ -1366,7 +1366,7 @@ There are six group of errors based on error codes:
 * 4xx - recipient error. Update recipient details or cancel this transaction.
 * 5xx - sender / fatal error hence transaction cannot be processed
 
-Error code details could be found [here]({{ "/docs/error-handling/" | prepend: site.baseurl }}#error-codes).
+The list of possible error codes can be found [here]({{ "/docs/error-handling/" | prepend: site.baseurl }}#error-codes).
 
 # Cancelling recipients and transactions
 
