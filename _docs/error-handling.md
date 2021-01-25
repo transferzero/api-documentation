@@ -16,7 +16,7 @@ In an ideal world payments always succeed and arrive in the recipient's account.
 * Recipient's bank is having connectivity issues
 * Recipient didn't pick up the funds in time
 
-Whenever we face a problem during payment we will add a note to the recipient's `state_reason` and `state_reason_details` fields [as shown here]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#receiving-error-messages). Theis note contains a human readable error message that can help you debug the issue. Note that this note should never be shown to your customers as they could be technical in nature. They can be shown in your internal system for your customer service team to see however.
+Whenever we face a problem during payment we will add a note to the recipient's `state_reason` and `state_reason_details` fields [as shown here]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#receiving-error-messages). These notes contain human readable error informations that can help you debug the issue. Note that both should never be shown to your customers as they could be technical in nature. They can be shown in your internal system for your customer service team to see however.
 
 Once we find a problem we don't stop processing however. Due to how most of our corridors work we know that a lot of the errors are only temporary. Even errors that look fatal - for example one that says that the recipient doesn't exist - could just be a temporary issue with the bank or provider. Hence every time we receive an error we don't stop, but try again until either:
 
