@@ -1197,9 +1197,25 @@ It contains following fields:
 
 Status code of failed transaction.
 
+List of categories:
+* paid
+* unknown
+* pickupable
+* temporary_error
+* recipient_error
+* sender_error
+
 #### category
 
 Main category of error.
+
+There are six group of errors based on error codes:
+* 0 - transaction is paid
+* 1x - transaction is awaiting
+* 2x - recipient action required
+* 3xx - temporary error. We will retry the transaction at a later date.
+* 4xx - recipient error. Update recipient details or cancel this transaction.
+* 5xx - sender / fatal error hence transaction cannot be processed
 
 #### messages
 
@@ -1208,6 +1224,8 @@ Tiered messages. There are three tiers each next provide more detailed error mes
 #### description
 
 Public, human readable, detailed error message.
+
+The list of possible error codes can be found [here]({{ "/docs/error-handling/" | prepend: site.baseurl }}#error-codes).
 
 ### editable
 
@@ -1353,20 +1371,6 @@ For example, on an error you will receive a webhook like this:
 </div>
 
 You can read more about problems during payments at our [error handling documentation]({{ "/docs/error-handling/" | prepend: site.baseurl }}).
-
-## State Reason Details
-
-Contains detailed information about error. `state_reason_details` contains fields: `code`, `category`, `messages`, `description`.
-
-There are six group of errors based on error codes:
-* 0 - transaction is paid
-* 1x - transaction is awaiting
-* 2x - recipient action required
-* 3xx - temporary error. We will retry the transaction at a later date.
-* 4xx - recipient error. Update recipient details or cancel this transaction.
-* 5xx - sender / fatal error hence transaction cannot be processed
-
-The list of possible error codes can be found [here]({{ "/docs/error-handling/" | prepend: site.baseurl }}#error-codes).
 
 # Cancelling recipients and transactions
 
