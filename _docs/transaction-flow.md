@@ -1370,37 +1370,37 @@ There are six group of errors based on error codes:
 |-|-|-|-|-|
 | Success | Success | Success | 0 | The transaction was paid to the beneficiary. |
 | Pending | Pending | Pending | 1 | This transaction is awaiting a status update from the provider. |
-| Pending | Unknown | Unknown | 11 | This transaction is awaiting a status update from the provider. |
-| Pending | Timeout error | Timeout error | 12 | This transaction is awaiting a status update from the provider. |
-| Pending | Manual reconciliation required | Manual reconciliation required | 13 | This transaction requires manual verification. Please wait until this is done. |
+| /// | Unknown | Unknown | 11 | This transaction is awaiting a status update from the provider. |
+| /// | Timeout error | Timeout error | 12 | This transaction is awaiting a status update from the provider. |
+| /// | Manual reconciliation required | Manual reconciliation required | 13 | This transaction requires manual verification. Please wait until this is done. |
 | Recipient action required | Recipient action required | Recipient action required | 2 | This transaction requires an action by the recipient. |
-| Recipient action required | Pickupable | Pickupable | 21 | This transaction requires an action by the recipient. |
-| Recipient action required | Mandate signing required | Mandate signing required | 22 | This transaction required the recipient to sign a mandate before it can be deposited. |
+| /// | Pickupable | Pickupable | 21 | This transaction requires an action by the recipient. |
+| /// | Mandate signing required | Mandate signing required | 22 | This transaction required the recipient to sign a mandate before it can be deposited. |
 | Temporary error | Provider Error | Undefined provider error | 3 | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. |
-| Temporary error | Switch Error | Undefined switch error | 31 | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. |
-| Temporary error | Switch Error | Issuer/Switch inoperative | 311 | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. |
+| /// | Switch Error | Undefined switch error | 31 | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. |
+| /// | /// | Issuer/Switch inoperative | 311 | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. |
 | Temporary error | Bank Error | Undefined bank error | 32 | The beneficiary's bank is not accepting payments at the moment. We will retry the transaction. You can also cancel or edit the transaction. |
-| Temporary error | Bank Error | Beneficiary bank not available | 321 | The beneficiary's bank is not accepting payments at the moment. We will retry the transaction. You can also cancel or edit the transaction. |
-| Temporary error | Not Found | Transaction code already exists | 33 | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. |
-| Temporary error | Not Found | Transaction does not exist | 331 | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. |
+| /// | /// | Beneficiary bank not available | 321 | The beneficiary's bank is not accepting payments at the moment. We will retry the transaction. You can also cancel or edit the transaction. |
+| /// | Not Found | Transaction code already exists | 33 | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. |
+| /// | /// | Transaction does not exist | 331 | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. |
 | Recipient Error - Editable | Recipient error | Unspecified recipient error | 4 | Recipient details are invalid. Please update the recipient details. You can also cancel this transaction. |
-| Recipient Error - Editable | Invalid details | Invalid details | 41 | Recipient details are invalid. Please update the recipient details. You can also cancel this transaction. |
-| Recipient Error - Editable | Invalid details | Invalid card number | 411 | Recipient card details are invalid. Please update the recipient details. You can also cancel this transaction. |
-| Recipient Error - Editable | Invalid details | Invalid mobile number | 412 | Recipient mobile details are invalid. Please update the recipient details. You can also cancel this transaction. |
-| Recipient Error - Editable | Invalid details | Mobile number not registered for network | 413 | Recipient mobile number is not registered on the network. Please update the recipient details. You can also cancel this transaction. |
-| Recipient Error - Editable | Invalid details | Mobile number not registered for mobile money | 414 | Recipient mobile number is not registered for mobile money. Please update the recipient details. You can also cancel this transaction. |
-| Recipient Error - Editable | Exceeded limits | Exceeded limits | 42 | Recipient has exceeded transfer limits. Please update the recipient details. You can also cancel this transaction. |
-| Recipient Error - Editable | Exceeded limits | Exceeded daily transfer limits | 421 | Recipient has exceeded daily transfer limits. Please update the recipient details. You can also cancel this transaction. |
-| Recipient Error - Editable | Exceeded limits | Bank approval required for transfer | 422 | Bank approval needed for transaction. Please update the recipient details. You can also cancel this transaction. |
-| Recipient Error - Editable | Recipient Action Required | Recipient not allowed to receive funds | 43 | Recipient not allowed to receive funds. Please update the recipient details. You can also cancel this transaction. |
-| Recipient Error - Editable | Recipient Action Required | Recipient account is dormant | 431 | Recipient account is dormant. Please update the recipient details. You can also cancel this transaction. |
-| Recipient Error - Editable | Recipient Action Required | Recipient account has invalid status | 432 | Recipient account has invalid status. Please update the recipient details. You can also cancel this transaction. |
-| Recipient Error - Editable | Validation error | Name validation failed | 44 | Recipient name has failed name validation against the account holder name. Please update the recipient details. You can also canncel this transaction. |
+| /// | Invalid details | Invalid details | 41 | Recipient details are invalid. Please update the recipient details. You can also cancel this transaction. |
+| /// | /// | Invalid card number | 411 | Recipient card details are invalid. Please update the recipient details. You can also cancel this transaction. |
+| /// | /// | Invalid mobile number | 412 | Recipient mobile details are invalid. Please update the recipient details. You can also cancel this transaction. |
+| /// | /// | Mobile number not registered for network | 413 | Recipient mobile number is not registered on the network. Please update the recipient details. You can also cancel this transaction. |
+| /// | /// | Mobile number not registered for mobile money | 414 | Recipient mobile number is not registered for mobile money. Please update the recipient details. You can also cancel this transaction. |
+| /// | Exceeded limits | Exceeded limits | 42 | Recipient has exceeded transfer limits. Please update the recipient details. You can also cancel this transaction. |
+| /// | /// | Exceeded daily transfer limits | 421 | Recipient has exceeded daily transfer limits. Please update the recipient details. You can also cancel this transaction. |
+| /// | /// | Bank approval required for transfer | 422 | Bank approval needed for transaction. Please update the recipient details. You can also cancel this transaction. |
+| /// | Recipient Action Required | Recipient not allowed to receive funds | 43 | Recipient not allowed to receive funds. Please update the recipient details. You can also cancel this transaction. |
+| /// | /// | Recipient account is dormant | 431 | Recipient account is dormant. Please update the recipient details. You can also cancel this transaction. |
+| /// | /// | Recipient account has invalid status | 432 | Recipient account has invalid status. Please update the recipient details. You can also cancel this transaction. |
+| /// | Validation error | Name validation failed | 44 | Recipient name has failed name validation against the account holder name. Please update the recipient details. You can also canncel this transaction. |
 | Sender / Regulatory Error - Fatal | Transaction error | Unspecified transaction error | 5 | Transaction cannot be processed. Please cancel this transaction. |
-| Sender / Regulatory Error - Fatal | Banned sender | Sender not allowed to transact | 51 | Sender is not allowed to transact. Please cancel this transaction. |
-| Sender / Regulatory Error - Fatal | Invalid sender details | Invalid sender details | 52 | Invalid sender details provided. Please cancel this transaction. |
-| Sender / Regulatory Error - Fatal | Invalid transaction details | Invalid transaction details | 53 | Invalid transaction details provided. Please cancel this transaction. |
-| Sender / Regulatory Error - Fatal | Invalid transaction details | Invalid amount provided | 531 | Invalid transaction details provided. Please cancel this transaction. |
+| /// | Banned sender | Sender not allowed to transact | 51 | Sender is not allowed to transact. Please cancel this transaction. |
+| /// | Invalid sender details | Invalid sender details | 52 | Invalid sender details provided. Please cancel this transaction. |
+| /// | Invalid transaction details | Invalid transaction details | 53 | Invalid transaction details provided. Please cancel this transaction. |
+| /// | /// | Invalid amount provided | 531 | Invalid transaction details provided. Please cancel this transaction. |
 
 
 # Cancelling recipients and transactions
