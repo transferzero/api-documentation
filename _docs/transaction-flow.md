@@ -1188,6 +1188,37 @@ The state of the recipient. Can be one of the following:
 
 If there is a specific error for the recipient, you can find a description of the error here.
 
+### state_reason_details
+
+If there is a specific error for the recipient, you can find details here.
+It contains following fields:
+
+#### code
+
+Status code of failed transaction.
+
+There are six different categories of errors based on error codes:
+* 0 - category: `paid` - transaction is paid
+* 1x - category: `unknown` - transaction is awaiting
+* 2x - category: `pickupable` - recipient action required
+* 3xx - category: `temporary_error` - we will retry the transaction at a later date
+* 4xx - category: `recipient_error` - update recipient details or cancel this transaction
+* 5xx - category: `sender_error` - transaction cannot be processed
+
+#### category
+
+Category of the error
+
+#### messages
+
+Tiered messages. There are three tiers each next provide more detailed error message.
+
+#### description
+
+Public, human readable, detailed error message.
+
+The list of possible error codes can be found [here]({{ "/docs/error-handling/" | prepend: site.baseurl }}#error-codes).
+
 ### editable
 
 Describes whether the recipient can still be edited or not. If it's editable, and the error message describes thet the account number or phone number was invalid, the recipient can be edited to contain the approriate values. Once the recipient is updated we will retry the payouts with the new details.
@@ -1272,7 +1303,7 @@ However to get real-time information on when a transaction's state changes pleas
 
 Because payouts happen on the recipient level inside our system, any kind of issues with the payouts will appear on the recipient. To get real-time information on issues with payouts, please create webhooks for transaction and recipient state changes using the developer portal, or the API, where we will send a response every time the recipient's state changes to error.
 
-The error message can be found inside the `state_reason` field on the recipient.
+The error message can be found inside the `state_reason` field on the recipient. More information about error can be found inside the `state_reason_details`
 
 Note that as the errors are sent on the recipient, you will receive a recipient object in the webhook and not a full transaction. You can find the transaction id inside the `transaction_id` property of the recipient.
 
@@ -1292,6 +1323,12 @@ For example, on an error you will receive a webhook like this:
     "metadata": {},
     "state": "error",
     "state_reason": "Stolen card. Please contact account holder. This transaction is not possible. Please cancel.",
+    "state_reason_details": {
+      "code": "32",
+      "category": "temporary_error",
+      "messages": ["Temporary error", "Bank Error", "Undefined bank error"],
+      "description": "The beneficiary's bank is not accepting payments at the moment. We will retry the transaction. You can also cancel or edit the transaction"
+    },
     "transaction_id": "94581e7a-a35a-430f-be0b-c8269a8acf4c",
     "transaction_state": "received",
     "payout_method": {

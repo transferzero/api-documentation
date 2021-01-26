@@ -16,7 +16,7 @@ In an ideal world payments always succeed and arrive in the recipient's account.
 * Recipient's bank is having connectivity issues
 * Recipient didn't pick up the funds in time
 
-Whenever we face a problem during payment we will add a note to the recipient's `state_reason` field [as shown here]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#receiving-error-messages). This note contains a human readable error message that can help you debug the issue. Note that this note should never be shown to your customers as they could be technical in nature. They can be shown in your internal system for your customer service team to see however.
+Whenever we face a problem during payment we will add a note to the recipient's `state_reason` and `state_reason_details` fields [as shown here]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#receiving-error-messages). These notes contain human readable error informations that can help you debug the issue. Note that both should never be shown to your customers as they could be technical in nature. They can be shown in your internal system for your customer service team to see however.
 
 Once we find a problem we don't stop processing however. Due to how most of our corridors work we know that a lot of the errors are only temporary. Even errors that look fatal - for example one that says that the recipient doesn't exist - could just be a temporary issue with the bank or provider. Hence every time we receive an error we don't stop, but try again until either:
 
@@ -40,6 +40,44 @@ We categorize most errors into the following categories:
 * `editable`: errors where the problem is usually permanent. This includes issues like the recipient details being incorrect, or the recipient's account is locked. As occasionally we get invalid reports from our providers we sometimes retry these transactions as well, however it is usually unlikely that these transactions pay out in the future, and should either be cancelled, or the recipient's details should be changed. For these errors the `retriable` flag on the recipient will be set to `false`, however the `editable` flag will be `true`.
 * `pending`: this is not an error, but means that the transaction has not yet been fully processed. Please see the next section for more details.
 * `exception`: errors where there was an unknown error during processing. These transactions will be investigated by the technical team, and will either be retried or need to be cancelled.
+
+# Error codes
+
+| Error Code | Tier 1 | Tier 2 | Tier 3 | Description | Category |
+|-|-|-|-|-|-|
+| 0 | Success | Success | Success | The transaction was paid to the beneficiary. | paid |
+| 1 | Pending | Pending | Pending | This transaction is awaiting a status update from the provider. | unknown |
+| 11 | /// | Unknown | Unknown | This transaction is awaiting a status update from the provider. | unknown |
+| 12 | /// | Timeout error | Timeout error | This transaction is awaiting a status update from the provider. | unknown |
+| 13 | /// | Manual reconciliation required | Manual reconciliation required | This transaction requires manual verification. Please wait until this is done. | unknown |
+| 2 | Recipient action required | Recipient action required | Recipient action required | This transaction requires an action by the recipient. | pickupable |
+| 21 | /// | Pickupable | Pickupable | This transaction requires an action by the recipient. | pickupable |
+| 22 | /// | Mandate signing required | Mandate signing required  | This transaction required the recipient to sign a mandate before it can be deposited. | pickupable |
+| 3 | Temporary error | Provider Error | Undefined provider error | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. | temporary_error |
+| 31 | /// | Switch Error | Undefined switch error | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |
+| 311 | /// | /// | Issuer/Switch inoperative | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |
+| 32 | Temporary error | Bank Error | Undefined bank error | The beneficiary's bank is not accepting payments at the moment. We will retry the transaction. You can also cancel or edit the transaction. | temporary_error |
+| 321 | /// | /// | Beneficiary bank not available | The beneficiary's bank is not accepting payments at the moment. We will retry the transaction. You can also cancel or edit the transaction. | temporary_error |
+| 33 | /// | Not Found | Transaction code already exists | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. | temporary_error |
+| 331 | /// | /// | Transaction does not exist | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. | temporary_error |
+| 4 | Recipient Error - Editable | Recipient error | Unspecified recipient error | Recipient details are invalid. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 41 | /// | Invalid details | Invalid details | Recipient details are invalid. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 411 | /// | /// | Invalid card number | Recipient card details are invalid. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 412 | /// | /// | Invalid mobile number | Recipient mobile details are invalid. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 413 | /// | /// | Mobile number not registered for network | Recipient mobile number is not registered on the network. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 414 | /// | /// | Mobile number not registered for mobile money | Recipient mobile number is not registered for mobile money. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 42 | /// | Exceeded limits | Exceeded limits | Recipient has exceeded transfer limits. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 421 | /// | /// | Exceeded daily transfer limits | Recipient has exceeded daily transfer limits. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 422 | /// | /// | Bank approval required for transfer | Bank approval needed for transaction. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 43 | /// | Recipient Action Required | Recipient not allowed to receive funds | Recipient not allowed to receive funds. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 431 | /// | /// | Recipient account is dormant | Recipient account is dormant. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 432 | /// | /// | Recipient account has invalid status | Recipient account has invalid status. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 44 | /// | Validation error | Name validation failed | Recipient name has failed name validation against the account holder name. Please update the recipient details. You can also canncel this transaction. | recipient_error |
+| 5 | Sender / Regulatory Error - Fatal | Transaction error | Unspecified transaction error | Transaction cannot be processed. Please cancel this transaction. | sender_error |
+| 51 | /// | Banned sender | Sender not allowed to transact | Sender is not allowed to transact. Please cancel this transaction. | sender_error |
+| 52 | /// | Invalid sender details | Invalid sender details | Invalid sender details provided. Please cancel this transaction. | sender_error |
+| 53 | /// | Invalid transaction details | Invalid transaction details | Invalid transaction details provided. Please cancel this transaction. | sender_error |
+| 531 | /// | /// | Invalid amount provided | Invalid transaction details provided. Please cancel this transaction. | sender_error |
 
 # Pending transactions
 
