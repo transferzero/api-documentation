@@ -1197,25 +1197,17 @@ It contains following fields:
 
 Status code of failed transaction.
 
-There are six group of errors based on error codes:
-* 0 - transaction is paid
-* 1x - transaction is awaiting
-* 2x - recipient action required
-* 3xx - temporary error. We will retry the transaction at a later date.
-* 4xx - recipient error. Update recipient details or cancel this transaction.
-* 5xx - sender / fatal error hence transaction cannot be processed
+There are six different categories of errors based on error codes:
+* 0 - category: `paid` - transaction is paid
+* 1x - category: `unknown` - transaction is awaiting
+* 2x - category: `pickupable` - recipient action required
+* 3xx - category: `temporary_error` - we will retry the transaction at a later date
+* 4xx - category: `recipient_error` - update recipient details or cancel this transaction
+* 5xx - category: `sender_error` - transaction cannot be processed
 
 #### category
 
-Main category of error.
-
-List of categories:
-* `paid`
-* `unknown`
-* `pickupable`
-* `temporary_error`
-* `recipient_error`
-* `sender_error`
+Category of the error
 
 #### messages
 
