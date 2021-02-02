@@ -52,6 +52,10 @@ Depending on the payment method:
 - If `bank` payment method, the user won't need to be redirected as the needed details, `Bank Name` and `Account Number`, should be enough to enable the user to deposit funds into the account.
 - If `card` payment method, the user needs to be redirected to the url described at `url`.
 
+<div class="alert alert-warning" markdown="1">
+**Warning!** The account number returned will be different for each transaction. Make sure you never cache that value between transactions, and that you also explicitly tell your customers to double check that number and send the funds to the proper account number shown. Repet customers should be aware not to send the funds to an old account number they have already used in a previous transaction by mistake. Funds sent to an account number that is assigned to an old account number will not be marked as received, and it might take days for those funds to be recovered and refunded.
+</div>
+
 Once they are redirected, they will land on the first page where they shall choose which payment method to use.
 
 ![Providus choose payment method]({{ "/img/collections/providus_choose_method.png" | prepend: site.baseurl }})
