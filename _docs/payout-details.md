@@ -431,14 +431,36 @@ For Wizall cash pickup requests please use:
   "first_name": "First",
   "last_name": "Last",
   "phone_number": "774044436", // local Senegalese format
-  "identity_card_id": "2231324232", // Mandatory
-  "identity_card_type": "PP", // Mandatory; Values: "PP": Passport, "NI": National ID
   "cash_provider": "wizall" // Mandatory
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="xof-cash-details" raw=data-raw %}
+
+All senders trying to create Wizall cash pickup requests need to have the following details present:
+- `"identity_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID
+- `"identity_number" => "AB12345678"`
+
+Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
+
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+      "sender": {
+        "external_id": "<id of sender>",
+        "identity_type": "M",
+        "identity_number": "AB12345678",
+        (...)
+      },
+      (...)
+    }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="mad-cash-sender-details" raw=data-raw %}
 
 ## XOF::Mobile
 
