@@ -450,7 +450,7 @@ Please note that the fields above are generally considered optional for senders 
   "transaction": {
       "sender": {
         "external_id": "<id of sender>",
-        "identity_type": "M",
+        "identity_type": "ID",
         "identity_number": "AB12345678",
         (...)
       },
