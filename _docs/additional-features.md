@@ -311,3 +311,30 @@ To use the endpoint you need to set the fields you wish to update. For example t
 <div class="alert alert-info" markdown="1">
 **Note!** For non-cash transactions if the payment is already pending to the bank account or mobile number the change will only be effective if there is an error during payment, in which case we'll use the new details to retry the transaction.
 </div>
+
+# Proof of payment
+
+To get your proof of payment files you can use this endpoint:
+
+`GET /v1/recipients/[TRANSFERZERO_RECIPIENT_ID]/proof_of_payments`
+
+Please note that the ID you have to use is for the recipient and not the transaction (similarly to how you can cancel and update recipients)
+
+The endpoint responds with a list of uploaded proof of payment files, e.g.:
+
+{% capture data-raw %}
+```javascript
+{
+  "object": [
+    {
+      "thumbnail": "(..)/my_file_thumb.jpg",
+      "file_name": "my_file.jpg",
+      "id": "xxxxxxxx",
+      "url": "(..)/my_file.jpg"
+    }
+  ]
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="proof-of-payments" raw=data-raw %}
