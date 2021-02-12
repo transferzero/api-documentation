@@ -178,6 +178,21 @@ vodafone
 
 {% include language-tabbar.html prefix="ghs-mobile-providers" raw=data-raw %}
 
+## GHS::Cash
+
+For Ghanan cash payment please use:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "first_name": "First",
+  "last_name": "Last",
+  "phone_number": "302123456"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="ghs-cash-details" raw=data-raw %}
 
 # Uganda
 

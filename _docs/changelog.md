@@ -6,8 +6,12 @@ permalink: /docs/changelog/
 * Table of contents
 {:toc}
 
-Current version of the API is `1.11.0`
-Current version of the SDKs are `1.11.0`
+Current version of the API is `1.12.0`
+Current version of the SDKs are `1.12.0`
+
+1.12.0
+-----
+* Add support for the `GHS::Cash` corridor.
 
 1.11.0
 -----
