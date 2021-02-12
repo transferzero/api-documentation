@@ -6,8 +6,12 @@ permalink: /docs/changelog/
 * Table of contents
 {:toc}
 
-Current version of the API is `1.10.0`
-Current version of the SDKs are `1.10.0`
+Current version of the API is `1.11.0`
+Current version of the SDKs are `1.11.0`
+
+1.11.0
+-----
+* Move `identification_number` and `identification_type` attributes from the `payout_method` to the `sender` object for Wizall `XOF::Cash` corridor.
 
 1.10.0
 -----
