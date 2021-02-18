@@ -321,8 +321,8 @@ For Cashplus cash pickup requests please use:
     // Mandatory; International format preferred
   "reason" => "Remittance payment",
     // Optional; Default value is 'Remittance payment'
-  "identification_type" => "NI",
-    // Optional; Values: "PP": Passport, "NI": National ID
+  "identification_type" => "ID",
+    // Optional; Values: "PP": Passport, "ID": National ID
   "identification_number" => 'AB12345678'
     // Optional
 }
@@ -332,7 +332,7 @@ For Cashplus cash pickup requests please use:
 {% include language-tabbar.html prefix="mad-cash-details" raw=data-raw %}
 
 Due to regulatory reasons all senders trying to create `MAD::Cash` transactions need to have the following details present:
-- `"identification_type" => "O"` - Values: `"O"`: Other, `"PP"`: Passport, `"NI"`: National ID
+- `"identification_type" => "O"` - Values: `"O"`: Other, `"PP"`: Passport, `"ID"`: National ID
 - `"identification_number" => "AB12345678"`
 - `"city_of_birth" => "London"`
 - `"country_of_birth" => "GB"` - ISO 2-letter format
