@@ -321,9 +321,9 @@ For Cashplus cash pickup requests please use:
     // Mandatory; International format preferred
   "reason" => "Remittance payment",
     // Optional; Default value is 'Remittance payment'
-  "identity_card_type" => "NI",
+  "identification_type" => "NI",
     // Optional; Values: "PP": Passport, "NI": National ID
-  "identity_card_id" => 'AB12345678'
+  "identification_number" => 'AB12345678'
     // Optional
 }
 ```
@@ -332,8 +332,8 @@ For Cashplus cash pickup requests please use:
 {% include language-tabbar.html prefix="mad-cash-details" raw=data-raw %}
 
 Due to regulatory reasons all senders trying to create `MAD::Cash` transactions need to have the following details present:
-- `"identity_type" => "O"` - Values: `"O"`: Other, `"PP"`: Passport, `"NI"`: National ID
-- `"identity_number" => "AB12345678"`
+- `"identification_type" => "O"` - Values: `"O"`: Other, `"PP"`: Passport, `"NI"`: National ID
+- `"identification_number" => "AB12345678"`
 - `"city_of_birth" => "London"`
 - `"country_of_birth" => "GB"` - ISO 2-letter format
 - `"gender" => "M"` - Values: `"M"`: Male, `"F"`: Female
@@ -439,8 +439,8 @@ For Wizall cash pickup requests please use:
 {% include language-tabbar.html prefix="xof-cash-details" raw=data-raw %}
 
 All senders trying to create Wizall cash pickup requests need to have the following details present:
-- `"identity_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID
-- `"identity_number" => "AB12345678"`
+- `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID
+- `"identification_number" => "AB12345678"`
 
 Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
 
@@ -450,8 +450,8 @@ Please note that the fields above are generally considered optional for senders 
   "transaction": {
       "sender": {
         "external_id": "<id of sender>",
-        "identity_type": "ID",
-        "identity_number": "AB12345678",
+        "identification_type": "ID",
+        "identification_number": "AB12345678",
         (...)
       },
       (...)
