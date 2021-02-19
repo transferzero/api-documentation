@@ -321,10 +321,10 @@ For Cashplus cash pickup requests please use:
     // Mandatory; International format preferred
   "reason" => "Remittance payment",
     // Optional; Default value is 'Remittance payment'
-  "identification_type" => "ID",
-    // Optional; Values: "PP": Passport, "ID": National ID
-  "identification_number" => 'AB12345678'
-    // Optional
+  "identity_card_type" => "NI",
+    // Refers to the recipient's ID details; Optional; Values: "PP": Passport, "NI": National ID
+  "identity_card_id" => 'AB12345678'
+    // Refers to the recipient's ID details; Optional
 }
 ```
 {% endcapture %}
