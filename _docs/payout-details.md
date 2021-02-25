@@ -332,7 +332,7 @@ For Cashplus cash pickup requests please use:
 {% include language-tabbar.html prefix="mad-cash-details" raw=data-raw %}
 
 Due to regulatory reasons all senders trying to create `MAD::Cash` transactions need to have the following details present:
-- `"identification_type" => "O"` - Values: `"O"`: Other, `"PP"`: Passport, `"ID"`: National ID
+- `"identification_type" => "OT"` - Values: `"OT"`: Other, `"PP"`: Passport, `"ID"`: National ID
 - `"identification_number" => "AB12345678"`
 - `"city_of_birth" => "London"`
 - `"country_of_birth" => "GB"` - ISO 2-letter format
