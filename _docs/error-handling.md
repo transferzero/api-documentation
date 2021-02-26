@@ -50,6 +50,7 @@ We categorize most errors into the following categories:
 | 11 | /// | Unknown | Unknown | This transaction is awaiting a status update from the provider. | unknown |
 | 12 | /// | Timeout error | Timeout error | This transaction is awaiting a status update from the provider. | unknown |
 | 13 | /// | Manual reconciliation required | Manual reconciliation required | This transaction requires manual verification. Please wait until this is done. | unknown |
+| 14 | /// | Pending | Pending | This transaction is awaiting a status update from the provider. | unknown |
 | 2 | Recipient action required | Recipient action required | Recipient action required | This transaction requires an action by the recipient. | pickupable |
 | 21 | /// | Pickupable | Pickupable | This transaction requires an action by the recipient. | pickupable |
 | 22 | /// | Mandate signing required | Mandate signing required  | This transaction required the recipient to sign a mandate before it can be deposited. | pickupable |
