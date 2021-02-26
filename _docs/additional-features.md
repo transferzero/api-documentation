@@ -41,7 +41,12 @@ POST /v1/account_validations
   "phone_number": "+233000000000", // mobile phone number to query
   "country": "GH",   // Only "GH" is supported for now
   "currency": "GHS", // Only "GHS" is supported for now
-  "method": "mobile"
+  "method": "mobile",
+  "mobile_provider": "vodafone" // Optional and only for Ghana - if provided validation will be based off phone_number-mobile_provider registration check
+    // mtn
+    // airtel
+    // tigo
+    // vodafone
 }
 ```
 {% endcapture %}
