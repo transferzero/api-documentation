@@ -42,16 +42,27 @@ POST /v1/account_validations
   "country": "GH",   // Only "GH" is supported for now
   "currency": "GHS", // Only "GHS" is supported for now
   "method": "mobile",
-  "mobile_provider": "vodafone" // Optional and only for Ghana - if provided validation will be based off phone_number-mobile_provider registration check
-    // mtn
-    // airtel
-    // tigo
-    // vodafone
+  "mobile_provider": "vodafone" // Optional
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="validation-mobile" raw=data-raw %}
+
+If the `mobile_provider` field is provided, the validation result will be based off `phone_number`-`mobile_provider` registration check.
+
+The valid `mobile_provider` values are:
+
+{% capture data-raw %}
+```
+mtn
+airtel
+tigo
+vodafone
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="mobile_provider-values" raw=data-raw %}
 
 The response will either be a `200 OK`, and provide you with the account title:
 
