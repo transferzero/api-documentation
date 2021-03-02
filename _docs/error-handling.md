@@ -57,11 +57,11 @@ We categorize most errors into the following categories:
 | 3 | Temporary error | Provider Error | Undefined provider error | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. | temporary_error |
 | 31 | /// | Switch Error | Undefined switch error | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |
 | 311 | /// | /// | Issuer/Switch inoperative | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |
-| 32 | Temporary error | Bank Error | Undefined bank error | The beneficiary's bank is not accepting payments at the moment. We will retry the transaction. You can also cancel or edit the transaction. | temporary_error |
+| 32 | /// | Bank Error | Undefined bank error | The beneficiary's bank is not accepting payments at the moment. We will retry the transaction. You can also cancel or edit the transaction. | temporary_error |
 | 321 | /// | /// | Beneficiary bank not available | The beneficiary's bank is not accepting payments at the moment. We will retry the transaction. You can also cancel or edit the transaction. | temporary_error |
 | 33 | /// | Not Found | Transaction code already exists | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. | temporary_error |
 | 331 | /// | /// | Transaction does not exist | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. | temporary_error |
-| 4 | Recipient Error - Editable | Recipient error | Unspecified recipient error | Recipient details are invalid. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 4 | Recipient Error | Recipient error | Unspecified recipient error | Recipient details are invalid. Please update the recipient details. You can also cancel this transaction. | recipient_error |
 | 41 | /// | Invalid details | Invalid details | Recipient details are invalid. Please update the recipient details. You can also cancel this transaction. | recipient_error |
 | 411 | /// | /// | Invalid card number | Recipient card details are invalid. Please update the recipient details. You can also cancel this transaction. | recipient_error |
 | 412 | /// | /// | Invalid mobile number | Recipient mobile details are invalid. Please update the recipient details. You can also cancel this transaction. | recipient_error |
@@ -74,7 +74,7 @@ We categorize most errors into the following categories:
 | 431 | /// | /// | Recipient account is dormant | Recipient account is dormant. Please update the recipient details. You can also cancel this transaction. | recipient_error |
 | 432 | /// | /// | Recipient account has invalid status | Recipient account has invalid status. Please update the recipient details. You can also cancel this transaction. | recipient_error |
 | 44 | /// | Validation error | Name validation failed | Recipient name has failed name validation against the account holder name. Please update the recipient details. You can also canncel this transaction. | recipient_error |
-| 5 | Sender / Regulatory Error - Fatal | Transaction error | Unspecified transaction error | Transaction cannot be processed. Please cancel this transaction. | sender_error |
+| 5 | Sender / Regulatory Error | Transaction error | Unspecified transaction error | Transaction cannot be processed. Please cancel this transaction. | sender_error |
 | 51 | /// | Banned sender | Sender not allowed to transact | Sender is not allowed to transact. Please cancel this transaction. | sender_error |
 | 52 | /// | Invalid sender details | Invalid sender details | Invalid sender details provided. Please cancel this transaction. | sender_error |
 | 53 | /// | Invalid transaction details | Invalid transaction details | Invalid transaction details provided. Please cancel this transaction. | sender_error |
