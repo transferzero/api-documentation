@@ -445,7 +445,8 @@ For Wizall cash pickup requests please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "phone_number": "774044436", // local Senegalese format
+  "phone_number": "221774044436", // local or international format
+  "country": "SN", // Optional
   "cash_provider": "wizall" // Mandatory
 }
 ```

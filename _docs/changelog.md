@@ -6,12 +6,17 @@ permalink: /docs/changelog/
 * Table of contents
 {:toc}
 
-Current version of the API is `1.12.0`
-Current version of the SDKs are `1.12.0`
+Current version of the API is `1`
+Current version of the SDKs are `1.12.2`
+
+1.12.2
+-----
+* Add bugfix introduced in `1.12.0` for PayoutMethodDetails `country`
 
 1.12.0
 -----
-* Add support for the `GHS::Cash` corridor.
+* Add support for specifying country for the `XOF::Cash` corridor
+* Accept `mobile_provider` in `/v1/account_validations` for Mobile Accounts validations
 
 1.11.0
 -----
