@@ -36,8 +36,9 @@ Instead of cancelling a transaction you can sometimes also fix the problem by up
 
 We categorize most errors into the following categories:
 
-* `retriable`: errors where the problem is usually temporary. This includes connectivity issues with banks and providers, and problems with the central banking switch of the country. We constantly retry these transactions and they usually pay out within 24 hours. For these errors the `retriable` flag on the recipient will be set to `true`.
-* `editable`: errors where the problem is usually permanent. This includes issues like the recipient details being incorrect, or the recipient's account is locked. As occasionally we get invalid reports from our providers we sometimes retry these transactions as well, however it is usually unlikely that these transactions pay out in the future, and should either be cancelled, or the recipient's details should be changed. For these errors the `retriable` flag on the recipient will be set to `false`, however the `editable` flag will be `true`.
+* `temporary_error`: errors where the problem is usually temporary. This includes connectivity issues with banks and providers, and problems with the central banking switch of the country. We constantly retry these transactions and they usually pay out within 24 hours. For these errors the `retriable` flag on the recipient will be set to `true`.
+* `recipient_error`: errors where the problem is usually permanent. This includes issues like the recipient details being incorrect, or the recipient's account is locked. As occasionally we get invalid reports from our providers we sometimes retry these transactions as well, however it is usually unlikely that these transactions pay out in the future, and should either be cancelled, or the recipient's details should be changed. For these errors the `retriable` flag on the recipient will be set to `false`, however the `editable` flag will be `true`.
+* `sender_error`: these are issues where either the sender or the transaction details provided mean that the transaction cannot be paid out - even if the recipient details are changed. In this case both the `retriable` and the `editable` flag will be set to false.
 * `pending`: this is not an error, but means that the transaction has not yet been fully processed. Please see the next section for more details.
 * `exception`: errors where there was an unknown error during processing. These transactions will be investigated by the technical team, and will either be retried or need to be cancelled.
 
@@ -49,7 +50,7 @@ We categorize most errors into the following categories:
 | 1 | Pending | Pending | Pending | This transaction is awaiting a status update from the provider. | pending |
 | 11 | /// | Unknown | Unknown | This transaction is awaiting a status update from the provider. | pending |
 | 12 | /// | Timeout error | Timeout error | This transaction is awaiting a status update from the provider. | pending |
-| 13 | /// | Manual reconciliation required | Manual reconciliation required | This transaction requires manual verification. Please wait until this is done. | pending |
+| 13 | /// | Manual reconciliation required | Manual reconciliation required | This transaction requires manual verification. Please wait until this is done. | exception |
 | 14 | /// | Pending | Pending | This transaction is awaiting a status update from the provider. | pending |
 | 2 | Recipient action required | Recipient action required | Recipient action required | This transaction requires an action by the recipient. | recipent_action_required |
 | 21 | /// | Pickupable | Pickupable | This transaction requires an action by the recipient. | recipent_action_required |
@@ -87,7 +88,8 @@ We categorize most errors into the following categories:
 
 Occasionally a transaction has neither errored, nor has paid out. We call these transactions pending. There are two main cases for pending transactions:
 
-* For any kind of cash pickup transactions, pending means that the recipient has received a pickup notice, but didn't pick up the funds yet. These transactions can be cancelled, in which case the pickup notice will be invalidated and the recipient will not be able to use it to pick up the funds anymore.
+* For any kind of cash pickup transactions, pending means that the recipient has received a pickup notice, but didn't pick up the funds yet. This is also called the `recipient_action_required` state. These transactions can be cancelled, in which case the pickup notice will be invalidated and the recipient will not be able to use it to pick up the funds anymore.
+* For some providers there might need to be action taken by the beneficiary to pick up the funds, for example they need to sign a mandate form. TTransactions here will also be in the `recipient_action_required` state.
 * For other transactions pending means that the recipient's bank or mobile provider is still processing the transaction and will note at a later date whether it could deposit the funds or not. These transactions will have a `may_cancel` field set to `false`. If you try to cancel them using the `DELETE /v1/recipients/[TRANSFERZERO_RECIPIENT_ID]` endpoint they get cancelled right after we get confirmation from our bank or mobile provider that the funds could not be debited. However if the confirmation we receive says that the funds are sent out these transactions will not be cancelled, they will be marked as successful.
 
 <div class="alert alert-info" markdown="1">
