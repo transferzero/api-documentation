@@ -46,14 +46,14 @@ We categorize most errors into the following categories:
 | Error Code | Tier 1 | Tier 2 | Tier 3 | Description | Category |
 |-|-|-|-|-|-|
 | 0 | Success | Success | Success | The transaction was paid to the beneficiary. | paid |
-| 1 | Pending | Pending | Pending | This transaction is awaiting a status update from the provider. | unknown |
-| 11 | /// | Unknown | Unknown | This transaction is awaiting a status update from the provider. | unknown |
-| 12 | /// | Timeout error | Timeout error | This transaction is awaiting a status update from the provider. | unknown |
-| 13 | /// | Manual reconciliation required | Manual reconciliation required | This transaction requires manual verification. Please wait until this is done. | unknown |
-| 14 | /// | Pending | Pending | This transaction is awaiting a status update from the provider. | unknown |
-| 2 | Recipient action required | Recipient action required | Recipient action required | This transaction requires an action by the recipient. | pickupable |
-| 21 | /// | Pickupable | Pickupable | This transaction requires an action by the recipient. | pickupable |
-| 22 | /// | Mandate signing required | Mandate signing required  | This transaction required the recipient to sign a mandate before it can be deposited. | pickupable |
+| 1 | Pending | Pending | Pending | This transaction is awaiting a status update from the provider. | pending |
+| 11 | /// | Unknown | Unknown | This transaction is awaiting a status update from the provider. | pending |
+| 12 | /// | Timeout error | Timeout error | This transaction is awaiting a status update from the provider. | pending |
+| 13 | /// | Manual reconciliation required | Manual reconciliation required | This transaction requires manual verification. Please wait until this is done. | pending |
+| 14 | /// | Pending | Pending | This transaction is awaiting a status update from the provider. | pending |
+| 2 | Recipient action required | Recipient action required | Recipient action required | This transaction requires an action by the recipient. | recipent_action_required |
+| 21 | /// | Pickupable | Pickupable | This transaction requires an action by the recipient. | recipent_action_required |
+| 22 | /// | Mandate signing required | Mandate signing required  | This transaction required the recipient to sign a mandate before it can be deposited. | recipent_action_required |
 | 3 | Temporary error | Provider Error | Undefined provider error | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. | temporary_error |
 | 31 | /// | Switch Error | Undefined switch error | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |
 | 311 | /// | /// | Issuer/Switch inoperative | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |
@@ -79,6 +79,9 @@ We categorize most errors into the following categories:
 | 52 | /// | Invalid sender details | Invalid sender details | Invalid sender details provided. Please cancel this transaction. | sender_error |
 | 53 | /// | Invalid transaction details | Invalid transaction details | Invalid transaction details provided. Please cancel this transaction. | sender_error |
 | 531 | /// | /// | Invalid amount provided | Invalid transaction details provided. Please cancel this transaction. | sender_error |
+| 54 | /// | Explicit cancellation requested | Explicit cancellation requested | Transaction was requested to be cancelled at the provider. Please cancel this transaction. | sender_error |
+| 541 | /// | /// | Explicit cancellation requested by beneficiary | Transaction was cancelled by the beneficiary. Please update the recipient details. You can also cancel this transaction. | recipient_error |
+| 542 | /// | /// | Explicit cancellation requested by sender | Transaction was cancelled by the sender. Please cancel this transaction. | sender_error |
 
 # Pending transactions
 
