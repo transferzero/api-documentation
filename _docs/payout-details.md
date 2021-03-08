@@ -399,44 +399,7 @@ The payment reference can also be provided in the recipient details hash optiona
 
 ## XOF::Cash
 
-For Senegalese cash pickup requests there are two payout provider options available:
-
-1. Wari (default)
-2. Wizall
-
-For Wari cash pickup requests please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "774044436", // local Senegalese format
-  "cash_provider": "wari" // Optional
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="xof-cash-details" raw=data-raw %}
-
-Please note when sending Wari cash pickup requests you should subscribe to the `recipient.pending` webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt:
-
-{% capture data-raw %}
-```javascript
-{
-   (...)
-   "state":"pending",
-   "metadata": {
-     "payment_reference":"9M5GJRJUBCY"
-   },
-   (...)
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="xof-cash-pending" raw=data-raw %}
-
-The payment reference can also be provided in the recipient details hash optionally for Wari cash pickup requests in which case it will be used instead of the one we generate. The field you have to provide in the hash is called `reference`. If you wish to use this functionality, please contact us for more details.
+For Senegalese cash pickup requests we have the Wizall payout network available:
 
 For Wizall cash pickup requests please use:
 
