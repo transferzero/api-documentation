@@ -76,13 +76,15 @@ We categorize most errors into the following categories:
 | 432 | /// | /// | Recipient account has invalid status | Recipient account has invalid status. Please update the recipient details. You can also cancel this transaction. | recipient_error |
 | 44 | /// | Validation error | Name validation failed | Recipient name has failed name validation against the account holder name. Please update the recipient details. You can also canncel this transaction. | recipient_error |
 | 5 | Sender / Regulatory Error | Transaction error | Unspecified transaction error | Transaction cannot be processed. Please cancel this transaction. | sender_error |
-| 51 | /// | Banned sender | Sender not allowed to transact | Sender is not allowed to transact. Please cancel this transaction. | sender_error |
+| 51 | /// | AML suspicion | An AML suspicion alert was raised | An AML suspicion alert was raised. Please cancel this transaction. | sender_error |
+| 511 | /// | /// | Sender not allowed to transact | Sender is not allowed to transact. Please cancel this transaction. | sender_error |
 | 52 | /// | Invalid sender details | Invalid sender details | Invalid sender details provided. Please cancel this transaction. | sender_error |
 | 53 | /// | Invalid transaction details | Invalid transaction details | Invalid transaction details provided. Please cancel this transaction. | sender_error |
 | 531 | /// | /// | Invalid amount provided | Invalid transaction details provided. Please cancel this transaction. | sender_error |
 | 54 | /// | Explicit cancellation requested | Explicit cancellation requested | Transaction was requested to be cancelled at the provider. Please cancel this transaction. | sender_error |
 | 541 | /// | /// | Explicit cancellation requested by beneficiary | Transaction was cancelled by the beneficiary. Please update the recipient details. You can also cancel this transaction. | recipient_error |
 | 542 | /// | /// | Explicit cancellation requested by sender | Transaction was cancelled by the sender. Please cancel this transaction. | sender_error |
+| 543 | /// | /// | Explicit cancellation requested by provider | Transaction was cancelled by the provider. Please update the recipient details. You can also cancel this transaction. | recipient_error |
 
 # Pending transactions
 
