@@ -7,7 +7,11 @@ permalink: /docs/changelog/
 {:toc}
 
 Current version of the API is `1`
-Current version of the SDKs are `1.12.2`
+Current version of the SDKs are `1.12.3`
+
+1.12.3
+-----
+* Add XOF collections spec preview
 
 1.12.2
 -----

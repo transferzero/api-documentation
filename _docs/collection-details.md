@@ -162,3 +162,45 @@ The user will then need to follow the instructions as shown in the response's `o
 {% include language-tabbar.html prefix="collection-fp-out" raw=data-raw %}
 
 The user will then need to send the appropriate funds to the account details shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example). If the payment was sent as a Faster Payments transfer then the collection should arrive within 2 hours (but usually instantly) If Faster Payments transfer is not used, or the funds are sent from outside the UK then however this will be a Swift payment, which can take up to 5 business days to arrive. Once the payment has been received a `transaction.paid_in` webhook will be sent out.
+
+# XOF collection requests through PayDunya (Beta)
+
+To initiate an XOF collection through PayDunya, use the following details:
+
+{% capture data-raw %}
+```javascript
+"input_currency": "XOF",
+"payin_methods": [
+  {
+    "type": "XOF::Bank",
+    "in_details": {
+      "success_redirect_url": "http://redirect.back.to/paid",
+      "cancel_redirect_url": "http://redirect.back.to/cancelled"
+    },
+    "provider": "paydunya"
+  }
+],
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-xof-bank" raw=data-raw %}
+
+Please note both `success_redirect_url` and `cancel_redirect_url` are **optional** and:
+- The `success_redirect_url` is the URL where you wish the user to be redirected when the payment has been done,
+- The `cancel_redirect_url` is the URL where you wish the user to be redirected when the request has been rejected by the user.
+
+Once the transaction has been created the `out_details` will be:
+
+{% capture data-raw %}
+```javascript
+"out_details": {
+  "url": "https://paydunya.com/checkout/xxxxxxxx"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-xof-bank-out" raw=data-raw %}
+
+- The `url` is the URL where the user needs to be redirected to make payment.
+
+Once they are redirected, they will land on PayDunya's page where they shall choose which payment method to use.
