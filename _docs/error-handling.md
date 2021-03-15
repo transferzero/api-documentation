@@ -81,10 +81,10 @@ We categorize most errors into the following categories:
 | 52 | /// | Invalid sender details | Invalid sender details | Invalid sender details provided. Please cancel this transaction. | sender_error |
 | 53 | /// | Invalid transaction details | Invalid transaction details | Invalid transaction details provided. Please cancel this transaction. | sender_error |
 | 531 | /// | /// | Invalid amount provided | Invalid transaction details provided. Please cancel this transaction. | sender_error |
-| 54 | /// | Explicit cancellation requested | Explicit cancellation requested | Transaction was requested to be cancelled at the provider. Please cancel this transaction. | sender_error |
+| 54 | /// | Explicit cancellation requested | Explicit cancellation requested | Transaction was requested to be cancelled at the provider. Please cancel this transaction. | recipient_error |
 | 541 | /// | /// | Explicit cancellation requested by beneficiary | Transaction was cancelled by the beneficiary. Please update the recipient details. You can also cancel this transaction. | sender_error |
 | 542 | /// | /// | Explicit cancellation requested by sender | Transaction was cancelled by the sender. Please cancel this transaction. | sender_error |
-| 543 | /// | /// | Explicit cancellation requested by provider | Transaction was cancelled by the provider. Please update the recipient details. You can also cancel this transaction. | sender_error |
+| 543 | /// | /// | Explicit cancellation requested by provider | Transaction was cancelled by the provider. Please update the recipient details. You can also cancel this transaction. | recipient_error |
 
 # Pending transactions
 
