@@ -443,6 +443,42 @@ Please note that the fields above are generally considered optional for senders 
 
 ## XOF::Mobile
 
+### Ivory Coast
+
+For Ivory Coast mobile payments please use:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "first_name": "First",
+  "last_name": "Last",
+  "mobile_provider": "moov", // "moov", "mtn" or "orange"
+  "phone_number": "0535456361", // local Ivory Coast format
+  "country": "CI" // mandatory for Ivory Coast mobile payments
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xof-mobile-details" raw=data-raw %}
+
+The valid `mobile_provider` values for Ivory Coast are:
+
+{% capture data-raw %}
+```
+moov
+mtn
+orange
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
+
+<div class="alert alert-warning" markdown="1">
+**Warning** `XOF::Mobile` payouts to **Ivory Coast** are currently in beta phase.
+</div>
+
+### Senegal
+
 For Senegalese mobile payments please use:
 
 {% capture data-raw %}
@@ -451,14 +487,15 @@ For Senegalese mobile payments please use:
   "first_name": "First",
   "last_name": "Last",
   "mobile_provider": "orange", // "orange" or "tigo"
-  "phone_number": "774044436" // local Senegalese format
+  "phone_number": "774044436", // local Senegalese format
+  "country": "SN" // optional for Senegalese mobile payments
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="xof-mobile-details" raw=data-raw %}
 
-The valid `mobile_provider` values are:
+The valid `mobile_provider` values for Senegal are:
 
 {% capture data-raw %}
 ```
