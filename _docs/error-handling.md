@@ -40,7 +40,7 @@ We categorize most errors into the following categories:
 * `recipient_error`: errors where the problem is usually permanent. This includes issues like the recipient details being incorrect, or the recipient's account is locked. As occasionally we get invalid reports from our providers we sometimes retry these transactions as well, however it is usually unlikely that these transactions pay out in the future, and should either be cancelled, or the recipient's details should be changed. For these errors the `retriable` flag on the recipient will be set to `false`, however the `editable` flag will be `true`.
 * `sender_error`: these are issues where either the sender or the transaction details provided mean that the transaction cannot be paid out - even if the recipient details are changed. In this case both the `retriable` and the `editable` flag will be set to false.
 * `pending`: this is not an error, but means that the transaction has not yet been fully processed. Please see the next section for more details.
-* `exception`: errors where there was an unknown error during processing. These transactions will be investigated by the technical team, and will either be retried or need to be cancelled.
+* `exception` / `manual_reconciliation_required`: errors where there was an unknown error during processing. These transactions will be investigated by the technical team, and will either be retried or need to be cancelled.
 
 # Error codes
 
