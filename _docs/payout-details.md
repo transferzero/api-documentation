@@ -122,6 +122,15 @@ Standard Chartered Bank: 020100
 United Bank for Africa: 060100
 Zenith Bank: 120100
 Fidelity Bank: 240100
+CAL Bank: 140100
+ABSA Ghana Bank: 030100
+First Bank Nigeria: 200100
+Republic HFC Bank: 110100
+Guaranty Trust Bank: 230100
+First Atlantic Bank: 170100
+National Investment Bank: 050100
+Bank of Africa: 210100
+Agricultural Development Bank: 080100
 ```
 {% endcapture %}
 
@@ -143,6 +152,15 @@ Standard Chartered Bank: 13 digits
 United Bank for Africa: 13 or 14 digits
 Zenith Bank: 10 digits
 Fidelity Bank: 13 digits
+CAL Bank: 13 digits
+ABSA Ghana Bank: 10 digits
+First Bank Nigeria: 13 digits
+Republic HFC Bank: 13 digits
+Guaranty Trust Bank: 13 digits
+First Atlantic Bank: 13 digits
+National Investment Bank: 13 digits
+Bank of Africa: 11 digits
+Agricultural Development Bank: 16 digits
 ```
 {% endcapture %}
 
@@ -514,7 +532,7 @@ BJ
 **Note** `XOF::Bank` payouts are currently in beta phase. At this time, we offer payouts to accounts in Senegal and Benin only.
 </div>
 
-# SouthAfrica
+# South Africa
 
 ## ZAR::Bank
 
