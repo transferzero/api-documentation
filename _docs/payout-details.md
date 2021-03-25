@@ -110,27 +110,27 @@ The current banks supported and their `bank_codes` values are:
 
 {% capture data-raw %}
 ```
+ABSA Ghana Bank: 030100
 Access Bank: 280100
+Agricultural Development Bank: 080100
+Bank of Africa: 210100
 Barclays Bank: 030100
-GCB Bank: 040100
+CAL Bank: 140100
 Ecobank: 130100
+Fidelity Bank: 240100
+First Atlantic Bank: 170100
+First Bank Nigeria: 200100
 First National Bank: 330100
+GCB Bank: 040100
+Guaranty Trust Bank: 230100
 Heritage Bank: 370100
+National Investment Bank: 050100
 Prudential Bank: 180100
+Republic HFC Bank: 110100
 Stanbic Bank: 190100
 Standard Chartered Bank: 020100
 United Bank for Africa: 060100
 Zenith Bank: 120100
-Fidelity Bank: 240100
-CAL Bank: 140100
-ABSA Ghana Bank: 030100
-First Bank Nigeria: 200100
-Republic HFC Bank: 110100
-Guaranty Trust Bank: 230100
-First Atlantic Bank: 170100
-National Investment Bank: 050100
-Bank of Africa: 210100
-Agricultural Development Bank: 080100
 ```
 {% endcapture %}
 
@@ -140,27 +140,27 @@ Please note that there is no standard format across banks for account numbers in
 
 {% capture data-raw %}
 ```
+ABSA Ghana Bank: 10 digits
 Access Bank: 13 digits
+Agricultural Development Bank: 16 digits
+Bank of Africa: 11 digits
 Barclays Bank: 10 or 13 digits
-GCB Bank: 13 digits
+CAL Bank: 13 digits
 Ecobank: 13 or 16 digits
+Fidelity Bank: 13 digits
+First Atlantic Bank: 13 digits
+First Bank Nigeria: 13 digits
 First National Bank: 11 digits
+GCB Bank: 13 digits
+Guaranty Trust Bank: 13 digits
 Heritage Bank: 13 digits
+National Investment Bank: 13 digits
 Prudential Bank: 13 digits
+Republic HFC Bank: 13 digits
 Stanbic Bank: 13 digits
 Standard Chartered Bank: 13 digits
 United Bank for Africa: 13 or 14 digits
 Zenith Bank: 10 digits
-Fidelity Bank: 13 digits
-CAL Bank: 13 digits
-ABSA Ghana Bank: 10 digits
-First Bank Nigeria: 13 digits
-Republic HFC Bank: 13 digits
-Guaranty Trust Bank: 13 digits
-First Atlantic Bank: 13 digits
-National Investment Bank: 13 digits
-Bank of Africa: 11 digits
-Agricultural Development Bank: 16 digits
 ```
 {% endcapture %}
 
