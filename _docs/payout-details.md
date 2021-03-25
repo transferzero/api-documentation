@@ -409,13 +409,25 @@ For Wizall cash pickup requests please use:
   "first_name": "First",
   "last_name": "Last",
   "phone_number": "221774044436", // local or international format
-  "country": "SN", // Optional
+  "country": "CI", // Optional; Default value is "SN"
   "cash_provider": "wizall" // Mandatory
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="xof-cash-details" raw=data-raw %}
+
+The valid `country` values are:
+
+{% capture data-raw %}
+```
+CI
+ML
+SN
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xof-bank-country-values" raw=data-raw %}
 
 All senders trying to create Wizall cash pickup requests need to have the following details present:
 - `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID
