@@ -509,7 +509,7 @@ For West African bank payments in selected countries please use the following:
   "first_name": "First",
   "last_name": "Last",
   "bank_name": "BRM",
-  "iban": "SN08SN0000000000000000000000",
+  "iban": "SN1231234512345678901212", // BBAN format: AA123 12345 123456789012 12
   "bank_country": "SN" // "SN" or "BJ"
 }
 ```
