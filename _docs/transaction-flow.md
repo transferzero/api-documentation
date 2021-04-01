@@ -813,7 +813,7 @@ If WTR2 is not enabled, the `sender` will need to be provided with all of the fo
 </div>
 
 <div class="alert alert-warning" markdown="1">
-**Warning!** Due to regulatory requirements the WTR2 mode is not compatible with the `MAD::Cash` corridor. If you wish to use that payment corridor you'll still need to send in full sender details.
+**Warning!** Due to regulatory requirements the WTR2 mode is not compatible with the `MAD::Cash` and `XOF::Cash` corridors. Plese check the documentation on these corridors on what extra detail you need to provide to be compliant.
 </div>
 
 ### Re-using senders

@@ -110,18 +110,27 @@ The current banks supported and their `bank_codes` values are:
 
 {% capture data-raw %}
 ```
+ABSA Ghana Bank: 030100
 Access Bank: 280100
+Agricultural Development Bank: 080100
+Bank of Africa: 210100
 Barclays Bank: 030100
-GCB Bank: 040100
+CAL Bank: 140100
 Ecobank: 130100
+Fidelity Bank: 240100
+First Atlantic Bank: 170100
+First Bank Nigeria: 200100
 First National Bank: 330100
+GCB Bank: 040100
+Guaranty Trust Bank: 230100
 Heritage Bank: 370100
+National Investment Bank: 050100
 Prudential Bank: 180100
+Republic HFC Bank: 110100
 Stanbic Bank: 190100
 Standard Chartered Bank: 020100
 United Bank for Africa: 060100
 Zenith Bank: 120100
-Fidelity Bank: 240100
 ```
 {% endcapture %}
 
@@ -131,18 +140,27 @@ Please note that there is no standard format across banks for account numbers in
 
 {% capture data-raw %}
 ```
+ABSA Ghana Bank: 10 digits
 Access Bank: 13 digits
+Agricultural Development Bank: 16 digits
+Bank of Africa: 11 digits
 Barclays Bank: 10 or 13 digits
-GCB Bank: 13 digits
+CAL Bank: 13 digits
 Ecobank: 13 or 16 digits
+Fidelity Bank: 13 digits
+First Atlantic Bank: 13 digits
+First Bank Nigeria: 13 digits
 First National Bank: 11 digits
+GCB Bank: 13 digits
+Guaranty Trust Bank: 13 digits
 Heritage Bank: 13 digits
+National Investment Bank: 13 digits
 Prudential Bank: 13 digits
+Republic HFC Bank: 13 digits
 Stanbic Bank: 13 digits
 Standard Chartered Bank: 13 digits
 United Bank for Africa: 13 or 14 digits
 Zenith Bank: 10 digits
-Fidelity Bank: 13 digits
 ```
 {% endcapture %}
 
@@ -409,13 +427,25 @@ For Wizall cash pickup requests please use:
   "first_name": "First",
   "last_name": "Last",
   "phone_number": "221774044436", // local or international format
-  "country": "SN", // Optional
+  "country": "CI", // Optional; Default value is "SN"
   "cash_provider": "wizall" // Mandatory
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="xof-cash-details" raw=data-raw %}
+
+The valid `country` values are:
+
+{% capture data-raw %}
+```
+CI
+ML
+SN
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xof-bank-country-values" raw=data-raw %}
 
 All senders trying to create Wizall cash pickup requests need to have the following details present:
 - `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID
@@ -516,7 +546,7 @@ For West African bank payments in selected countries please use the following:
   "first_name": "First",
   "last_name": "Last",
   "bank_name": "BRM",
-  "iban": "SN08SN0000000000000000000000",
+  "iban": "SN1231234512345678901212", // BBAN format: AA123 12345 123456789012 12
   "bank_country": "SN" // "SN" or "BJ"
 }
 ```
@@ -539,7 +569,7 @@ BJ
 **Note** `XOF::Bank` payouts are currently in beta phase. At this time, we offer payouts to accounts in Senegal and Benin only.
 </div>
 
-# SouthAfrica
+# South Africa
 
 ## ZAR::Bank
 
