@@ -480,7 +480,7 @@ For mobile payouts to Senegal and Ivory Coast, please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "mobile_provider": "orange", // lowercase, see supported providers below
+  "mobile_provider": "orange", // lowercase, see provider values below
   "phone_number": "774044436", // mobile number in local country format
   "country": "SN" // "SN" for Senegal (default), "CI" for Ivory Coast
 }
