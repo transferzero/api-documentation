@@ -110,11 +110,10 @@ The current banks supported and their `bank_codes` values are:
 
 {% capture data-raw %}
 ```
-ABSA Ghana Bank: 030100
+ABSA Ghana Bank (formerly Barclays): 030100
 Access Bank: 280100
 Agricultural Development Bank: 080100
 Bank of Africa: 210100
-Barclays Bank: 030100
 CAL Bank: 140100
 Ecobank: 130100
 Fidelity Bank: 240100
@@ -140,11 +139,10 @@ Please note that there is no standard format across banks for account numbers in
 
 {% capture data-raw %}
 ```
-ABSA Ghana Bank: 10 digits
+ABSA Ghana Bank (formerly Barclays): 10 or 13 digits
 Access Bank: 13 digits
 Agricultural Development Bank: 16 digits
 Bank of Africa: 11 digits
-Barclays Bank: 10 or 13 digits
 CAL Bank: 13 digits
 Ecobank: 13 or 16 digits
 Fidelity Bank: 13 digits
