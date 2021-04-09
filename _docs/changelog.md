@@ -7,7 +7,12 @@ permalink: /docs/changelog/
 {:toc}
 
 Current version of the API is `1`
-Current version of the SDKs are `1.12.2`
+Current version of the SDKs are `1.13.0`
+
+1.13.0
+-----
+* Add support for the `GHS::Cash` corridor
+* Add support for `XOF::Mobile` payouts to Ivory Coast
 
 1.12.2
 -----
