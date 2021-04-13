@@ -551,7 +551,7 @@ BJ
 
 ## ZAR::Bank
 
-For South African bank payments please use:
+For South African bank payments please use the following recipient details:
 
 {% capture data-raw %}
 ```javascript
@@ -638,7 +638,7 @@ Proceeds for other business services not included elsewhere: 309
 
 {% include language-tabbar.html prefix="zar-transfer-reason-codes" raw=data-raw %}
 
-Please note that due to regulatory reasons senders trying to create `ZAR::Bank` transactions are required to have the following fields on the sender present:
+Please note that due to regulatory reasons senders trying to create `ZAR::Bank` transactions are required to have the following fields on the sender present as well:
 `street`, `city` and `postal_code`
 
 <div class="alert alert-info" markdown="1">
