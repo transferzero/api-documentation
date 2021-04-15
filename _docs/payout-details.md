@@ -233,25 +233,6 @@ For Ugandan mobile payments please use:
 **Note!** The provider might check the name against the registered holder of the mobile number and block transactions if they don't match.
 </div>
 
-# Tanzania
-
-## TZS::Mobile
-
-For Tanzanian mobile payments please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "221231234"
-    // local Tanzanian format
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="tzs-mobile-details" raw=data-raw %}
-
 # Europe / SEPA
 
 ## EUR::Bank
