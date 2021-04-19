@@ -491,6 +491,10 @@ orange
 
 {% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
 
+<div class="alert alert-info" markdown="1">
+**Note** Amounts for `XOF::Mobile` payouts to **Ivory Coast 'Orange'** mobile numbers should be multiples of 5.
+</div>
+
 <div class="alert alert-warning" markdown="1">
 **Warning** `XOF::Mobile` payouts to **Ivory Coast** are currently in beta phase.
 </div>
