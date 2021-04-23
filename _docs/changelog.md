@@ -7,11 +7,7 @@ permalink: /docs/changelog/
 {:toc}
 
 Current version of the API is `1`
-Current version of the SDKs are `1.14.0`
-
-1.14.0
------
-* Add support for `XOF::Mobile` payins
+Current version of the SDKs are `1.13.0`
 
 1.13.0
 -----
