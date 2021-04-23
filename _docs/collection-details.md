@@ -36,6 +36,28 @@ Please note that Interpay GHS Mobile collections does not work with Vodafone Cas
 
 Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
 
+# XOF mobile collections
+
+To initiate a XOF mobile collections please use the following details:
+
+{% capture data-raw %}
+```javascript
+"input_currency": "XOF",
+"payin_methods": [
+  {
+    "type": "XOF::Mobile",
+    "in_details": {}
+  }
+],
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-xof" raw=data-raw %}
+
+Once the transaction is created the customer will receive a url where the customer will have to provide phone number and temporary authorisation code (fetched by USSD code).
+
+Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
+
 # TZS and UGX mobile collection using Beyonic
 
 To initiate a GHS mobile collections please use the following details:
