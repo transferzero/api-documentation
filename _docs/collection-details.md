@@ -54,7 +54,7 @@ To initiate a XOF mobile collections please use the following details:
 
 {% include language-tabbar.html prefix="collection-xof" raw=data-raw %}
 
-Once the transaction is created the customer will receive a url where the customer will have to provide phone number and temporary authorisation code (fetched by USSD code).
+Once the transaction is created you will receive an URL where the customer will have to provide phone number and temporary authorisation code (fetched by USSD code).
 
 Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
 
