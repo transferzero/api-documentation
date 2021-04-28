@@ -8,7 +8,7 @@ permalink: /docs/collection-details/
 
 This document lists the required details that needs to be sent for each of our collection corridor
 
-# GHS mobile collections through Interpay
+# GHS mobile collections
 
 To initiate a GHS mobile collections please use the following details:
 
@@ -21,8 +21,7 @@ To initiate a GHS mobile collections please use the following details:
     "in_details": {
       "phone_number": "+2569999999",
       "send_instructions": true
-    },
-    "provider": "interpay"
+    }
   }
 ],
 ```
@@ -32,7 +31,7 @@ To initiate a GHS mobile collections please use the following details:
 
 Once the transaction is created the specified phone number will receive instructions on how to pay in the requested amount.
 
-Please note that Interpay GHS Mobile collections does not work with Vodafone Cash. Also if the customer does not have enough funds to pay the transaction they might not receive the payment prompt to their phone. In this case the transaction request should be re-sent, once the customer has confirmed they have enough funds.
+Please note that GHS Mobile collections does not work with Vodafone Cash. Also if the customer does not have enough funds to pay the transaction they might not receive the payment prompt to their phone. In this case the transaction request should be re-sent, once the customer has confirmed they have enough funds.
 
 Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
 
@@ -58,7 +57,7 @@ Once the transaction is created you will receive an URL where the customer will 
 
 Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
 
-# TZS and UGX mobile collection using Beyonic
+# TZS and UGX mobile collection
 
 To initiate a GHS mobile collections please use the following details:
 
@@ -71,8 +70,7 @@ To initiate a GHS mobile collections please use the following details:
     "in_details": {
       "phone_number": "+2559999999",
       "send_instructions": true
-    },
-    "provider": "beyonic"
+    }
   }
 ],
 ```
@@ -110,7 +108,6 @@ To initiate EUR IBAN collections please use the following details:
 "payin_methods": [
   {
     "type": "EUR::Bank",
-    "provider": "lhv"
   }
 ],
 ```
@@ -155,7 +152,6 @@ To initiate GBP Faster Payments collections please use the following details:
 "payin_methods": [
   {
     "type": "GBP::Bank", // or EUR::Bank
-    "provider": "lhv"
   }
 ],
 ```
