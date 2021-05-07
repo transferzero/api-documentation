@@ -110,11 +110,10 @@ The current banks supported and their `bank_codes` values are:
 
 {% capture data-raw %}
 ```
-ABSA Ghana Bank: 030100
+ABSA Ghana Bank (formerly Barclays): 030100
 Access Bank: 280100
 Agricultural Development Bank: 080100
 Bank of Africa: 210100
-Barclays Bank: 030100
 CAL Bank: 140100
 Ecobank: 130100
 Fidelity Bank: 240100
@@ -140,11 +139,10 @@ Please note that there is no standard format across banks for account numbers in
 
 {% capture data-raw %}
 ```
-ABSA Ghana Bank: 10 digits
+ABSA Ghana Bank (formerly Barclays): 10 or 13 digits
 Access Bank: 13 digits
 Agricultural Development Bank: 16 digits
 Bank of Africa: 11 digits
-Barclays Bank: 10 or 13 digits
 CAL Bank: 13 digits
 Ecobank: 13 or 16 digits
 Fidelity Bank: 13 digits
@@ -234,25 +232,6 @@ For Ugandan mobile payments please use:
 <div class="alert alert-info" markdown="1">
 **Note!** The provider might check the name against the registered holder of the mobile number and block transactions if they don't match.
 </div>
-
-# Tanzania
-
-## TZS::Mobile
-
-For Tanzanian mobile payments please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "221231234"
-    // local Tanzanian format
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="tzs-mobile-details" raw=data-raw %}
 
 # Europe / SEPA
 
@@ -367,8 +346,6 @@ For Cashplus cash pickup requests please use:
 Due to regulatory reasons all senders trying to create `MAD::Cash` transactions need to have the following details present:
 - `"identification_type" => "OT"` - Values: `"OT"`: Other, `"PP"`: Passport, `"ID"`: National ID
 - `"identification_number" => "AB12345678"`
-- `"city_of_birth" => "London"`
-- `"country_of_birth" => "GB"` - ISO 2-letter format
 - `"gender" => "M"` - Values: `"M"`: Male, `"F"`: Female
 
 Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
@@ -473,22 +450,23 @@ Please note that the fields above are generally considered optional for senders 
 
 ## XOF::Mobile
 
-For Senegalese mobile payments please use:
+For mobile payouts to Senegal and Ivory Coast, please use:
 
 {% capture data-raw %}
 ```javascript
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "mobile_provider": "orange", // "orange" or "tigo"
-  "phone_number": "774044436" // local Senegalese format
+  "mobile_provider": "orange", // lowercase, see provider values below
+  "phone_number": "774044436", // mobile number in local country format
+  "country": "SN" // "SN" for Senegal (default), "CI" for Ivory Coast
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="xof-mobile-details" raw=data-raw %}
 
-The valid `mobile_provider` values are:
+The valid `mobile_provider` values for Senegal are:
 
 {% capture data-raw %}
 ```
@@ -498,6 +476,26 @@ tigo
 {% endcapture %}
 
 {% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
+
+The valid `mobile_provider` values for Ivory Coast are:
+
+{% capture data-raw %}
+```
+moov
+mtn
+orange
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
+
+<div class="alert alert-info" markdown="1">
+**Note** Amounts for `XOF::Mobile` payouts to **Ivory Coast 'Orange'** mobile numbers should be multiples of 5.
+</div>
+
+<div class="alert alert-warning" markdown="1">
+**Warning** `XOF::Mobile` payouts to **Ivory Coast** are currently in beta phase.
+</div>
 
 ## XOF::Bank
 
@@ -536,7 +534,7 @@ BJ
 
 ## ZAR::Bank
 
-For South African bank payments please use:
+For South African bank payments please use the following recipient details:
 
 {% capture data-raw %}
 ```javascript
@@ -623,7 +621,7 @@ Proceeds for other business services not included elsewhere: 309
 
 {% include language-tabbar.html prefix="zar-transfer-reason-codes" raw=data-raw %}
 
-Please note that due to regulatory reasons senders trying to create `ZAR::Bank` transactions are required to have the following fields on the sender present:
+Please note that due to regulatory reasons senders trying to create `ZAR::Bank` transactions are required to have the following fields on the sender present as well:
 `street`, `city` and `postal_code`
 
 <div class="alert alert-info" markdown="1">
