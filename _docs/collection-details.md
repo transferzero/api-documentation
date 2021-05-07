@@ -8,7 +8,7 @@ permalink: /docs/collection-details/
 
 This document lists the required details that needs to be sent for each of our collection corridor
 
-# GHS mobile collections through Interpay
+# GHS mobile collections
 
 To initiate a GHS mobile collections please use the following details:
 
@@ -57,7 +57,7 @@ Once the transaction is created you will receive an URL where the customer will 
 
 Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
 
-# TZS and UGX mobile collection using Beyonic
+# TZS and UGX mobile collection
 
 To initiate a GHS mobile collections please use the following details:
 
