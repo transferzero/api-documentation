@@ -346,7 +346,6 @@ For Cashplus cash pickup requests please use:
 Due to regulatory reasons all senders trying to create `MAD::Cash` transactions need to have the following details present:
 - `"identification_type" => "OT"` - Values: `"OT"`: Other, `"PP"`: Passport, `"ID"`: National ID
 - `"identification_number" => "AB12345678"`
-- `"gender" => "M"` - Values: `"M"`: Male, `"F"`: Female
 
 Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
 
@@ -356,7 +355,8 @@ Please note that the fields above are generally considered optional for senders 
   "transaction": {
       "sender": {
         "external_id": "<id of sender>",
-        "gender": "M",
+        "identification_type": "OT",
+        "identification_number": "AB12345678"
         (...)
       },
       (...)
