@@ -364,6 +364,7 @@ The valid values for the company type / legal entity type are the following:
 
 {% capture data-raw %}
 ```markdown
+- sole_proprietorship: Sole Proprietorship
 - partnership: Partnership
 - privately_owned_company: Privately Owned Company (Limited Company)
 - publicly_owned_company: Publicly Listed Company (PLC)

@@ -534,7 +534,9 @@ BJ
 
 ## ZAR::Bank
 
-For South African bank payments please use the following recipient details:
+For South African bank payments please use the following recipient details.
+
+Personal recipient:
 
 {% capture data-raw %}
 ```javascript
@@ -553,7 +555,31 @@ For South African bank payments please use the following recipient details:
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="zar-bank-details" raw=data-raw %}
+{% include language-tabbar.html prefix="zar-bank-details-personal" raw=data-raw %}
+
+Business recipient:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "name": "Company name",
+  "street": "14 Main Street", // should include house number as well
+  "postal_code": "AB0001",
+  "city": "Cape Town",
+  "email": "recipient@email.com", // optional, but highly recommended
+  "bank_code": "334810",
+  "bank_account": "12345678",
+  "phone_number": "+27119785313",
+  "transfer_reason_code": "185",
+  "entity_type": "privately_owned_company",
+  "registration_number": "VAT1234567",
+  "nature_of_business": "retail_trade"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="zar-bank-details-business" raw=data-raw %}
+
 
 The current banks supported and their `bank_codes` values are:
 
@@ -578,6 +604,22 @@ Bank Zero: 888000
 {% endcapture %}
 
 {% include language-tabbar.html prefix="zar-bank-codes" raw=data-raw %}
+
+The company types supported and corresponding `entity_type` are:
+
+{% capture data-raw %}
+```
+Sole Proprietorship: sole_proprietorship
+Partnership: partnership
+Privately Owned Company (Limited Company): privately_owned_company
+Publicly Listed Company (PLC): publicly_owned_company
+Government Owned Entity Trusts: government_owned_entity
+GO (Majority Owned Subsidiary of State-Owned Company): go
+Financial Institution: financial_institution
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="zar-entity-types" raw=data-raw %}
 
 List of transfer reasons and corresponding `transfer_reason_code` are:
 
