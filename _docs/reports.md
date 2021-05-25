@@ -7,9 +7,10 @@ permalink: /docs/reports-api/
 {:toc}
 
 <div class="alert alert-info"><b>Note!</b> Every API call needs to be authenticated. See the <a href="{{ "/docs/authentication/" | prepend: site.baseurl }}" class="alert-link">Authentication section</a> for more details on the authentication process.</div>
+<div class="alert alert-info"><b>Note!</b> This is not yet available through the SDK.</div>
 
 ## Available reports
-To retrieve a list of available reports, make a `GET` request to `https://report-engine.transferzero.com/reports`, which can take the following **optional** querystring values:
+To retrieve a list of available reports, make a `GET` request to `https://report-engine.transferzero.com/reports`, which takes the following **optional** querystring values. These parameters are used to filter the list of reports available. If they are not provided, you will simply receive a list of _all_ reports for your API key.
 
 * `type=transaction` or `account`
 * `environment=test` or `live`
@@ -18,7 +19,7 @@ To retrieve a list of available reports, make a `GET` request to `https://report
 https://report-engine.transferzero.com/reports?type=transaction&environment=test
 ```
 
-<div class="alert alert-info"><b>Note!</b> The complete URL - including querystrings - is required when generating the `Authorization-Signature`.</div>
+<div class="alert alert-info"><b>Note!</b> The complete URL - including querystrings - is required when generating the Authorization-Signature.</div>
 
 You should then receive a response containing a list of reports available for download - example below:
 
