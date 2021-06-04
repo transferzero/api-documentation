@@ -570,6 +570,8 @@ Business recipient:
   "bank_code": "334810",
   "bank_account": "12345678",
   "phone_number": "+27119785313",
+  "contact_first_name": "First",
+  "contact_last_name": "Last",
   "transfer_reason_code": "185",
   "entity_type": "privately_owned_company",
   "registration_number": "VAT1234567",
