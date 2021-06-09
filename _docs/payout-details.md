@@ -87,6 +87,40 @@ For Nigerian mobile payments please use:
 **Warning!** The recipient has to be registered and KYC'd with <https://www.mypaga.com>{: .alert-link} before they can receive funds. If they are not registered when the payment occurs then Paga can hold the funds until the user registers and approves themselves.
 </div>
 
+## USD::Bank
+
+For USD to USD bank payments in Nigeria please use:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "phone_number": "+2341234567",
+  "bank_code": "057",
+  "bank_account": "1234567890"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="usd-bank-details" raw=data-raw %}
+
+The valid `bank_code` values are:
+
+{% capture data-raw %}
+```
+FCMB Bank: 214
+United Bank for Africa: 033
+Zenith International: 057
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="usd-bank-details" raw=data-raw %}
+
+<div class="alert alert-warning" markdown="1">
+**Warning** `USD::Bank` payouts in Nigeria are currently in beta phase.
+</div>
+
 # Ghana
 
 ## GHS::Bank
