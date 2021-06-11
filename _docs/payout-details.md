@@ -89,7 +89,7 @@ For Nigerian mobile payments please use:
 
 ## USD::Bank
 
-For USD to USD bank payments in Nigeria please use:
+For USD bank payments in Nigeria please use:
 
 {% capture data-raw %}
 ```javascript
