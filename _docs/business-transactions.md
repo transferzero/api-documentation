@@ -387,42 +387,42 @@ The valid values for the industry / nature of business are the following:
 
 {% capture data-raw %}
 ```markdown
-- personal: Personal
-- agriculture_and_hunting: Agriculture and Hunting
-- forestry: Forestry
-- fishing: Fishing
-- agricultural_by_products: Agricultural By-Products
-- coal_mining: Coal Mining
-- oil_mining: Oil Mining
-- iron_ore_mining: Iron Ore Mining
-- other_metal_and_diamond_mining: Other Metal and Diamond Mining
-- other_mineral_mining: Other Mineral Mining
-- manufacturing_of_food_drink_tobacco: Manufacture of Food/Drink/Tobacco
-- manufacturing_of_textiles_leather_fur_furniture: Manufacture of Textiles/Leather/Fur/Furniture
-- manufacture_of_wooden_products_furniture: Manufacture of Wooden Products/Furniture
-- manufacture_of_paper_pulp_allied_products: Manufacture of Paper/Pulp/Allied Products
-- manufacture_of_chemicals_medical_petroleum_rubber_plastic_products: Manufacture Of Chemicals Medical Petroleum Rubber Plastic Products
-- manufacture_of_pottery_china_glass_stone: Manufacture Of Pottery China Glass Stone
-- manufacture_of_iron_steel_non_ferrous_metals_basic_industries: Manufacture Of Iron Steel Non-Ferrous Metals Basic Industries
-- manufacture_of_metal_products_electrical_and_scientific_engineering: Manufacture Of Metal Products Electrical And Scientific Engineering
-- manufacture_of_jewelry_musical_instruments_toys: Manufacture Of Jewelry Musical Instruments Toys
-- electricity_gas_and_water: Electricity, Gas And Water
-- construction: Construction
-- wholesale_trade: Wholesale Trade
-- retail_trade: Retail Trade
-- catering_incl_hotels: Catering Incl. Hotels
-- transport_storage: Transport Storage
-- communications: Communications
-- finance_and_holding_companies: Finance And Holding Companies
-- insurance: Insurance
-- business_services: Business Services
-- real_estate_development_investment: Real Estate Development Investment
-- central_state_governments: Central State Governments
-- community_services_defence_police_prisons_etc: Community Services Defence Police Prisons Etc
-- social_services_education_health_care: Social Services Education Health Care
-- personal_services_leisure_services: Personal Services - Leisure Services
-- personal_services_domestic_laundry_repairs: Personal Services - Domestic Laundry Repairs
-- personal_services_embassies_international_organisations: Personal Services - Embassies
+- Personal: personal
+- Agriculture and Hunting: agriculture_and_hunting
+- Forestry: forestry
+- Fishing: fishing
+- Agricultural By-Products: agricultural_by_products
+- Coal Mining: coal_mining
+- Oil Mining: oil_mining
+- Iron Ore Mining: iron_ore_mining
+- Other Metal and Diamond Mining: other_metal_and_diamond_mining
+- Other Mineral Mining: other_mineral_mining
+- Manufacture of Food/Drink/Tobacco: manufacturing_of_food_drink_tobacco
+- Manufacture of Textiles/Leather/Fur/Furniture: manufacturing_of_textiles_leather_fur_furniture
+- Manufacture of Wooden Products/Furniture: manufacture_of_wooden_products_furniture
+- Manufacture of Paper/Pulp/Allied Products: manufacture_of_paper_pulp_allied_products
+- Manufacture Of Chemicals Medical Petroleum Rubber Plastic Products: manufacture_of_chemicals_medical_petroleum_rubber_plastic_products
+- Manufacture Of Pottery China Glass Stone: manufacture_of_pottery_china_glass_stone
+- Manufacture Of Iron Steel Non-Ferrous Metals Basic Industries: manufacture_of_iron_steel_non_ferrous_metals_basic_industries
+- Manufacture Of Metal Products Electrical And Scientific Engineering: manufacture_of_metal_products_electrical_and_scientific_engineering
+- Manufacture Of Jewelry Musical Instruments Toys: manufacture_of_jewelry_musical_instruments_toys
+- Electricity, Gas And Water: electricity_gas_and_water
+- Construction: construction
+- Wholesale Trade: wholesale_trade
+- Retail Trade: retail_trade
+- Catering Incl. Hotels: catering_incl_hotels
+- Transport Storage: transport_storage
+- Communications: communications
+- Finance And Holding Companies: finance_and_holding_companies
+- Insurance: insurance
+- Business Services: business_services
+- Real Estate Development Investment: real_estate_development_investment
+- Central State Governments: central_state_governments
+- Community Services Defence Police Prisons Etc: community_services_defence_police_prisons_etc
+- Social Services Education Health Care: social_services_education_health_care
+- Personal Services - Leisure Services: personal_services_leisure_services
+- Personal Services - Domestic Laundry Repairs: personal_services_domestic_laundry_repairs
+- Personal Services - Embassies: personal_services_embassies_international_organisations
 ```
 {% endcapture %}
 
