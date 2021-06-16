@@ -9,7 +9,7 @@ permalink: /docs/changelog/
 Current version of the API is `1`
 Current version of the SDKs are `1.14.1`
 
-1.14.0
+1.14.1
 -----
 * Update `ZAR::Bank` business payout details
 
