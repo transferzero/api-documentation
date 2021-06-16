@@ -11,7 +11,8 @@ Current version of the SDKs are `1.14.1`
 
 1.14.0
 -----
-* Update `ZAR::Bank` business payout details
+* Rename `entity_type` to `legal_entity_type` for`ZAR::Bank` business payouts
+* Make `nature_of_business` and `registration_number` optional for `ZAR::Bank` business payouts
 
 1.14.0
 -----
