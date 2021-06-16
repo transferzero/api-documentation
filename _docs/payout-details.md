@@ -573,9 +573,9 @@ Business recipient:
   "contact_first_name": "First",
   "contact_last_name": "Last",
   "transfer_reason_code": "185",
-  "entity_type": "privately_owned_company",
-  "registration_number": "VAT1234567",
-  "nature_of_business": "retail_trade"
+  "legal_entity_type": "privately_owned_company",
+  "registration_number": "VAT1234567", // optional
+  "nature_of_business": "retail_trade" // optional
 }
 ```
 {% endcapture %}
@@ -607,7 +607,7 @@ Bank Zero: 888000
 
 {% include language-tabbar.html prefix="zar-bank-codes" raw=data-raw %}
 
-The company types supported and corresponding `entity_type` are:
+The company types supported and corresponding `legal_entity_type` are:
 
 {% capture data-raw %}
 ```
