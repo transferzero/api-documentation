@@ -25,7 +25,7 @@ For Nigerian bank payments please use:
   "last_name": "Last",
   "bank_code": "058",
   "bank_account": "123456789",
-  "bank_account_type": "10"
+  "bank_account_type": "10" // Optional
     // 10 for saving
     // 20 for current accounts
 }
@@ -244,8 +244,8 @@ For EUR IBAN transfers please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "bank_name": "Deutsche Bank",
   "iban": "DE89370400440532013000",
+  "bank_name": "Deutsche Bank", // Optional
   "bic": "DEUTDEBBXXX" // Optional
 }
 ```
