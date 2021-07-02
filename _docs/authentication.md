@@ -8,10 +8,10 @@ permalink: /docs/authentication/
 
 <div class="alert alert-info"><b>Note!</b> Instead of implementing authentication on your own please <a href="{{ "/docs/sdks/" | prepend: site.baseurl }}" class="alert-link">try using our SDKs</a> available in multiple frameworks and languages which support our authentication mechanism out of the box</div>
 
-Authentication with the TransferZero API relies on correctly setting the headers on each request with the following data:
+Authentication with the AZA Finance API relies on correctly setting the headers on each request with the following data:
 
 * **Accept** and **Content-Type** should be "application/json"
-* **Authorization-Key** is your application"s API key, which can be received from the [TransferZero developer portal](https://developers.transferzero.com)
+* **Authorization-Key** is your application"s API key, which can be received from the [AZA Finance developer portal](https://developers.transferzero.com)
 * **Authorization-Nonce** is a string, which must be unique per request - generating a new GUID for every request is the preferred approach
 * **Authorization-Signature** is a HMAC-SHA512 digest of the nonce, request method, URL, and a SHA512 hash of the request body - you will need your API Secret, also available on the developer portal, to sign
 
@@ -113,4 +113,4 @@ Please check our SDKs on how thhey implement thhe authentication mechanism
 * For testing, use `https://api-sandbox.transferzero.com`
 * For production, use `https://api.transferzero.com`
 
-You will need a valid API Key and API Secret for each environment, obtainable in the [TransferZero developer portal](https://developers.transferzero.com) once your application has been approved.
+You will need a valid API Key and API Secret for each environment, obtainable in the [AZA Finance developer portal](https://developers.transferzero.com) once your application has been approved.

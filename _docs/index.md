@@ -4,9 +4,9 @@ permalink: /docs/home/
 redirect_from: /docs/index.html
 ---
 
-The TransferZero API allows users to create transactions programmatically to send and receive money from various African countries. This documentation provides a tutorial for the most common flows of using the API.
+The AZA Finance API allows users to create transactions programmatically to send and receive money from various African countries. This documentation provides a tutorial for the most common flows of using the API.
 
-To use our API please register and obtain valid API keys on the [TransferZero developer portal](https://developers.transferzero.com). Once you obtain these keys please [contact our team](mailto:info@transferzero.com), so they can set up your environment. This includes setting up a Slack channel where you can ask technical questions, and they will also enable your API key so they can be used on our sandbox environment.
+To use our API please register and obtain valid API keys on the [AZA Finance developer portal](https://developers.transferzero.com). Once you obtain these keys please [contact our team](mailto:info@transferzero.com), so they can set up your environment. This includes setting up a Slack channel where you can ask technical questions, and they will also enable your API key so they can be used on our sandbox environment.
 
 <div class="alert alert-warning" markdown="1">
 **Warning!** You need to contact us to get your API keys enabled before you can use our sandbox environment.
