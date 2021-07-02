@@ -167,7 +167,7 @@ In case the account number doesn't exist at the bank or there is a connectivity 
 
 # Collections from senders
 
-The TransferZero API can also be used to collect money from various senders.
+The AZA Finance API can also be used to collect money from various senders.
 
 For the supported collection corridors please see the [collection details documentation]({{ "/docs/collection-details/" | prepend: site.baseurl }}).
 
