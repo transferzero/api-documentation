@@ -25,7 +25,7 @@ For Nigerian bank payments please use:
   "last_name": "Last",
   "bank_code": "058",
   "bank_account": "123456789",
-  "bank_account_type": "10"
+  "bank_account_type": "10" // Optional
     // 10 for saving
     // 20 for current accounts
 }
@@ -85,6 +85,41 @@ For Nigerian mobile payments please use:
 
 <div class="alert alert-warning" markdown="1">
 **Warning!** The recipient has to be registered and KYC'd with <https://www.mypaga.com>{: .alert-link} before they can receive funds. If they are not registered when the payment occurs then Paga can hold the funds until the user registers and approves themselves.
+</div>
+
+## USD::Bank
+
+For USD bank payments in Nigeria please use:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "phone_number": "+2341234567",
+  "bank_code": "057",
+  "bank_account": "1234567890",
+  "country": "NG"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="usd-bank-details" raw=data-raw %}
+
+The valid `bank_code` values are:
+
+{% capture data-raw %}
+```
+FCMB Bank: 214
+United Bank for Africa: 033
+Zenith International: 057
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="usd-bank-details" raw=data-raw %}
+
+<div class="alert alert-warning" markdown="1">
+**Warning** `USD::Bank` payouts in Nigeria are currently in beta phase.
 </div>
 
 # Ghana
@@ -244,8 +279,8 @@ For EUR IBAN transfers please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "bank_name": "Deutsche Bank",
   "iban": "DE89370400440532013000",
+  "bank_name": "Deutsche Bank", // Optional
   "bic": "DEUTDEBBXXX" // Optional
 }
 ```
@@ -346,9 +381,6 @@ For Cashplus cash pickup requests please use:
 Due to regulatory reasons all senders trying to create `MAD::Cash` transactions need to have the following details present:
 - `"identification_type" => "OT"` - Values: `"OT"`: Other, `"PP"`: Passport, `"ID"`: National ID
 - `"identification_number" => "AB12345678"`
-- `"city_of_birth" => "London"`
-- `"country_of_birth" => "GB"` - ISO 2-letter format
-- `"gender" => "M"` - Values: `"M"`: Male, `"F"`: Female
 
 Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
 
@@ -358,7 +390,8 @@ Please note that the fields above are generally considered optional for senders 
   "transaction": {
       "sender": {
         "external_id": "<id of sender>",
-        "gender": "M",
+        "identification_type": "OT",
+        "identification_number": "AB12345678"
         (...)
       },
       (...)
@@ -536,7 +569,9 @@ BJ
 
 ## ZAR::Bank
 
-For South African bank payments please use the following recipient details:
+For South African bank payments please use the following recipient details.
+
+Personal recipient:
 
 {% capture data-raw %}
 ```javascript
@@ -555,31 +590,93 @@ For South African bank payments please use the following recipient details:
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="zar-bank-details" raw=data-raw %}
+{% include language-tabbar.html prefix="zar-bank-details-personal" raw=data-raw %}
 
-The current banks supported and their `bank_codes` values are:
+Business recipient:
 
 {% capture data-raw %}
-```
-Standard Bank: 051001
-First National Bank: 250655
-ABSA: 632005
-Nedbank: 198765
-Investec: 580105
-Capitec Bank: 470010
-Bank of Athens: 410506
-Bidvest Bank: 462005
-African Bank: 430000
-Mercantile Bank: 450905
-SA Post Office: 460005
-Tyme Bank: 678910
-Ubank: 431010
-Discovery Bank: 679000
-Bank Zero: 888000
+```javascript
+"details": {
+  "name": "Company name",
+  "street": "14 Main Street", // should include house number as well
+  "postal_code": "AB0001",
+  "city": "Cape Town",
+  "email": "recipient@email.com", // optional, but highly recommended
+  "bank_code": "334810",
+  "bank_account": "12345678",
+  "phone_number": "+27119785313",
+  "contact_first_name": "First",
+  "contact_last_name": "Last",
+  "transfer_reason_code": "185",
+  "legal_entity_type": "privately_owned_company",
+  "registration_number": "VAT1234567", // optional
+  "nature_of_business": "retail_trade" // optional
+}
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="zar-bank-codes" raw=data-raw %}
+{% include language-tabbar.html prefix="zar-bank-details-business" raw=data-raw %}
+
+The company types supported and corresponding `legal_entity_type` are:
+
+{% capture data-raw %}
+```
+Sole Proprietorship: sole_proprietorship
+Partnership: partnership
+Privately Owned Company (Limited Company): privately_owned_company
+Publicly Listed Company (PLC): publicly_owned_company
+Government Owned Entity Trusts: government_owned_entity
+GO (Majority Owned Subsidiary of State-Owned Company): go
+Financial Institution: financial_institution
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="zar-entity-types" raw=data-raw %}
+
+The valid values for `nature_of_business` are the following:
+
+{% capture data-raw %}
+```
+- Personal: personal
+- Agriculture and Hunting: agriculture_and_hunting
+- Forestry: forestry
+- Fishing: fishing
+- Agricultural By-Products: agricultural_by_products
+- Coal Mining: coal_mining
+- Oil Mining: oil_mining
+- Iron Ore Mining: iron_ore_mining
+- Other Metal and Diamond Mining: other_metal_and_diamond_mining
+- Other Mineral Mining: other_mineral_mining
+- Manufacture of Food/Drink/Tobacco: manufacturing_of_food_drink_tobacco
+- Manufacture of Textiles/Leather/Fur/Furniture: manufacturing_of_textiles_leather_fur_furniture
+- Manufacture of Wooden Products/Furniture: manufacture_of_wooden_products_furniture
+- Manufacture of Paper/Pulp/Allied Products: manufacture_of_paper_pulp_allied_products
+- Manufacture Of Chemicals Medical Petroleum Rubber Plastic Products: manufacture_of_chemicals_medical_petroleum_rubber_plastic_products
+- Manufacture Of Pottery China Glass Stone: manufacture_of_pottery_china_glass_stone
+- Manufacture Of Iron Steel Non-Ferrous Metals Basic Industries: manufacture_of_iron_steel_non_ferrous_metals_basic_industries
+- Manufacture Of Metal Products Electrical And Scientific Engineering: manufacture_of_metal_products_electrical_and_scientific_engineering
+- Manufacture Of Jewelry Musical Instruments Toys: manufacture_of_jewelry_musical_instruments_toys
+- Electricity, Gas And Water: electricity_gas_and_water
+- Construction: construction
+- Wholesale Trade: wholesale_trade
+- Retail Trade: retail_trade
+- Catering Incl. Hotels: catering_incl_hotels
+- Transport Storage: transport_storage
+- Communications: communications
+- Finance And Holding Companies: finance_and_holding_companies
+- Insurance: insurance
+- Business Services: business_services
+- Real Estate Development Investment: real_estate_development_investment
+- Central State Governments: central_state_governments
+- Community Services Defence Police Prisons Etc: community_services_defence_police_prisons_etc
+- Social Services Education Health Care: social_services_education_health_care
+- Personal Services - Leisure Services: personal_services_leisure_services
+- Personal Services - Domestic Laundry Repairs: personal_services_domestic_laundry_repairs
+- Personal Services - Embassies: personal_services_embassies_international_organisations
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="zar-nature-of-business" raw=data-raw %}
 
 List of transfer reasons and corresponding `transfer_reason_code` are:
 
