@@ -19,7 +19,7 @@ Generally in our API there are two types of status codes used:
 
 # Webhooks
 
-A *webhook* is a callback which enables our API to notify your system of new events concerning your transactions. Whenever objects in the AZA Finance API change state, we can optionally send the changed details to a pre-registered webhook address. Webhooks can be created either using the [developer portal](https://developers.transferzero.com), or using the [ API](https://api.transferzero.com/documentation#webhooks).
+A *webhook* is a callback which enables our API to notify your system of new events concerning your transactions. Whenever objects in the AZA Finance API change state, we can optionally send the changed details to a pre-registered webhook address. Webhooks can be created either using the [developer portal](https://developers.transferzero.com), or using the [AZA Finance API](https://api.transferzero.com/documentation#webhooks).
 
 Whenever possible we prefer using webhooks to listen on events (for example when a transaction has been paid out) instead of polling the status, and we expect implementations fully utilising webhooks.
 
