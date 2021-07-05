@@ -110,6 +110,7 @@ The valid `bank_code` values are:
 
 {% capture data-raw %}
 ```
+Access Bank: 044
 FCMB Bank: 214
 United Bank for Africa: 033
 Zenith International: 057
