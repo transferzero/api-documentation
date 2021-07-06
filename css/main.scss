@@ -42,7 +42,7 @@ body {
 
 .header-container {
   background-color: black;
-  background: url('../img/bg.jpg') no-repeat 50% 0;
+  background: url('../img/tzo.png') no-repeat 50% 0;
   color: #000;
 
   h1 {
@@ -81,4 +81,10 @@ body {
 .example-tabbar .tab-pane {
   max-height: 400px;
   overflow: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .jumbotron p {
+    width: 50%;
+  }
 }

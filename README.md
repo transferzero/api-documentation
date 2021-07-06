@@ -1,4 +1,4 @@
-# API Documentation for the TransferZero API
+# API Documentation for the AZA Finance API
 
 Please note our documentation moved to https://docs.transferzero.com
 

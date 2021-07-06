@@ -19,7 +19,7 @@ Generally in our API there are two types of status codes used:
 
 # Webhooks
 
-A *webhook* is a callback which enables our API to notify your system of new events concerning your transactions. Whenever objects in the TransferZero API change state, we can optionally send the changed details to a pre-registered webhook address. Webhooks can be created either using the [developer portal](https://developers.transferzero.com), or using the [TransferZero API](https://api.transferzero.com/documentation#webhooks).
+A *webhook* is a callback which enables our API to notify your system of new events concerning your transactions. Whenever objects in the AZA Finance API change state, we can optionally send the changed details to a pre-registered webhook address. Webhooks can be created either using the [developer portal](https://developers.transferzero.com), or using the [AZA Finance API](https://api.transferzero.com/documentation#webhooks).
 
 Whenever possible we prefer using webhooks to listen on events (for example when a transaction has been paid out) instead of polling the status, and we expect implementations fully utilising webhooks.
 
@@ -80,7 +80,7 @@ You can obtain an up-to-date list of available webhook events using the [Webhook
 
 # Metadata
 
-Most models in the TransferZero API allow storing any metadata, which will be returned when querying the object, including callouts from webhooks. This facility can be used to store any data on the models.
+Most models in the AZA Finance API allow storing any metadata, which will be returned when querying the object, including callouts from webhooks. This facility can be used to store any data on the models.
 
 # External ID
 
@@ -106,7 +106,7 @@ You can read more on recipients and how they work during transactions in the [Tr
 
 # Transactions
 
-The main model of the TransferZero API is the Transaction, which store the flow for sending money from one Sender in a specific currency, to one or multiple Recipients in another currency. You can read more on transactions in the [Transaction flow documentation]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}).
+The main model of the AZA Finance API is the Transaction, which store the flow for sending money from one Sender in a specific currency, to one or multiple Recipients in another currency. You can read more on transactions in the [Transaction flow documentation]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}).
 
 # Balances
 
