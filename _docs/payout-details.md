@@ -537,33 +537,195 @@ orange
 
 For West African bank payments in selected countries please use the following:
 
+Personal recipient:
+
 {% capture data-raw %}
 ```javascript
 "details" : {
   "first_name": "First",
   "last_name": "Last",
-  "bank_name": "BRM",
-  "iban": "SN1231234512345678901212", // BBAN format: AA123 12345 123456789012 12
-  "bank_country": "SN" // "SN" or "BJ"
+  "iban": "BJ0610100100144390000769", // BBAN format: AA123 12345 123456789012 12
+  "bank_code": "BJ061", // optional
+  "bank_name": "Bank Of Africa Bénin" // optional
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="xof-bank-details" raw=data-raw %}
 
-The valid `bank_country` values are:
+Business recipient:
+
+{% capture data-raw %}
+```javascript
+"details" : {
+  "name": "First Last",
+  "iban": "BJ0610100100144390000769", // BBAN format: AA123 12345 123456789012 12
+  "bank_code": "BJ061", // optional
+  "bank_name": "Bank Of Africa Bénin" // optional
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xof-bank-details" raw=data-raw %}
+
+The valid `bank_code` and `bank_name` values are:
 
 {% capture data-raw %}
 ```
-SN
-BJ
+# Burkina Faso
+BF022: United Bank for Africa Burkina
+BF023: Banque Internationale pour le Commerce, l'Industrie et l'Agriculture du Burkina
+BF056: Banque Commerciale du Burkina
+BF074: Société Générale Burkina Faso
+BF083: Ecobank Burkina Faso
+BF084: Bank Of Africa Burkina Faso
+BF108: Banque Sahélo-Saharienne pour l'Investissement et le Commerce - Burkina Faso
+BF134: Banque Atlantique Burkina Faso
+BF139: International Business Bank
+BF148: Coris Bank International
+BF161: CBAO, Groupe Attijariwafa bank, Succursale au Burkina
+BF171: Orabank Côte d'Ivoire, Succursale du Burkina
+BF179: Banque De l'Union Burkina Faso
+BF202: Wendkuni Bank International
+BF207: Banque Agricole du Faso
+
+# Benin
+BJ058: Orabank Bénin
+BJ061: Bank Of Africa Bénin
+BJ062: Ecobank Bénin
+BJ063: Banque Internationale du Benin
+BJ067: United Bank for Africa Bénin
+BJ099: NSIA BANQUE Bénin
+BJ104: Société Générale - Benin
+BJ107: Banque Sahélo-Saharienne pour l'Investissement et le Commerce - Bénin
+BJ115: Banque Atlantique du Bénin
+BJ157: BGFIBank Bénin
+BJ177: CBAO, Groupe Attijariwafa bank, Succursale du Bénin
+BJ184: CCEI BANK BENIN
+BJ185: BANQUE AFRICAINE POUR L'INDUSTRIE ET LE COMMERCE - BENIN
+BJ212: Coris Bank International Bénin
+BJ199: Société Nigérienne de Banque, Succursale du Bénin
+
+# Ivory Coast
+CI006: Banque Internationale pour le Commerce et l'Industrie de la Côte d'Ivoire
+CI007: Societe Ivoirienne de Banque
+CI008: Société Générale Côte d'Ivoire
+CI032: Bank Of Africa Côte d'Ivoire
+CI034: Banque Atlantique Côte d'Ivoire
+CI042: NSIA Banque Côte d'Ivoire
+CI059: Ecobank Côte d'Ivoire
+CI068: Banque de l'Habitat de Côte d'Ivoire
+CI092: Banque Nationale d'Investissement
+CI097: Standard Chartered Bank Côte d'Ivoire
+CI106: AFRILAND FIRST BANK Côte d'Ivoire
+CI112: Versus Bank S.A
+CI118: Citibank - Côte d'Ivoire
+CI121: ORABANK Côte d'Ivoire
+CI131: Bridge Bank Group Côte d'Ivoire
+CI150: United Bank for Africa CI
+CI154: Banque Sahélo-Saharienne pour l'Investissement et le Commerce Côte d'Ivoire
+CI155: Banque Populaire de Côte d'Ivoire
+CI158: Diamond Bank Côte d'Ivoire
+CI162: BGFI BANK COTE D'IVOIRE
+CI163: Guaranty Trust Bank Côte d'Ivoire
+CI166: Coris Bank International Côte d'Ivoire
+CI180: Banque De l'Union Côte d'Ivoire
+CI188: Banque Malienne de Solidarité, Succursale de Côte d'Ivoire
+CI194: Banque Régionale de Marchés, Succursale de Côte d'Ivoire
+CI198: Stanbic Bank
+CI201: Banque d'Abidjan
+CI211: Mansa Bank
+CI214: Orange Abidjan Compagnie
+
+# Guinea-Bissau
+GW096: Banco da Africa Ocidental
+GW128: Banco Da União
+GW143: Ecobank Guinée Bissau
+GW172: Orabank Côte d'Ivoire, Succursale de la Guinée-Bissau
+GW195: Banque Atlantique Côte d'Ivoire, Succursale de Guinée-Bissau
+
+# Mali
+ML016: Banque de Developpement du Mali
+ML041: Banque Internationale pour le Mali
+ML043: Banque Nationale pour le Dévéloppement Agricole
+ML044: Banque Commerciale du Sahel
+ML045: Bank Of Africa Mali
+ML089: Banque Internationale pour le Commerce et l'Industrie du Mali
+ML090: Ecobank Mali
+ML102: Banque Malienne de Solidarité
+ML109: Banque Sahélo-Saharienne pour l'Investissement et le Commerce Mali
+ML135: Banque Atlantique Mali
+ML147: Banque pour le Commerce et l'Industrie du Mali
+ML173: Orabank Côte d'Ivoire, Succursale du Mali
+ML181: CORIS BANK ML
+ML206: United Bank for Africa Mali
+
+# Niger
+NE038: Bank Of Africa Niger
+NE040: Banque Internationale pour l'Afrique au Niger
+NE057: Banque Commerciale du Niger
+NE064: Société Nigérienne de Banque
+NE081: Banque Islamique du Niger
+NE095: Ecobank Niger
+NE110: Banque Sahélo-Saharienne pour l'Investissement et le Commerce Niger
+NE136: Banque Atlantique Niger
+NE164: Banque Agricole du Niger
+NE168: CBAO, Groupe Attijariwafa bank, Succursale du Niger
+NE174: Orabank Côte d'Ivoire, Succursale du Niger
+NE193: Banque Régionale de Marchés, Succursale du Niger
+NE208: Banque de l'Habitat du NIGER
+NE210: Coris Bank International, Succursale du Niger
+
+# Senegal
+SN010: Banque Internationale pour le Commerce et l'Industrie du Sénégal
+SN011: Société Générale Sénégal
+SN012: CBAO, Groupe Attijariwafa bank
+SN039: Banque de l'Habitat du Sénégal
+SN048: La Banque Agricole du Sénégal
+SN060: Crédit du Sénégal
+SN079: Banque Islamique du Sénégal
+SN094: Ecobank Sénégal
+SN100: Bank Of Africa Sénégal
+SN111: Banque Sahélo-Saharienne pour l'Investissement et le Commerce Sénégal
+SN117: Banque des Institutions Mutualistes d'Afrique de l'Ouest
+SN137: Banque Atlantique Sénégal
+SN140: FBNBank Sénégal
+SN141: Citibank - Sénégal
+SN144: Banque Régionale de Marchés
+SN153: United Bank for Africa Sénégal
+SN156: Crédit International
+SN159: NSIA Banque Bénin, Succursale du Sénégal
+SN169: Banque Nationale pour le Développement Economique
+SN175: Orabank Côte d'Ivoire, Succursale du Sénégal
+SN178: Banque pour le Commerce et l'Industrie du Mali, Succursale au Sénégal
+SN189: BGFIBank Sénégal
+SN191: Banque de Dakar
+SN213: Coris Bank International Sénégal
+SN200: La Banque OUTARDE
+SN221: Banque de Développement du Mali, Succursale du Sénégal
+
+# Togo
+TG221: Banque de Développement du Mali, Succursale du Togo
+TG005: Banque Internationale pour l'Afrique au Togo
+TG009: Union Togolaise de Banque
+TG151: SUNU Bank
+TG187: Société Générale Bénin, Succursale du Togo
+TG024: Banque Togolaise pour le Commerce et l'Industrie
+TG027: Société Interafricaine de Banque
+TG055: Ecobank Togo
+TG116: Orabank Togo
+TG138: Banque Atlantique Togo
+TG133: Banque Sahélo-Saharienne pour l'Investissement et le Commerce Togo
+TG160: NSIA Banque Bénin, Succursale du Togo
+TG167: Bank Of Africa Togo
+TG182: Coris Bank International Togo
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="xof-bank-country-values" raw=data-raw %}
 
 <div class="alert alert-info" markdown="1">
-**Note** `XOF::Bank` payouts are currently in beta phase. At this time, we offer payouts to accounts in Senegal and Benin only.
+**Note** `XOF::Bank` payouts are currently in beta phase.
 </div>
 
 # South Africa
