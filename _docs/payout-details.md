@@ -744,11 +744,13 @@ For Kenyan bank payments please use:
   "first_name": "First",
   "last_name": "Last",
   "street": "1 Main Street", // should include house number as well
-  "bank_name": "recipient@email.com",
+  "bank_name": "Equity Bank Limited",
   "bank_code": "68000",
   "branch_code": "404",
   "bank_account": "12345678",
-  "swift_code": "ABCLKENA",
+  "swift_code": "EQBLKENA",
+  "identity_card_type": "NI",
+  "identity_card_id": 'AB12345678',
   "transfer_reason_code": "185"
 }
 ```
@@ -907,6 +909,8 @@ For Kenyan mobile payments please use:
   "last_name": "Last",
   "street": "1 Linford Street",
   "phone_number": "254123456789", // local or international Kenyan format
+  "identity_card_type": "NI",
+  "identity_card_id": 'AB12345678',
   "transfer_reason_code": "185",
   "mobile_provider": "mpesa"
 
