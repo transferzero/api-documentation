@@ -749,8 +749,8 @@ For Kenyan bank payments please use:
   "branch_code": "404",
   "bank_account": "12345678",
   "swift_code": "EQBLKENA",
-  "identity_card_type": "NI",
-  "identity_card_id": 'AB12345678',
+  "identity_card_type": "NI", // refers to the recipient's ID details; Values: "PP": Passport, "NI": National ID
+  "identity_card_id": 'AB12345678', // refers to the recipient's ID details
   "transfer_reason_code": "185"
 }
 ```
@@ -871,7 +871,7 @@ Payments for postal and courier services - sea: 260
 {% include language-tabbar.html prefix="kes-transfer-reason-codes" raw=data-raw %}
 
 All senders trying to create Kenyan bank payments need to have the following details present:
-- `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `"O"`: Other
+- `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other
 - `"identification_number" => "AB12345678"`
 
 Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
@@ -909,8 +909,8 @@ For Kenyan mobile payments please use:
   "last_name": "Last",
   "street": "1 Linford Street",
   "phone_number": "254123456789", // local or international Kenyan format
-  "identity_card_type": "NI",
-  "identity_card_id": 'AB12345678',
+  "identity_card_type": "NI", // refers to the recipient's ID details; Values: "PP": Passport, "NI": National ID
+  "identity_card_id": 'AB12345678', // refers to the recipient's ID details
   "transfer_reason_code": "185",
   "mobile_provider": "mpesa"
 
@@ -993,7 +993,7 @@ Payments for postal and courier services - sea: 260
 {% include language-tabbar.html prefix="kes-transfer-reason-codes" raw=data-raw %}
 
 All senders trying to create Kenyan mobile payouts need to have the following details present:
-- `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `"O"`: Other
+- `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other
 - `"identification_number" => "AB12345678"`
 
 Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
