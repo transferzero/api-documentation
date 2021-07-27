@@ -7,7 +7,12 @@ permalink: /docs/changelog/
 {:toc}
 
 Current version of the API is `1`
-Current version of the SDKs are `1.14.1`
+Current version of the SDKs are `1.15.0`
+
+1.15.0
+-----
+* Add support for the `KES::Bank` corridor.
+* Add support for the `KES::Mobile` corridor.
 
 1.14.1
 -----
