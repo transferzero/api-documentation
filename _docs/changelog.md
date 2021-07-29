@@ -7,7 +7,12 @@ permalink: /docs/changelog/
 {:toc}
 
 Current version of the API is `1`
-Current version of the SDKs are `1.14.1`
+Current version of the SDKs are `1.15.1`
+
+1.15.1
+-----
+* Add `bank_code` optional parameter for `XOF::Bank` corridor
+* `bank_name` and `bank_country` are now optional for `XOF::Bank` corridor
 
 1.14.1
 -----
