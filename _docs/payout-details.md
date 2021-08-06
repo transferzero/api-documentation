@@ -482,7 +482,7 @@ Please note that the fields above are generally considered optional for senders 
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="mad-cash-sender-details" raw=data-raw %}
+{% include language-tabbar.html prefix="xof-cash-sender-details" raw=data-raw %}
 
 ## XOF::Mobile
 
@@ -730,4 +730,296 @@ Please note that due to regulatory reasons senders trying to create `ZAR::Bank` 
 
 <div class="alert alert-warning" markdown="1">
 **Warning** `ZAR::Bank` payouts are currently in beta phase.
+</div>
+
+# Kenya
+
+## KES::Bank
+
+For Kenyan bank payments please use:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "first_name": "First",
+  "last_name": "Last",
+  "street": "1 Main Street", // should include house number as well
+  "bank_name": "Equity Bank Limited",
+  "bank_code": "68000",
+  "branch_code": "404",
+  "bank_account": "12345678",
+  "swift_code": "EQBLKENA",
+  "identity_card_type": "NI", // refers to the recipient's ID details; Values: "PP": Passport, "NI": National ID
+  "identity_card_id": 'AB12345678', // refers to the recipient's ID details
+  "transfer_reason_code": "185"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="kes-bank-details" raw=data-raw %}
+
+The current banks supported and their `bank_codes` values are:
+
+{% capture data-raw %}
+```
+Habib Bank Limited: 08
+Trans-National Bank Limited: 26
+Housing Finance Co. Kenya: 61
+UBA Kenya Bank Ltd: 76
+Kenya Commercial Bank: 01000
+Standard Chartered Bank: 02000
+Barclays Bank of Kenya: 03000
+Bank of India: 05000
+Bank of Boroda: 06000
+NCBA Bank: 07000
+Prime Bank: 10000
+Co-operative Bank of Kenya: 11000
+National Bank of Kenya: 12000
+M-Oriental Commercial Bank Limited: 14000
+Citibank: 16000
+Habib Bank A.G. Zurich: 17000
+Middle East Bank: 18000
+Bank of Africa Kenya: 19000
+Consolidated Bank of Kenya: 23000
+Credit Bank Ltd: 25000
+Chase Bank: 30000
+Stanbic Bank Kenya: 31000
+African Banking Corporation: 35000
+Giro Bank Limited: 42000
+ECO Bank Kenya: 43000
+Spire Bank Limited: 49000
+Paramount Universal Bank Limited: 50000
+Jamii Bora Bank: 51000
+Guaranty Trust Bank Kenya: 53000
+Victoria Bank Limited: 54000
+Guardian Bank: 55000
+Investments and Mortgages Bank Limited: 57000
+Development Bank of Kenya: 59000
+Fidelity Commercial Bank: 46000
+Diamond Trust Bank: 63000
+Sidian Bank: 66000
+Equity Bank Limited: 68000
+Family Bank: 70000
+Gulf African Bank: 72000
+First Community Bank: 74000
+KWFT Bank: 78000
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="kes-bank-options" raw=data-raw %}
+
+List of transfer reasons and corresponding `transfer_reason_code` are:
+
+{% capture data-raw %}
+```
+Sending money into my own account: 183
+Donations and gifts: 184
+Sending money to a friend, family member or any third party person: 185
+Mortgage repayments: 186
+Business Travel Payments: 187
+Personal Travel Payments: 188
+Tuition fees: 189
+Commission and fees for financial: 190
+Proceeds for financial services charged for advice provided: 191
+Investment into property by a foreign individual: 192
+Investment by a foreign individual - other: 193
+Legal services: 196
+Accounting services: 197
+Management consulting services: 198
+Public relation services: 199
+Advertising & market research services: 200
+Managerial services: 201
+Medical and dental services: 202
+Operational leasing: 204
+Salary paid to South African Resident Temporarily Abroad: 206
+Salary paid to a non-resident employee in South Africa: 207
+Salary paid to a foreign national contract worker in South Africa: 208
+Pensions: 213
+Annuities: 214
+Inheritances: 215
+Alimony: 216
+Tax - Income tax: 217
+Tax - VAT refunds: 218
+Tax - Other: 219
+Insurance premiums (non life/short term): 220
+Insurance premiums (life): 221
+Dividends: 222
+Commission or brokerage: 224
+Rental: 225
+Income earned abroad by a resident on an individual investment: 226
+Funding received for research and development:243
+Repairs and maintenance on machinery and equipment: 244
+Architectural, engineering and other technical services: 245
+Agricultural, mining, waste treatment and depollution services: 246
+Proceeds for construction services: 247
+Payments for telecommunication services: 248
+Payments for data, news related and news agency fees: 249
+Payments for passenger services - road: 250
+Payments for passenger services - rail: 251
+Payments for passenger services - sea: 252
+Payments for passenger services - air: 253
+Payments for freight services - road: 254
+Payments for freight services - rail: 255
+Payments for freight services - sea: 256
+Payments for freight services - air: 257
+Payments for postal and courier services - road: 258
+Payments for postal and courier services - rail: 259
+Payments for postal and courier services - sea: 260
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="kes-transfer-reason-codes" raw=data-raw %}
+
+All senders trying to create Kenyan bank payments need to have the following details present:
+- `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other
+- `"identification_number" => "AB12345678"`
+
+Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
+
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+      "sender": {
+        "external_id": "<id of sender>",
+        "identification_type": "ID",
+        "identification_number": "AB12345678",
+        (...)
+      },
+      (...)
+    }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="kes-bank-sender-details" raw=data-raw %}
+
+<div class="alert alert-warning" markdown="1">
+**Warning** `KES::Bank` payouts are currently in beta phase.
+</div>
+
+## KES::Mobile
+
+For Kenyan mobile payments please use:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "first_name": "First",
+  "last_name": "Last",
+  "street": "1 Linford Street",
+  "phone_number": "254123456789", // local or international Kenyan format
+  "identity_card_type": "NI", // refers to the recipient's ID details; Values: "PP": Passport, "NI": National ID
+  "identity_card_id": 'AB12345678', // refers to the recipient's ID details
+  "transfer_reason_code": "185",
+  "mobile_provider": "mpesa"
+
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="kes-mobile-details" raw=data-raw %}
+
+The valid `mobile_provider` values for Kenya are:
+
+{% capture data-raw %}
+```
+mpesa
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="kes-mobile-providers" raw=data-raw %}
+
+List of transfer reasons and corresponding `transfer_reason_code` are:
+
+{% capture data-raw %}
+```
+Sending money into my own account: 183
+Donations and gifts: 184
+Sending money to a friend, family member or any third party person: 185
+Mortgage repayments: 186
+Business Travel Payments: 187
+Personal Travel Payments: 188
+Tuition fees: 189
+Commission and fees for financial: 190
+Proceeds for financial services charged for advice provided: 191
+Investment into property by a foreign individual: 192
+Investment by a foreign individual - other: 193
+Legal services: 196
+Accounting services: 197
+Management consulting services: 198
+Public relation services: 199
+Advertising & market research services: 200
+Managerial services: 201
+Medical and dental services: 202
+Operational leasing: 204
+Salary paid to South African Resident Temporarily Abroad: 206
+Salary paid to a non-resident employee in South Africa: 207
+Salary paid to a foreign national contract worker in South Africa: 208
+Pensions: 213
+Annuities: 214
+Inheritances: 215
+Alimony: 216
+Tax - Income tax: 217
+Tax - VAT refunds: 218
+Tax - Other: 219
+Insurance premiums (non life/short term): 220
+Insurance premiums (life): 221
+Dividends: 222
+Commission or brokerage: 224
+Rental: 225
+Income earned abroad by a resident on an individual investment: 226
+Funding received for research and development:243
+Repairs and maintenance on machinery and equipment: 244
+Architectural, engineering and other technical services: 245
+Agricultural, mining, waste treatment and depollution services: 246
+Proceeds for construction services: 247
+Payments for telecommunication services: 248
+Payments for data, news related and news agency fees: 249
+Payments for passenger services - road: 250
+Payments for passenger services - rail: 251
+Payments for passenger services - sea: 252
+Payments for passenger services - air: 253
+Payments for freight services - road: 254
+Payments for freight services - rail: 255
+Payments for freight services - sea: 256
+Payments for freight services - air: 257
+Payments for postal and courier services - road: 258
+Payments for postal and courier services - rail: 259
+Payments for postal and courier services - sea: 260
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="kes-transfer-reason-codes" raw=data-raw %}
+
+All senders trying to create Kenyan mobile payouts need to have the following details present:
+- `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other
+- `"identification_number" => "AB12345678"`
+
+Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
+
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+      "sender": {
+        "external_id": "<id of sender>",
+        "identification_type": "ID",
+        "identification_number": "AB12345678",
+        (...)
+      },
+      (...)
+    }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="kes-mobile-sender-details" raw=data-raw %}
+
+<div class="alert alert-warning" markdown="1">
+**Warning** `KES::Mobile` payouts are currently in beta phase.
+</div>
+
+<div class="alert alert-info" markdown="1">
+**Note!** The provider might check the name against the registered holder of the mobile number and block transactions if they don't match.
 </div>
