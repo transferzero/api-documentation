@@ -112,6 +112,7 @@ The valid `bank_code` values are:
 ```
 Access Bank: 044
 FCMB Bank: 214
+Fidelity Bank: 070
 United Bank for Africa: 033
 Zenith International: 057
 ```
@@ -119,8 +120,49 @@ Zenith International: 057
 
 {% include language-tabbar.html prefix="usd-bank-details" raw=data-raw %}
 
+The valid `country` values are:
+
+{% capture data-raw %}
+```
+NG
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="usd-bank-countries" raw=data-raw %}
+
 <div class="alert alert-warning" markdown="1">
 **Warning** `USD::Bank` payouts in Nigeria are currently in beta phase.
+</div>
+
+## USD::Cash
+
+For USD cash payments in Nigeria please use:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "phone_number": "+2341234567",
+  "country": "NG"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="usd-cash-details" raw=data-raw %}
+
+The valid `country` values are:
+
+{% capture data-raw %}
+```
+NG
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="usd-cash-countries" raw=data-raw %}
+
+<div class="alert alert-warning" markdown="1">
+**Warning** `USD::Cash` payouts in Nigeria are currently in beta phase.
 </div>
 
 # Ghana
