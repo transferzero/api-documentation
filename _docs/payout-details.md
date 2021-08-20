@@ -599,7 +599,7 @@ Business recipient:
 {% capture data-raw %}
 ```javascript
 "details" : {
-  "name": "First Last",
+  "name": "Company name",
   "iban": "BJ0610100100144390000769", // BBAN format: AA123 12345 123456789012 12
   "bank_name": "Bank Of Africa Bénin" // optional
 }
