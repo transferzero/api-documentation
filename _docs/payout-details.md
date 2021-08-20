@@ -579,33 +579,37 @@ orange
 
 For West African bank payments in selected countries please use the following:
 
+Personal recipient:
+
 {% capture data-raw %}
 ```javascript
 "details" : {
   "first_name": "First",
   "last_name": "Last",
-  "bank_name": "BRM",
-  "iban": "SN1231234512345678901212", // BBAN format: AA123 12345 123456789012 12
-  "bank_country": "SN" // "SN" or "BJ"
+  "iban": "BJ0610100100144390000769", // BBAN format: AA123 12345 123456789012 12
+  "bank_name": "Bank Of Africa Bénin" // optional
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="xof-bank-details" raw=data-raw %}
 
-The valid `bank_country` values are:
+Business recipient:
 
 {% capture data-raw %}
-```
-SN
-BJ
+```javascript
+"details" : {
+  "name": "Company name",
+  "iban": "BJ0610100100144390000769", // BBAN format: AA123 12345 123456789012 12
+  "bank_name": "Bank Of Africa Bénin" // optional
+}
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="xof-bank-country-values" raw=data-raw %}
+{% include language-tabbar.html prefix="xof-bank-details" raw=data-raw %}
 
 <div class="alert alert-info" markdown="1">
-**Note** `XOF::Bank` payouts are currently in beta phase. At this time, we offer payouts to accounts in Senegal and Benin only.
+**Note** `XOF::Bank` payouts are currently in beta phase.
 </div>
 
 # South Africa
