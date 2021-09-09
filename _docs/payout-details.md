@@ -299,13 +299,27 @@ For Ugandan mobile payments please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "phone_number": "256772123456"
+  "phone_number": "256772123456",
     // local or international Ugandan format
+  "mobile_provider": "airtel" // optional
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="ugx-mobile-details" raw=data-raw %}
+
+Although the `mobile_provider` field is optional, if you send us the proper value we can provider a quicker and faster settlement. The valid values are:
+
+{% capture data-raw %}
+```
+africell
+airtel
+mtn
+telecom
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="ugx-mobile-providers" raw=data-raw %}
 
 <div class="alert alert-info" markdown="1">
 **Note!** The provider might check the name against the registered holder of the mobile number and block transactions if they don't match.
