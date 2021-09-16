@@ -755,7 +755,7 @@ When a sender is created you will receive a response which contains the sender's
 
 In order to transact with TransferZero we need to have an `approved` sender record. The flow for approving senders depend on whether KYC requirements are waived for your integration or not. In case the KYC requirements are waived then all created senders will be in the `approved` state immediately, and can be immediately used for transactions.
 
-Please see our [KYC](({{ "/docs/kyc/" | prepend: site.baseurl }})) documentation on more details about the KYC sender processes.
+Please see our [KYC documentation]({{ "/docs/kyc/" | prepend: site.baseurl }}) on more details about the KYC sender processes.
 
 ### ID and External ID
 
@@ -771,6 +771,13 @@ An exception to this is if the `external_id` is provided along with additional f
 Please note that sending both an `id` and `external_id` at once is invalid and will result in an error.
 
 If a sender has been assigned an `external_id`, this value can be used to find senders using the `GET /v1/senders` endpoint, with `external_id` parameter included as a string. For example: `GET /v1/senders?external_id=76f69f5e`
+
+### Sender type
+The sender type indicates if the sender is a person or business.
+
+Please note the sender details vary depending on the sender typology.
+
+Please refer to the [example above]({{ "#sender" | prepend: site.baseurl }}) (for personal senders) and to [Business payments]({{ "/docs/business-payments/#business-senders" | prepend: site.baseurl }}) (for business senders) for more details.
 
 ### Metadata
 
@@ -897,6 +904,14 @@ The template for the recipient is the following:
 {% include language-tabbar.html prefix="recipient-structure" raw=data-raw %}
 
 ### Recipient type
+
+The recipient type indicates if the recipient is a person or business.
+
+Please note the payout details vary depending on the recipient typology.
+
+The `name` field is mandatory for business recipients.
+
+Please refer to the [Individual payments]({{ "/docs/individual-payments" | prepend: site.baseurl }}) and [Business payments]({{ "/docs/business-payments" | prepend: site.baseurl }}) sections for more details.
 
 ### Payout type
 
