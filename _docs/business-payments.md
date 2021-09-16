@@ -199,7 +199,7 @@ Dim sender as Sender = New Sender(
 
 ' Company Details
   legalEntityType:=LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY,
-  registrationDate:=DateTime.Parse(2012-01-25"),
+  registrationDate:=DateTime.Parse("2012-01-25"),
   registrationNumber:="VAT1234567",
   natureOfBusiness:=NatureOfBusinessEnum.RETAIL_TRADE,
 
@@ -271,7 +271,7 @@ sender.address_description = "";
 
 // Company Details
 sender.legal_entity_type = "privately_owned_company";
-sender.registration_date = 2012-01-25";
+sender.registration_date = "2012-01-25";
 sender.registration_number = "VAT1234567";
 sender.nature_of_business = "retail_trade";
 
@@ -368,6 +368,7 @@ The valid values for the company type / legal entity type are the following:
 
 {% capture data-raw %}
 ```markdown
+- sole_proprietorship: Sole Proprietorship
 - partnership: Partnership
 - privately_owned_company: Privately Owned Company (Limited Company)
 - publicly_owned_company: Publicly Listed Company (PLC)
