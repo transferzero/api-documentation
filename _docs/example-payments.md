@@ -377,7 +377,7 @@ sender.documents = []
 
 # Recipient details
 
-Once you have the sender let's set up the recipient as well. In this example we're going to do an `NGN::Bank` payout, which requires a name and the bank account details. Other payout providers might have different requirements, to check them please see our [payout details documentation]({{ "/docs/payout-details/" | prepend: site.baseurl }}). You'll also need to send in how much you wish to send. In this example we're sending $100 worth of funds, that are going to be received in NGN - we'll calculate the proper amount based on the exchange rates.
+Once you have the sender let's set up the recipient as well. In this example we're going to do an `NGN::Bank` payout, which requires a name and the bank account details. Other payout providers might have different requirements, to check them please see our [individual payments documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}). You'll also need to send in how much you wish to send. In this example we're sending $100 worth of funds, that are going to be received in NGN - we'll calculate the proper amount based on the exchange rates.
 
 {::comment}
 CODE_EXAMPLE_START recipient-creation
@@ -385,6 +385,7 @@ JSON_START
 {
     "requested_amount": "100",
     "requested_currency": "USD",
+    "type": "person",
     "payout_method": {
         "type": "NGN::Bank",
         "details": {
@@ -415,6 +416,7 @@ CREATE_END
 CREATE_START recipient Recipient
 SET BIGNUM requested_amount 100000
 SET LIT requested_currency "NGN"
+SET LIT type "person"
 SET VAR payout_method payout
 CREATE_END
 CODE_END
@@ -427,6 +429,7 @@ CODE_EXAMPLE_END
 {
     "requested_amount": "100",
     "requested_currency": "USD",
+    "type": "person",
     "payout_method": {
         "type": "NGN::Bank",
         "details": {
@@ -457,6 +460,7 @@ PayoutMethod payout = new PayoutMethod(
 Recipient recipient = new Recipient(
   requestedAmount: 100000,
   requestedCurrency: "NGN",
+  type: "person",
   payoutMethod: payout);
 ```
 {% endcapture %}
@@ -477,6 +481,7 @@ Dim payout as PayoutMethod = New PayoutMethod(
 Dim recipient as Recipient = New Recipient(
   requestedAmount:=100000,
   requestedCurrency:="NGN",
+  type:="person",
   payoutMethod:=payout)
 ```
 {% endcapture %}
@@ -497,6 +502,7 @@ payout.setDetails(details);
 Recipient recipient = new Recipient();
 recipient.setRequestedAmount(new BigDecimal("100000"));
 recipient.setRequestedCurrency("NGN");
+recipient.setType("person");
 recipient.setPayoutMethod(payout);
 ```
 {% endcapture %}
@@ -517,6 +523,7 @@ payout.details = details;
 const recipient = new TransferZeroSdk.Recipient();
 recipient.requested_amount = 100000;
 recipient.requested_currency = "NGN";
+recipient.type = "person";
 recipient.payout_method = payout;
 ```
 {% endcapture %}
@@ -537,6 +544,7 @@ $payout->setDetails($details);
 $recipient = new Recipient();
 $recipient->setRequestedAmount(100000);
 $recipient->setRequestedCurrency("NGN");
+$recipient->setType("person");
 $recipient->setPayoutMethod($payout);
 ```
 {% endcapture %}
@@ -557,6 +565,7 @@ payout.details = details
 recipient = TransferZero::Recipient.new
 recipient.requested_amount = 100000
 recipient.requested_currency = "NGN"
+recipient.type = "person"
 recipient.payout_method = payout
 ```
 {% endcapture %}

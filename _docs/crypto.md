@@ -6,11 +6,11 @@ permalink: /docs/crypto-transactions/
 * Table of contents
 {:toc}
 
-Our system also supports transactions involving BTC. You can either use the system to send or to receive BTC. These features are very similar to our [payout]({{ "/docs/payout-details/" | prepend: site.baseurl }}) and [collection]({{ "/docs/collection-details/" | prepend: site.baseurl }}) system. Before using our crypto platform please familiarize yourself with how fiat transactions work in our system.
+Our system also supports transactions involving BTC. You can either use the system to send or to receive BTC. These features are very similar to our [payout]({{ "/docs/individual-payments/" | prepend: site.baseurl }}) and [collection]({{ "/docs/collection-details/" | prepend: site.baseurl }}) system. Before using our crypto platform please familiarize yourself with how fiat transactions work in our system.
 
 # Sending BTC
 
-Please read our [transaction flow]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}) and [payout documentation]({{ "/docs/payout-details/" | prepend: site.baseurl }}) for more information on how payments work.
+Please read our [transaction flow]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}) and [payout documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}) for more information on how payments work.
 
 To send BTC to a wallet you'll have to use the following payout details:
 
@@ -78,7 +78,7 @@ The `Address` field contains the BTC address where the funds have to be sent, an
 
 Once the customer sends in the funds then dependent on the amount and the current state of the BTC system we will wait for a certain amount of confirmations before we consider the transaction paid.
 
-Funds collected from BTC can either go to an internal fiat balance (e.g. `USD::Balance` or `NGN::Balance`) or can be used immediately to pay out a recipient as stated in the [payout documentation]({{ "/docs/payout-details/" | prepend: site.baseurl }})
+Funds collected from BTC can either go to an internal fiat balance (e.g. `USD::Balance` or `NGN::Balance`) or can be used immediately to pay out a recipient as stated in the [payout documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }})
 
 <div class="alert alert-warning" markdown="1">
 **Warning!** Due to the volatility of BTC, the exchange rates might have changed in case the funds are first routed to an internal balance and only then used to pay out a recipient.

@@ -43,6 +43,7 @@ Transactions can be created by calling the `POST /v1/transactions` endpoint. The
          {
             "requested_amount": // the amount to pay out,
             "requested_currency": // the currency of the amount,
+            "type": "person", // the type of the recipient, either person or business
             "payout_method":{
                "type": // method of the payout,
                "details":{
@@ -90,6 +91,7 @@ JSON_START
       {
         "requested_amount": "100",
         "requested_currency": "USD",
+        "type": "person",
         "payout_method": {
           "type": "NGN::Bank",
           "details": {
@@ -143,6 +145,7 @@ CREATE_END
 CREATE_START recipient Recipient
 SET BIGNUM requested_amount 100000
 SET LIT requested_currency "NGN"
+SET LIT type "person"
 SET VAR payout_method payout
 CREATE_END
 
@@ -182,6 +185,7 @@ CODE_EXAMPLE_END
       {
         "requested_amount": "100",
         "requested_currency": "USD",
+        "type": "person",
         "payout_method": {
           "type": "NGN::Bank",
           "details": {
@@ -234,6 +238,7 @@ PayoutMethod payout = new PayoutMethod(
 Recipient recipient = new Recipient(
   requestedAmount: 100000,
   requestedCurrency: "NGN",
+  type: "person",
   payoutMethod: payout);
 
 Transaction transaction = new Transaction(
@@ -276,6 +281,7 @@ Dim payout as PayoutMethod = New PayoutMethod(
 Dim recipient as Recipient = New Recipient(
   requestedAmount:=100000,
   requestedCurrency:="NGN",
+  type:="person",
   payoutMethod:=payout)
 
 Dim transaction as Transaction = New Transaction(
@@ -318,6 +324,7 @@ payout.setDetails(details);
 Recipient recipient = new Recipient();
 recipient.setRequestedAmount(new BigDecimal("100000"));
 recipient.setRequestedCurrency("NGN");
+recipient.setType("person");
 recipient.setPayoutMethod(payout);
 
 Transaction transaction = new Transaction();
@@ -360,6 +367,7 @@ payout.details = details;
 const recipient = new TransferZeroSdk.Recipient();
 recipient.requested_amount = 100000;
 recipient.requested_currency = "NGN";
+recipient.type = "person";
 recipient.payout_method = payout;
 
 const transaction = new TransferZeroSdk.Transaction();
@@ -402,6 +410,7 @@ $payout->setDetails($details);
 $recipient = new Recipient();
 $recipient->setRequestedAmount(100000);
 $recipient->setRequestedCurrency("NGN");
+$recipient->setType("person");
 $recipient->setPayoutMethod($payout);
 
 $transaction = new Transaction();
@@ -444,6 +453,7 @@ payout.details = details
 recipient = TransferZero::Recipient.new
 recipient.requested_amount = 100000
 recipient.requested_currency = "NGN"
+recipient.type = "person"
 recipient.payout_method = payout
 
 transaction = TransferZero::Transaction.new
@@ -873,6 +883,7 @@ The template for the recipient is the following:
 {
   "requested_amount": // the amount to pay out,
   "requested_currency": // the currency of the amount,
+  "type": // the type of the recipient, either person or business
   "payout_method":{
       "type": // method of the payout,
       "details":{
@@ -885,11 +896,13 @@ The template for the recipient is the following:
 
 {% include language-tabbar.html prefix="recipient-structure" raw=data-raw %}
 
+### Recipient type
+
 ### Payout type
 
 The payout type contains where the money should be sent to and to what currency. You can find a complete list of supported types at the [API reference documentation](https://api.transferzero.com/documentation#transactions).
 
-You can find the commonly used payout types at the [payout documentation]({{ "/docs/payout-details/" | prepend: site.baseurl }}).
+You can find the commonly used payout types at the [payout documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}).
 
 Unless you hold an internal balance with us, the input currency and payout currency cannot be the same. If you wish to do same-currency transactions please contact our team for further details.
 
@@ -929,7 +942,7 @@ The current list of currencies and associated decimal places is below -
 
 ### Payout details
 
-The payout details depend on the chosen payout type. Please check the [Payout documentation]({{ "/docs/payout-details/" | prepend: site.baseurl }}) for more details, and you can also find example calls at the [API reference documentation](https://api.transferzero.com/documentation#transactions).
+The payout details depend on the chosen payout type. Please check the [Payout documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}) for more details, and you can also find example calls at the [API reference documentation](https://api.transferzero.com/documentation#transactions).
 
 ## Metadata
 
@@ -992,6 +1005,7 @@ A transaction object looks like the following:
     "recipients": [
       {
         "id": "31288256-ec72-4a0a-bab7-06fb3a6cc8dd",
+        "type": "person",
         "transaction_id": "5280d11f-0ed3-4a60-ab07-29fdb058e4c4",
         "created_at": "2017-08-08T13:19:32.855Z",
         "input_usd_amount": 772.5,
