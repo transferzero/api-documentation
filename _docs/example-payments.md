@@ -502,7 +502,7 @@ payout.setDetails(details);
 Recipient recipient = new Recipient();
 recipient.setRequestedAmount(new BigDecimal("100000"));
 recipient.setRequestedCurrency("NGN");
-recipient.setType("person");
+recipient.setType(Recipient.TypeEnum.fromValue("person"));
 recipient.setPayoutMethod(payout);
 ```
 {% endcapture %}
