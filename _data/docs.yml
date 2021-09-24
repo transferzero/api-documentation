@@ -21,10 +21,10 @@
     - kyc
     - transaction-flow
     - error-handling
-    - payout-details
+    - individual-payments
+    - business-payments
     - additional-features
     - collection-details
-    - business-transactions
     - sandbox-testing
     - reports-api
     - changelog
