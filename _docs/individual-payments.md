@@ -1,6 +1,7 @@
 ---
 title: Individual payments
 permalink: /docs/individual-payments/
+redirect_from: /docs/payout-details/
 ---
 
 * Table of contents
@@ -167,80 +168,7 @@ NG
 
 # Ghana
 
-## GHS::Bank
-
-For Ghanan bank payments please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "bank_code": "030100",
-  "bank_account": "123456789"
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="ghs-bank-details" raw=data-raw %}
-
-The current banks supported and their `bank_codes` values are:
-
-{% capture data-raw %}
-```
-ABSA Ghana Bank (formerly Barclays): 030100
-Access Bank: 280100
-Agricultural Development Bank: 080100
-Bank of Africa: 210100
-CAL Bank: 140100
-Ecobank: 130100
-Fidelity Bank: 240100
-First Atlantic Bank: 170100
-First Bank Nigeria: 200100
-First National Bank: 330100
-GCB Bank: 040100
-Guaranty Trust Bank: 230100
-Heritage Bank: 370100
-National Investment Bank: 050100
-Prudential Bank: 180100
-Republic HFC Bank: 110100
-Stanbic Bank: 190100
-Standard Chartered Bank: 020100
-United Bank for Africa: 060100
-Zenith Bank: 120100
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="ghs-bank-options" raw=data-raw %}
-
-Please note that there is no standard format across banks for account numbers in this corridor. If you wish to check for correctness you can see the following list:
-
-{% capture data-raw %}
-```
-ABSA Ghana Bank (formerly Barclays): 10 or 13 digits
-Access Bank: 13 digits
-Agricultural Development Bank: 16 digits
-Bank of Africa: 11 digits
-CAL Bank: 13 digits
-Ecobank: 13 or 16 digits
-Fidelity Bank: 13 digits
-First Atlantic Bank: 13 digits
-First Bank Nigeria: 13 digits
-First National Bank: 11 digits
-GCB Bank: 13 digits
-Guaranty Trust Bank: 13 digits
-Heritage Bank: 13 digits
-National Investment Bank: 13 digits
-Prudential Bank: 13 digits
-Republic HFC Bank: 13 digits
-Stanbic Bank: 13 digits
-Standard Chartered Bank: 13 digits
-United Bank for Africa: 13 or 14 digits
-Zenith Bank: 10 digits
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="ghs-bank-digits" raw=data-raw %}
+{% include corridors/ghs-bank.md recipient_type='individual' %}
 
 ## GHS::Mobile
 
@@ -327,88 +255,9 @@ telecom
 
 # Europe / SEPA
 
-## EUR::Bank
+{% include corridors/eur-bank.md recipient_type='individual' %}
 
-For EUR IBAN transfers please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "iban": "DE89370400440532013000",
-  "bank_name": "Deutsche Bank", // Optional
-  "bic": "DEUTDEBBXXX" // Optional
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="eur-bank-details" raw=data-raw %}
-
-<div class="alert alert-warning" markdown="1">
-**Warning!** If the recipient account is not an `EUR` account then the recipient's bank might charge for converting the received funds from `EUR` to the local currency.
-</div>
-
-<div class="alert alert-info" markdown="1">
-**Note!** Transfer is done using the fastest method available on the recipient's bank.
-
-* If the recipient's bank supports the Instant Payment network funds will arrive within 2 hours (but usually within a couple minutes)
-* If the recipient's bank supports the SEPA system, funds will arrive within 1-2 business days
-* If the recipient's bank only supports the Swift system, funds will arrive within 2-5 business days
-</div>
-
-## GBP::Bank
-
-For GBP::Bank there are two payout options available:
-
-1. GBP Payments with account number and sort code
-2. GBP IBAN transfers
-
-For GBP Payments with account number and sort code please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "bank_name": "Lloyds Bank",
-  "bank_account": "12345678",
-  "sort_code": "123456"
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="gbp-bank-details" raw=data-raw %}
-
-For GBP IBAN transfers please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "bank_name": "Lloyds Bank",
-  "iban": "GB29LOYD60161331926819",
-  "bic": "LOYDGB2L" // Optional
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="gbp-bank-iban-details" raw=data-raw %}
-
-<div class="alert alert-warning" markdown="1">
-**Warning!** If the recipient account is not an `GBP` account then the recipient's bank might charge for converting the received funds from `GBP` to the local currency.
-</div>
-
-<div class="alert alert-info" markdown="1">
-**Note!**
-
-* The customer needs to enter either an IBAN (and an optional BIC), or an account number and sort code.
-* Transfer is done using the fastest method available on the recipient's bank.
-* If the recipient's bank is in the UK, and supports the Faster Payment network funds will arrive within 2 hours (but usually within a couple minutes)
-* If the recipient's bank supports the SEPA system, funds will arrive within 1-2 business days
-* If the recipient's bank only supports the Swift system, funds will arrive within 2-5 business days
-</div>
+{% include corridors/gbp-bank.md recipient_type='individual' %}
 
 # Morocco
 
@@ -589,104 +438,11 @@ orange
 **Warning** `XOF::Mobile` payouts to **Ivory Coast** are currently in beta phase.
 </div>
 
-## XOF::Bank
-
-For West African bank payments in selected countries please use the following:
-
-{% capture data-raw %}
-```javascript
-"details" : {
-  "first_name": "First",
-  "last_name": "Last",
-  "iban": "BJ0610100100144390000769", // BBAN format: AA123 12345 123456789012 12
-  "bank_name": "Bank Of Africa Bénin" // optional
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="xof-bank-details" raw=data-raw %}
-
-<div class="alert alert-info" markdown="1">
-**Note** `XOF::Bank` payouts are currently in beta phase.
-</div>
+{% include corridors/xof-bank.md recipient_type='individual' %}
 
 # South Africa
 
-## ZAR::Bank
-
-For South African bank payments please use the following recipient details.
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "street": "14 Main Street", // should include house number as well
-  "postal_code": "AB0001",
-  "city": "Cape Town",
-  "email": "recipient@email.com", // optional, but highly recommended
-  "bank_code": "334810",
-  "bank_account": "12345678",
-  "phone_number": "+27119785313",
-  "transfer_reason_code": "185"
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="zar-bank-details-personal" raw=data-raw %}
-
-List of transfer reasons and corresponding `transfer_reason_code` are:
-
-{% capture data-raw %}
-```
-Sending money into my own account: 183
-Donations and gifts: 184
-Sending money to a friend, family member or any third party person: 185
-Mortgage repayments: 186
-Business Travel Payments: 187
-Personal Travel Payments: 188
-Tuition fees: 189
-Investment into property by a foreign individual: 192
-Investment by a foreign individual - other: 193
-Legal services: 196
-Accounting services: 197
-Management consulting services: 198
-Advertising & market research services: 200
-Managerial services: 201
-Cultural and recreational services: 205
-Salary paid to South African Resident Temporarily Abroad: 206
-Salary paid to a non-resident employee in South Africa: 207
-Salary paid to a foreign national contract worker in South Africa: 208
-Pensions: 213
-Annuities: 214
-Inheritances: 215
-Alimony: 216
-Tax - Income tax: 217
-Tax - VAT refunds: 218
-Tax - Other: 219
-Dividends: 222
-Commission or brokerage: 224
-Rental: 225
-Income earned abroad by a resident on an individual investment: 226
-Architectural, engineering and other technical services: 245
-Payments for data, news related and news agency fees: 249
-Computer-related services including maintenance, repair and consultancy: 279
-Proceeds for other business services not included elsewhere: 309
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="zar-transfer-reason-codes" raw=data-raw %}
-
-Please note that due to regulatory reasons senders trying to create `ZAR::Bank` transactions are required to have the following fields on the sender present as well:
-`street`, `city` and `postal_code`
-
-<div class="alert alert-info" markdown="1">
-**Note** To accept payments in South Africa the recipient has to sign a mandate form online. The link to the form will be sent over the recipient's mobile phone number and email address, and have to be filled out online. Once the mandate is signed it is valid for one year and the recipient doesn't need to do these steps again. When sending funds to the same recipient please make sure their name and bank details are the same, otherwise they might be asked to sign the mandate form again.
-</div>
-
-<div class="alert alert-warning" markdown="1">
-**Warning** `ZAR::Bank` payouts are currently in beta phase.
-</div>
+{% include corridors/zar-bank.md recipient_type='individual' %}
 
 # Kenya
 
