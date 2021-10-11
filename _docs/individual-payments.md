@@ -463,7 +463,7 @@ For Kenyan bank payments please use:
   "swift_code": "EQBLKENA",
   "identity_card_type": "NI", // refers to the recipient's ID details; Values: "PP": Passport, "NI": National ID
   "identity_card_id": 'AB12345678', // refers to the recipient's ID details
-  "transfer_reason_code": "185"
+  "transfer_reason_code": "third_party_person_account"
 }
 ```
 {% endcapture %}
@@ -520,67 +520,7 @@ KWFT Bank: 78000
 
 {% include language-tabbar.html prefix="kes-bank-options" raw=data-raw %}
 
-List of transfer reasons and corresponding `transfer_reason_code` are:
-
-{% capture data-raw %}
-```
-Sending money into my own account: 183
-Donations and gifts: 184
-Sending money to a friend, family member or any third party person: 185
-Mortgage repayments: 186
-Business Travel Payments: 187
-Personal Travel Payments: 188
-Tuition fees: 189
-Commission and fees for financial: 190
-Proceeds for financial services charged for advice provided: 191
-Investment into property by a foreign individual: 192
-Investment by a foreign individual - other: 193
-Legal services: 196
-Accounting services: 197
-Management consulting services: 198
-Public relation services: 199
-Advertising & market research services: 200
-Managerial services: 201
-Medical and dental services: 202
-Operational leasing: 204
-Salary paid to South African Resident Temporarily Abroad: 206
-Salary paid to a non-resident employee in South Africa: 207
-Salary paid to a foreign national contract worker in South Africa: 208
-Pensions: 213
-Annuities: 214
-Inheritances: 215
-Alimony: 216
-Tax - Income tax: 217
-Tax - VAT refunds: 218
-Tax - Other: 219
-Insurance premiums (non life/short term): 220
-Insurance premiums (life): 221
-Dividends: 222
-Commission or brokerage: 224
-Rental: 225
-Income earned abroad by a resident on an individual investment: 226
-Funding received for research and development:243
-Repairs and maintenance on machinery and equipment: 244
-Architectural, engineering and other technical services: 245
-Agricultural, mining, waste treatment and depollution services: 246
-Proceeds for construction services: 247
-Payments for telecommunication services: 248
-Payments for data, news related and news agency fees: 249
-Payments for passenger services - road: 250
-Payments for passenger services - rail: 251
-Payments for passenger services - sea: 252
-Payments for passenger services - air: 253
-Payments for freight services - road: 254
-Payments for freight services - rail: 255
-Payments for freight services - sea: 256
-Payments for freight services - air: 257
-Payments for postal and courier services - road: 258
-Payments for postal and courier services - rail: 259
-Payments for postal and courier services - sea: 260
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="kes-transfer-reason-codes" raw=data-raw %}
+{% include corridors/transfer_reason_codes.md %}
 
 All senders trying to create Kenyan bank payments need to have the following details present:
 - `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other
@@ -642,67 +582,7 @@ mpesa
 
 {% include language-tabbar.html prefix="kes-mobile-providers" raw=data-raw %}
 
-List of transfer reasons and corresponding `transfer_reason_code` are:
-
-{% capture data-raw %}
-```
-Sending money into my own account: 183
-Donations and gifts: 184
-Sending money to a friend, family member or any third party person: 185
-Mortgage repayments: 186
-Business Travel Payments: 187
-Personal Travel Payments: 188
-Tuition fees: 189
-Commission and fees for financial: 190
-Proceeds for financial services charged for advice provided: 191
-Investment into property by a foreign individual: 192
-Investment by a foreign individual - other: 193
-Legal services: 196
-Accounting services: 197
-Management consulting services: 198
-Public relation services: 199
-Advertising & market research services: 200
-Managerial services: 201
-Medical and dental services: 202
-Operational leasing: 204
-Salary paid to South African Resident Temporarily Abroad: 206
-Salary paid to a non-resident employee in South Africa: 207
-Salary paid to a foreign national contract worker in South Africa: 208
-Pensions: 213
-Annuities: 214
-Inheritances: 215
-Alimony: 216
-Tax - Income tax: 217
-Tax - VAT refunds: 218
-Tax - Other: 219
-Insurance premiums (non life/short term): 220
-Insurance premiums (life): 221
-Dividends: 222
-Commission or brokerage: 224
-Rental: 225
-Income earned abroad by a resident on an individual investment: 226
-Funding received for research and development:243
-Repairs and maintenance on machinery and equipment: 244
-Architectural, engineering and other technical services: 245
-Agricultural, mining, waste treatment and depollution services: 246
-Proceeds for construction services: 247
-Payments for telecommunication services: 248
-Payments for data, news related and news agency fees: 249
-Payments for passenger services - road: 250
-Payments for passenger services - rail: 251
-Payments for passenger services - sea: 252
-Payments for passenger services - air: 253
-Payments for freight services - road: 254
-Payments for freight services - rail: 255
-Payments for freight services - sea: 256
-Payments for freight services - air: 257
-Payments for postal and courier services - road: 258
-Payments for postal and courier services - rail: 259
-Payments for postal and courier services - sea: 260
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="kes-transfer-reason-codes" raw=data-raw %}
+{% include corridors/transfer_reason_codes.md %}
 
 All senders trying to create Kenyan mobile payouts need to have the following details present:
 - `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other

@@ -94,47 +94,7 @@ Financial Institution: financial_institution
   {% include language-tabbar.html prefix="zar-nature-of-business" raw=data-raw-nature-of-business %}
 {% endif %}
 
-List of transfer reasons and corresponding `transfer_reason_code` are:
-
-{% capture data-raw %}
-```
-Sending money into my own account: 183
-Donations and gifts: 184
-Sending money to a friend, family member or any third party person: 185
-Mortgage repayments: 186
-Business Travel Payments: 187
-Personal Travel Payments: 188
-Tuition fees: 189
-Investment into property by a foreign individual: 192
-Investment by a foreign individual - other: 193
-Legal services: 196
-Accounting services: 197
-Management consulting services: 198
-Advertising & market research services: 200
-Managerial services: 201
-Cultural and recreational services: 205
-Salary paid to South African Resident Temporarily Abroad: 206
-Salary paid to a non-resident employee in South Africa: 207
-Salary paid to a foreign national contract worker in South Africa: 208
-Pensions: 213
-Annuities: 214
-Inheritances: 215
-Alimony: 216
-Tax - Income tax: 217
-Tax - VAT refunds: 218
-Tax - Other: 219
-Dividends: 222
-Commission or brokerage: 224
-Rental: 225
-Income earned abroad by a resident on an individual investment: 226
-Architectural, engineering and other technical services: 245
-Payments for data, news related and news agency fees: 249
-Computer-related services including maintenance, repair and consultancy: 279
-Proceeds for other business services not included elsewhere: 309
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="zar-transfer-reason-codes" raw=data-raw %}
+{% include corridors/transfer_reason_codes.md %}
 
 Please note that due to regulatory reasons senders trying to create `ZAR::Bank` transactions are required to have the following fields on the sender present as well:
 `street`, `city` and `postal_code`

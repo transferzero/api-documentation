@@ -16,6 +16,8 @@ For West African bank payments in selected countries please use the following:
 
 {% include language-tabbar.html prefix="xof-bank-details" raw=data-raw %}
 
+{% include corridors/transfer_reason_codes.md %}
+
 <div class="alert alert-info" markdown="1">
 **Note** `XOF::Bank` payouts are currently in beta phase.
 </div>
