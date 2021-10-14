@@ -13,6 +13,7 @@ Current version of the SDKs are `1.17.0`
 1.17.0
 -----
 * Add new `transfer_reason` string enum field to: `XOF::Bank`, `ZAR::Bank`, `KES::Bank` and `KES::Mobile` corridors. List of valid options can be found here: https://docs.transferzero.com/docs/payout-details
+* Deprecate `transfer_reason_code` field
 
 1.16.1
 -----
