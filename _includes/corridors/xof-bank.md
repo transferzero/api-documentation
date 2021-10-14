@@ -9,14 +9,14 @@ For West African bank payments in selected countries please use the following:
 "details" : {
   {{ recipient_name }},
   "iban": "BJ0610100100144390000769", // BBAN format: AA123 12345 123456789012 12
-  "bank_name": "Bank Of Africa Bénin" // optional
+  "transfer_reason": "personal_account"
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="xof-bank-details" raw=data-raw %}
 
-{% include corridors/transfer_reason_codes.md %}
+{% include corridors/transfer_reasons.md %}
 
 <div class="alert alert-info" markdown="1">
 **Note** `XOF::Bank` payouts are currently in beta phase.

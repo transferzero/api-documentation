@@ -16,7 +16,7 @@ For Ghanan bank payments please use:
 
 {% include language-tabbar.html prefix="ghs-bank-details" raw=data-raw %}
 
-The current banks supported and their `bank_codes` values are:
+The current banks supported and their `bank_code` values are:
 
 {% capture data-raw %}
 ```

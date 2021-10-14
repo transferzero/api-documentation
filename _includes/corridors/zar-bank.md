@@ -24,7 +24,7 @@ For South African bank payments please use the following recipient details:
   "bank_code": "334810",
   "bank_account": "12345678",
   "phone_number": "+27119785313",
-  "transfer_reason_code": "185"{{ additional_details }}
+  "transfer_reason": "personal_account"{{ additional_details }}
 }
 ```
 {% endcapture %}
@@ -94,7 +94,7 @@ Financial Institution: financial_institution
   {% include language-tabbar.html prefix="zar-nature-of-business" raw=data-raw-nature-of-business %}
 {% endif %}
 
-{% include corridors/transfer_reason_codes.md %}
+{% include corridors/transfer_reasons.md %}
 
 Please note that due to regulatory reasons senders trying to create `ZAR::Bank` transactions are required to have the following fields on the sender present as well:
 `street`, `city` and `postal_code`

@@ -1,6 +1,6 @@
-List of transfer reasons and corresponding `transfer_reason_code` are:
+List of available `transfer_reason`s and their corresponding keys to use:
 
-{% capture transfer_reason_codes %}
+{% capture transfer_reasons %}
 ```
 Sending money into my own account: personal_account
 Donations and gifts: donations_and_gifts
@@ -113,4 +113,4 @@ Payment for Government Services: government_services
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="xof-transfer-reason-codes" raw=transfer_reason_codes %}
+{% include language-tabbar.html prefix="xof-transfer-reason-codes" raw=transfer_reasons %}

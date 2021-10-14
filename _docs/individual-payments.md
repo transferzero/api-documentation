@@ -463,14 +463,14 @@ For Kenyan bank payments please use:
   "swift_code": "EQBLKENA",
   "identity_card_type": "NI", // refers to the recipient's ID details; Values: "PP": Passport, "NI": National ID
   "identity_card_id": 'AB12345678', // refers to the recipient's ID details
-  "transfer_reason_code": "third_party_person_account"
+  "transfer_reason": "third_party_person_account"
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="kes-bank-details" raw=data-raw %}
 
-The current banks supported and their `bank_codes` values are:
+The current banks supported and their `bank_code` values are:
 
 {% capture data-raw %}
 ```
@@ -520,7 +520,7 @@ KWFT Bank: 78000
 
 {% include language-tabbar.html prefix="kes-bank-options" raw=data-raw %}
 
-{% include corridors/transfer_reason_codes.md %}
+{% include corridors/transfer_reasons.md %}
 
 All senders trying to create Kenyan bank payments need to have the following details present:
 - `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other
@@ -563,7 +563,7 @@ For Kenyan mobile payments please use:
   "phone_number": "254123456789", // local or international Kenyan format
   "identity_card_type": "NI", // refers to the recipient's ID details; Values: "PP": Passport, "NI": National ID
   "identity_card_id": 'AB12345678', // refers to the recipient's ID details
-  "transfer_reason_code": "185",
+  "transfer_reason": "personal_account",
   "mobile_provider": "mpesa"
 
 }
@@ -582,7 +582,7 @@ mpesa
 
 {% include language-tabbar.html prefix="kes-mobile-providers" raw=data-raw %}
 
-{% include corridors/transfer_reason_codes.md %}
+{% include corridors/transfer_reasons.md %}
 
 All senders trying to create Kenyan mobile payouts need to have the following details present:
 - `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other
