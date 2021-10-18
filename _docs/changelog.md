@@ -8,7 +8,20 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.15.1`
+Current version of the SDKs are `1.17.0`
+
+1.17.0
+-----
+* Add new `transfer_reason` string enum field to: `XOF::Bank`, `ZAR::Bank`, `KES::Bank` and `KES::Mobile` corridors. List of valid options can be found here: https://docs.transferzero.com/docs/payout-details
+* Deprecate `transfer_reason_code` field
+
+1.16.1
+-----
+* Add `type` field to the Recipient model. Valid options are: `person`, `business`
+
+1.16.0
+-----
+* Add optional `mobile_provider` field support to the `UGX::Mobile` corridor. Valid options are: `airtel`, `mtn`, `africell`, `telecom`
 
 1.15.1
 -----
