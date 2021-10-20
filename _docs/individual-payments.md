@@ -461,7 +461,7 @@ For Kenyan bank payments please use:
   "branch_code": "404",
   "bank_account": "12345678",
   "swift_code": "EQBLKENA",
-  "identity_card_type": "NI", // refers to the recipient's ID details; Values: "PP": Passport, "NI": National ID
+  "identity_card_type": "ID", // refers to the recipient's ID details; Values: "PP": Passport, "ID": National ID or "O": Other
   "identity_card_id": 'AB12345678', // refers to the recipient's ID details
   "transfer_reason": "third_party_person_account"
 }
@@ -561,7 +561,7 @@ For Kenyan mobile payments please use:
   "last_name": "Last",
   "street": "1 Linford Street",
   "phone_number": "254123456789", // local or international Kenyan format
-  "identity_card_type": "NI", // refers to the recipient's ID details; Values: "PP": Passport, "NI": National ID
+  "identity_card_type": "ID", // refers to the recipient's ID details; Values: "PP": Passport, "ID": National ID or "O": Other
   "identity_card_id": 'AB12345678', // refers to the recipient's ID details
   "transfer_reason": "personal_account",
   "mobile_provider": "mpesa"
