@@ -391,7 +391,7 @@ Please note that the fields above are generally considered optional for senders 
 
 ## XOF::Mobile
 
-For mobile payouts to Senegal and Ivory Coast, please use:
+For mobile payouts to Senegal, Ivory Coast, Burkina Faso and Mali please use:
 
 {% capture data-raw %}
 ```javascript
@@ -400,7 +400,7 @@ For mobile payouts to Senegal and Ivory Coast, please use:
   "last_name": "Last",
   "mobile_provider": "orange", // lowercase, see provider values below
   "phone_number": "774044436", // mobile number in local country format
-  "country": "SN" // "SN" for Senegal (default), "CI" for Ivory Coast
+  "country": "SN" // "SN" for Senegal, "CI" for Ivory Coast, "BF" for Burkina Faso, "ML" for Mali
 }
 ```
 {% endcapture %}
@@ -430,6 +430,28 @@ orange
 
 {% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
 
+The valid `mobile_provider` values for Burkina Faso are:
+
+{% capture data-raw %}
+```
+orange
+mobicash
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
+
+The valid `mobile_provider` values for Mali are:
+
+{% capture data-raw %}
+```
+orange
+mobicash
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
+
 <div class="alert alert-info" markdown="1">
 **Note** Amounts for `XOF::Mobile` payouts to **Ivory Coast 'Orange'** mobile numbers should be multiples of 5.
 </div>
@@ -439,6 +461,68 @@ orange
 </div>
 
 {% include corridors/xof-bank.md recipient_type='individual' %}
+
+# Cameroon
+
+## XAF::Mobile
+
+For mobile payouts to Cameroon, please use:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "first_name": "First",
+  "last_name": "Last",
+  "mobile_provider": "orange", // lowercase, see provider values below
+  "phone_number": "674044436", // mobile number in local country format
+  "country": "CM" // "CM" for Cameroon
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xaf-mobile-details" raw=data-raw %}
+
+The valid `mobile_provider` values for Cameroon are:
+
+{% capture data-raw %}
+```
+orange
+mtn
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xaf-mobile-providers" raw=data-raw %}
+
+# Guinea Conakry
+
+## GNF::Mobile
+
+For mobile payouts to Guinea Conakry, please use:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  "first_name": "First",
+  "last_name": "Last",
+  "mobile_provider": "mtn", // lowercase, see provider values below
+  "phone_number": "444044436", // mobile number in local country format
+  "country": "GN" // "GN" for Guinea
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="gnf-mobile-details" raw=data-raw %}
+
+The valid `mobile_provider` values for Guinea Conakry are:
+
+{% capture data-raw %}
+```
+orange
+mtn
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="gnf-mobile-providers" raw=data-raw %}
 
 # South Africa
 
