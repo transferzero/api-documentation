@@ -401,6 +401,7 @@ For mobile payouts to Senegal, Ivory Coast, Burkina Faso and Mali please use:
   "mobile_provider": "orange", // lowercase, see provider values below
   "phone_number": "774044436", // mobile number in local country format
   "country": "SN" // "SN" for Senegal, "CI" for Ivory Coast, "BF" for Burkina Faso, "ML" for Mali
+  "transfer_reason": "personal_account" // mandatory for Mali payouts, optional otherwise
 }
 ```
 {% endcapture %}
@@ -452,6 +453,8 @@ mobicash
 
 {% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
 
+{% include corridors/transfer_reasons.md %}
+
 <div class="alert alert-info" markdown="1">
 **Note** Amounts for `XOF::Mobile` payouts to **Ivory Coast 'Orange'** mobile numbers should be multiples of 5.
 </div>
@@ -493,11 +496,11 @@ mtn
 
 {% include language-tabbar.html prefix="xaf-mobile-providers" raw=data-raw %}
 
-# Guinea Conakry
+# Guinea
 
 ## GNF::Mobile
 
-For mobile payouts to Guinea Conakry, please use:
+For mobile payouts to Guinea, please use:
 
 {% capture data-raw %}
 ```javascript
@@ -506,14 +509,14 @@ For mobile payouts to Guinea Conakry, please use:
   "last_name": "Last",
   "mobile_provider": "mtn", // lowercase, see provider values below
   "phone_number": "444044436", // mobile number in local country format
-  "country": "GN" // "GN" for Guinea
+  "country": "GN", // Optional
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="gnf-mobile-details" raw=data-raw %}
 
-The valid `mobile_provider` values for Guinea Conakry are:
+The valid `mobile_provider` values for Guinea are:
 
 {% capture data-raw %}
 ```
