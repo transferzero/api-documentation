@@ -508,8 +508,7 @@ For mobile payouts to Guinea, please use:
   "first_name": "First",
   "last_name": "Last",
   "mobile_provider": "mtn", // lowercase, see provider values below
-  "phone_number": "444044436", // mobile number in local country format
-  "country": "GN", // Optional
+  "phone_number": "444044436" // mobile number in local country format
 }
 ```
 {% endcapture %}
