@@ -519,7 +519,6 @@ The valid `mobile_provider` values for Guinea are:
 
 {% capture data-raw %}
 ```
-orange
 mtn
 ```
 {% endcapture %}
