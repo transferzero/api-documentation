@@ -57,16 +57,16 @@ Once the transaction is created you will receive an URL where the customer will 
 
 Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
 
-# TZS and UGX mobile collection
+# UGX mobile collection
 
 To initiate a GHS mobile collections please use the following details:
 
 {% capture data-raw %}
 ```javascript
-"input_currency": "TZS", // or UGX
+"input_currency": "UGX", 
 "payin_methods": [
   {
-    "type": "TZS::Mobile", // or UGX::Mobile
+    "type": "UGX::Mobile",
     "in_details": {
       "phone_number": "+2559999999",
       "send_instructions": true
@@ -81,8 +81,6 @@ To initiate a GHS mobile collections please use the following details:
 Once the transaction is created the specified phone number will receive instructions on how to pay in the requested amount.
 
 If the user does not receive a prompt they are still able to finish the payment. Instructions can be found in the `payin_methods[0].instructions` hash in the following format:
-
-(example instructions for TZS payments)
 
 {% capture data-raw %}
 ```javascript
