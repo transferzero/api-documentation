@@ -35,38 +35,16 @@ Please note that for MTN Cash,if the customer does not have enough funds to pay 
 
 Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
 
-# XOF mobile collections
-
-To initiate a XOF mobile collections please use the following details:
-
-{% capture data-raw %}
-```javascript
-"input_currency": "XOF",
-"payin_methods": [
-  {
-    "type": "XOF::Mobile",
-    "in_details": {}
-  }
-],
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="collection-xof" raw=data-raw %}
-
-Once the transaction is created you will receive an URL where the customer will have to provide phone number and temporary authorisation code (fetched by USSD code).
-
-Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
-
-# TZS and UGX mobile collection
+# UGX mobile collections
 
 To initiate a GHS mobile collections please use the following details:
 
 {% capture data-raw %}
 ```javascript
-"input_currency": "TZS", // or UGX
+"input_currency": "UGX",
 "payin_methods": [
   {
-    "type": "TZS::Mobile", // or UGX::Mobile
+    "type": "UGX::Mobile",
     "in_details": {
       "phone_number": "+2559999999",
       "send_instructions": true
@@ -81,8 +59,6 @@ To initiate a GHS mobile collections please use the following details:
 Once the transaction is created the specified phone number will receive instructions on how to pay in the requested amount.
 
 If the user does not receive a prompt they are still able to finish the payment. Instructions can be found in the `payin_methods[0].instructions` hash in the following format:
-
-(example instructions for TZS payments)
 
 {% capture data-raw %}
 ```javascript
