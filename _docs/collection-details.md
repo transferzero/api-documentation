@@ -35,7 +35,7 @@ Please note that for MTN Cash,if the customer does not have enough funds to pay 
 
 Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
 
-# TZS and UGX mobile collection 
+# TZS and UGX mobile collection
 
 To initiate a GHS mobile collections please use the following details:
 
