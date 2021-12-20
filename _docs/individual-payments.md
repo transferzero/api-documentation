@@ -97,7 +97,7 @@ For USD bank payments in Nigeria please use:
 "details": {
   "first_name": "Jane",
   "last_name": "Doe",
-  "phone_number": "+2341234567",
+  "phone_number": "+2341234567", // optional
   "bank_code": "057",
   "bank_account": "1234567890",
   "country": "NG"
