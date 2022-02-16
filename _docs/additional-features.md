@@ -296,10 +296,10 @@ POST /v1/transactions/validate
     },
     {
       "type": "GHS::Mobile",
-      "ux_flow": "voucher",
+      "ux_flow": "ussd_popup",
       "in_details": {
-        "phone_number": "+25335499999",
-        "mobile_provider": "mtn"
+        "phone_number": "+25336488888",
+        "mobile_provider": "vodafone"
       }
     },
   ],
@@ -332,15 +332,15 @@ The response would look like the following:
         "mobile_provider": "mtn"
       },
       "errors": {
-        "ux_flow": "invalid"
+        "mobile_provider": "invalid"
       }
     },
     {
       "type": "GHS::Mobile",
       "ux_flow": "voucher",
       "in_details": {
-        "phone_number": "+2335499999",
-        "mobile_provider": "mtn"
+        "phone_number": "+2336488888",
+        "mobile_provider": "vodafone"
       },
       "errors": {}
     }
@@ -359,7 +359,7 @@ The response would look like the following:
 
 {% include language-tabbar.html prefix="collection-flow-response" raw=data-raw %}
 
-For the above example, it shows that `ussd_popup` is not available and you can only use `voucher` to initiate the collection.
+For the above example, it shows that `mtn` is not available and you can only use `vodafone` to initiate the collection.
 
 
 # Auto cancellation and refund of transactions
