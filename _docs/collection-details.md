@@ -6,11 +6,11 @@ permalink: /docs/collection-details/
 * Table of contents
 {:toc}
 
-This document lists the required details that needs to be sent for each of our collection corridor
+This document lists the required details that need to be sent for each of our collection corridors.
 
 # GHS mobile collections
 
-To initiate a GHS mobile collections please use the following details:
+To initiate a GHS mobile collection, please use the following details (phone_number and mobile_provider used below are examples):
 
 {% capture data-raw %}
 ```javascript
@@ -18,9 +18,10 @@ To initiate a GHS mobile collections please use the following details:
 "payin_methods": [
   {
     "type": "GHS::Mobile",
+    "ux_flow": "ussd_popup",
     "in_details": {
-      "phone_number": "+2569999999",
-      "send_instructions": true
+      "phone_number": "+2339999999", // In international format
+      "mobile_provider": "vodafone" // Optional. One of 'airtel', 'tigo', 'mtn', 'vodafone'
     }
   }
 ],
@@ -29,15 +30,13 @@ To initiate a GHS mobile collections please use the following details:
 
 {% include language-tabbar.html prefix="collection-ghs" raw=data-raw %}
 
-Once the transaction is created the specified phone number will receive instructions on how to pay in the requested amount.
+Once the transaction is created, instructions for completing payment will be sent to the specified phone number.
 
-Please note that for MTN Cash,if the customer does not have enough funds to pay the transaction they might not receive the payment prompt to their phone. In this case the transaction request should be re-sent, once the customer has confirmed they have enough funds.
-
-Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
+Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
 
 # UGX mobile collections
 
-To initiate a GHS mobile collections please use the following details:
+To initiate a UGX mobile collection, please use the following details (phone_number and mobile_provider used below are examples):
 
 {% capture data-raw %}
 ```javascript
@@ -45,9 +44,10 @@ To initiate a GHS mobile collections please use the following details:
 "payin_methods": [
   {
     "type": "UGX::Mobile",
+    "ux_flow": "ussd_popup",
     "in_details": {
-      "phone_number": "+2559999999",
-      "send_instructions": true
+      "phone_number": "+2569999999", // In international format
+      "mobile_provider": "airtel" // Optional
     }
   }
 ],
@@ -56,25 +56,11 @@ To initiate a GHS mobile collections please use the following details:
 
 {% include language-tabbar.html prefix="collection-beyonic" raw=data-raw %}
 
-Once the transaction is created the specified phone number will receive instructions on how to pay in the requested amount.
+Once the transaction is created, instructions for completing payment will be sent to the specified phone number.
 
-If the user does not receive a prompt they are still able to finish the payment. Instructions can be found in the `payin_methods[0].instructions` hash in the following format:
+Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
 
-{% capture data-raw %}
-```javascript
-"instructions": {
-  "MPESA Code": "\\nDial *150*00#\\nSelect Option 4: Pay by M-Pesa\\nSelect Option 4: Enter Company Number\\nInput number: 400700\\nInput payment reference: 008transferzero\\nInput payment amount\\nInput password\\n",
-  "TIGO PESA Code": "\\nDial *150*01#\\nSelect Option 4: Payments\\nSelect Option 3: Enter Company Number\\nInput number: 400700\\nInput payment reference: 008transferzero\\nInput payment amount\\nInput password\\n",
-  "Airtel Code":"\\nDial *150*60#\\nChoose Number 5: Pay Bills\\nChoose Number 4: Input Company Name\\nInput name: Datavisint\\nInput payment amount\\nInput reference number: 008transferzero\\nInput password\\n"
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="collection-beyonic-out" raw=data-raw %}
-
-Once the payment has been successfully done a `transaction.paid_in` webhook will be sent out.
-
-# EUR IBAN collections
+# EUR bank collections
 
 To initiate EUR IBAN collections please use the following details:
 
@@ -83,7 +69,8 @@ To initiate EUR IBAN collections please use the following details:
 "input_currency": "EUR",
 "payin_methods": [
   {
-    "type": "EUR::Bank"
+    "type": "EUR::Bank",
+    "ux_flow": "bank_transfer"
   }
 ],
 ```
@@ -91,7 +78,7 @@ To initiate EUR IBAN collections please use the following details:
 
 {% include language-tabbar.html prefix="collection-iban" raw=data-raw %}
 
-The user will then need to follow the instructions as shown in the response's `out_details` hash:
+Payment should be made by the sender using the bank details returned in the response's `out_details` hash:
 
 {% capture data-raw %}
 ```javascript
@@ -109,25 +96,26 @@ The user will then need to follow the instructions as shown in the response's `o
 
 {% include language-tabbar.html prefix="collection-iban-out" raw=data-raw %}
 
-The user will then need to send the appropriate funds to the IBAN shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example).
+Funds should be sent to the IBAN shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example).
 
 Settlement times are dependent on what payment network the sender's bank supports:
-* If they support the Instant Payment network funds arrive within 2 hours (but usually within 5 minutes)
+* If they support the Instant Payment network, then funds arrive within 2 hours (but usually within 5 minutes)
 * If they support the SEPA network, then funds arrive within 1-2 business days
 * If they only support the Swift network, then funds arrive within 2-5 business days
 
-Once the payment has been received a `transaction.paid_in` webhook will be sent out.
+Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
 
-# GBP Faster Payments bank collections
+# GBP bank collections
 
 To initiate GBP Faster Payments collections please use the following details:
 
 {% capture data-raw %}
 ```javascript
-"input_currency": "GBP", // or EUR
+"input_currency": "GBP",
 "payin_methods": [
   {
-    "type": "GBP::Bank" // or EUR::Bank
+    "type": "GBP::Bank",
+    "ux_flow": "bank_transfer"
   }
 ],
 ```
@@ -135,7 +123,7 @@ To initiate GBP Faster Payments collections please use the following details:
 
 {% include language-tabbar.html prefix="collection-fp" raw=data-raw %}
 
-The user will then need to follow the instructions as shown in the response's `out_details` hash:
+Payment should be made by the sender using the bank details returned in the response's `out_details` hash:
 
 {% capture data-raw %}
 ```javascript
@@ -155,4 +143,8 @@ The user will then need to follow the instructions as shown in the response's `o
 
 {% include language-tabbar.html prefix="collection-fp-out" raw=data-raw %}
 
-The user will then need to send the appropriate funds to the account details shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example). If the payment was sent as a Faster Payments transfer then the collection should arrive within 2 hours (but usually instantly) If Faster Payments transfer is not used, or the funds are sent from outside the UK then however this will be a Swift payment, which can take up to 5 business days to arrive. Once the payment has been received a `transaction.paid_in` webhook will be sent out.
+Funds should be sent to the IBAN shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example).
+
+If the payment was sent as a Faster Payments transfer then the collection should arrive within 2 hours (but usually instantly). If Faster Payments transfer is not used, or the funds are sent from outside the UK, this will be a Swift payment which can take up to 5 business days to arrive.
+
+Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
