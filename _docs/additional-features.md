@@ -337,7 +337,7 @@ The response would look like the following:
     },
     {
       "type": "GHS::Mobile",
-      "ux_flow": "voucher",
+      "ux_flow": "ussd_popup",
       "in_details": {
         "phone_number": "+2336488888",
         "mobile_provider": "vodafone"
