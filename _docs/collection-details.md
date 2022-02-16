@@ -21,14 +21,14 @@ To initiate a GHS mobile collection, please use the following details (phone_num
     "ux_flow": "ussd_popup",
     "in_details": {
       "phone_number": "+2339999999", // In international format
-      "mobile_provider": "vodafone" // Optional. One of 'airtel', 'tigo', 'mtn', 'vodafone'
+      "mobile_provider": "vodafone" // Mandatory. One of 'airtel', 'tigo', 'mtn', 'vodafone'
     }
   }
 ],
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="collection-ghs" raw=data-raw %}
+{% include language-tabbar.html prefix="collection-ghs-mobile" raw=data-raw %}
 
 Once the transaction is created, instructions for completing payment will be sent to the specified phone number.
 
@@ -46,15 +46,14 @@ To initiate a UGX mobile collection, please use the following details (phone_num
     "type": "UGX::Mobile",
     "ux_flow": "ussd_popup",
     "in_details": {
-      "phone_number": "+2569999999", // In international format
-      "mobile_provider": "airtel" // Optional
+      "phone_number": "+2569999999" // In international format
     }
   }
 ],
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="collection-beyonic" raw=data-raw %}
+{% include language-tabbar.html prefix="collection-ugx-mobile" raw=data-raw %}
 
 Once the transaction is created, instructions for completing payment will be sent to the specified phone number.
 
@@ -76,7 +75,7 @@ To initiate EUR IBAN collections please use the following details:
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="collection-iban" raw=data-raw %}
+{% include language-tabbar.html prefix="collection-eur-bank" raw=data-raw %}
 
 Payment should be made by the sender using the bank details returned in the response's `out_details` hash:
 
@@ -94,7 +93,7 @@ Payment should be made by the sender using the bank details returned in the resp
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="collection-iban-out" raw=data-raw %}
+{% include language-tabbar.html prefix="collection-eur-bank-out" raw=data-raw %}
 
 Funds should be sent to the IBAN shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example).
 
@@ -105,7 +104,7 @@ Settlement times are dependent on what payment network the sender's bank support
 
 Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
 
-# GBP bank collections
+# GBP bank collections (including Faster Payments)
 
 To initiate GBP Faster Payments collections please use the following details:
 
@@ -121,7 +120,7 @@ To initiate GBP Faster Payments collections please use the following details:
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="collection-fp" raw=data-raw %}
+{% include language-tabbar.html prefix="collection-gbp-bank" raw=data-raw %}
 
 Payment should be made by the sender using the bank details returned in the response's `out_details` hash:
 
@@ -141,7 +140,7 @@ Payment should be made by the sender using the bank details returned in the resp
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="collection-fp-out" raw=data-raw %}
+{% include language-tabbar.html prefix="collection-gbp-bank-out" raw=data-raw %}
 
 Funds should be sent to the IBAN shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example).
 
