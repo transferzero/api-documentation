@@ -181,12 +181,13 @@ How to handle automated collection requests are based on the particular currency
 
 You can also check the [API reference documentation](https://api.transferzero.com/documentation#fetching-possible-payin-methods) for more details.
 
+## Collection transaction
 The generic structure of a transaction that collects the equivalent of 100 USD from senders and pays out to the USD balance (that will be payed out manually by our team in bulk) looks like the following:
 
 {% capture data-raw %}
 ```javascript
 {
-  "input_currency": "NGN",
+  "input_currency": "GHS",
   "payin_methods": [
     {
       // payin method details
@@ -236,7 +237,15 @@ The response will always look like the following. It is very similar to the stan
     "payin_methods": [
       {
         "id": "xxxxxxxx",
-        "type":"NGN::Bank",
+        "type":"GHS::Mobile",
+        "ux_flow": "ussd_popup",
+        "state": "pending",
+        "state_reason_details": {
+          "code": "1",
+          "category": "pending",
+          "messages": ["Pending", "Pending", "Pending"],
+          "description": "Awaiting funds from the sender."
+        }
         "out_details": {
           // The out_details hash contains instructions on how to finish the payment.
           // These values might change for each request and should never be cached.
@@ -264,6 +273,94 @@ The response will always look like the following. It is very similar to the stan
 Please note the `payin_reference` number, which should be used if the provider asks for a reference number whether it's bank, card or mobile payments. This number will be used to link together the collection with the transaction. Note that this might not always be a number - some providers will have alphanumeric values for example.
 
 For the valid options in the `payin_methods` field please see the [collection details documentation]({{ "/docs/collection-details/" | prepend: site.baseurl }}).
+
+
+## Collection flow discovery
+Collection requests present the sender with different user experience flows based on the particular currency, type of collection and availability.
+
+You can validate your preferred flow by sending a request to the transaction validate endpoint with a list of payin methods and your preferred flow for each:
+
+{% capture data-raw %}
+```javascript
+POST /v1/transactions/validate
+{
+  "input_currency": "GHS",
+  "payin_methods": [
+    {
+      "type": "GHS::Mobile",
+      "ux_flow": "ussd_popup",
+      "in_details": {
+        "phone_number": "+2335499999",
+        "mobile_provider": "mtn"
+      }
+    },
+    {
+      "type": "GHS::Mobile",
+      "ux_flow": "voucher",
+      "in_details": {
+        "phone_number": "+25335499999",
+        "mobile_provider": "mtn"
+      }
+    },
+  ],
+  "sender": {
+    // sender details
+  },
+  "recipients": [
+   // recipient details
+  ],
+  "metadata": {},
+  "external_id": "806ec63a-a5a7-43cc-9d75-1ee74fbcc026"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-flow-discovery" raw=data-raw %}
+
+The response would look like the following:
+
+{% capture data-raw %}
+```javascript
+{
+  "input_currency": "GHS",
+  "payin_methods": [
+    {
+      "type": "GHS::Mobile",
+      "ux_flow": "ussd_popup",
+      "in_details": {
+        "phone_number": "+2335499999",
+        "mobile_provider": "mtn"
+      },
+      "errors": {
+        "ux_flow": "invalid"
+      }
+    },
+    {
+      "type": "GHS::Mobile",
+      "ux_flow": "voucher",
+      "in_details": {
+        "phone_number": "+2335499999",
+        "mobile_provider": "mtn"
+      },
+      "errors": {}
+    }
+  ],
+  "sender": {
+    // sender details
+  },
+  "recipients": [
+   // recipient details
+  ],
+  "metadata": {},
+  "external_id": "806ec63a-a5a7-43cc-9d75-1ee74fbcc026"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-flow-response" raw=data-raw %}
+
+For the above example, it shows that `ussd_popup` is not available and you can only use `voucher` to initiate the collection.
+
 
 # Auto cancellation and refund of transactions
 
