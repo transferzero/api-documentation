@@ -25,9 +25,9 @@ Medical and dental services: medical_and_dental_services
 Educational services: educational_services
 Operational leasing: operational_leasing
 Cultural and recreational services: cultural_and_recreational_services
-Salary paid to South African Resident Temporarily Abroad: salary_resident_out_country
-Salary paid to a non-resident employee in South Africa: salary_non_resident_in_country
-Salary paid to a foreign national contract worker in South Africa: salary_contract_worker_in_country
+Salary paid to recipient country Resident Temporarily Abroad: salary_resident_out_country
+Salary paid to a non-resident employee in recipient country: salary_non_resident_in_country
+Salary paid to a foreign national contract worker in recipient country: salary_contract_worker_in_country
 Payments to social security schemes: social_security_schemes
 Payments to charities and religious bodies: charities_and_religious_bodies
 Donations and aid to Government: donations_and_aid_to_government
@@ -53,10 +53,10 @@ Repatriation of funds out of a foreign bank account: funds_repatriation_of_forei
 Sale of mutual funds or collective investment schemes: mutual_funds_sale_or_collective_investment
 Sale of overseas property: overseas_property_sale
 Sale and repatriation of other investment: sale_and_repatriation_of_other_investment
-Repatriation on instruction by the South African Reserve Bank: repatriation_south_african_reserve_bank_instruction
+Repatriation on instruction by the recipient country central bank: repatriation_south_african_reserve_bank_instruction
 Loan made to a resident by a non-resident shareholder: resident_loan_from_non_resident_share_holder
 Loan made to a resident by a non-resident third party: resident_loan_from_non_resident_third_party
-Repayment by a South African living overseas of a loan granted by a resident: resident_loan_repayment_from_overseas_living_south_african
+Repayment by a citizen living overseas of a loan granted by a resident: resident_loan_repayment_from_overseas_living_south_african
 Repayment of a study loan: study_loan_repayment
 Repayment of a shareholders loan: shareholders_loan_repayment
 Repayment of a third party loan (excluding shareholders): third_party_loan_repayment
