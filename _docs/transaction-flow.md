@@ -1230,7 +1230,7 @@ It contains the following fields:
 
 Status code of failed collections.
 
-There are six different categories of errors based on error codes:
+There are six different categories of errors based on the following error codes:
 * 0 - category: `paid` - funds are collected
 * 1x - category: `pending` - Awaiting funds from the sender
 * 2x - category: `sender_action_required` - This collection requires an action by the sender
