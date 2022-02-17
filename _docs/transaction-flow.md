@@ -1184,7 +1184,7 @@ This is the amount that has to be collected from the sender, or funded from the 
 
 ## payin_methods
 
-When you are processing a collection this object will be used to specify the details of your customer.
+When you are processing a collection this object will be used to specify the details of where you expect the money to come from.
 
 ### details when collecting money from a customer
 
@@ -1234,7 +1234,7 @@ There are six different categories of errors based on the following error codes:
 * 0 - category: `paid` - funds are collected
 * 1x - category: `pending` - Awaiting funds from the sender
 * 2x - category: `sender_action_required` - This collection requires an action by the sender
-* 3x - category: `temporary_error` - reThe payment provider is not accepting transactions at the moment. We will retry the collection at a later time. You can also edit the payin method or retry the payin
+* 3x - category: `temporary_error` - The payment provider is not accepting transactions at the moment. We will retry the collection at a later time. You can also edit the payin method or retry the payin
 
 #### category
 
@@ -1242,7 +1242,7 @@ Category of the error
 
 #### messages
 
-Tiered messages. There are three tiers each next provide more detailed error message.
+Tiered messages. There are three tiers, each providing additional details of the error.
 
 #### description
 
@@ -1306,7 +1306,7 @@ Category of the error
 
 #### messages
 
-Tiered messages. There are three tiers each next provide more detailed error message.
+Tiered messages. There are three tiers, each providing additional details of the error.
 
 #### description
 
