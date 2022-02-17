@@ -1210,7 +1210,7 @@ Please Check the [Collection page]({{ "/docs/collection-details/" | prepend: sit
 
 The state of the payin method, which can be one of the following:
 
-* `incomplete`: Some fields need to be filled in in_details before we can initiate the collection request.
+* `incomplete`: Some fields need to be filled in `in_details` before we can initiate the collection request.
 * `initial`: All required fields in `in_details` are present and collection process with the sender will start.
 * `pending`: Collection process has been started, waiting for sender to send funds.
 * `success`: Collection succeeded.
@@ -1233,8 +1233,8 @@ Status code of failed collections.
 There are six different categories of errors based on error codes:
 * 0 - category: `paid` - funds are collected
 * 1x - category: `pending` - Awaiting funds from the sender
+* 2x - category: `sender_action_required` - This collection requires an action by the sender
 * 3x - category: `temporary_error` - reThe payment provider is not accepting transactions at the moment. We will retry the collection at a later time. You can also edit the payin method or retry the payin
-* 5xx - category: `sender_action_required` - This collection requires an action by the sender
 
 #### category
 
