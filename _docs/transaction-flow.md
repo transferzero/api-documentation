@@ -1182,6 +1182,72 @@ If there is an error with the transaction you can find the error message in this
 
 This is the amount that has to be collected from the sender, or funded from the internal balance.
 
+## payin_methods
+
+When you are processing a collection this object will be used to specify the details of where you expect the money to come from.
+
+### details when collecting money from a customer
+
+{% capture data-raw %}
+```javascript
+"payin_methods": [
+  {
+    "type": "GHS::Mobile",
+    "in_details": {
+      "phone_number": "+2339999999",
+      "mobile_provider": "vodafone"
+    }
+  }
+]
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-sender-example" raw=data-raw %}
+
+Please Check the [Collection page]({{ "/docs/collection-details/" | prepend: site.baseurl }}) to see more examples.
+
+### state
+
+The state of the payin method, which can be one of the following:
+
+* `incomplete`: Some fields need to be filled in `in_details` before we can initiate the collection request.
+* `initial`: All required fields in `in_details` are present and collection process with the sender will start.
+* `pending`: Collection process has been started, waiting for sender to send funds.
+* `success`: Collection succeeded.
+* `processing`: Collection succeeded but waiting for final confirmation of receipt.
+* `error`: Collection failed. No funds received from sender. You can update or retry the PayinMethod.
+* `mispaid`: Collection succeeded but sender sent the wrong amount.
+* `canceled`: The transaction has been canceled and we will refund the sender soon.
+* `refunded`: The sender has been refunded the amount they sent in.
+* `exception`: An exception happened during processing of the collection. Please contact support.
+
+### state_reason_details
+
+If there is a specific error for the collection, you can find the details here.
+It contains the following fields:
+
+#### code
+
+Status code of failed collections.
+
+There are six different categories of errors based on the following error codes:
+* 0 - category: `paid` - funds are collected
+* 1x - category: `pending` - Awaiting funds from the sender
+* 2x - category: `sender_action_required` - This collection requires an action by the sender
+* 3x - category: `temporary_error` - The payment provider is not accepting transactions at the moment. We will retry the collection at a later time. You can also edit the payin method or retry the payin
+
+#### category
+
+Category of the error
+
+#### messages
+
+Tiered messages. There are three tiers, each providing additional details of the error.
+
+#### description
+
+Public, human readable, detailed error message.
+
 ## sender
 
 The full details of the sender. If this is a new sender, please make a note of the `id` field, as that MUST be used in subsequent transaction creation calls that are from the same sender. If an `external_id` is present on the sender, this will also be included. Please see [Sender](#sender) for more details on how `external_id` functions.
@@ -1240,7 +1306,7 @@ Category of the error
 
 #### messages
 
-Tiered messages. There are three tiers each next provide more detailed error message.
+Tiered messages. There are three tiers, each providing additional details of the error.
 
 #### description
 

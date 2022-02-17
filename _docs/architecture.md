@@ -78,6 +78,22 @@ The following are examples of some possible webhook flows and events. Please not
 
 You can obtain an up-to-date list of available webhook events using the [Webhook Events endpoint](https://api.transferzero.com/documentation/#/Webhooks/get-webhook-events) of our API.
 
+## Collections
+We have several types of webhook that you can subscribe to which you may find useful when doing collections. These webhooks start with `payin_method.`
+
+Here are the webhoks available:
+* `payin_method.incomplete`: This webhook is sent out in case there are some missing details that we require you to send in order to proceed
+* `payin_method.pending`: This webhook is sent out to notify you of a collection request initiated. During this time we are waiting for the Sender to send in the money
+* `payin_method.processing`: This webhook is sent out when we have received funds from the Sender but are still awaiting for a full confirmation from the provider
+* `payin_method.paid_in`: This webhook is sent out to notify that the collection from the Sender was successful
+* `payin_method.error`: This webhook is sent out when a collection attempt has failed
+* `payin_method.refunded`: This webhook is sent out to notify that we successfully refunded the money to the Sender
+* `payin_method.canceled`: This webhook is sent out to notify that we successfully cancelled the Collection and are currently attempting to refund the Sender in case the money was already sent to us
+* `payin_method.mispaid`: This webhook is sent out in case the Sender successfully sent the funds but with the wrong amount
+* `payin_method.exception`: This webhook is sent out in case there was an unexpected problem at any time during the Collection process
+
+You can find examples language-specific on the [Example Collection Page]({{ "/docs/example-collections/" | prepend: site.baseurl }})
+
 # Metadata
 
 Most models in the AZA Finance API allow storing any metadata, which will be returned when querying the object, including callouts from webhooks. This facility can be used to store any data on the models.
@@ -115,5 +131,7 @@ By default when creating a transaction we will do both the collection of the mon
 Once we approve your request and set up your balance, you can use that balance to fund the payin part of the transaction. You can read more on funding transactions from your internal balance in the [Transaction flow documentation]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}).
 
 If you have a balance with us you can use the `GET /v1/accounts` to get all or `GET /v1/accounts/[CURRENCY_NAME]` endpoint to obtain a specific currency's balance with us.
+
+If you use our API for collections, you can also use your internal balance as a wallet which would receive the funds collected from your customers.
 
 Please contact us to obtain our list of supported currency pairs for transactions.
