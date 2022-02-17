@@ -290,7 +290,6 @@ POST /v1/transactions/validate
       "type": "GHS::Mobile",
       "ux_flow": "ussd_popup",
       "in_details": {
-        "phone_number": "+2335499999",
         "mobile_provider": "mtn"
       }
     },
@@ -298,7 +297,6 @@ POST /v1/transactions/validate
       "type": "GHS::Mobile",
       "ux_flow": "ussd_popup",
       "in_details": {
-        "phone_number": "+25336488888",
         "mobile_provider": "vodafone"
       }
     },
@@ -328,7 +326,6 @@ The response would look like the following:
       "type": "GHS::Mobile",
       "ux_flow": "ussd_popup",
       "in_details": {
-        "phone_number": "+2335499999",
         "mobile_provider": "mtn"
       },
       "errors": {
@@ -339,7 +336,6 @@ The response would look like the following:
       "type": "GHS::Mobile",
       "ux_flow": "ussd_popup",
       "in_details": {
-        "phone_number": "+2336488888",
         "mobile_provider": "vodafone"
       },
       "errors": {}
