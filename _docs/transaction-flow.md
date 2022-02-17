@@ -1223,7 +1223,7 @@ The state of the payin method, which can be one of the following:
 
 ### state_reason_details
 
-If there is a specific error for the collection, you can find details here.
+If there is a specific error for the collection, you can find the details here.
 It contains the following fields:
 
 #### code
