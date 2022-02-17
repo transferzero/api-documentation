@@ -1224,7 +1224,7 @@ The state of the payin method, which can be one of the following:
 ### state_reason_details
 
 If there is a specific error for the collection, you can find details here.
-It contains following fields:
+It contains the following fields:
 
 #### code
 
