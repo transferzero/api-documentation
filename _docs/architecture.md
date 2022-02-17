@@ -84,7 +84,7 @@ We have several types of webhook that you can subscribe to which you may find us
 Here are the webhoks available:
 * `payin_method.incomplete`: This webhook is sent out in case there are some missing details that we require you to send in order to proceed
 * `payin_method.pending`: This webhook is sent out to notify you of a collection request initiated. During this time we are waiting for the Sender to send in the money
-* `payin_method.processing`: This webhook is sent out when we have received funds from the Sender and are still awaiting for a full confirmation from the provider
+* `payin_method.processing`: This webhook is sent out when we have received funds from the Sender but are still awaiting for a full confirmation from the provider
 * `payin_method.paid_in`: This webhook is sent out to notify that the collection from the Sender was successful
 * `payin_method.error`: This webhook is sent out when a collection attempt has failed
 * `payin_method.refunded`: This webhook is sent out to notify that we successfully refunded the money to the Sender
