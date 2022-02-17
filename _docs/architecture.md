@@ -132,6 +132,6 @@ Once we approve your request and set up your balance, you can use that balance t
 
 If you have a balance with us you can use the `GET /v1/accounts` to get all or `GET /v1/accounts/[CURRENCY_NAME]` endpoint to obtain a specific currency's balance with us.
 
-In case you do collections with our API, you can also use your internal balance as a wallet where we would put the funds in once collected from your customers.
+If you use our API for collections, you can also use your internal balance as a wallet which would receive the funds collected from your customers.
 
 Please contact us to obtain our list of supported currency pairs for transactions.
