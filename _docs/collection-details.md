@@ -142,7 +142,7 @@ Payment should be made by the sender using the bank details returned in the resp
 
 {% include language-tabbar.html prefix="collection-gbp-bank-out" raw=data-raw %}
 
-Funds should be sent to the IBAN shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example).
+Funds should be sent to the Account Number and Sort Code shown above for domestic UK transfers (or to the IBAN value for international transfers), with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example).
 
 If the payment was sent as a Faster Payments transfer then the collection should arrive within 2 hours (but usually instantly). If Faster Payments transfer is not used, or the funds are sent from outside the UK, this will be a Swift payment which can take up to 5 business days to arrive.
 
