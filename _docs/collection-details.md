@@ -36,7 +36,7 @@ Once the funds have been successfully received from the sender, `payin_method.pa
 
 # UGX mobile collections
 
-To initiate a UGX mobile collection, please use the following details (phone_number and mobile_provider used below are examples):
+To initiate a UGX mobile collection, please use the following details (`phone_number` used below are examples):
 
 {% capture data-raw %}
 ```javascript
