@@ -13,7 +13,6 @@ Current version of the SDKs are `1.19.0`
 1.19.0
 ------
 * Add `id`, `ux_flow`, `state`, `state_reason_details` and `errors` to PayinMethod model
-* Remove `provider` field from PayinMethod model
 * Remove `send_instructions` field from PayinMethodDetails
 * Add support for `/v1/payin_methods/<id>` endpoint. `GET`, `PATCH`,`DELETE` are supported
 * Add support for `/v1/payin_methods/<id>/retry` endpoint
