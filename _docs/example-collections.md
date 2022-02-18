@@ -547,12 +547,12 @@ JSON_START
         // recipient details from the previous section
     }],
     "payin_methods": [{
-        "type": "GHS::Mobile",
+        "type": "GHS::Mobile", 
+        "ux_flow": "ussd_popup",
         "in_details": {
-            "phone_number": "+256301234567",
-            "send_instructions": true
-        },
-        "provider": "interpay"
+            "phone_number": "+2339999999", // In international format
+            "mobile_provider": "vodafone" // Mandatory. One of 'airtel', 'tigo', 'mtn', 'vodafone'
+        }
     }],
     "input_currency": "GHS",
     "external_id": "Transaction:GHS:91475",
@@ -562,13 +562,13 @@ JSON_END
 
 CODE_START
 CREATE_START details PayinMethodDetails
-SET LIT phone_number "+256301234567"
-SET LIT send_instructions true
+SET LIT phone_number "+2339999999"
+SET ENUM mobile_provider PayoutMethodMobileProviderEnum vodafone
 CREATE_END
 
 CREATE_START method PayinMethod
 SET LIT type "GHS::Mobile"
-SET LIT provider "interpay"
+SET ENUM ux_flow PayinMethodUxFlow ussd_popup
 SET VAR in_details details
 CREATE_END
 
@@ -594,12 +594,12 @@ CODE_EXAMPLE_END
         // recipient details from the previous section
     }],
     "payin_methods": [{
-        "type": "GHS::Mobile",
+        "type": "GHS::Mobile", 
+        "ux_flow": "ussd_popup",
         "in_details": {
-            "phone_number": "+256301234567",
-            "send_instructions": true
-        },
-        "provider": "interpay"
+            "phone_number": "+2339999999", // In international format
+            "mobile_provider": "vodafone" // Mandatory. One of 'airtel', 'tigo', 'mtn', 'vodafone'
+        }
     }],
     "input_currency": "GHS",
     "external_id": "Transaction:GHS:91475",
@@ -611,12 +611,12 @@ CODE_EXAMPLE_END
 {% capture data-csharp %}
 ```csharp
 PayinMethodDetails details = new PayinMethodDetails(
-  phoneNumber: "+256301234567",
-  sendInstructions: true);
+  phoneNumber: "+2339999999",
+  mobileProvider: PayoutMethodMobileProviderEnum.VODAFONE);
 
 PayinMethod method = new PayinMethod(
   type: "GHS::Mobile",
-  provider: "interpay",
+  uxFlow: PayinMethodUxFlow.USSD_POPUP,
   inDetails: details);
 
 Transaction transaction = new Transaction(
@@ -631,12 +631,12 @@ Transaction transaction = new Transaction(
 {% capture data-vb %}
 ```vb
 Dim details as PayinMethodDetails = New PayinMethodDetails(
-  phoneNumber:="+256301234567",
-  sendInstructions:=true)
+  phoneNumber:="+2339999999",
+  mobileProvider:=PayoutMethodMobileProviderEnum.VODAFONE)
 
 Dim method as PayinMethod = New PayinMethod(
   type:="GHS::Mobile",
-  provider:="interpay",
+  uxFlow:=PayinMethodUxFlow.USSD_POPUP,
   inDetails:=details)
 
 Dim transaction as Transaction = New Transaction(
@@ -651,12 +651,12 @@ Dim transaction as Transaction = New Transaction(
 {% capture data-java %}
 ```java
 PayinMethodDetails details = new PayinMethodDetails();
-details.setPhoneNumber("+256301234567");
-details.setSendInstructions(true);
+details.setPhoneNumber("+2339999999");
+details.setMobileProvider(PayoutMethodMobileProviderEnum.VODAFONE);
 
 PayinMethod method = new PayinMethod();
 method.setType("GHS::Mobile");
-method.setProvider("interpay");
+method.setUxFlow(PayinMethodUxFlow.USSD_POPUP);
 method.setInDetails(details);
 
 Transaction transaction = new Transaction();
@@ -671,12 +671,12 @@ transaction.setExternalId("Transaction:GHS:91475");
 {% capture data-js %}
 ```js
 const details = new TransferZeroSdk.PayinMethodDetails();
-details.phone_number = "+256301234567";
-details.send_instructions = true;
+details.phone_number = "+2339999999";
+details.mobile_provider = "vodafone";
 
 const method = new TransferZeroSdk.PayinMethod();
 method.type = "GHS::Mobile";
-method.provider = "interpay";
+method.ux_flow = "ussd_popup";
 method.in_details = details;
 
 const transaction = new TransferZeroSdk.Transaction();
@@ -691,12 +691,12 @@ transaction.external_id = "Transaction:GHS:91475";
 {% capture data-php %}
 ```php
 $details = new PayinMethodDetails();
-$details->setPhoneNumber("+256301234567");
-$details->setSendInstructions(true);
+$details->setPhoneNumber("+2339999999");
+$details->setMobileProvider("vodafone");
 
 $method = new PayinMethod();
 $method->setType("GHS::Mobile");
-$method->setProvider("interpay");
+$method->setUxFlow("ussd_popup");
 $method->setInDetails($details);
 
 $transaction = new Transaction();
@@ -711,12 +711,12 @@ $transaction->setExternalId("Transaction:GHS:91475");
 {% capture data-ruby %}
 ```ruby
 details = TransferZero::PayinMethodDetails.new
-details.phone_number = "+256301234567"
-details.send_instructions = true
+details.phone_number = "+2339999999"
+details.mobile_provider = "vodafone"
 
 method = TransferZero::PayinMethod.new
 method.type = "GHS::Mobile"
-method.provider = "interpay"
+method.ux_flow = "ussd_popup"
 method.in_details = details
 
 transaction = TransferZero::Transaction.new
@@ -730,6 +730,11 @@ transaction.external_id = "Transaction:GHS:91475"
 
 {% include language-tabbar.html prefix="gen-transaction-creation" raw=data-raw csharp=data-csharp vb=data-vb java=data-java js=data-js php=data-php ruby=data-ruby %}
 {::comment}AUTO_GENERATED_CONTENT_END{:/comment}
+
+<div class="alert alert-info" markdown="1">
+**Note!** Every PayinMethod type has a different `ux_flow`. Please consult the [collection details guide]({{ "/docs/collection-details/" | prepend: site.baseurl }}){: .alert-link} for more info.You can also validate the transaction request to confirm its availability.Please consult the [collection flow discovery]({{ "/docs/additional-features/#collection-flow-discovery" | prepend: site.baseurl }}){: .alert-link} for more info.
+</div>
+
 # Creating the transaction
 
 Now that we have generated the objects, we'll need to call the endpoint. Note that once the transaction is created the sender will receive a prompt on their phone to pay in the funds
@@ -926,7 +931,13 @@ headers.Add("Authorization-Key", "<key from the webhook headers>");
 if (configuration.ValidWebhookRequest(url, webhookContent, headers))
 {
     Webhook webhook = configuration.ParseString<Webhook>(webhookContent);
-    if (webhook.Event.StartsWith("transaction")) {
+    if (webhook.Event.StartsWith("payin_method")) {
+        PayinMethodWebhook payinMethodWebhook = configuration.ParseString<PayinMethodWebhook>(webhookContent);
+        string externalId = payinMethodWebhook.Object.ExternalId;
+        if (webhook.Event == "payin_method.error"){
+            // handle collection attempt has failed.
+        }           
+    } else if (webhook.Event.StartsWith("transaction")) {
         TransactionWebhook transactionWebhook = configuration.ParseString<TransactionWebhook>(webhookContent);
         Guid transactionId = transactionWebhook.Object.Id;
         string externalId = transactionWebhook.Object.ExternalId;
@@ -964,7 +975,13 @@ headers.Add("Authorization-Key", "<key from webhook headers>")
 
 If configuration.ValidWebhookRequest(url, webhookContent, headers) Then
     Dim webhook As Webhook = configuration.ParseString(Of Webhook)(webhookContent)
-    If webhook.[Event].StartsWith("transaction") Then
+    If webhook.[Event].StartsWith("payin_method") Then
+        Dim payinMethodWebhook As PayinMethodWebhook = configuration.ParseString(Of PayinMethodWebhook)(webhookContent)
+        Dim externalId As String = payinMethodWebhook.Object.ExternalId
+        If webhook.[Event].Equals("payin_method.error") Then
+          ' handle collection attempt has failed.
+        End If        
+    ElseIf webhook.[Event].StartsWith("transaction") Then
         Dim transactionWebhook As TransactionWebhook = configuration.ParseString(Of TransactionWebhook)(webhookContent)
         Dim transactionId As Guid = transactionWebhook.Object.Id
         Dim externalId As String = transactionWebhook.Object.ExternalId
@@ -1002,16 +1019,23 @@ webhookHeaders.put("Authorization-Signature", "<signature from webhook headers>"
 
 if (apiClient.validateWebhookRequest(webhookUrl, webhookBody, webhookHeaders)) {
     Webhook webhook = apiClient.parseResponseString(webhookBody, Webhook.class);
-    if (webhook.getEvent().startsWith("transaction")) {
+    if (webhook.getEvent().startsWith("payin_method")) {
+        PayinMethodWebhook payinMethodWebhook = apiClient.parseResponseString(webhookBody, PayinMethodWebhook.class);
+        String externalId = payinMethodWebhook.getObject().getExternalId();
+        
+        if (webhook.getEvent().equals("payin_method.error")  {
+          // handle collection attempt has failed.
+        }
+    } else if (webhook.getEvent().startsWith("transaction")) {
         TransactionWebhook transactionWebhook = apiClient.parseResponseString(webhookBody, TransactionWebhook.class);
         UUID transactionId = transactionWebhook.getObject().getId();
         String externalId = transactionWebhook.getObject().getExternalId();
         if (webhook.getEvent().equals("transaction.paid")) {
-            // handle user has sent in the funds event
+          // handle user has sent in the funds event
         } else if (webhook.getEvent().equals("transaction.refunded")) {
-            // handle transaction has finished processing and the funds are in the internal balance
+          // handle transaction has finished processing and the funds are in the internal balance
         } else if (webhook.getEvent().equals("transaction.refunded")) {
-            // handle transaction has not been funded by the customer event
+          // handle transaction has not been funded by the customer event
         }
     } else if (webhook.getEvent().startsWith("sender")) {
         SenderWebhook senderWebhook = apiClient.parseResponseString(webhookBody, SenderWebhook.class);
@@ -1040,20 +1064,27 @@ const webhookHeader = {
 
 if (apiClient.validateRequest(webhookUrl, webhookContent, webhookHeader)) {
   const webhook = apiClient.parseResponseString(webhookContent,TransferZeroSdk.Webhook);
-  if (webhook.event.startsWith('transaction')) {
-    const transactionWebhook = apiClient.parseResponseString(webhookContent, TransferZeroSdk.TransactionWebhook);
-    const transactionId = transactionWebhook.object.id;
-    const externalId = transactionWebhook.object.external_id;
-    if (webhook.event == 'transaction.paid') {
-      // handle user has sent in the funds event
-    } else if (webhook.event == 'transaction.refunded') {
-      // handle transaction has finished processing and the funds are in the internal balance
-    } else if (webhook.event == 'transaction.refunded') {
-      // handle transaction has not been funded by the customer event
+  if (webhook.event.startsWith('payin_method')) {
+    const payinMethodWebhook = apiClient.parseResponseString(webhookContent, TransferZeroSdk.payinMethodWebhook);
+    const externalId = payinMethodWebhook.object.external_id;
+
+    if (webhook.event == "payin_method.error")  {
+      // handle collection attempt has failed.
     }
+  } else if (webhook.event.startsWith('transaction')) {
+      const transactionWebhook = apiClient.parseResponseString(webhookContent, TransferZeroSdk.TransactionWebhook);
+      const transactionId = transactionWebhook.object.id;
+      const externalId = transactionWebhook.object.external_id;
+      if (webhook.event == 'transaction.paid') {
+          // handle user has sent in the funds event
+      } else if (webhook.event == 'transaction.refunded') {
+          // handle transaction has finished processing and the funds are in the internal balance
+      } else if (webhook.event == 'transaction.refunded') {
+          // handle transaction has not been funded by the customer event
+      }
   } else if (webhook.event.startsWith('sender')) {
-    const senderWebhook = apiClient.parseResponseString(webhookContent, TransferZeroSdk.SenderWebhook);
-    // handle sender webhook
+      const senderWebhook = apiClient.parseResponseString(webhookContent, TransferZeroSdk.SenderWebhook);
+      // handle sender webhook
   }
 }
 ```
@@ -1078,7 +1109,14 @@ $webhook_headers = [
 
 if (new WebhooksApi()->validateWebhookRequest($webhook_url, $webhook_content, $webhook_headers)) {
     $webhook = new WebhooksApi()->parseResponseString($webhook_content, 'Webhook');
-    if (strpos($webhook->getEvent(), 'transaction') === 0) {
+    if (strpos($webhook->getEvent(), 'payin_method') === 0) {
+        $payinMethodWebhook = $webhooksApi->parseResponseString($webhook_content, 'PayinMethodWebhook');
+        $externalId = $payinMethodWebhook->getObject()->getExternalId();
+
+        if ($webhook->getEvent() == "payin_method.error")  {
+          // handle collection attempt has failed.
+        }
+    } elseif (strpos($webhook->getEvent(), 'transaction') === 0) {
         $transactionWebhook = $webhooksApi->parseResponseString($webhook_content, 'TransactionWebhook');
         $transacionId = $transactionWebhook->getObject()->getId();
         $externalId = $transactionWebhook->getObject()->getExternalId();
@@ -1116,7 +1154,14 @@ headers = {
 
 if TransferZero::ApiClient.new.validate_webhook_request(webhook_url, body, headers)
   webhook = TransferZero::ApiClient.new.parse_response(body, "Webhook")
-  if webhook['event'].start_with?('transaction')
+  if webhook['event'].start_with?('payin_method')
+    payin_method_webhook = webhook_api.parse_response(body, 'PayinMethodWebhook')
+    external_id = payin_method_webhook.object.external_id
+
+    if webhook['event'] == "payin_method.error"
+      # handle collection attempt has failed.
+    end
+  elsif webhook['event'].start_with?('transaction')
     transaction_webhook = webhook_api.parse_response(body, 'TransactionWebhook')
     transaction_id = transaction_webhook.object.id
     external_id = transaction_webhook.object.external_id
@@ -1156,14 +1201,14 @@ While we prefer that you primarily use the webhook facility to get notified abou
 {::comment}
 CODE_EXAMPLE_START get-transaction-call
 JSON_START
-GET /v1/transactions?external_id=Transaction:NGN:17523
+GET /v1/transactions?external_id=Transaction:GHS:91475
 JSON_END
 
 CODE_START
 CREATE_API api TransactionsApi
 
 GET_ENDPOINT_CALL_START TransactionListResponse response api get_transactions
-PARAM LIT external_id "Transaction:NGN:17523"
+PARAM LIT external_id "Transaction:GHS:91475"
 GET_ENDPOINT_CALL_END
 
 LIST_EXTRACT response Transaction transaction
@@ -1174,7 +1219,7 @@ CODE_EXAMPLE_END
 {::comment}AUTO_GENERATED_CONTENT_START{:/comment}
 {% capture data-raw %}
 ```javascript
-GET /v1/transactions?external_id=Transaction:NGN:17523
+GET /v1/transactions?external_id=Transaction:GHS:91475
 ```
 {% endcapture %}
 
@@ -1182,7 +1227,7 @@ GET /v1/transactions?external_id=Transaction:NGN:17523
 ```csharp
 TransactionsApi api = new TransactionsApi(configuration);
 
-TransactionListResponse response = api.GetTransactions(externalId: "Transaction:NGN:17523");
+TransactionListResponse response = api.GetTransactions(externalId: "Transaction:GHS:91475");
 
 if (response.Object.Count > 0) {
   Transaction transaction = response.Object[0];
@@ -1196,7 +1241,7 @@ if (response.Object.Count > 0) {
 ```vb
 Dim api as TransactionsApi = New TransactionsApi(configuration)
 
-Dim response as TransactionListResponse = api.GetTransactions(externalId:="Transaction:NGN:17523")
+Dim response as TransactionListResponse = api.GetTransactions(externalId:="Transaction:GHS:91475")
 
 If response.Object.Count > 0 Then
     Dim transaction As Transaction = response.Object(0)
@@ -1210,7 +1255,7 @@ End If
 ```java
 TransactionsApi api = new TransactionsApi(apiClient);
 
-TransactionListResponse response = api.getTransactions().externalId("Transaction:NGN:17523").execute();
+TransactionListResponse response = api.getTransactions().externalId("Transaction:GHS:91475").execute();
 
 if (response.getObject().size() > 0) {
   Transaction transaction = response.getObject().get(0);
@@ -1224,7 +1269,7 @@ if (response.getObject().size() > 0) {
 ```js
 const api = new TransferZeroSdk.TransactionsApi(apiClient);
 
-const response = await api.getTransactions({external_id: "Transaction:NGN:17523"});
+const response = await api.getTransactions({external_id: "Transaction:GHS:91475"});
 
 if (response.object.length > 0) {
   const transaction = response.object[0];
@@ -1238,7 +1283,7 @@ if (response.object.length > 0) {
 ```php
 $api = new TransactionsApi();
 
-$response = api->getTransactions([external_id => "Transaction:NGN:17523"]);
+$response = api->getTransactions([external_id => "Transaction:GHS:91475"]);
 
 if (count(response->getObject()) > 0) {
   $transaction = response->getObject()[0];
@@ -1252,7 +1297,7 @@ if (count(response->getObject()) > 0) {
 ```ruby
 api = TransferZero::TransactionsApi.new
 
-response = api.get_transactions({external_id: "Transaction:NGN:17523"})
+response = api.get_transactions({external_id: "Transaction:GHS:91475"})
 
 if !response.object.empty?
   transaction = response.object.first
