@@ -8,7 +8,16 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.17.0`
+Current version of the SDKs are `1.19.0`
+
+1.19.0
+------
+* Add `id`, `ux_flow`, `state`, `state_reason_details` and `errors` to PayinMethod model
+* Remove `provider` field from PayinMethod model
+* Remove `send_instructions` field from PayinMethodDetails
+* Add support for `/v1/payin_methods/<id>` endpoint. `GET`, `PATCH`,`DELETE` are supported
+* Add support for `/v1/payin_methods/<id>/retry` endpoint
+* Add support for PayinMethod validation on `/v1/transactions/validate` endpoint
 
 1.17.0
 -----
