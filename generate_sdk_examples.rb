@@ -1,6 +1,41 @@
 #!/usr/bin/env ruby
 require 'fileutils'
 
+def string?(parameter)
+  parameter.include?('"') || parameter.include?("'")
+end
+
+def format_arguments(parameter, language)
+  case language
+  when :php
+    new_parameter = ''
+    parameters = parameter.split(',')
+    parameters_count = parameters.size
+    if parameters_count > 1
+      parameters.each_with_index do |param, index|
+        if string?(param)
+          if index + 1 == parameters_count
+            new_parameter += param.to_s
+          else
+            new_parameter += "#{param},"
+          end
+        elsif index + 1 == parameters_count
+          new_parameter += "$#{param}"
+        else
+          new_parameter += "$#{param},"
+        end
+      end
+      new_parameter
+    elsif string?(parameter)
+      parameter
+    else
+      "$#{parameter}"
+    end
+  else
+    parameter
+  end
+end
+
 
 def parse_data(prefix, data)
   json = +""
@@ -112,7 +147,7 @@ def parse_data(prefix, data)
       code[:js] << "}\n"
 
       code[:php] << "try {\n"
-      code[:php] << "  $#{result} = #{api}->#{name_camel}($#{parameter});\n"
+      code[:php] << "  $#{result} = #{api}->#{name_camel}(#{format_arguments(parameter, :php)});\n"
       code[:php] << "} catch (ApiException $e) {\n"
       code[:php] << "  if ($e->isValidationError()) {\n"
       code[:php] << "    $#{result} = $e->getResponseObject();\n"
@@ -291,12 +326,12 @@ def parse_data(prefix, data)
         code[:php] << "$#{name}->set#{var_camel_upper}(\"#{enum_value}\");\n"
         code[:ruby] << "#{name}.#{var} = \"#{enum_value}\"\n"
       when "DATE"
-        code[:csharp] << "  #{var_camel}: DateTime.Parse(#{value}),\n"
-        code[:vb] << "  #{var_camel}:=DateTime.Parse(#{value}),\n"
-        code[:java] << "#{name}.set#{var_camel_upper}(LocalDate.parse(#{value}));\n"
-        code[:js] << "#{name}.#{var} = #{value};\n"
-        code[:php] << "$#{name}->set#{var_camel_upper}(#{value});\n"
-        code[:ruby] << "#{name}.#{var} = #{value}\n"
+        code[:csharp] << "  #{var_camel}: DateTime.Parse(\"#{value}\"),\n".gsub('""', '"')
+        code[:vb] << "  #{var_camel}:=DateTime.Parse(\"#{value}\"),\n".gsub('""', '"')
+        code[:java] << "#{name}.set#{var_camel_upper}(LocalDate.parse(\"#{value}\"));\n".gsub('""', '"')
+        code[:js] << "#{name}.#{var} = \"#{value}\";\n".gsub('""', '"')
+        code[:php] << "$#{name}->set#{var_camel_upper}(\"#{value}\");\n".gsub('""', '"')
+        code[:ruby] << "#{name}.#{var} = \"#{value.to_s}\"\n".gsub('""', '"')
       when "EMPTY_ARRAY"
         code[:csharp] << "  #{var_camel}: new List<#{value}>(),\n"
         code[:vb] << "  #{var_camel}:=New List(Of #{value})()),\n"
