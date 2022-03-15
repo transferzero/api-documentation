@@ -160,7 +160,7 @@ Sender sender = new Sender(
 
 // Company Details
   legalEntityType: LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY,
-  registrationDate: DateTime.Parse(2012-01-25"),
+  registrationDate: DateTime.Parse("2012-01-25"),
   registrationNumber: "VAT1234567",
   natureOfBusiness: NatureOfBusinessEnum.RETAIL_TRADE,
 
@@ -304,7 +304,7 @@ $sender->setAddressDescription("");
 
 // Company Details
 $sender->setLegalEntityType("privately_owned_company");
-$sender->setRegistrationDate(2012-01-25");
+$sender->setRegistrationDate("2012-01-25");
 $sender->setRegistrationNumber("VAT1234567");
 $sender->setNatureOfBusiness("retail_trade");
 
