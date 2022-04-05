@@ -4,7 +4,7 @@ Please note our documentation moved to https://docs.transferzero.com
 
 # Running locally
 
-To run the documentation locally first install the local dependencies
+To run the documentation locally first install the local dependencies:
 
 `bundle install`
 
