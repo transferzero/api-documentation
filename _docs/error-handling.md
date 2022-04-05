@@ -58,7 +58,7 @@ We categorize most errors into the following categories:
 | 3 | Temporary error | Provider Error | Undefined provider error | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. | temporary_error |
 | 31 | /// | Switch Error | Undefined switch error | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |
 | 311 | /// | /// | Issuer/Switch inoperative | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |
-| 32 | /// | User bank Error | Undefined bank error | The user's bank is not accepting transfers at the moment. We will retry the transaction. You can also cancel or edit the transaction | temporary_error |
+| 32 | /// | User bank error | Undefined bank error | The user's bank is not accepting transfers at the moment. We will retry the transaction. You can also cancel or edit the transaction | temporary_error |
 | 321 | /// | /// | Beneficiary bank not available | The user's bank is not accepting transfers at the moment. We will retry the transaction. You can also cancel or edit the transaction. | temporary_error |
 | 33 | /// | Not Found | Transaction code already exists | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. | temporary_error |
 | 331 | /// | /// | Transaction does not exist | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. | temporary_error |
