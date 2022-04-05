@@ -74,7 +74,7 @@ We categorize most errors into the following categories:
 | 43 | /// | User action required | User not allowed to receive funds | User not allowed to receive funds. Please update the details. You can also cancel this transaction. | recipient_error |
 | 431 | /// | /// | User account is dormant | User account is dormant. Please update the details. You can also cancel this transaction. | recipient_error |
 | 432 | /// | /// | User account has invalid status | User account has invalid status. Please update the details. You can also cancel this transaction. | recipient_error |
-| 433 | /// | /// | User has not taken any actions for the pending funds | User has not taken any actions and the window for it has now expired. You can cancel this transaction. | recipient_error |
+| 433 | /// | /// | User did not take action within the required time window. You can cancel this transaction. | recipient_error |
 | 44 | /// | Validation error | Name validation failed | Name has failed validation against the account holder name. Please update the details. You can also cancel this transaction. | recipient_error |
 | 45 | /// | Validation error | Invalid amount | Invalid amount sent for this transaction. | recipient_error |
 | 5 | Sender / Regulatory Error | Transaction error | Unspecified transaction error | Transaction cannot be processed. Please cancel this transaction. | sender_error |
