@@ -30,6 +30,35 @@ To initiate a GHS mobile collection, please use the following details (phone_num
 
 {% include language-tabbar.html prefix="collection-ghs-mobile" raw=data-raw %}
 
+Once the transaction has been created the `out_details` will be:
+
+{% capture data-raw %}
+```javascript
+"out_details": {
+  "style": "ussd_menu_approval",
+  "menu_option": "6",
+  "requires_pin": true,
+  "dialing_number": "*170#"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-ghs-mobile-out" raw=data-raw %}
+
+Human readable instructions can be found in the `payin_methods[0].instructions` hash in the following format:
+
+(example instructions for GHS Mobile payments)
+
+{% capture data-raw %}
+```javascript
+"instructions": {
+  'ussd_menu_approval': '\\nDial *170# to access mobile money menu.\\nSelect option 6 (My Wallet) and send.\\nChoose option 3 to check "my approvals".\\nChoose the transaction to approve and send.\\nConfirm transaction by choosing option1 (Yes) and send.\\nEnter mobile money pin and send.\\nYou will receive a new message on your mobile phone about the transaction.\\n'
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-ghs-mobile-instructions" raw=data-raw %}
+
 Once the transaction is created, instructions for completing payment will be sent to the specified phone number.
 
 Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
