@@ -30,7 +30,7 @@ To initiate a GHS mobile collection, please use the following details (phone_num
 
 {% include language-tabbar.html prefix="collection-ghs-mobile" raw=data-raw %}
 
-Once the transaction has been created the `out_details` will be:
+For Collection transactions with `mtn` as `mobile_provider` and `ussd_menu_approval` as `ux_flow`, once gets created the `out_details` will be:
 
 {% capture data-raw %}
 ```javascript
@@ -45,7 +45,7 @@ Once the transaction has been created the `out_details` will be:
 
 {% include language-tabbar.html prefix="collection-ghs-mobile-out" raw=data-raw %}
 
-Human readable instructions can be found in the `payin_methods[0].instructions` hash in the following format:
+And human readable instructions can be found in the `payin_methods[0].instructions` hash in the following format:
 
 (example instructions for GHS Mobile payments)
 
