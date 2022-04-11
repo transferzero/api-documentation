@@ -63,6 +63,101 @@ Once the transaction is created, instructions for completing payment will be sen
 
 Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
 
+## Collections requiring OTPs
+Collections with `ux_flow: otp_verified_ussd_popup` require that the sender validate an OTP sent to their phone number when the transaction is created.
+For such transactions, the details would look like:
+
+{% capture data-raw %}
+```javascript
+"input_currency": "GHS",
+"payin_methods": [
+  {
+    type: "GHS::Mobile",
+    ux_flow: "otp_verified_ussd_popup",
+    in_details: {
+      phone_number: "+233123456789"
+      mobile_provider: "mtn"
+    }
+  }
+]
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-ghs-mobile-otp" raw=data-raw %}
+
+Once the transaction is created, an OTP is sent to the `phone_number` specified in the payload. The response would look like:
+
+{% capture data-raw %}
+```javascript
+"payin_methods": [
+  {
+    id: "9b25ca43-1812-46b2-ae0c-57acefec0a34",
+    type: "GHS::Mobile",
+    ux_flow: "otp_verified_ussd_popup",
+    in_details: {
+      phone_number: "+233123456789"
+      mobile_provider: "mtn"
+    },
+    state: "incomplete",
+    state_reason_details: {
+      code: 23,
+      category: "user_action_required",
+      messages: [
+        "User action required",
+        "OTP verification required",
+        "OTP verification required"
+      ],
+      description: "This transaction is awaiting OTP validation by the user."
+    },
+  }
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-ghs-mobile-otp-out" raw=data-raw %}
+
+In order to validate the OTP, send a PATCH request for the PayinMethod with the OTP in the payload:
+
+{% capture data-raw %}
+```javascript
+PATCH /v1/payin_methods/9b25ca43-1812-46b2-ae0c-57acefec0a34
+{
+  in_details: {
+    phone_number: "+233123456789"
+    mobile_provider: "mtn",
+    otp: "123456"
+  }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-ghs-mobile-otp-validate" raw=data-raw %}
+
+If the OTP matches the one sent to the sender's phone number, the collection process starts, otherwise you get a validation error:
+
+{% capture data-raw %}
+```javascript
+{
+  id: "9b25ca43-1812-46b2-ae0c-57acefec0a34",
+  type: "GHS::Mobile",
+  ux_flow: "otp_verified_ussd_popup",
+  in_details: {
+    phone_number: "+233123456789"
+    mobile_provider: "mtn",
+    otp: "123456"
+  },
+  errors: {
+    otp: [
+      {
+        "error": "invalid"
+      }
+    ]
+  }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-ghs-mobile-otp-validate-out" raw=data-raw %}
+
 # UGX mobile collections
 
 To initiate a UGX mobile collection, please use the following details (`phone_number` used below are examples):
