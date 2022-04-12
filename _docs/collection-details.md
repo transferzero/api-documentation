@@ -72,11 +72,11 @@ For such transactions, the details would look like:
 "input_currency": "GHS",
 "payin_methods": [
   {
-    type: "GHS::Mobile",
-    ux_flow: "otp_verified_ussd_popup",
-    in_details: {
-      phone_number: "+233123456789"
-      mobile_provider: "mtn"
+    "type": "GHS::Mobile",
+    "ux_flow": "otp_verified_ussd_popup",
+    "in_details": {
+      "phone_number": "+233123456789"
+      "mobile_provider": "mtn"
     }
   }
 ]
@@ -91,23 +91,23 @@ Once the transaction is created, an OTP is sent to the `phone_number` specified 
 ```javascript
 "payin_methods": [
   {
-    id: "9b25ca43-1812-46b2-ae0c-57acefec0a34",
-    type: "GHS::Mobile",
-    ux_flow: "otp_verified_ussd_popup",
-    in_details: {
-      phone_number: "+233123456789"
-      mobile_provider: "mtn"
+    "id": "9b25ca43-1812-46b2-ae0c-57acefec0a34",
+    "type": "GHS::Mobile",
+    "ux_flow": "otp_verified_ussd_popup",
+    "in_details": {
+      "phone_number": "+233123456789"
+      "mobile_provider": "mtn"
     },
-    state: "incomplete",
-    state_reason_details: {
-      code: 23,
-      category: "user_action_required",
-      messages: [
+    "state": "incomplete",
+    "state_reason_details": {
+      "code": 23,
+      "category": "user_action_required",
+      "messages": [
         "User action required",
         "OTP verification required",
         "OTP verification required"
       ],
-      description: "This transaction is awaiting OTP validation by the user."
+      "description": "This transaction is awaiting OTP validation by the user."
     },
   }
 ```
@@ -121,10 +121,10 @@ In order to validate the OTP, send a PATCH request for the PayinMethod with the 
 ```javascript
 PATCH /v1/payin_methods/9b25ca43-1812-46b2-ae0c-57acefec0a34
 {
-  in_details: {
-    phone_number: "+233123456789"
-    mobile_provider: "mtn",
-    otp: "123456"
+  "in_details": {
+    "phone_number": "+233123456789"
+    "mobile_provider": "mtn",
+    "otp": "123456"
   }
 }
 ```
@@ -137,16 +137,16 @@ If the OTP matches the one sent to the sender's phone number, the collection pro
 {% capture data-raw %}
 ```javascript
 {
-  id: "9b25ca43-1812-46b2-ae0c-57acefec0a34",
-  type: "GHS::Mobile",
-  ux_flow: "otp_verified_ussd_popup",
-  in_details: {
-    phone_number: "+233123456789"
-    mobile_provider: "mtn",
-    otp: "123456"
+  "id": "9b25ca43-1812-46b2-ae0c-57acefec0a34",
+  "type": "GHS::Mobile",
+  "ux_flow": "otp_verified_ussd_popup",
+  "in_details": {
+    "phone_number": "+233123456789"
+    "mobile_provider": "mtn",
+    "otp": "123456"
   },
-  errors: {
-    otp: [
+  "errors": {
+    "otp": [
       {
         "error": "invalid"
       }
