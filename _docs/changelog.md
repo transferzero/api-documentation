@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.19.0`
+Current version of the SDKs are `1.19.2`
+
+1.19.2
+------
+* Add otp verified ussd popup flow for collections.
 
 1.19.0
 ------
