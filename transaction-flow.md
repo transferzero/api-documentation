@@ -333,9 +333,9 @@ The valid `bank_code` values are:
 
 ```
 Access Bank: 044
-Diamond Bank: 063
+CitiBank: 023
 EcoBank: 050
-FCMB Bank: 214
+FCMB : 214
 Fidelity Bank: 070
 First Bank of Nigeria: 011
 Guaranty Trust Bank : 058
@@ -346,7 +346,6 @@ Polaris Bank: 076
 Stanbic IBTC Bank: 039
 Standard Chartered Bank PLC: 068
 Sterling bank: 232
-Suntrust Bank: 100
 Union Bank: 032
 United Bank for Africa: 033
 Unity Bank: 215
