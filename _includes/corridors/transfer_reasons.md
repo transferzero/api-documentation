@@ -25,9 +25,9 @@ Medical and dental services: medical_and_dental_services
 Educational services: educational_services
 Operational leasing: operational_leasing
 Cultural and recreational services: cultural_and_recreational_services
-Salary paid to South African Resident Temporarily Abroad: salary_resident_out_country
-Salary paid to a non-resident employee in South Africa: salary_non_resident_in_country
-Salary paid to a foreign national contract worker in South Africa: salary_contract_worker_in_country
+Salary paid to Recipient Country Resident Temporarily Abroad: salary_resident_out_country
+Salary paid to a non-resident employee in recipient country: salary_non_resident_in_country
+Salary paid to a foreign national contract worker in recipient country: salary_contract_worker_in_country
 Payments to social security schemes: social_security_schemes
 Payments to charities and religious bodies: charities_and_religious_bodies
 Donations and aid to Government: donations_and_aid_to_government
@@ -53,10 +53,10 @@ Repatriation of funds out of a foreign bank account: funds_repatriation_of_forei
 Sale of mutual funds or collective investment schemes: mutual_funds_sale_or_collective_investment
 Sale of overseas property: overseas_property_sale
 Sale and repatriation of other investment: sale_and_repatriation_of_other_investment
-Repatriation on instruction by the South African Reserve Bank: repatriation_south_african_reserve_bank_instruction
+Repatriation on instruction by the Central Bank: repatriation_south_african_reserve_bank_instruction
 Loan made to a resident by a non-resident shareholder: resident_loan_from_non_resident_share_holder
 Loan made to a resident by a non-resident third party: resident_loan_from_non_resident_third_party
-Repayment by a South African living overseas of a loan granted by a resident: resident_loan_repayment_from_overseas_living_south_african
+Repayment by a Citizen living overseas of a loan granted by a resident: resident_loan_repayment_from_overseas_living_south_african
 Repayment of a study loan: study_loan_repayment
 Repayment of a shareholders loan: shareholders_loan_repayment
 Repayment of a third party loan (excluding shareholders): third_party_loan_repayment
@@ -104,7 +104,7 @@ Commercial sales of non-customised software on physical media with periodic lice
 Commercial sales of non-customised software provided on physical media with right to perpetual (ongoing) use: non_customised_software_on_pyisical_media_perpetual_use_sale
 Commercial sales of non-customised software provided for downloading or electronically: non_customised_software_for_downloading_electronically_made_periodic_licence_salemade available with periodic license'
 Commercial sales of non-customised software provided for downloading or electronically: non_customised_software_for_downloading_electronically_made_single_payment_salemade available with single payment'
-Donations to SA Government for fixed assets: fixed_assets_donations_to_sa_government
+Donations to Government for fixed assets: fixed_assets_donations_to_sa_government
 Donations to corporate entities - fixed assets: fixed_assets_donations_to_corporate_entities
 Disinvestment of property by a resident corporate entity: property_disinvestment_by_corporate_entity_resident
 Proceeds for other business services not included elsewhere: other_business_services
