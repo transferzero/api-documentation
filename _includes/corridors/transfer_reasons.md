@@ -104,7 +104,7 @@ Commercial sales of non-customised software on physical media with periodic lice
 Commercial sales of non-customised software provided on physical media with right to perpetual (ongoing) use: non_customised_software_on_pyisical_media_perpetual_use_sale
 Commercial sales of non-customised software provided for downloading or electronically: non_customised_software_for_downloading_electronically_made_periodic_licence_salemade available with periodic license'
 Commercial sales of non-customised software provided for downloading or electronically: non_customised_software_for_downloading_electronically_made_single_payment_salemade available with single payment'
-Donations to Government for fixed assets: fixed_assets_donations_to_government
+Donations to Government for fixed assets: fixed_assets_donations_to_sa_government
 Donations to corporate entities - fixed assets: fixed_assets_donations_to_corporate_entities
 Disinvestment of property by a resident corporate entity: property_disinvestment_by_corporate_entity_resident
 Proceeds for other business services not included elsewhere: other_business_services
