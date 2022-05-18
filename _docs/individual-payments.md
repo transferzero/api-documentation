@@ -529,6 +529,28 @@ mtn
 
 {% include corridors/zar-bank.md recipient_type='individual' %}
 
+The current banks supported and their `bank_code` values are:
+
+{% capture data-raw %}
+```
+Standard Bank: 051001
+First National Bank: 250655
+ABSA:	632005
+Nedbank: 198765
+Investec:	580105
+Capitec Bank:	470010
+Bank of Athens:	410506
+Bidvest Bank:	462005
+African Bank:	430000
+Mercantile Bank: 450905
+SA Post Office: 460005
+Tyme Bank: 678910
+Ubank: 431010
+Discovery Bank: 679000
+Bank Zero: 888000
+```
+{% endcapture %}
+
 # Kenya
 
 ## KES::Bank
