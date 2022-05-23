@@ -247,9 +247,9 @@ If the OTP matches the auth code that the sender got, the collection process sta
     description: "This transaction is awaiting status update from provider."
   },
   in_details: {
-    phone_number: "+221123456789"
+    phone_number: "+221123456789",
     mobile_provider: "orange",
-    otp: “123456”
+    otp: "123456"
   },
   out_details: {
     "style": "info"
@@ -282,9 +282,9 @@ Otherwise you get an error response:
     description: "The provided otp code is invalid or expired."
   },
   in_details: {
-    phone_number: "+221123456789"
+    phone_number: "+221123456789",
     mobile_provider: "orange",
-    otp: “123456”
+    otp: "123456"
   },
   out_details: {
     "style": "info"
