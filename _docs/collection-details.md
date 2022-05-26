@@ -3,7 +3,7 @@ title: Collection details
 permalink: /docs/collection-details/
 ---
 
-- Table of contents
+* Table of contents
 {:toc}
 
 This document lists the required details that need to be sent for each of our collection corridors.
