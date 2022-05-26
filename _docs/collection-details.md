@@ -4,7 +4,7 @@ permalink: /docs/collection-details/
 ---
 
 - Table of contents
-  {:toc}
+{:toc}
 
 This document lists the required details that need to be sent for each of our collection corridors.
 
@@ -205,7 +205,7 @@ Once the funds have been successfully received from the sender, `payin_method.pa
 To initiate a XOF mobile collection, please use the following details (`phone_number` used below are examples):
 At the moment, we only support collections in:
 
-- Senegal(Orange) - this requires the sender to request an OTP by typing retrieve an auth code via USSD #144#391\*ORANGE_MONEY_PIN_CODE#. The auth code retrieved should be included in the `otp` parameter in `in_details`.
+- Senegal(Orange) - this requires the sender to request an OTP by typing retrieve an auth code via USSD `#144#391\*ORANGE_MONEY_PIN_CODE#` . The auth code retrieved should be included in the `otp` parameter in `in_details`.
 
 {% capture data-raw %}
 
@@ -229,32 +229,33 @@ At the moment, we only support collections in:
 {% include language-tabbar.html prefix="collection-xof-mobile" raw=data-raw %}
 
 If the OTP matches the auth code that the sender got, the collection process starts:
+
 {% capture data-raw %}
 
 ```javascript
 {
-  id: "9b25ca43-1812-46b2-ae0c-57acefec0a34",
-  type: "XOF::Mobile",
-  ux_flow: "ussd_voucher",
-  state: "pending",
-  state_reason_details: {
-    code: 14,
-    category: "pending",
-    messages: [
+  "id": "9b25ca43-1812-46b2-ae0c-57acefec0a34",
+  "type": "XOF::Mobile",
+  "ux_flow": "ussd_voucher",
+  "state": "pending",
+  "state_reason_details": {
+    "code": 14,
+    "category": "pending",
+    "messages": [
       "Pending",
       "Pending status update"
     ],
-    description: "This transaction is awaiting status update from provider."
+    "description": "This transaction is awaiting status update from provider."
   },
-  in_details: {
-    phone_number: "+221123456789",
-    mobile_provider: "orange",
-    otp: "123456"
+  "in_details": {
+    "phone_number": "+221123456789",
+    "mobile_provider": "orange",
+    "otp": "123456"
   },
-  out_details: {
+  "out_details": {
     "style": "info"
   },
-  instructions: {
+  "instructions": {
   }
 }
 ```
@@ -268,28 +269,28 @@ Otherwise you get an error response:
 
 ```javascript
 {
-  id: "9b25ca43-1812-46b2-ae0c-57acefec0a34",
-  type: "XOF::Mobile",
-  ux_flow: "ussd_voucher",
-  state: "error",
-  state_reason_details: {
-    code: 415,
-    category: "invalid_user_data_error",
-    messages: [
+  "id": "9b25ca43-1812-46b2-ae0c-57acefec0a34",
+  "type": "XOF::Mobile",
+  "ux_flow": "ussd_voucher",
+  "state": "error",
+  "state_reason_details": {
+    "code": 415,
+    "category": "invalid_user_data_error",
+    "messages": [
       "Invalid User Data Error",
       "Invalid OTP Error"
     ],
-    description: "The provided otp code is invalid or expired."
+    "description": "The provided otp code is invalid or expired."
   },
-  in_details: {
-    phone_number: "+221123456789",
-    mobile_provider: "orange",
-    otp: "123456"
+  "in_details": {
+    "phone_number": "+221123456789",
+    "mobile_provider": "orange",
+    "otp": "123456"
   },
-  out_details: {
+  "out_details": {
     "style": "info"
   },
-  instructions: {
+  "instructions": {
   }
 }
 ```
