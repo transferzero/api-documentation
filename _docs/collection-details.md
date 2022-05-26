@@ -205,7 +205,7 @@ Once the funds have been successfully received from the sender, `payin_method.pa
 To initiate a XOF mobile collection, please use the following details (`phone_number` used below are examples):
 At the moment, we only support collections in:
 
-- Senegal(Orange) - this requires the sender to request an OTP auth code via USSD `#144#391\*ORANGE_MONEY_PIN_CODE#` . The auth code retrieved should be included in the `otp` parameter in `in_details`.
+- Senegal(Orange) - this requires the sender to request an OTP auth code via USSD `#144#391*ORANGE_MONEY_PIN_CODE#` . The auth code retrieved should be included in the `otp` parameter in `in_details`.
 
 {% capture data-raw %}
 
