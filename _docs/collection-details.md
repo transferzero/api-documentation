@@ -13,6 +13,7 @@ This document lists the required details that need to be sent for each of our co
 To initiate a GHS mobile collection, please use the following details (phone_number and mobile_provider used below are examples):
 
 {% capture data-raw %}
+
 ```javascript
 "input_currency": "GHS",
 "payin_methods": [
@@ -26,6 +27,7 @@ To initiate a GHS mobile collection, please use the following details (phone_num
   }
 ],
 ```
+
 {% endcapture %}
 
 {% include language-tabbar.html prefix="collection-ghs-mobile" raw=data-raw %}
@@ -33,6 +35,7 @@ To initiate a GHS mobile collection, please use the following details (phone_num
 For Collection transactions with `mtn` as `mobile_provider` and `ussd_menu_approval` as `ux_flow`, the `out_details` will be:
 
 {% capture data-raw %}
+
 ```javascript
 "out_details": {
   "style": "ussd_menu_approval",
@@ -41,6 +44,7 @@ For Collection transactions with `mtn` as `mobile_provider` and `ussd_menu_appro
   "dialing_number": "*170#"
 }
 ```
+
 {% endcapture %}
 
 {% include language-tabbar.html prefix="collection-ghs-mobile-out" raw=data-raw %}
@@ -50,11 +54,13 @@ And human readable instructions can be found in the `payin_methods[0].instructio
 (example instructions for GHS Mobile payments)
 
 {% capture data-raw %}
+
 ```javascript
 "instructions": {
   'ussd_menu_approval': '\\nDial *170# to access mobile money menu.\\nSelect option 6 (My Wallet) and send.\\nChoose option 3 to check "my approvals".\\nChoose the transaction to approve and send.\\nConfirm transaction by choosing option1 (Yes) and send.\\nEnter mobile money pin and send.\\nYou will receive a new message on your mobile phone about the transaction.\\n'
 }
 ```
+
 {% endcapture %}
 
 {% include language-tabbar.html prefix="collection-ghs-mobile-instructions" raw=data-raw %}
@@ -64,10 +70,12 @@ Once the transaction is created, instructions for completing payment will be sen
 Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
 
 ## Collections requiring OTPs
+
 Collections with `ux_flow: otp_verified_ussd_popup` require that the sender validate an OTP sent to their phone number when the transaction is created.
 For such transactions, the details would look like:
 
 {% capture data-raw %}
+
 ```javascript
 "input_currency": "GHS",
 "payin_methods": [
@@ -81,6 +89,7 @@ For such transactions, the details would look like:
   }
 ]
 ```
+
 {% endcapture %}
 
 {% include language-tabbar.html prefix="collection-ghs-mobile-otp" raw=data-raw %}
@@ -88,6 +97,7 @@ For such transactions, the details would look like:
 Once the transaction is created, an OTP is sent to the `phone_number` specified in the payload. The response would look like:
 
 {% capture data-raw %}
+
 ```javascript
 "payin_methods": [
   {
@@ -111,6 +121,7 @@ Once the transaction is created, an OTP is sent to the `phone_number` specified 
     },
   }
 ```
+
 {% endcapture %}
 
 {% include language-tabbar.html prefix="collection-ghs-mobile-otp-out" raw=data-raw %}
@@ -118,6 +129,7 @@ Once the transaction is created, an OTP is sent to the `phone_number` specified 
 In order to validate the OTP, send a PATCH request for the PayinMethod with the OTP in the payload:
 
 {% capture data-raw %}
+
 ```javascript
 PATCH /v1/payin_methods/9b25ca43-1812-46b2-ae0c-57acefec0a34
 {
@@ -128,6 +140,7 @@ PATCH /v1/payin_methods/9b25ca43-1812-46b2-ae0c-57acefec0a34
   }
 }
 ```
+
 {% endcapture %}
 
 {% include language-tabbar.html prefix="collection-ghs-mobile-otp-validate" raw=data-raw %}
@@ -135,6 +148,7 @@ PATCH /v1/payin_methods/9b25ca43-1812-46b2-ae0c-57acefec0a34
 If the OTP matches the one sent to the sender's phone number, the collection process starts, otherwise you get a validation error:
 
 {% capture data-raw %}
+
 ```javascript
 {
   "id": "9b25ca43-1812-46b2-ae0c-57acefec0a34",
@@ -154,6 +168,7 @@ If the OTP matches the one sent to the sender's phone number, the collection pro
   }
 }
 ```
+
 {% endcapture %}
 
 {% include language-tabbar.html prefix="collection-ghs-mobile-otp-validate-out" raw=data-raw %}
@@ -163,6 +178,7 @@ If the OTP matches the one sent to the sender's phone number, the collection pro
 To initiate a UGX mobile collection, please use the following details (`phone_number` used below are examples):
 
 {% capture data-raw %}
+
 ```javascript
 "input_currency": "UGX",
 "payin_methods": [
@@ -175,6 +191,7 @@ To initiate a UGX mobile collection, please use the following details (`phone_nu
   }
 ],
 ```
+
 {% endcapture %}
 
 {% include language-tabbar.html prefix="collection-ugx-mobile" raw=data-raw %}
@@ -183,11 +200,113 @@ Once the transaction is created, instructions for completing payment will be sen
 
 Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
 
+# XOF mobile collections
+
+To initiate a XOF mobile collection, please use the following details (`phone_number` used below are examples):
+At the moment, we only support collections in:
+
+- Senegal(Orange) - this requires the sender to request an OTP auth code via USSD `#144#391*ORANGE_MONEY_PIN_CODE#` . The auth code retrieved should be included in the `otp` parameter in `in_details`.
+
+{% capture data-raw %}
+
+```javascript
+"input_currency": "XOF",
+"payin_methods": [
+  {
+    "type": "XOF::Mobile",
+    "ux_flow": "ussd_voucher",
+    "in_details": {
+      "phone_number": "+221123456789", // In international format
+      "mobile_provider": "orange",
+      "otp": "123456"
+    }
+  }
+],
+```
+
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-xof-mobile" raw=data-raw %}
+
+If the OTP matches the auth code that the sender got, the collection process starts:
+
+{% capture data-raw %}
+
+```javascript
+{
+  "id": "9b25ca43-1812-46b2-ae0c-57acefec0a34",
+  "type": "XOF::Mobile",
+  "ux_flow": "ussd_voucher",
+  "state": "pending",
+  "state_reason_details": {
+    "code": 14,
+    "category": "pending",
+    "messages": [
+      "Pending",
+      "Pending status update"
+    ],
+    "description": "This transaction is awaiting status update from provider."
+  },
+  "in_details": {
+    "phone_number": "+221123456789",
+    "mobile_provider": "orange",
+    "otp": "123456"
+  },
+  "out_details": {
+    "style": "info"
+  },
+  "instructions": {
+  }
+}
+```
+
+{% endcapture%}
+
+{% include language-tabbar.html prefix="collection-xof-mobile-response" raw=data-raw %}
+
+Otherwise you get an error response:
+{% capture data-raw %}
+
+```javascript
+{
+  "id": "9b25ca43-1812-46b2-ae0c-57acefec0a34",
+  "type": "XOF::Mobile",
+  "ux_flow": "ussd_voucher",
+  "state": "error",
+  "state_reason_details": {
+    "code": 415,
+    "category": "invalid_user_data_error",
+    "messages": [
+      "Invalid User Data Error",
+      "Invalid OTP Error"
+    ],
+    "description": "The provided otp code is invalid or expired."
+  },
+  "in_details": {
+    "phone_number": "+221123456789",
+    "mobile_provider": "orange",
+    "otp": "123456"
+  },
+  "out_details": {
+    "style": "info"
+  },
+  "instructions": {
+  }
+}
+```
+
+{% endcapture%}
+
+{% include language-tabbar.html prefix="collection-xof-mobile-otp-error" raw=data-raw %}
+
+Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
+
 # EUR bank collections
 
 To initiate EUR IBAN collections please use the following details:
 
 {% capture data-raw %}
+
 ```javascript
 "input_currency": "EUR",
 "payin_methods": [
@@ -197,6 +316,7 @@ To initiate EUR IBAN collections please use the following details:
   }
 ],
 ```
+
 {% endcapture %}
 
 {% include language-tabbar.html prefix="collection-eur-bank" raw=data-raw %}
@@ -204,6 +324,7 @@ To initiate EUR IBAN collections please use the following details:
 Payment should be made by the sender using the bank details returned in the response's `out_details` hash:
 
 {% capture data-raw %}
+
 ```javascript
 "out_details": {
   "style": "info",
@@ -215,6 +336,7 @@ Payment should be made by the sender using the bank details returned in the resp
   "Reference": "PDTWTACVNTPC"
 }
 ```
+
 {% endcapture %}
 
 {% include language-tabbar.html prefix="collection-eur-bank-out" raw=data-raw %}
@@ -222,9 +344,10 @@ Payment should be made by the sender using the bank details returned in the resp
 Funds should be sent to the IBAN shown above, with the reference number used as "payment details" (the reference will be different for each collection request, the one above is just an example).
 
 Settlement times are dependent on what payment network the sender's bank supports:
-* If they support the Instant Payment network, then funds arrive within 2 hours (but usually within 5 minutes)
-* If they support the SEPA network, then funds arrive within 1-2 business days
-* If they only support the Swift network, then funds arrive within 2-5 business days
+
+- If they support the Instant Payment network, then funds arrive within 2 hours (but usually within 5 minutes)
+- If they support the SEPA network, then funds arrive within 1-2 business days
+- If they only support the Swift network, then funds arrive within 2-5 business days
 
 Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
 
@@ -233,6 +356,7 @@ Once the funds have been successfully received from the sender, `payin_method.pa
 To initiate GBP Faster Payments collections please use the following details:
 
 {% capture data-raw %}
+
 ```javascript
 "input_currency": "GBP",
 "payin_methods": [
@@ -242,6 +366,7 @@ To initiate GBP Faster Payments collections please use the following details:
   }
 ],
 ```
+
 {% endcapture %}
 
 {% include language-tabbar.html prefix="collection-gbp-bank" raw=data-raw %}
@@ -249,6 +374,7 @@ To initiate GBP Faster Payments collections please use the following details:
 Payment should be made by the sender using the bank details returned in the response's `out_details` hash:
 
 {% capture data-raw %}
+
 ```javascript
 "out_details": {
   "style": "info",
@@ -262,6 +388,7 @@ Payment should be made by the sender using the bank details returned in the resp
   "Reference": "PDTWTACVNTPC"
 }
 ```
+
 {% endcapture %}
 
 {% include language-tabbar.html prefix="collection-gbp-bank-out" raw=data-raw %}
