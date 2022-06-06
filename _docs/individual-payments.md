@@ -40,7 +40,7 @@ The valid `bank_code` values are:
 {% capture data-raw %}
 ```
 Access Bank: 044
-CITI Bank: 023
+Citi Bank Group: 023
 EcoBank: 050
 FCMB Bank: 214
 Fidelity Bank: 070
