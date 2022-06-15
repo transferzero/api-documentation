@@ -415,6 +415,7 @@ The valid `mobile_provider` values for Senegal are:
 ```
 orange
 tigo
+wave
 ```
 {% endcapture %}
 
