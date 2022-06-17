@@ -400,7 +400,7 @@ For mobile payouts to Senegal, Ivory Coast, Burkina Faso and Mali please use:
   "first_name": "First",
   "last_name": "Last",
   "mobile_provider": "orange", // lowercase, see provider values below
-  "phone_number": "+221774044436", // mobile number in local country format
+  "phone_number": "+221774044436", // mobile number in international format
   "country": "SN" // "SN" for Senegal, "CI" for Ivory Coast, "BF" for Burkina Faso, "ML" for Mali
   "transfer_reason": "personal_account" // mandatory for Mali payouts, optional otherwise
 }
