@@ -205,7 +205,10 @@ Once the funds have been successfully received from the sender, `payin_method.pa
 To initiate a XOF mobile collection, please use the following details (`phone_number` used below are examples):
 At the moment, we only support collections in:
 
-- Senegal(Orange) - this requires the sender to request an OTP auth code via USSD `#144#391*ORANGE_MONEY_PIN_CODE#` . The auth code retrieved should be included in the `otp` parameter in `in_details`.
+- Senegal(Orange) - this requires the sender to request an OTP auth code via USSD `#144#391*ORANGE_MONEY_PIN_CODE#` . The auth code retrieved should be included in the `otp` parameter in `in_details`. Uses `ussd_voucher` in `ux_flow` parameter.
+- Ivory Coast(Orange) - this requires the sender to request an OTP auth code via USSD `#144*82#`. The auth code retrieved should be included in the `otp` parameter in `in_details`. Uses `ussd_voucher` in `ux_flow` parameter.
+- Ivory Coast(MTN) - On receipt of collection request, Sender dials a USSD code `*133#`  & selects option 1 (Validate withdrawal & payment) 2. Sender selects option to confirm 3. Sender enters secret code to confirm withdrawal 4. Sender receives sms that confirms debit is completed. Uses `ussd_popup` in `ux_flow` parameter
+
 
 {% capture data-raw %}
 
@@ -219,6 +222,23 @@ At the moment, we only support collections in:
       "phone_number": "+221123456789", // In international format
       "mobile_provider": "orange",
       "otp": "123456"
+    }
+  }
+],
+```
+
+ Or in MTN
+
+
+```javascript
+"input_currency": "XOF",
+"payin_methods": [
+  {
+    "type": "XOF::Mobile",
+    "ux_flow": "ussd_popup",
+    "in_details": {
+      "phone_number": "+2250506369147", // In international format
+      "mobile_provider": "mtn"
     }
   }
 ],
