@@ -441,7 +441,7 @@ def parse_data(prefix, data)
   result << '{% include language-tabbar.html prefix="'+prefix+'" raw=data-raw csharp=data-csharp vb=data-vb java=data-java js=data-js php=data-php ruby=data-ruby %}'
 end
 
-Dir.glob("_docs/*").each do |filename|
+Dir.glob("**/*.md").each do |filename|
   content = File.read(filename)
 
   # clear up old auto generated content

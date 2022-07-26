@@ -31,6 +31,30 @@ For South African bank payments please use the following recipient details:
 
 {% include language-tabbar.html prefix="zar-bank-details" raw=data-raw %}
 
+The current banks supported and their `bank_code` values are:
+
+{% capture data-raw-bank-code %}
+```
+Standard Bank: 051001
+First National Bank: 250655
+ABSA: 632005
+Nedbank: 198765
+Investec: 580105
+Capitec Bank: 470010
+Bank of Athens: 410506
+Bidvest Bank: 462005
+African Bank: 430000
+Mercantile Bank: 450905
+SA Post Office: 460005
+Tyme Bank: 678910
+Ubank: 431010
+Discovery Bank: 679000
+Bank Zero: 888000
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="zar-bank-details" raw=data-raw-bank-code %}
+
 {% capture data-raw-entity-types %}
 ```
 Sole Proprietorship: sole_proprietorship
@@ -83,29 +107,6 @@ Financial Institution: financial_institution
 - Personal Services - Embassies: personal_services_embassies_international_organisations
 ```
 {% endcapture %}
-
-The current banks supported and their `bank_code` values are:
-
-{% capture data-raw %}
-```
-Standard Bank: 051001
-First National Bank: 250655
-ABSA: 632005
-Nedbank: 198765
-Investec: 580105
-Capitec Bank: 470010
-Bank of Athens: 410506
-Bidvest Bank: 462005
-African Bank: 430000
-Mercantile Bank: 450905
-SA Post Office: 460005
-Tyme Bank: 678910
-Ubank: 431010
-Discovery Bank: 679000
-Bank Zero: 888000
-```
-{% endcapture %}
-
 
 {% if include.recipient_type == 'business' %}
   The company types supported and corresponding `legal_entity_type` are:
