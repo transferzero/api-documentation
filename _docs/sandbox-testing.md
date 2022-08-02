@@ -165,7 +165,7 @@ You can test success/error scenarios based on payload attributes such as:
 
 ## XOF mobile collections
 ### Success scenario
-When testing collections for `XOF::Mobile`, you can use a mobile number ending with `00` to have a collection succeed. The payload for this scenario would be:
+When testing collections for `XOF::Mobile`, you can use a mobile number ending with `0` to have a collection succeed. The payload for this scenario would be:
 {% capture data-raw %}
 
 ```javascript
