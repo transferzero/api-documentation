@@ -248,35 +248,25 @@ At the moment, we only support collections in:
 
 {% include language-tabbar.html prefix="collection-xof-mobile" raw=data-raw %}
 
-If the OTP matches the auth code that the sender got, the collection process starts:
+If the payin method details are valid, you get back an `initial` response.
 
 {% capture data-raw %}
 
 ```javascript
 {
-  "id": "9b25ca43-1812-46b2-ae0c-57acefec0a34",
+  "id": "1625c534-6db4-4f3a-adf2-62a8bec89080",
   "type": "XOF::Mobile",
   "ux_flow": "ussd_voucher",
-  "state": "pending",
-  "state_reason_details": {
-    "code": 14,
-    "category": "pending",
-    "messages": [
-      "Pending",
-      "Pending status update"
-    ],
-    "description": "This transaction is awaiting status update from provider."
-  },
+  "state": "initial",
   "in_details": {
-    "phone_number": "+221123456789",
-    "mobile_provider": "orange",
-    "otp": "123456"
+    "otp": "1234",
+    "phone_number": "0771234700",
+    "mobile_provider": "orange"
   },
   "out_details": {
     "style": "info"
   },
-  "instructions": {
-  }
+  "instructions": {}
 }
 ```
 
@@ -284,42 +274,137 @@ If the OTP matches the auth code that the sender got, the collection process sta
 
 {% include language-tabbar.html prefix="collection-xof-mobile-response" raw=data-raw %}
 
-Otherwise you get an error response:
+The collection process is handled **asynchronously**.
+
+When the collection process starts, a `payin_method.pending` webhook is sent:
+
 {% capture data-raw %}
 
 ```javascript
 {
-  "id": "9b25ca43-1812-46b2-ae0c-57acefec0a34",
-  "type": "XOF::Mobile",
-  "ux_flow": "ussd_voucher",
-  "state": "error",
-  "state_reason_details": {
-    "code": 415,
-    "category": "invalid_user_data_error",
-    "messages": [
-      "Invalid User Data Error",
-      "Invalid OTP Error"
-    ],
-    "description": "The provided otp code is invalid or expired."
-  },
-  "in_details": {
-    "phone_number": "+221123456789",
-    "mobile_provider": "orange",
-    "otp": "123456"
-  },
-  "out_details": {
-    "style": "info"
-  },
-  "instructions": {
+  "webhook": "ddef6199-6171-43ba-bbb5-29fb06c9df9f",
+  "event": "payin_method.pending",
+  "object": {
+    "id": "1625c534-6db4-4f3a-adf2-62a8bec89080",
+    "type": "XOF::Mobile",
+    "ux_flow": "ussd_voucher",
+    "state": "pending",
+    "state_reason_details": {
+      "code": "14",
+      "category": "pending",
+      "messages": [
+        "Pending",
+        "Pending status update",
+        "Pending status update"
+      ],
+      "description": "This transaction is awaiting a status update from the provider."
+    },
+    "in_details": {
+      "otp": "1234",
+      "ux_flow": "ussd_voucher",
+      "phone_number": "0771234700",
+      "mobile_provider": "orange"
+    },
+    "out_details": {
+      "style": "info"
+    },
+    "instructions": {
+    },
+    "transaction_id": "0d59466a-dc2f-4aca-bad1-d4a98da37697",
+    "transaction_external_id": "510c4e28-fe33-4c06-bd79-49d52d5b3094"
   }
 }
 ```
 
 {% endcapture%}
 
-{% include language-tabbar.html prefix="collection-xof-mobile-otp-error" raw=data-raw %}
+{% include language-tabbar.html prefix="collection-xof-mobile-pending" raw=data-raw %}
 
-Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
+Once the funds have been successfully received from the sender, a `payin_method.paid_in` webhook is sent:
+{% capture data-raw %}
+
+```javascript
+{
+  "webhook": "ddef6199-6171-43ba-bbb5-29fb06c9df9f",
+  "event": "payin_method.paid_in",
+  "object": {
+    "id": "1625c534-6db4-4f3a-adf2-62a8bec89080",
+    "type": "XOF::Mobile",
+    "ux_flow": "ussd_voucher",
+    "state": "success",
+    "state_reason_details": {
+      "code": "0",
+      "category": "paid",
+      "messages": [
+        "Success",
+        "Success",
+        "Success"
+      ],
+      "description": "The transaction was successfully completed."
+    },
+    "in_details": {
+      "otp": "1234",
+      "ux_flow": "ussd_voucher",
+      "phone_number": "0771234700",
+      "mobile_provider": "orange"
+    },
+    "out_details": {
+      "style": "info"
+    },
+    "instructions": {
+    },
+    "transaction_id": "0d59466a-dc2f-4aca-bad1-d4a98da37697",
+    "transaction_external_id": "510c4e28-fe33-4c06-bd79-49d52d5b3094"
+  }
+}
+```
+
+{% endcapture%}
+
+{% include language-tabbar.html prefix="collection-xof-mobile-paid-in" raw=data-raw %}
+
+If there was an issue with the collection, a `payin_method.error` webhook is sent:
+{% capture data-raw %}
+
+```javascript
+{
+  "webhook": "ddef6199-6171-43ba-bbb5-29fb06c9df9f",
+  "event": "payin_method.error",
+  "object": {
+    "id": "10bcee73-2c39-4c0d-9e00-7540c4d34a91",
+    "type": "XOF::Mobile",
+    "ux_flow": "ussd_voucher",
+    "state": "error",
+    "state_reason_details": {
+      "code": "412",
+      "category": "invalid_user_data_error",
+      "messages": [
+        "User Error",
+        "Invalid user details",
+        "Invalid mobile number"
+      ],
+      "description": "Mobile details are invalid. Please update the mobile details. You can also cancel this transaction."
+    },
+    "in_details": {
+      "otp": "1234",
+      "ux_flow": "ussd_voucher",
+      "phone_number": "0771234705",
+      "mobile_provider": "orange"
+    },
+    "out_details": {
+      "style": "info"
+    },
+    "instructions": {
+    },
+    "transaction_id": "b83f38d6-fc4c-49de-b512-f45ac914bbea",
+    "transaction_external_id": "9b5f3c64-9b6b-41b8-9658-168999961b70"
+  }
+}
+```
+
+{% endcapture%}
+
+{% include language-tabbar.html prefix="collection-xof-mobile-error" raw=data-raw %}
 
 # EUR bank collections
 
