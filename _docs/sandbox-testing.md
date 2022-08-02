@@ -235,7 +235,7 @@ Once the collection request is processed, you'd receive a `payin_method.paid_in`
 
 
 ### Error scenario
-When testing collections for `XOF::Mobile`, you can use a mobile number ending with `05` to have a collection fail. The payload for this scenario would be:
+When testing collections for `XOF::Mobile`, you can use a mobile number ending with `9` to have a collection fail. The payload for this scenario would be:
 {% capture data-raw %}
 
 ```javascript
@@ -246,7 +246,7 @@ When testing collections for `XOF::Mobile`, you can use a mobile number ending w
   "state": "initial",
   "in_details": {
     "otp": "1234",
-    "phone_number": "+221771234705",
+    "phone_number": "+221771234709",
     "mobile_provider": "orange"
   },
   "out_details": {
@@ -285,7 +285,7 @@ Once the collection request is processed, you'd receive a `payin_method.error` w
     "in_details": {
       "otp": "1234",
       "ux_flow": "ussd_voucher",
-      "phone_number": "0771234705",
+      "phone_number": "0771234709",
       "mobile_provider": "orange"
     },
     "out_details": {
