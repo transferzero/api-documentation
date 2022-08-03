@@ -143,15 +143,6 @@ When the OTP is sent, a `payin_method.incomplete` webhook is sent out:
       "mobile_provider": "mtn",
       "otp": "170270"
     },
-    "out_details": {
-      "style": "ussd_menu_approval",
-      "menu_option": "6",
-      "requires_pin": true,
-      "dialing_number": "*170#"
-    },
-    "instructions": {
-      "ussd_menu_approval": "\\nDial *170# to access mobile money menu.\\nSelect option 6 (My Wallet) and send.\\nChoose option 3 to check \"my approvals\".\\nChoose the transaction to approve and send.\\nConfirm transaction by choosing option1 (Yes) and send.\\nEnter mobile money pin and send.\\nYou will receive a new message on your mobile phone about the transaction.\\n"
-    },
     "transaction_id": "8421a8b4-0107-4d54-85bc-e0c2747b68b8",
     "transaction_external_id": "TRANSACTION-d68069bc-898f-45f5-88cf-5e7d8e537c70"
   }
@@ -242,15 +233,6 @@ When the collection process starts, a `payin_method.pending` webhook is sent out
       "nth_provider": 0,
       "phone_number": "+233548689440",
       "mobile_provider": "mtn"
-    },
-    "out_details": {
-      "style": "ussd_menu_approval",
-      "menu_option": "6",
-      "requires_pin": true,
-      "dialing_number": "*170#"
-    },
-    "instructions": {
-      "ussd_menu_approval": "\\nDial *170# to access mobile money menu.\\nSelect option 6 (My Wallet) and send.\\nChoose option 3 to check \"my approvals\".\\nChoose the transaction to approve and send.\\nConfirm transaction by choosing option1 (Yes) and send.\\nEnter mobile money pin and send.\\nYou will receive a new message on your mobile phone about the transaction.\\n"
     },
     "transaction_id": "8421a8b4-0107-4d54-85bc-e0c2747b68b8",
     "transaction_external_id": "TRANSACTION-d68069bc-898f-45f5-88cf-5e7d8e537c70"
