@@ -71,7 +71,7 @@ Once the funds have been successfully received from the sender, `payin_method.pa
 
 ## Collections requiring OTPs
 
-Collections with `ux_flow: otp_verified_ussd_popup` require that the sender validate an OTP sent to their phone number when the transaction is created.
+Collections with `ux_flow: otp_verified_ussd_popup` require that the sender validate an OTP sent to their phone number when the transaction is created. The collection process is handled **asynchronously**.
 For such transactions, the details would look like:
 
 {% capture data-raw %}
@@ -83,7 +83,7 @@ For such transactions, the details would look like:
     "type": "GHS::Mobile",
     "ux_flow": "otp_verified_ussd_popup",
     "in_details": {
-      "phone_number": "+233123456789"
+      "phone_number": "+233548689440"
       "mobile_provider": "mtn"
     }
   }
@@ -94,37 +94,73 @@ For such transactions, the details would look like:
 
 {% include language-tabbar.html prefix="collection-ghs-mobile-otp" raw=data-raw %}
 
-Once the transaction is created, an OTP is sent to the `phone_number` specified in the payload. The response would look like:
+Once the transaction is created, an OTP will be sent to the `phone_number` specified in the payload. The response would look like:
 
 {% capture data-raw %}
 
 ```javascript
 "payin_methods": [
   {
-    "id": "9b25ca43-1812-46b2-ae0c-57acefec0a34",
+  "id": "7334d150-41f8-4710-858b-e16a96df0c71",
+  "type": "GHS::Mobile",
+  "ux_flow": "otp_verified_ussd_popup",
+  "state": "initial",
+  "in_details": {
+    "phone_number": "+233548689440",
+    "mobile_provider": "mtn"
+  },
+}
+```
+
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-ghs-mobile-otp-out" raw=data-raw %}
+
+When the OTP is sent, a `payin_method.incomplete` webhook is sent out:
+{% capture data-raw %}
+
+```javascript
+{
+  "webhook": "ddef6199-6171-43ba-bbb5-29fb06c9df9f",
+  "event": "payin_method.incomplete",
+  "object": {
+    "id": "7334d150-41f8-4710-858b-e16a96df0c71",
     "type": "GHS::Mobile",
     "ux_flow": "otp_verified_ussd_popup",
-    "in_details": {
-      "phone_number": "+233123456789"
-      "mobile_provider": "mtn"
-    },
     "state": "incomplete",
     "state_reason_details": {
-      "code": 23,
+      "code": "23",
       "category": "user_action_required",
       "messages": [
         "User action required",
         "OTP verification required",
         "OTP verification required"
       ],
-      "description": "This transaction is awaiting OTP validation by the user."
+      "description": "This transaction is awaiting OTP verification by the user."
     },
+    "in_details": {
+      "phone_number": "+233548689440",
+      "mobile_provider": "mtn",
+      "otp": "170270"
+    },
+    "out_details": {
+      "style": "ussd_menu_approval",
+      "menu_option": "6",
+      "requires_pin": true,
+      "dialing_number": "*170#"
+    },
+    "instructions": {
+      "ussd_menu_approval": "\\nDial *170# to access mobile money menu.\\nSelect option 6 (My Wallet) and send.\\nChoose option 3 to check \"my approvals\".\\nChoose the transaction to approve and send.\\nConfirm transaction by choosing option1 (Yes) and send.\\nEnter mobile money pin and send.\\nYou will receive a new message on your mobile phone about the transaction.\\n"
+    },
+    "transaction_id": "8421a8b4-0107-4d54-85bc-e0c2747b68b8",
+    "transaction_external_id": "TRANSACTION-d68069bc-898f-45f5-88cf-5e7d8e537c70"
   }
+}
 ```
 
 {% endcapture %}
 
-{% include language-tabbar.html prefix="collection-ghs-mobile-otp-out" raw=data-raw %}
+{% include language-tabbar.html prefix="collection-ghs-mobile-payin-incompleye" raw=data-raw %}
 
 In order to validate the OTP, send a PATCH request for the PayinMethod with the OTP in the payload:
 
@@ -172,6 +208,59 @@ If the OTP matches the one sent to the sender's phone number, the collection pro
 {% endcapture %}
 
 {% include language-tabbar.html prefix="collection-ghs-mobile-otp-validate-out" raw=data-raw %}
+
+When the collection process starts, a `payin_method.pending` webhook is sent out:
+{% capture data-raw %}
+
+```javascript
+{
+  "webhook": "ddef6199-6171-43ba-bbb5-29fb06c9df9f",
+  "event": "payin_method.pending",
+  "object": {
+    "id": "7334d150-41f8-4710-858b-e16a96df0c71",
+    "type": "GHS::Mobile",
+    "ux_flow": "otp_verified_ussd_popup",
+    "state": "pending",
+    "state_reason_details": {
+      "code": "14",
+      "category": "pending",
+      "messages": [
+        "Pending",
+        "Pending status update",
+        "Pending status update"
+      ],
+      "description": "This transaction is awaiting a status update from the provider."
+    },
+    "in_details": {
+      "otp": "170270",
+      "type": "payin",
+      "app_id": "898e347d-9391-4180-b0ef-3c67df0d8e50",
+      "method": "mobile",
+
+      "ux_flow": "otp_verified_ussd_popup",
+      "currency": "GHS",
+      "nth_provider": 0,
+      "phone_number": "+233548689440",
+      "mobile_provider": "mtn"
+    },
+    "out_details": {
+      "style": "ussd_menu_approval",
+      "menu_option": "6",
+      "requires_pin": true,
+      "dialing_number": "*170#"
+    },
+    "instructions": {
+      "ussd_menu_approval": "\\nDial *170# to access mobile money menu.\\nSelect option 6 (My Wallet) and send.\\nChoose option 3 to check \"my approvals\".\\nChoose the transaction to approve and send.\\nConfirm transaction by choosing option1 (Yes) and send.\\nEnter mobile money pin and send.\\nYou will receive a new message on your mobile phone about the transaction.\\n"
+    },
+    "transaction_id": "8421a8b4-0107-4d54-85bc-e0c2747b68b8",
+    "transaction_external_id": "TRANSACTION-d68069bc-898f-45f5-88cf-5e7d8e537c70"
+  }
+}
+```
+
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-ghs-mobile-otp-payin-pending" raw=data-raw %}
 
 # UGX mobile collections
 
