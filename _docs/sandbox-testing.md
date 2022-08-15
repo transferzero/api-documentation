@@ -177,7 +177,8 @@ When testing collections for `XOF::Mobile`, you can use a mobile number ending w
   "in_details": {
     "otp": "1234",
     "phone_number": "+221771234700",
-    "mobile_provider": "orange"
+    "mobile_provider": "orange",
+    "country": "SN"
   },
   "out_details": {
     "style": "info"
@@ -216,7 +217,8 @@ Once the collection request is processed, you'd receive a `payin_method.paid_in`
       "otp": "1234",
       "ux_flow": "ussd_voucher",
       "phone_number": "0771234700",
-      "mobile_provider": "orange"
+      "mobile_provider": "orange",
+      "country": "SN"
     },
     "out_details": {
       "style": "info"
@@ -247,7 +249,8 @@ When testing collections for `XOF::Mobile`, you can use a mobile number ending w
   "in_details": {
     "otp": "1234",
     "phone_number": "+221771234709",
-    "mobile_provider": "orange"
+    "mobile_provider": "orange",
+    "country": "SN"
   },
   "out_details": {
     "style": "info"
@@ -286,7 +289,8 @@ Once the collection request is processed, you'd receive a `payin_method.error` w
       "otp": "1234",
       "ux_flow": "ussd_voucher",
       "phone_number": "0771234709",
-      "mobile_provider": "orange"
+      "mobile_provider": "orange",
+      "country": "SN"
     },
     "out_details": {
       "style": "info"

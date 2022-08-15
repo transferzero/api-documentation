@@ -290,8 +290,9 @@ At the moment, we only support collections in:
     "type": "XOF::Mobile",
     "ux_flow": "ussd_voucher",
     "in_details": {
-      "phone_number": "+221123456789", // In international format
+      "phone_number": "+221123456700", // In international format
       "mobile_provider": "orange",
+      "country": "SN", // "SN" for Senegal, "CI" for Ivory Coast
       "otp": "123456"
     }
   }
@@ -308,8 +309,9 @@ At the moment, we only support collections in:
     "type": "XOF::Mobile",
     "ux_flow": "ussd_popup",
     "in_details": {
-      "phone_number": "+2250506369147", // In international format
-      "mobile_provider": "mtn"
+      "phone_number": "+2250506369100", // In international format
+      "mobile_provider": "mtn",
+      "country": "CI", // "SN" for Senegal, "CI" for Ivory Coast
     }
   }
 ],
@@ -332,7 +334,8 @@ If the payin method details are valid, you get back an `initial` response.
   "in_details": {
     "otp": "1234",
     "phone_number": "0771234700",
-    "mobile_provider": "orange"
+    "mobile_provider": "orange",
+    "country": "SN"
   },
   "out_details": {
     "style": "info"
@@ -374,7 +377,8 @@ When the collection process starts, a `payin_method.pending` webhook is sent:
       "otp": "1234",
       "ux_flow": "ussd_voucher",
       "phone_number": "0771234700",
-      "mobile_provider": "orange"
+      "mobile_provider": "orange",
+      "country": "SN"
     },
     "out_details": {
       "style": "info"
@@ -417,7 +421,8 @@ Once the funds have been successfully received from the sender, a `payin_method.
       "otp": "1234",
       "ux_flow": "ussd_voucher",
       "phone_number": "0771234700",
-      "mobile_provider": "orange"
+      "mobile_provider": "orange",
+      "country": "SN"
     },
     "out_details": {
       "style": "info"
@@ -459,8 +464,9 @@ If there was an issue with the collection, a `payin_method.error` webhook is sen
     "in_details": {
       "otp": "1234",
       "ux_flow": "ussd_voucher",
-      "phone_number": "0771234705",
-      "mobile_provider": "orange"
+      "phone_number": "0771234709",
+      "mobile_provider": "orange",
+      "country": "SN"
     },
     "out_details": {
       "style": "info"
