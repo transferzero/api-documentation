@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.20.0`
+Current version of the SDKs are `1.21.0`
+
+1.21.0
+------
+* Add `country` to `PayinMethodDetailsMobile` for mobile collections.
 
 1.20.0
 ------
