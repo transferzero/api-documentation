@@ -469,6 +469,8 @@ mobicash
 
 # Cameroon
 
+{% include corridors/xaf-bank.md recipient_type='individual' %}
+
 ## XAF::Mobile
 
 For mobile payouts to Cameroon, please use:
