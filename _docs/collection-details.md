@@ -244,33 +244,6 @@ When the collection process starts, a `payin_method.pending` webhook is sent out
 
 {% include language-tabbar.html prefix="collection-ghs-mobile-otp-payin-pending" raw=data-raw %}
 
-# UGX mobile collections
-
-To initiate a UGX mobile collection, please use the following details (`phone_number` used below are examples):
-
-{% capture data-raw %}
-
-```javascript
-"input_currency": "UGX",
-"payin_methods": [
-  {
-    "type": "UGX::Mobile",
-    "ux_flow": "ussd_popup",
-    "in_details": {
-      "phone_number": "+2569999999" // In international format
-    }
-  }
-],
-```
-
-{% endcapture %}
-
-{% include language-tabbar.html prefix="collection-ugx-mobile" raw=data-raw %}
-
-Once the transaction is created, instructions for completing payment will be sent to the specified phone number.
-
-Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
-
 # XOF mobile collections
 
 To initiate a XOF mobile collection, please use the following details (`phone_number` used below are examples):
