@@ -35,21 +35,44 @@ The current banks supported and their `bank_code` values are:
 
 {% capture data-raw-bank-code %}
 ```
-Standard Bank: 051001
-First National Bank: 250655
 ABSA: 632005
-Nedbank: 198765
-Investec: 580105
-Capitec Bank: 470010
-Bank of Athens: 410506
-Bidvest Bank: 462005
+Access Bank: 410506
 African Bank: 430000
+Albaraka Bank: 800000
+Bank of China: 686000
+Bank Zero: 888000
+Bidvest Bank: 462005
+BNP Paribas: 688000
+Capitec Bank: 470010
+Citibank: 350005
+China Construction Bank: 586666
+Discovery Bank: 679000
+Finbond Mutual Bank: 589000
+First National Bank: 250655
+Grindrod Bank: 584000
+Habib Overseas Bank Limited: 700066
+HBZ Bank: 570100
+HSBC Bank: 587000
+ICICI Bank: 362000
+Investec: 580105
+JP Morgan Bank: 432000
 Mercantile Bank: 450905
+Nedbank: 198765
+Olympus Mobile: 585001
+Peoples Bank: 720026
+PEP Bank: 400001
+Permanent Bank: 760005
+Rand Merchant Bank: 261251
+Reserve Bank: 980172
 SA Post Office: 460005
+Sasfin Bank: 683000
+Standard Bank: 051001
+Standard Chartered Bank: 730020
+State Bank of India: 801000
 Tyme Bank: 678910
 Ubank: 431010
-Discovery Bank: 679000
-Bank Zero: 888000
+Unibank Limited: 790005
+VBS: 588000
 ```
 {% endcapture %}
 
