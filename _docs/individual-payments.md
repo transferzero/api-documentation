@@ -115,6 +115,7 @@ The valid `bank_code` values are:
 Access Bank: 044
 FCMB Bank: 214
 Fidelity Bank: 070
+Union Bank: 032
 United Bank for Africa: 033
 Zenith International: 057
 ```
