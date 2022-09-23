@@ -34,6 +34,7 @@ For South African bank payments please use the following recipient details:
 The current banks supported and their `bank_code` values are:
 
 {% capture data-raw-bank-code %}
+
 ```
 ABSA: 632005
 Access Bank: 410506
