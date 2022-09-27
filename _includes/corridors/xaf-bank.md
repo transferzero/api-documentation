@@ -2,7 +2,7 @@
 
 ## XAF::Bank
 
-For Cameroon bank payments please use:
+For bank payments in Central Africa please use:
 
 {% capture data-raw %}
 ```javascript
@@ -20,6 +20,7 @@ The current banks supported and their `bank_code` values are:
 
 {% capture data-raw %}
 ```
+# Cameroon
 Banque Internationale du Cameroun pour l'Epargne et le Crédit: 10001
 Societe Commerciale de Banque - Cameroun: 10002
 Société Générale de Banques au Cameroun: 10003
