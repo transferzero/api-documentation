@@ -467,7 +467,7 @@ mobicash
 
 {% include corridors/xof-bank.md recipient_type='individual' %}
 
-# Cameroon
+# Central Africa / XAF
 
 {% include corridors/xaf-bank.md recipient_type='individual' %}
 
