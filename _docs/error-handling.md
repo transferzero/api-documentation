@@ -28,6 +28,10 @@ Once we find a problem we don't stop processing however. Due to how most of our 
 **Warning!** Any transaction that is not cancelled in our system - even ones that seemingly have a fatal error in their description could potentially pay out in the future. If you don't wish a transaction to pay out and you'd like to recover the debited funds you HAVE TO cancel the transaction, and then make sure it got cancelled before updating your system.
 </div>
 
+<div class="alert alert-note" markdown="1">
+**Note!** Automatic cancellation only affects transactions where we have confirmation that the payment has failed to arrive at the recipient. For corridors where payment confirmation usually takes more than 24 hours (mainly bank and cash transactions) we will only auto-cancel if get confirmation that the payment has failed to receive the recipient. 
+</div>
+
 For more info on cancellations please read our [how to cancel recipients and transactions guide]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#cancelling-recipients-and-transactions).
 
 Instead of cancelling a transaction you can sometimes also fix the problem by updating the details on the recipient, for example if the details they have entered is incorrect and you need to change it. Please see our [editing a recipient guide]({{ "/docs/additional-features/" | prepend: site.baseurl }}#editing-recipients).
