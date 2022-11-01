@@ -446,3 +446,7 @@ The valid values for the industry / nature of business are the following:
 # South Africa
 
 {% include corridors/zar-bank.md recipient_type='business' %}
+
+# Central Africa / XAF
+
+{% include corridors/xaf-bank.md recipient_type='business' %}
