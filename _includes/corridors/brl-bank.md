@@ -8,6 +8,7 @@ For Brazilian bank account payments please use:
 ```javascript
 "details" : {
   {{ recipient_name }},
+  "phone_number": "+552112345678", // recipient phone number in international format
   "bank_code": "104",
   "branch_code": "00001",
   "bank_account": "0009795493",
