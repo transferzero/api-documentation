@@ -21,7 +21,7 @@ To initiate a GHS mobile collection, please use the following details (phone_num
     "type": "GHS::Mobile",
     "ux_flow": "ussd_popup",
     "in_details": {
-      "phone_number": "+2339999999", // In international format
+      "phone_number": "+2339999999", // E.164 international format
       "mobile_provider": "vodafone" // Mandatory. One of 'airtel', 'tigo', 'mtn', 'vodafone'
     }
   }
@@ -83,7 +83,7 @@ For such transactions, the details would look like:
     "type": "GHS::Mobile",
     "ux_flow": "otp_verified_ussd_popup",
     "in_details": {
-      "phone_number": "+233548689440"
+      "phone_number": "+233548689440" // E.164 international format
       "mobile_provider": "mtn"
     }
   }
@@ -106,7 +106,7 @@ Once the transaction is created, an OTP will be sent to the `phone_number` speci
   "ux_flow": "otp_verified_ussd_popup",
   "state": "initial",
   "in_details": {
-    "phone_number": "+233548689440",
+    "phone_number": "+233548689440", // E.164 international format
     "mobile_provider": "mtn"
   },
 }
@@ -139,7 +139,7 @@ When the OTP is sent, a `payin_method.incomplete` webhook is sent out:
       "description": "This transaction is awaiting OTP verification by the user."
     },
     "in_details": {
-      "phone_number": "+233548689440",
+      "phone_number": "+233548689440", // E.164 international format
       "mobile_provider": "mtn",
       "otp": "170270"
     },
@@ -161,7 +161,7 @@ In order to validate the OTP, send a PATCH request for the PayinMethod with the 
 PATCH /v1/payin_methods/9b25ca43-1812-46b2-ae0c-57acefec0a34
 {
   "in_details": {
-    "phone_number": "+233123456789"
+    "phone_number": "+233123456789" // E.164 international format
     "mobile_provider": "mtn",
     "otp": "123456"
   }
@@ -182,7 +182,7 @@ If the OTP matches the one sent to the sender's phone number, the collection pro
   "type": "GHS::Mobile",
   "ux_flow": "otp_verified_ussd_popup",
   "in_details": {
-    "phone_number": "+233123456789"
+    "phone_number": "+233123456789" // E.164 international format
     "mobile_provider": "mtn",
     "otp": "123456"
   },
@@ -231,7 +231,7 @@ When the collection process starts, a `payin_method.pending` webhook is sent out
       "ux_flow": "otp_verified_ussd_popup",
       "currency": "GHS",
       "nth_provider": 0,
-      "phone_number": "+233548689440",
+      "phone_number": "+233548689440", // E.164 international format
       "mobile_provider": "mtn"
     },
     "transaction_id": "8421a8b4-0107-4d54-85bc-e0c2747b68b8",
@@ -263,7 +263,7 @@ At the moment, we only support collections in:
     "type": "XOF::Mobile",
     "ux_flow": "ussd_voucher",
     "in_details": {
-      "phone_number": "+221123456700", // In international format
+      "phone_number": "+221123456700", // E.164 international format
       "mobile_provider": "orange",
       "country": "SN", // "SN" for Senegal, "CI" for Ivory Coast
       "otp": "123456"
@@ -282,7 +282,7 @@ At the moment, we only support collections in:
     "type": "XOF::Mobile",
     "ux_flow": "ussd_popup",
     "in_details": {
-      "phone_number": "+2250506369100", // In international format
+      "phone_number": "+2250506369100", // E.164 international format
       "mobile_provider": "mtn",
       "country": "CI", // "SN" for Senegal, "CI" for Ivory Coast
     }
@@ -306,7 +306,7 @@ If the payin method details are valid, you get back an `initial` response.
   "state": "initial",
   "in_details": {
     "otp": "1234",
-    "phone_number": "0771234700",
+    "phone_number": "+221771234700", // E.164 international format
     "mobile_provider": "orange",
     "country": "SN"
   },
@@ -349,7 +349,7 @@ When the collection process starts, a `payin_method.pending` webhook is sent:
     "in_details": {
       "otp": "1234",
       "ux_flow": "ussd_voucher",
-      "phone_number": "0771234700",
+      "phone_number": "+221771234700", // E.164 international format
       "mobile_provider": "orange",
       "country": "SN"
     },
@@ -393,7 +393,7 @@ Once the funds have been successfully received from the sender, a `payin_method.
     "in_details": {
       "otp": "1234",
       "ux_flow": "ussd_voucher",
-      "phone_number": "0771234700",
+      "phone_number": "+221771234700", // E.164 international format
       "mobile_provider": "orange",
       "country": "SN"
     },
@@ -437,7 +437,7 @@ If there was an issue with the collection, a `payin_method.error` webhook is sen
     "in_details": {
       "otp": "1234",
       "ux_flow": "ussd_voucher",
-      "phone_number": "0771234709",
+      "phone_number": "+221771234709", // E.164 international format
       "mobile_provider": "orange",
       "country": "SN"
     },

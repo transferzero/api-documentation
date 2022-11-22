@@ -77,8 +77,7 @@ For Nigerian mobile payments please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "phone_number": "7087661234"
-    // local Nigerian format
+  "phone_number": "+2347087661234" // E.164 international format
 }
 ```
 {% endcapture %}
@@ -98,7 +97,7 @@ For USD bank payments in Nigeria please use:
 "details": {
   "first_name": "Jane",
   "last_name": "Doe",
-  "phone_number": "+2341234567", // optional
+  "phone_number": "+2347087661234", // optional - E.164 international format
   "bank_code": "057",
   "bank_account": "1234567890",
   "country": "NG"
@@ -146,7 +145,7 @@ For USD cash payments in Nigeria please use:
 "details": {
   "first_name": "Jane",
   "last_name": "Doe",
-  "phone_number": "+2341234567",
+  "phone_number": "+2347087661234", // E.164 international format
   "country": "NG"
 }
 ```
@@ -181,7 +180,7 @@ For Ghanan mobile payments please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "phone_number": "302123456"
+  "phone_number": "+233302123456" // E.164 international format
   "mobile_provider": "tigo" // optional
 }
 ```
@@ -211,7 +210,7 @@ For Ghanan cash payment please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "phone_number": "302123456"
+  "phone_number": "+233302123456" // E.164 international format
 }
 ```
 {% endcapture %}
@@ -229,8 +228,7 @@ For Ugandan mobile payments please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "phone_number": "256772123456",
-    // local or international Ugandan format
+  "phone_number": "+256772123456", // E.164 international format
   "mobile_provider": "airtel" // optional
 }
 ```
@@ -272,8 +270,7 @@ For Cashplus cash pickup requests please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "phone_number": "212537718685"
-    // Mandatory; International format preferred
+  "phone_number": "+212537718685" // Mandatory; E.164 international format
   "reason" => "Remittance payment",
     // Optional; Default value is 'Remittance payment'
   "identity_card_type" => "NI",
@@ -346,7 +343,7 @@ For Wizall cash pickup requests please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "phone_number": "221774044436", // local or international format
+  "phone_number": "+221774044436", // E.164 international format
   "country": "CI", // Optional; Default value is "SN"
   "cash_provider": "wizall" // Mandatory
 }
@@ -401,7 +398,7 @@ For mobile payouts to Senegal, Ivory Coast, Burkina Faso and Mali please use:
   "first_name": "First",
   "last_name": "Last",
   "mobile_provider": "orange", // lowercase, see provider values below
-  "phone_number": "+221774044436", // mobile number in international format
+  "phone_number": "+221774044436", // mobile number in E.164 international format
   "country": "SN" // "SN" for Senegal, "CI" for Ivory Coast, "BF" for Burkina Faso, "ML" for Mali
   "transfer_reason": "personal_account" // mandatory for Mali payouts, optional otherwise
 }
@@ -482,7 +479,7 @@ For mobile payouts to Cameroon, please use:
   "first_name": "First",
   "last_name": "Last",
   "mobile_provider": "orange", // lowercase, see provider values below
-  "phone_number": "674044436", // mobile number in local country format
+  "phone_number": "+237674044436", // E.164 international format
   "country": "CM" // "CM" for Cameroon
 }
 ```
@@ -513,7 +510,7 @@ For mobile payouts to Guinea, please use:
   "first_name": "First",
   "last_name": "Last",
   "mobile_provider": "mtn", // lowercase, see provider values below
-  "phone_number": "444044436" // mobile number in local country format
+  "phone_number": "+224444044436" // E.164 international format
 }
 ```
 {% endcapture %}
@@ -650,7 +647,7 @@ For Kenyan mobile payments please use:
   "first_name": "First",
   "last_name": "Last",
   "street": "1 Linford Street",
-  "phone_number": "254123456789", // local or international Kenyan format
+  "phone_number": "+254123456789", // E.164 international format
   "identity_card_type": "ID", // refers to the recipient's ID details; Values: "PP": Passport, "ID": National ID or "O": Other
   "identity_card_id": 'AB12345678', // refers to the recipient's ID details
   "transfer_reason": "personal_account",

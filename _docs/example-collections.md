@@ -122,7 +122,7 @@ JSON_START
     "last_name": "Doe",
 
     "phone_country": "GH",
-    "phone_number": "0301234567",
+    "phone_number": "+233301234567", // E.164 international format
 
     "country": "GH",
     "city": "Accra",
@@ -150,7 +150,7 @@ SET LIT first_name "Jane"
 SET LIT last_name "Doe"
 
 SET LIT phone_country "GH"
-SET LIT phone_number "0301234567"
+SET LIT phone_number "+233301234567" // E.164 international format
 
 SET LIT country "GH"
 SET LIT city "Accra"
@@ -181,7 +181,7 @@ CODE_EXAMPLE_END
     "last_name": "Doe",
 
     "phone_country": "GH",
-    "phone_number": "0301234567",
+    "phone_number": "+233301234567", // E.164 international format
 
     "country": "GH",
     "city": "Accra",
@@ -295,7 +295,7 @@ sender.first_name = "Jane";
 sender.last_name = "Doe";
 
 sender.phone_country = "GH";
-sender.phone_number = "0301234567";
+sender.phone_number = "+233301234567"; // E.164 international format
 
 sender.country = "GH";
 sender.city = "Accra";
@@ -351,7 +351,7 @@ sender.first_name = "Jane"
 sender.last_name = "Doe"
 
 sender.phone_country = "GH"
-sender.phone_number = "0301234567"
+sender.phone_number = "+233301234567" # E.164 international format
 
 sender.country = "GH"
 sender.city = "Accra"
@@ -550,7 +550,7 @@ JSON_START
         "type": "GHS::Mobile", 
         "ux_flow": "ussd_popup",
         "in_details": {
-            "phone_number": "+2339999999", // In international format
+            "phone_number": "+2339999999", // E.164 international format
             "mobile_provider": "vodafone" // Mandatory. One of 'airtel', 'tigo', 'mtn', 'vodafone'
         }
     }],
@@ -562,7 +562,7 @@ JSON_END
 
 CODE_START
 CREATE_START details PayinMethodDetails
-SET LIT phone_number "+2339999999"
+SET LIT phone_number "+2339999999" // E.164 international format
 SET ENUM mobile_provider PayoutMethodMobileProviderEnum vodafone
 CREATE_END
 
@@ -597,7 +597,7 @@ CODE_EXAMPLE_END
         "type": "GHS::Mobile", 
         "ux_flow": "ussd_popup",
         "in_details": {
-            "phone_number": "+2339999999", // In international format
+            "phone_number": "+2339999999", // E.164 international format
             "mobile_provider": "vodafone" // Mandatory. One of 'airtel', 'tigo', 'mtn', 'vodafone'
         }
     }],
@@ -671,7 +671,7 @@ transaction.setExternalId("Transaction:GHS:91475");
 {% capture data-js %}
 ```js
 const details = new TransferZeroSdk.PayinMethodDetails();
-details.phone_number = "+2339999999";
+details.phone_number = "+2339999999"; // E.164 international format
 details.mobile_provider = "vodafone";
 
 const method = new TransferZeroSdk.PayinMethod();
@@ -711,7 +711,7 @@ $transaction->setExternalId("Transaction:GHS:91475");
 {% capture data-ruby %}
 ```ruby
 details = TransferZero::PayinMethodDetails.new
-details.phone_number = "+2339999999"
+details.phone_number = "+2339999999" # E.164 international format
 details.mobile_provider = "vodafone"
 
 method = TransferZero::PayinMethod.new
