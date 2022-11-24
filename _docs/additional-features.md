@@ -447,3 +447,70 @@ The endpoint responds with a list of uploaded proof of payment files, e.g.:
 {% endcapture %}
 
 {% include language-tabbar.html prefix="proof-of-payments" raw=data-raw %}
+
+# Balance enquiry
+
+To obtain your current account balance you can use following two endpoints:
+
+`GET /v1/accounts` to obtain your balance for all currencies or
+
+`GET /v1/accounts/[CURRENCY_NAME]` to obtain for a single currency.
+
+The response in both cases look like the following (with only one currency returned in the latter instance)
+
+```javascript
+{
+  "meta": {
+    "negative_balance": false // returns if you are allowed to go beyond your account balance
+  },
+  "object": [
+    {
+      "amount": 1000,
+      "currency": "USD"
+    },
+    {
+      "amount": 1000,
+      "currency": "XOF"
+    }
+    // [...]
+  ]
+}
+```
+
+<div class="alert alert-warning" markdown="1">
+**Warning!** Refrain from using this endpoint more than once in every five minutes.
+</div>
+
+# Get current exchange rates
+
+To obtain the current exchange rates in the system you can call the following endpoint:
+
+`GET /v1/info/currencies/in`
+
+The response will contain all possible currency pairs. For example the current rate to convert funds from `NGN` to `XOF` will appear the following way:
+
+```javascript
+{
+  "object": [
+    {
+      "code": "NGN",
+      "opposites": [
+        {
+          "code": "XOF",
+          "rate": 1.5132,
+        },
+        // [...]
+      ]
+    },
+    // [...]
+  ]
+}
+```
+
+<div class="alert alert-warning" markdown="1">
+**Warning!** Refrain from using this endpoint more than once in every five minutes.
+</div>
+
+If you need to verify the rate before creating transactions you can use the `POST /v1/transactions/calculate` endpoint when sent a full transaction request object will return the specific rates that will be used in the response, but will not actually create the transaction.
+
+You can also separate the transaction creation and funding by using `POST /v1/transactions` and `POST /v1/accounts/debits` separately (as opposed to using `POST /v1/transactions/create_and_fund`), as this will allow you to have a transaction with the exact rates that will be used, before actually committing to posting them. Please only use this strategy if you plan on actually committing to the transactions most of the time, as all of the unfunded transactions will appear as a failed transaction on your account report.

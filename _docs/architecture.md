@@ -32,6 +32,10 @@ Please ensure that you have whitelisted the following IP addresses. The followin
 
 In case of a transmission error we will also try to send the webhook again five times before dropping the request. You'll need to reply to the endpoint call with a successful status code (e.g. `200` or `201`), otherwise we'll assume that the webhook was not delivered.
 
+<div class="alert alert-warning" markdown="1">
+**Warning!** Make sure your endpoints are reachable from the IPs mentioned above and are not timing out. Callback endpoints that don't return a HTTP response in time (even a failing one), but time out will be disabled automatically by our system after a number of retries to protect our other customers. Automatically disabled webhooks need to be recreated manually by the customer.
+</div>
+
 The structure of the body we send will always follow the following template:
 
 {% capture data-raw %}
@@ -135,3 +139,13 @@ If you have a balance with us you can use the `GET /v1/accounts` to get all or `
 If you use our API for collections, you can also use your internal balance as a wallet which would receive the funds collected from your customers.
 
 Please contact us to obtain our list of supported currency pairs for transactions.
+
+# API Limits
+
+We have soft limits around some of the endpoints that we ask customers to adhere to. These are the following:
+
+| Endpoint | Call limit / day | Notes |
+|-|-|-|
+| `GET /v1/transactions/[ID]` | 2500 | Please use the webhook/callback functionality to obtain the status of transactions. You can also find this information on your daily account report every day. Please also make sure to avoid calling the status check endpoint more often than six times in the first hour of transactions creation, and then subsequently only once every hour for each separate transaction ID you have active in our system. |
+| `GET /v1/accounts*` | 300 | Please keep track of your account balance internally in your system if you need this information more often |
+| `GET /v1/info/currencies*` | 300 | See [get current exchange rates]({{ "/docs/additional-features/#get-current-exchange-rates/" | prepend: site.baseurl }}) on alternative options you can do if you need to obtain currency information more often |
