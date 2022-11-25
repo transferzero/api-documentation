@@ -465,7 +465,7 @@ The response in both cases look like the following (with only one currency retur
   },
   "object": [
     {
-      "amount": 1000,
+      "amount": 123.45,
       "currency": "USD"
     },
     {
