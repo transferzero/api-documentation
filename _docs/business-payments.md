@@ -52,7 +52,6 @@ JSON_START
     "nature_of_business": "retail_trade", // industry
 
     // Contact Details
-    "phone_country": "US",
     "phone_number": "+15555551234", // E.164 international format
     "email": "example@home.org",
 
@@ -88,7 +87,6 @@ SET LIT registration_number "VAT1234567"
 SET ENUM nature_of_business NatureOfBusinessEnum retail_trade
 
 COMMENT Contact Details
-SET LIT phone_country "US"
 SET LIT phone_number "+15555551234" // E.164 international format
 SET LIT email "info@transferzero.com"
 
@@ -127,7 +125,6 @@ CODE_EXAMPLE_END
     "nature_of_business": "retail_trade", // industry
 
     // Contact Details
-    "phone_country": "US",
     "phone_number": "+15555551234", // E.164 international format
     "email": "example@home.org",
 
@@ -273,7 +270,6 @@ sender.registration_number = "VAT1234567";
 sender.nature_of_business = "retail_trade";
 
 // Contact Details
-sender.phone_country = "US";
 sender.phone_number = "+15555551234"; // E.164 international format
 sender.email = "info@transferzero.com";
 
@@ -345,7 +341,6 @@ sender.registration_number = "VAT1234567"
 sender.nature_of_business = "retail_trade"
 
 # Contact Details
-sender.phone_country = "US"
 sender.phone_number = "+15555551234" # E.164 international format
 sender.email = "info@transferzero.com"
 

@@ -121,7 +121,6 @@ JSON_START
     "first_name": "Jane",
     "last_name": "Doe",
 
-    "phone_country": "US",
     "phone_number": "+15555551234", // E.164 international format
 
     "country": "US",
@@ -149,7 +148,6 @@ CREATE_START sender Sender
 SET LIT first_name "Jane"
 SET LIT last_name "Doe"
 
-SET LIT phone_country "US"
 SET LIT phone_number "+15555551234" // E.164 international format
 
 SET LIT country "US"
@@ -180,7 +178,6 @@ CODE_EXAMPLE_END
     "first_name": "Jane",
     "last_name": "Doe",
 
-    "phone_country": "US",
     "phone_number": "+15555551234", // E.164 international format
 
     "country": "US",
@@ -294,7 +291,6 @@ const sender = new TransferZeroSdk.Sender();
 sender.first_name = "Jane";
 sender.last_name = "Doe";
 
-sender.phone_country = "US";
 sender.phone_number = "+15555551234"; // E.164 international format
 
 sender.country = "US";
@@ -350,7 +346,6 @@ sender = TransferZero::Sender.new
 sender.first_name = "Jane"
 sender.last_name = "Doe"
 
-sender.phone_country = "US"
 sender.phone_number = "+15555551234" # E.164 international format
 
 sender.country = "US"
