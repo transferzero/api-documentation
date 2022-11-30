@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.22.0`
+Current version of the SDKs are `1.23.4`
+
+1.23.4
+------
+* Drop mandatory `phone_country` when `phone_number` field is in E. 164 format.
 
 1.22.0
 ------
