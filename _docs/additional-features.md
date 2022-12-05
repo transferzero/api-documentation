@@ -38,7 +38,7 @@ POST /v1/account_validations
 POST /v1/account_validations
 
 {
-  "phone_number": "+233000000000", // mobile phone number to query
+  "phone_number": "+233302123456", // E.164 international format
   "country": "GH",   // Only "GH" is supported for now
   "currency": "GHS", // Only "GHS" is supported for now
   "method": "mobile",

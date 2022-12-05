@@ -52,8 +52,7 @@ JSON_START
     "nature_of_business": "retail_trade", // industry
 
     // Contact Details
-    "phone_country": "US",
-    "phone_number": "5555551234",
+    "phone_number": "+15555551234", // E.164 international format
     "email": "example@home.org",
 
     // ID of the sender in your system
@@ -88,8 +87,7 @@ SET LIT registration_number "VAT1234567"
 SET ENUM nature_of_business NatureOfBusinessEnum retail_trade
 
 COMMENT Contact Details
-SET LIT phone_country "US"
-SET LIT phone_number "5555551234"
+SET LIT phone_number "+15555551234" // E.164 international format
 SET LIT email "info@transferzero.com"
 
 COMMENT ID of the sender in your system
@@ -127,8 +125,7 @@ CODE_EXAMPLE_END
     "nature_of_business": "retail_trade", // industry
 
     // Contact Details
-    "phone_country": "US",
-    "phone_number": "5555551234",
+    "phone_number": "+15555551234", // E.164 international format
     "email": "example@home.org",
 
     // ID of the sender in your system
@@ -166,7 +163,7 @@ Sender sender = new Sender(
 
 // Contact Details
   phoneCountry: "US",
-  phoneNumber: "5555551234",
+  phoneNumber: "+15555551234", // E.164 international format
   email: "info@transferzero.com",
 
 // ID of the sender in your system
@@ -202,7 +199,7 @@ Dim sender as Sender = New Sender(
 
 ' Contact Details
   phoneCountry:="US",
-  phoneNumber:="5555551234",
+  phoneNumber:="+15555551234", ' E.164 international format
   email:="info@transferzero.com",
 
 ' ID of the sender in your system
@@ -238,7 +235,7 @@ sender.setNatureOfBusiness(NatureOfBusinessEnum.RETAIL_TRADE);
 
 // Contact Details
 sender.setPhoneCountry("US");
-sender.setPhoneNumber("5555551234");
+sender.setPhoneNumber("+15555551234"); // E.164 international format
 sender.setEmail("info@transferzero.com");
 
 // ID of the sender in your system
@@ -273,8 +270,7 @@ sender.registration_number = "VAT1234567";
 sender.nature_of_business = "retail_trade";
 
 // Contact Details
-sender.phone_country = "US";
-sender.phone_number = "5555551234";
+sender.phone_number = "+15555551234"; // E.164 international format
 sender.email = "info@transferzero.com";
 
 // ID of the sender in your system
@@ -310,7 +306,7 @@ $sender->setNatureOfBusiness("retail_trade");
 
 // Contact Details
 $sender->setPhoneCountry("US");
-$sender->setPhoneNumber("5555551234");
+$sender->setPhoneNumber("+15555551234"); // E.164 international format
 $sender->setEmail("info@transferzero.com");
 
 // ID of the sender in your system
@@ -345,8 +341,7 @@ sender.registration_number = "VAT1234567"
 sender.nature_of_business = "retail_trade"
 
 # Contact Details
-sender.phone_country = "US"
-sender.phone_number = "5555551234"
+sender.phone_number = "+15555551234" # E.164 international format
 sender.email = "info@transferzero.com"
 
 # ID of the sender in your system

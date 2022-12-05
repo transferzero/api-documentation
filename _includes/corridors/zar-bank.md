@@ -23,7 +23,7 @@ For South African bank payments please use the following recipient details:
   "email": "recipient@email.com", // optional, but highly recommended
   "bank_code": "334810",
   "bank_account": "12345678",
-  "phone_number": "+27119785313",
+  "phone_number": "+27119785313", // E.164 international format
   "transfer_reason": "personal_account"{{ additional_details }}
 }
 ```

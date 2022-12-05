@@ -73,8 +73,7 @@ JSON_START
     "sender": {
       "first_name": "Jane",
       "last_name": "Doe",
-      "phone_country": "US",
-      "phone_number": "5555551234",
+      "phone_number": "+15555551234", // E.164 international format
       "country": "US",
       "city": "New York",
       "street": "20 W 34th St",
@@ -115,8 +114,7 @@ CODE_START
 CREATE_START sender Sender
 SET LIT first_name "Jane"
 SET LIT last_name "Doe"
-SET LIT phone_country "US"
-SET LIT phone_number "5555551234"
+SET LIT phone_number "+15555551234" // E.164 international format
 SET LIT country "US"
 SET LIT city "New York"
 SET LIT street "20 W 34th St"
@@ -167,8 +165,7 @@ CODE_EXAMPLE_END
     "sender": {
       "first_name": "Jane",
       "last_name": "Doe",
-      "phone_country": "US",
-      "phone_number": "5555551234",
+      "phone_number": "+15555551234", // E.164 international format
       "country": "US",
       "city": "New York",
       "street": "20 W 34th St",
@@ -212,7 +209,7 @@ Sender sender = new Sender(
   firstName: "Jane",
   lastName: "Doe",
   phoneCountry: "US",
-  phoneNumber: "5555551234",
+  phoneNumber: "+15555551234", // E.164 international format
   country: "US",
   city: "New York",
   street: "20 W 34th St",
@@ -255,7 +252,7 @@ Dim sender as Sender = New Sender(
   firstName:="Jane",
   lastName:="Doe",
   phoneCountry:="US",
-  phoneNumber:="5555551234",
+  phoneNumber:="+15555551234", ' E.164 international format
   country:="US",
   city:="New York",
   street:="20 W 34th St",
@@ -298,7 +295,7 @@ Sender sender = new Sender();
 sender.setFirstName("Jane");
 sender.setLastName("Doe");
 sender.setPhoneCountry("US");
-sender.setPhoneNumber("5555551234");
+sender.setPhoneNumber("+15555551234"); // E.164 international format
 sender.setCountry("US");
 sender.setCity("New York");
 sender.setStreet("20 W 34th St");
@@ -340,8 +337,7 @@ transaction.setExternalId("Transaction:NGN:17523");
 const sender = new TransferZeroSdk.Sender();
 sender.first_name = "Jane";
 sender.last_name = "Doe";
-sender.phone_country = "US";
-sender.phone_number = "5555551234";
+sender.phone_number = "+15555551234"; // E.164 international format
 sender.country = "US";
 sender.city = "New York";
 sender.street = "20 W 34th St";
@@ -384,7 +380,7 @@ $sender = new Sender();
 $sender->setFirstName("Jane");
 $sender->setLastName("Doe");
 $sender->setPhoneCountry("US");
-$sender->setPhoneNumber("5555551234");
+$sender->setPhoneNumber("+15555551234"); // E.164 international format
 $sender->setCountry("US");
 $sender->setCity("New York");
 $sender->setStreet("20 W 34th St");
@@ -426,8 +422,7 @@ $transaction->setExternalId("Transaction:NGN:17523");
 sender = TransferZero::Sender.new
 sender.first_name = "Jane"
 sender.last_name = "Doe"
-sender.phone_country = "US"
-sender.phone_number = "5555551234"
+sender.phone_number = "+15555551234" # E.164 international format
 sender.country = "US"
 sender.city = "New York"
 sender.street = "20 W 34th St"
@@ -482,8 +477,7 @@ JSON_START
     "first_name": "Jane",
     "last_name": "Doe",
 
-    "phone_country": "US",
-    "phone_number": "5555551234",
+    "phone_number": "+15555551234", // E.164 international format
 
     "country": "US",
     "city": "New York",
@@ -511,8 +505,7 @@ CREATE_START sender Sender
 SET LIT first_name "Jane"
 SET LIT last_name "Doe"
 
-SET LIT phone_country "US"
-SET LIT phone_number "5555551234"
+SET LIT phone_number "+15555551234" // E.164 international format
 
 SET LIT country "US"
 SET LIT city "New York"
@@ -543,8 +536,7 @@ CODE_EXAMPLE_END
     "first_name": "Jane",
     "last_name": "Doe",
 
-    "phone_country": "US",
-    "phone_number": "5555551234",
+    "phone_number": "+15555551234", // E.164 international format
 
     "country": "US",
     "city": "New York",
@@ -575,7 +567,7 @@ Sender sender = new Sender(
   lastName: "Doe",
 
   phoneCountry: "US",
-  phoneNumber: "5555551234",
+  phoneNumber: "+15555551234", // E.164 international format
 
   country: "US",
   city: "New York",
@@ -604,7 +596,7 @@ Dim sender as Sender = New Sender(
   lastName:="Doe",
 
   phoneCountry:="US",
-  phoneNumber:="5555551234",
+  phoneNumber:="+15555551234", ' E.164 international format
 
   country:="US",
   city:="New York",
@@ -633,7 +625,7 @@ sender.setFirstName("Jane");
 sender.setLastName("Doe");
 
 sender.setPhoneCountry("US");
-sender.setPhoneNumber("5555551234");
+sender.setPhoneNumber("+15555551234"); // E.164 international format
 
 sender.setCountry("US");
 sender.setCity("New York");
@@ -661,8 +653,7 @@ const sender = new TransferZeroSdk.Sender();
 sender.first_name = "Jane";
 sender.last_name = "Doe";
 
-sender.phone_country = "US";
-sender.phone_number = "5555551234";
+sender.phone_number = "+15555551234"; // E.164 international format
 
 sender.country = "US";
 sender.city = "New York";
@@ -691,7 +682,7 @@ $sender->setFirstName("Jane");
 $sender->setLastName("Doe");
 
 $sender->setPhoneCountry("US");
-$sender->setPhoneNumber("5555551234");
+$sender->setPhoneNumber("+15555551234"); // E.164 international format
 
 $sender->setCountry("US");
 $sender->setCity("New York");
@@ -719,8 +710,7 @@ sender = TransferZero::Sender.new
 sender.first_name = "Jane"
 sender.last_name = "Doe"
 
-sender.phone_country = "US"
-sender.phone_number = "5555551234"
+sender.phone_number = "+15555551234" # E.164 international format
 
 sender.country = "US"
 sender.city = "New York"
@@ -785,7 +775,7 @@ The `metadata` field can store any information you wish to store with the sender
 
 ### Phone number
 
-The sender's phone number is composed of two parts, the `phone_country` (in ISO 2-letter format), and the `phone_number`. The phone number should be specified without the international prefix.
+The sender's phone number is required to be in E. 164 international format.
 
 ### Documents
 
@@ -998,8 +988,7 @@ A transaction object looks like the following:
       "street": "fake street",
       "postal_code": "fak3 one",
       "city": "London",
-      "phone_country": "UG",
-      "phone_number": "752403639",
+      "phone_number": "+256752403639", // E.164 international format
       "email": "example@home.org",
       "ip": "127.0.0.1",
       "external_id": "76f69f5e-912f-43e5-bf3a-9081dbc476f4",
@@ -1194,7 +1183,7 @@ When you are processing a collection this object will be used to specify the det
   {
     "type": "GHS::Mobile",
     "in_details": {
-      "phone_number": "+2339999999",
+      "phone_number": "+2339999999", // E.164 international format
       "mobile_provider": "vodafone"
     }
   }
