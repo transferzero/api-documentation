@@ -434,7 +434,7 @@ The valid values for the industry / nature of business are the following:
 
 {% include corridors/gbp-bank.md recipient_type='business' %}
 
-# West Africa / XOF
+# WAEMU Region / XOF
 
 {% include corridors/xof-bank.md recipient_type='business' %}
 
@@ -442,6 +442,6 @@ The valid values for the industry / nature of business are the following:
 
 {% include corridors/zar-bank.md recipient_type='business' %}
 
-# Central Africa / XAF
+# CEMAC Region / XAF
 
 {% include corridors/xaf-bank.md recipient_type='business' %}
