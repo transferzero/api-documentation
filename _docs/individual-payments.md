@@ -330,7 +330,7 @@ The payment reference can also be provided in the recipient details hash optiona
 **Note** For a list of Cashplus pickup points please contact us
 </div>
 
-# West Africa / XOF
+# WAEMU Region / XOF
 
 ## XOF::Cash
 
@@ -465,7 +465,7 @@ mobicash
 
 {% include corridors/xof-bank.md recipient_type='individual' %}
 
-# Central Africa / XAF
+# CEMAC Region / XAF
 
 {% include corridors/xaf-bank.md recipient_type='individual' %}
 

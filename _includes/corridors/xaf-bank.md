@@ -72,6 +72,44 @@ Banque de l'Habitat du Gabon: 40023
 ECOBANK Gabon: 40024
 United Bank for Africa - Gabon: 40025
 PosteBank Gabon S.A.: 40026
+
+# Central African Republic
+ECOBANK Centrafrique: 20001
+Commercial Bank Centrafrique - CBCA: 20002
+Banque Populaire Marocco-Centrafricaine - BPMC: 20003 
+Banque Sahelo Saharienne pour l'Investissement et le Commerce Centrafrique - BSIC RCA: 20005
+
+# Congo
+Mutuelle Congolaise d'Epargne et de Crédit - MUCODEC Congo: 30005
+BGFIBank Congo: 30008
+Crédit du Congo: 30011
+LCB-BANK Congo: 30012
+Banque Commerciale Internationale - BCI Congo: 30013
+ECOBANK Congo: 30014
+Banque Congolaise de l'Habitat - BCH: 30015
+United Bank for Africa - UBA Congo: 30016
+Banque Espirito Santo Congo - BESCO: 30017
+Société Générale Congo - SGC: 30018
+Banque Postale du Congo - BPC: 30019
+Banque Sino-Congolaise pour l'Afrique - BSCA Bank: 30020
+
+# Equatorial Guinea
+CCEI Bank Guinée-Equatoriale: 50001
+Société Générale de Banques en Guinée Equatoriale - SGBE: 50002
+BGFIBANK Guinée Equatoriale: 50004
+Banco Nacional de Guinea Ecuatorial: 50005
+Ecobank Guinée Equatoriale: 50006
+
+# Chad
+ECOBANK Tchad: 60001
+Société Générale Tchad - SGT: 60002
+Commercial Bank Tchad - CBT: 60003
+Banque Commerciale du Chari - BCC Tchad: 60004
+Orabank Tchad: 60005
+Banque Agricole et Commerciale - BAC Tchad: 60006
+Banque Sahélo Saharienne pour l'Investissement et le Commerce - BSIC Tchad: 60007
+United Bank for Africa Tchad: 60008
+Banque de l'habitat du Tchad - BHT Tchad: 60009
 ```
 {% endcapture %}
 
