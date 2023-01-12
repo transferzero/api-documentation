@@ -45,6 +45,8 @@ Zenith Bank: 120100
 
 {% include language-tabbar.html prefix="ghs-bank-options" raw=data-raw %}
 
+The codes above are the GHIPSS bank codes. If you have GHIPSS branch codes or sort codes you can obtain the bank code by adding `"100"` to the first three digits of the branch/sort code.
+
 Please note that there is no standard format across banks for account numbers in this corridor. If you wish to check for correctness you can see the following list:
 
 {% capture data-raw %}
