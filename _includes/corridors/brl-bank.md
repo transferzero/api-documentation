@@ -2,7 +2,29 @@
 
 ## BRL::Bank
 
-For Brazilian bank account payments please use:
+### PIX Payments
+For Brazilian bank account payments via PIX please use:
+
+{% capture data-raw %}
+```javascript
+"details" : {
+  {{ recipient_name }},
+  "phone_number": "+552112345678", // recipient phone number in international format
+  "pix_key_type": "email",
+  "pix_key_value": "person@example.com",
+  "identity_card_type": "ID",
+  "identity_card_id": "01234567890",
+  "transfer_reason": "personal_account"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="brl-bank-pix" raw=data-raw %}
+
+
+
+### TED Payments
+For Brazilian bank account payments using bank code and account number please use:
 
 {% capture data-raw %}
 ```javascript
@@ -20,7 +42,7 @@ For Brazilian bank account payments please use:
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="brl-bank-details" raw=data-raw %}
+{% include language-tabbar.html prefix="brl-bank-ted" raw=data-raw %}
 
 The current banks supported and their `bank_code` values are:
 
