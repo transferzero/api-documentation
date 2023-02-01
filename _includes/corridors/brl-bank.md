@@ -9,6 +9,8 @@ For Brazilian bank account payments via PIX please use:
 ```javascript
 "details" : {
   {{ recipient_name }},
+  "city": "Brasilia",
+  "postal_code": "70070",
   "phone_number": "+552112345678", // recipient phone number in international format
   "pix_key_type": "email",
   "pix_key_value": "person@example.com",
@@ -30,6 +32,8 @@ For Brazilian bank account payments using bank code and account number please us
 ```javascript
 "details" : {
   {{ recipient_name }},
+  "city": "Brasilia",
+  "postal_code": "70070",
   "phone_number": "+552112345678", // recipient phone number in international format
   "bank_code": "104",
   "branch_code": "00001",
