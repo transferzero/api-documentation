@@ -174,6 +174,9 @@ Coris Bank International Togo: TG182
 
 {% include corridors/transfer_reasons.md %}
 
+Please note that due to regulatory reasons senders trying to create `XOF::Bank` transactions are required to have the following fields on the sender present as well:
+`street`, `city` and `postal_code`
+
 <div class="alert alert-info" markdown="1">
 **Note** `XOF::Bank` payouts are currently in beta phase.
 </div>
