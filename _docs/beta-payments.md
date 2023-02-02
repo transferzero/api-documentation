@@ -13,6 +13,6 @@ This document lists the required details that needs to be sent for each of our p
 **Note** Occasionally there might be issues with one of the corridors and we might have to disable them temporarily. Once youre onboarded we'll let you know if this happens. Also if you're trying to use a disabled corridor you're going to receive a validation error stating that the corridor is not active, and you won't be able to create new transactions there.
 </div>
 
-# Brazil
+# India
 
-{% include corridors/brl-bank.md recipient_type='individual' %}
+{% include corridors/inr-bank.md recipient_type='individual' %}
