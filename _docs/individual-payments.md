@@ -688,3 +688,7 @@ Please note that the fields above are generally considered optional for senders 
 <div class="alert alert-info" markdown="1">
 **Note!** The provider might check the name against the registered holder of the mobile number and block transactions if they don't match.
 </div>
+
+# Brazil
+
+{% include corridors/brl-bank.md recipient_type='individual' %}
