@@ -390,7 +390,7 @@ Please note that the fields above are generally considered optional for senders 
 
 ## XOF::Mobile
 
-For mobile payouts to Senegal, Ivory Coast, Burkina Faso and Mali please use:
+For mobile payouts to Senegal, Ivory Coast, and Burkina Faso please use:
 
 {% capture data-raw %}
 ```javascript
@@ -439,18 +439,6 @@ orange
 mobicash
 ```
 {% endcapture %}
-
-{% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
-
-The valid `mobile_provider` values for Mali are:
-
-{% capture data-raw %}
-```
-orange
-mobicash
-```
-{% endcapture %}
-
 {% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
 
 {% include corridors/transfer_reasons.md %}
