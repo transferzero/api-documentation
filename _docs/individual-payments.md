@@ -256,6 +256,10 @@ airtel
 
 {% include corridors/gbp-bank.md recipient_type='individual' %}
 
+# New Zealand
+
+{% include corridors/nzd-bank.md recipient_type='individual' %}
+
 # Morocco
 
 ## MAD::Cash
