@@ -240,10 +240,7 @@ Although the `mobile_provider` field is optional, if you send us the proper valu
 
 {% capture data-raw %}
 ```
-africell
 airtel
-mtn
-telecom
 ```
 {% endcapture %}
 
@@ -394,7 +391,7 @@ Please note that the fields above are generally considered optional for senders 
 
 ## XOF::Mobile
 
-For mobile payouts to Senegal, Ivory Coast, Burkina Faso and Mali please use:
+For mobile payouts to Senegal, Ivory Coast and Burkina Faso please use:
 
 {% capture data-raw %}
 ```javascript
@@ -403,8 +400,8 @@ For mobile payouts to Senegal, Ivory Coast, Burkina Faso and Mali please use:
   "last_name": "Last",
   "mobile_provider": "orange", // lowercase, see provider values below
   "phone_number": "+221774044436", // mobile number in E.164 international format
-  "country": "SN" // "SN" for Senegal, "CI" for Ivory Coast, "BF" for Burkina Faso, "ML" for Mali
-  "transfer_reason": "personal_account" // mandatory for Mali payouts, optional otherwise
+  "country": "SN" // "SN" for Senegal, "CI" for Ivory Coast, "BF" for Burkina Faso
+  "transfer_reason": "personal_account" // optional
 }
 ```
 {% endcapture %}
@@ -436,17 +433,6 @@ orange
 {% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
 
 The valid `mobile_provider` values for Burkina Faso are:
-
-{% capture data-raw %}
-```
-orange
-mobicash
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
-
-The valid `mobile_provider` values for Mali are:
 
 {% capture data-raw %}
 ```
