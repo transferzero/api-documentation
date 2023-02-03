@@ -23,7 +23,14 @@ For Brazilian bank account payments via PIX please use:
 
 {% include language-tabbar.html prefix="brl-bank-pix" raw=data-raw %}
 
-
+The supported values for `pix_key_type` are:
+```
+cnpj
+cpf
+email
+evp
+phone
+```
 
 ### TED Payments
 For Brazilian bank account payments using bank code and account number please use:
