@@ -12,7 +12,8 @@ For bank payments in India please use:
   "street": "1, Akbar Road",
   "postal_code": "110016",
   "phone_number": "+919876543210", // recipient phone number in international format
-  "bank_name": "Bank of India"
+  "bank_name": "Bank of India",
+  "branch_name": "Girdharnagar",
   "bank_account": "1234567890",
   "ifsc_code": "BKID0006005"
 }
