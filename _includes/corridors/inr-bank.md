@@ -15,6 +15,7 @@ For bank payments in India please use:
   "bank_name": "Bank of India",
   "branch_name": "Girdharnagar",
   "bank_account": "1234567890",
+  "swift_code": "ACBLINBBTRY",
   "ifsc_code": "BKID0006005"
 }
 ```
