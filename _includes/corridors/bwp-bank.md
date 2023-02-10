@@ -135,23 +135,23 @@ First National Bank, RMB, 287867
 First National Bank, Rverwalk, 285267
 First National Bank, Serowe, 285367
 First National Bank, Treasury, 282167
-Stanbic Bank, CBD Square, 65167
-Stanbic Bank, CPS Credit Card, 65667
-Stanbic Bank, Credit card, 65567
-Stanbic Bank, Fair grounds, 64967
-Stanbic Bank, Gaborone Industrial, 61967
-Stanbic Bank, Gaborone West, 60167
-Stanbic Bank, Head Office, 60467
-Stanbic Bank, Selebi Phikwe, 65767
-Stanbic Bank, Work Place Banking, 65867
-Stanbic Bank, Broadhurst, 60367
-Stanbic Bank, Francistown, 64067
-Stanbic Bank, Kgale, 60267
-Stanbic Bank, Maun, 64767
-Stanbic Bank, Mogoditshane, 65367
-Stanbic Bank, Molepolole, 65467
-Stanbic Bank, Palapye, 65067
-Stanbic Bank, VAF, 60567
+Stanbic Bank, CBD Square, 065167
+Stanbic Bank, CPS Credit Card, 065667
+Stanbic Bank, Credit card, 065567
+Stanbic Bank, Fair grounds, 064967
+Stanbic Bank, Gaborone Industrial, 061967
+Stanbic Bank, Gaborone West, 060167
+Stanbic Bank, Head Office, 060467
+Stanbic Bank, Selebi Phikwe, 065767
+Stanbic Bank, Work Place Banking, 065867
+Stanbic Bank, Broadhurst, 060367
+Stanbic Bank, Francistown, 064067
+Stanbic Bank, Kgale, 060267
+Stanbic Bank, Maun, 064767
+Stanbic Bank, Mogoditshane, 065367
+Stanbic Bank, Molepolole, 065467
+Stanbic Bank, Palapye, 065067
+Stanbic Bank, VAF, 060567
 Standard Chartered Bank, Airport Junction, 662567
 Standard Chartered Bank, Francistown Nzamo, 662667
 Standard Chartered Bank, Gaborone Industrial, 662367
