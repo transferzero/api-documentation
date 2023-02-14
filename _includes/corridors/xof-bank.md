@@ -92,22 +92,6 @@ Ecobank Guinée Bissau: GW143
 Orabank Côte d'Ivoire, Succursale de la Guinée-Bissau: GW172
 Banque Atlantique Côte d'Ivoire, Succursale de Guinée-Bissau: GW195
 
-# Mali
-Banque de Developpement du Mali: ML016
-Banque Internationale pour le Mali: ML041
-Banque Nationale pour le Dévéloppement Agricole: ML043
-Banque Commerciale du Sahel: ML044
-Bank Of Africa Mali: ML045
-Banque Internationale pour le Commerce et l'Industrie du Mali: ML089
-Ecobank Mali: ML090
-Banque Malienne de Solidarité: ML102
-Banque Sahélo-Saharienne pour l'Investissement et le Commerce Mali: ML109
-Banque Atlantique Mali: ML135
-Banque pour le Commerce et l'Industrie du Mali: ML147
-Orabank Côte d'Ivoire, Succursale du Mali: ML173
-CORIS BANK ML: ML181
-United Bank for Africa Mali: ML206
-
 # Niger
 Bank Of Africa Niger: NE038
 Banque Internationale pour l'Afrique au Niger: NE040
