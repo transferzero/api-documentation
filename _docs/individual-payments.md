@@ -696,3 +696,7 @@ Please note that the fields above are generally considered optional for senders 
 # Brazil
 
 {% include corridors/brl-bank.md recipient_type='individual' %}
+
+# Zambia
+
+{% include corridors/zmw-bank.md recipient_type='individual' %}
