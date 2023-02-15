@@ -33,3 +33,7 @@ Westpac
 {% endcapture %}
 
 {% include language-tabbar.html prefix="nzd-bank-options" raw=data-raw %}
+
+<div class="alert alert-warning" markdown="1">
+**Warning** `NZD::Bank` payouts are currently in beta phase.
+</div>
