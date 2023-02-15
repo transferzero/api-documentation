@@ -692,6 +692,10 @@ Please note that the fields above are generally considered optional for senders 
 **Note!** The provider might check the name against the registered holder of the mobile number and block transactions if they don't match.
 </div>
 
+# Botswana
+
+{% include corridors/bwp-bank.md recipient_type='individual' %}
+
 # Brazil
 
 {% include corridors/brl-bank.md recipient_type='individual' %}
