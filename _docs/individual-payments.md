@@ -358,7 +358,6 @@ The valid `country` values are:
 {% capture data-raw %}
 ```
 CI
-ML
 SN
 ```
 {% endcapture %}
