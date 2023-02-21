@@ -21,7 +21,7 @@ For South African bank payments please use the following recipient details:
   "postal_code": "AB0001",
   "city": "Cape Town",
   "email": "recipient@email.com", // optional, but highly recommended
-  "bank_code": "334810",
+  "bank_code": "632005",
   "bank_account": "12345678",
   "phone_number": "+27119785313", // E.164 international format
   "transfer_reason": "personal_account"{{ additional_details }}
