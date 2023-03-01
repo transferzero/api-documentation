@@ -85,13 +85,6 @@ Banque d'Abidjan: CI201
 Mansa Bank: CI211
 Orange Abidjan Compagnie: CI214
 
-# Guinea-Bissau
-Banco da Africa Ocidental: GW096
-Banco Da União: GW128
-Ecobank Guinée Bissau: GW143
-Orabank Côte d'Ivoire, Succursale de la Guinée-Bissau: GW172
-Banque Atlantique Côte d'Ivoire, Succursale de Guinée-Bissau: GW195
-
 # Niger
 Bank Of Africa Niger: NE038
 Banque Internationale pour l'Afrique au Niger: NE040
