@@ -73,11 +73,6 @@ ECOBANK Gabon: 40024
 United Bank for Africa - Gabon: 40025
 PosteBank Gabon S.A.: 40026
 
-# Central African Republic
-ECOBANK Centrafrique: 20001
-Commercial Bank Centrafrique - CBCA: 20002
-Banque Populaire Marocco-Centrafricaine - BPMC: 20003 
-Banque Sahelo Saharienne pour l'Investissement et le Commerce Centrafrique - BSIC RCA: 20005
 
 # Congo
 Mutuelle Congolaise d'Epargne et de Crédit - MUCODEC Congo: 30005
