@@ -260,6 +260,9 @@ airtel
 
 {% include corridors/nzd-bank.md recipient_type='individual' %}
 
+# Canada
+{% include corridors/cad-bank.md recipient_type='individual' %}
+
 # Morocco
 
 ## MAD::Cash
