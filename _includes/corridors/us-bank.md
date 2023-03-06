@@ -20,16 +20,6 @@ For United States bank payments please use:
 
 {% include language-tabbar.html prefix="us-bank-details" raw=data-raw %}
 
-The current banks supported are:
-
-{% capture data-raw %}
-```
-
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="us-bank-options" raw=data-raw %}
-
 <div class="alert alert-warning" markdown="1">
 **Warning** `USD::Bank` payouts are currently in beta phase.
 </div>
