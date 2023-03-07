@@ -8,7 +8,24 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.23.4`
+Current version of the SDKs are `1.26.1`
+
+1.26.1
+------
+* Add support for `CAD::Bank` corridor
+* Update `USD::Bank` corridor to support payments to United States.
+
+1.25.0
+------
+* Add support for `BWP::Bank` and `ZMW::Bank` corridors.
+
+1.24.0
+------
+* Add support for `NZD::Bank` corridor.
+
+1.23.5
+------
+* Update `BRL::Bank` to support PIX payments.
 
 1.23.4
 ------
