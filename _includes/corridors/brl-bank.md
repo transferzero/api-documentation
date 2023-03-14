@@ -2,6 +2,10 @@
 
 ## BRL::Bank
 
+<div class="alert alert-info" markdown="1">
+**Note** Please be aware that for `BRL::Bank` the field `postal_code` on the `Recipient` is mandatory for transaction/recipient above the following limits - $10,000/Month and $50,000/Year.
+</div>
+
 ### PIX Payments
 For Brazilian bank account payments via PIX please use:
 
