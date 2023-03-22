@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.26.1`
+Current version of the SDKs are `1.27.0`
+
+1.27.0
+------
+* Add support for `UGX::Bank` corridor
 
 1.26.1
 ------
