@@ -18,7 +18,7 @@ For United States bank payments please use:
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="usd-bank-details" raw=data-raw %}
+{% include language-tabbar.html prefix="us-bank-details" raw=data-raw %}
 
 <div class="alert alert-warning" markdown="1">
 **Warning** `USD::Bank` payouts are currently in beta phase.

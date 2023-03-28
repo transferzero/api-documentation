@@ -456,4 +456,4 @@ The valid values for the industry / nature of business are the following:
 
 # United States
 
-{% include corridors/usd-bank.md recipient_type='business' %}
+{% include corridors/us-bank.md recipient_type='business' %}

@@ -230,7 +230,7 @@ For Ghanan cash payment please use:
 {% include corridors/gbp-bank.md recipient_type='individual' %}
 
 # United States
-{% include corridors/usd-bank.md recipient_type='individual' %}
+{% include corridors/us-bank.md recipient_type='individual' %}
 
 # New Zealand
 
