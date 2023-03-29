@@ -445,3 +445,15 @@ The valid values for the industry / nature of business are the following:
 # CEMAC Region / XAF
 
 {% include corridors/xaf-bank.md recipient_type='business' %}
+
+# New Zealand
+
+{% include corridors/nzd-bank.md recipient_type='business' %}
+
+# Canada
+
+{% include corridors/cad-bank.md recipient_type='business' %}
+
+# United States
+
+{% include corridors/us-bank.md recipient_type='business' %}
