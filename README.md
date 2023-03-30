@@ -12,4 +12,4 @@ Then in order to run the server
 
 `bundle exec jekyll serve`
 
-You can the point your browser to http://localhost:4000 to see your changes
+You can the point your browser to http://localhost:4000 to see your changes.
