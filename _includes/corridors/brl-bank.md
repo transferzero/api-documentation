@@ -49,7 +49,7 @@ For Brazilian bank account payments using bank code and account number please us
   "bank_code": "104",
   "branch_code": "00001",
   "bank_account": "0009795493",
-  "bank_account_type": "10", // 10 for savings, 20 for current
+  "bank_account_type": "10", // 10 for savings, 20 for current, 30 for payment, 40 for salary
   "identity_card_type": "ID",
   "identity_card_id": "01234567890",
   "transfer_reason": "personal_account"
