@@ -938,12 +938,14 @@ A few common examples:
 The requested amount is rounded to a specific number of decimal places and this depends on the currency. The decimal place information can be obtained from our currencies API endpoint - [/info/currencies/out](http://api.transferzero.com/documentation/#/Currency%20Info/info-currencies-out).
 
 For some currencies however, we are not able to pay out subunits and they will always be rounded up.
-These currencies are KES, TZS, UGX and NGN.
+These currencies are XOF, XAF, KES, TZS, UGX and NGN.
 
 The current list of currencies and associated decimal places is below -
 
 * `AED`, `CAD`, `CHF`, `CNY`, `EUR`, `GHS`, `GBP`, `MAD`, `USD`, `ZAR`: 2
-* `JPY`, `KES`, `KRW`, `NGN`, `TZS`, `UGX`, `XOF`: 0
+* `JPY`, `KES`, `KRW`, `NGN`, `TZS`, `UGX`, `XOF`, `XAF`: 0
+
+Also note for `XOF` and `XAF` some mobile operators will only pay out in multiples of 5, so the paid amount might be rounded up to the nearest five. Example if you wish to pay out `102 XOF`, the recipient will actually get `105 XOF`
 
 ### Payout details
 
