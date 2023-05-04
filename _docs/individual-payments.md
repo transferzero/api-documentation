@@ -367,69 +367,7 @@ Please note that the fields above are generally considered optional for senders 
 
 {% include language-tabbar.html prefix="xof-cash-sender-details" raw=data-raw %}
 
-## XOF::Mobile
-
-For mobile payouts to Senegal, Ivory Coast and Burkina Faso please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "mobile_provider": "orange", // lowercase, see provider values below
-  "phone_number": "+221774044436", // mobile number in E.164 international format
-  "country": "SN" // "SN" for Senegal, "CI" for Ivory Coast, "BF" for Burkina Faso
-  "transfer_reason": "personal_account" // optional
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="xof-mobile-details" raw=data-raw %}
-
-The valid `mobile_provider` values for Senegal are:
-
-{% capture data-raw %}
-```
-orange
-tigo
-wave
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
-
-The valid `mobile_provider` values for Ivory Coast are:
-
-{% capture data-raw %}
-```
-moov
-mtn
-orange
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
-
-The valid `mobile_provider` values for Burkina Faso are:
-
-{% capture data-raw %}
-```
-orange
-mobicash
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
-
-{% include corridors/transfer_reasons.md %}
-
-<div class="alert alert-info" markdown="1">
-**Note** Amounts for `XOF::Mobile` payouts to **Ivory Coast 'Orange'** mobile numbers should be multiples of 5.
-</div>
-
-<div class="alert alert-warning" markdown="1">
-**Warning** `XOF::Mobile` payouts to **Ivory Coast** are currently in beta phase.
-</div>
+{% include corridors/xof-mobile.md %}
 
 {% include corridors/xof-bank.md recipient_type='individual' %}
 
