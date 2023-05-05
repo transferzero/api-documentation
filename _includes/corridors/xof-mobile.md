@@ -1,6 +1,6 @@
 ## XOF::Mobile
 
-For mobile payouts to Senegal, Ivory Coast and Burkina Faso please use:
+For mobile payouts to countries in the WAEMU region please use :
 
 {% capture data-raw %}
 ```javascript
@@ -36,7 +36,7 @@ The valid `mobile_provider` values for Benin are:
 {% capture data-raw %}
 ```
 mtn
-tmoney
+moov
 ```
 {% endcapture %}
 
@@ -47,7 +47,7 @@ The valid `mobile_provider` values for Burkina Faso are:
 {% capture data-raw %}
 ```
 orange
-mobicash
+moov
 ```
 {% endcapture %}
 
@@ -71,7 +71,7 @@ The valid `mobile_provider` values for Senegal are:
 ```
 expresso
 orange
-tigo
+free
 wave
 ```
 {% endcapture %}
