@@ -8,7 +8,13 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.27.0`
+Current version of the SDKs are `1.27.4`
+
+1.27.4
+------
+* Relax fields for `ZAR::Bank` invididual payouts: `street`, `city`, `postal_code`, `transfer_reason` are now optional
+* Relax fields for `ZAR::Bank` business payouts: `street`, `city`, `postal_code`, `transfer_reason`, `contact_first_name`, `contact_last_name`, `legal_entity_type` are now optional
+* `ZAR::Bank` payouts can now accept either `bank_code` or `branch_code`
 
 1.27.0
 ------
