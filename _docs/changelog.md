@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.27.0`
+Current version of the SDKs are `1.27.4`
+
+1.27.4
+------
+* Add support for `XOF::Mobile` corridor for Benin and Togo
 
 1.27.0
 ------
