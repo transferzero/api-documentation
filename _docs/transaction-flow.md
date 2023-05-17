@@ -1369,11 +1369,21 @@ If you choose to include the optional currency and/or amount params:
 
 Once the transaction is funded, we will immediately start trying to pay out the recipient(s).
 
+<div class="alert alert-warning" markdown="1">
+**Warning!** Funding call will return a `HTTP 200` in case of successful funding or a `HTTP 422` in case of unsuccessful funding (for example because you are out of funds). In any other case it is best to double check the state of the transaction to see whether the funding call had been successful or not.
+</div>
+
 ## Creating and funding a transaction simultaneously
 
 If you wish to create a transaction and fund it immediately, it is possible to do so by using the `POST /v1/transactions/create_and_fund` endpoint. This functions in the same way as creating a transaction, except that the `external_id` field is required in this case.
 
 In order to use this endpoint, you must first establish an account with us in the input currency of the transactions you wish to create, and ensure that this account is funded appropriately. Also note that by using this endpoint you will miss the two step approval process, as this will be implicitly assumed.
+
+<div class="alert alert-warning" markdown="1">
+**Warning!** Calling `create_and_fund` might take a long time to finish, sometimes more than a minute. Make sure your client settings allow longer timeouts when calling this endpoint, and also make sure that in case you do receive a timeout-like error (which can be either a connection timeout, a read timeout, or gateway errors like HTTP 502, 503 or 504) you verify that the transaction was not created by calling the `GET /v1/transactions?external_id=[YOUR_TRANSACTION_ID]` endpoint.
+
+A good practice is that any time you don't receive a `HTTP 422` error but something else you double check that the transaction was clearly not created. Only in case you receive a `HTTP 422` can you be certain that the transaction was not created on our end.
+</div>
 
 # Checking the state of the transaction
 
