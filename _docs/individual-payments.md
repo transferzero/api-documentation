@@ -117,6 +117,7 @@ Fidelity Bank: 070
 Union Bank: 032
 United Bank for Africa: 033
 Zenith International: 057
+Polaris Bank: 076
 ```
 {% endcapture %}
 
