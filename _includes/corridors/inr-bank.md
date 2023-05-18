@@ -25,6 +25,10 @@ For a comprehensive and up-to-date list of available `ifsc_code`s, please use th
 
 After selecting the bank name from a dropdown, you'll be required to provide the branch name in order to retrieve the relevant `ifsc_code`.
 
+<div class="alert alert-info" markdown="1">
+**Note!** If you are unable to access the tool above you can get the <a href="{{ "/dl/inr_list_2023018.xlsx" | prepend: site.baseurl }}">cached version of the `ifsc_code` list here as well</a>. Do note that this list is only a cached version and might get outdated compared to the official source.
+</div>
+
 The currently supported banks are:
 
 {% capture data-raw %}
