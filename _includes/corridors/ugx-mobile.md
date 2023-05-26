@@ -9,14 +9,14 @@ For Ugandan mobile payments please use:
 "details": {
   {{ recipient_name }},
   "phone_number": "+256772123456", // E.164 international format
-  "mobile_provider": "airtel" // optional
+  "mobile_provider": "airtel"
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="ugx-mobile-details" raw=data-raw %}
 
-Although the `mobile_provider` field is optional, if you send us the proper value we can provider a quicker and faster settlement. The valid values are:
+The available `mobile_provider`s are:
 
 {% capture data-raw %}
 ```
