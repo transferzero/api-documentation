@@ -39,8 +39,8 @@ POST /v1/account_validations
 
 {
   "phone_number": "+233302123456", // E.164 international format
-  "country": "GH",   // Only "GH" is supported for now
-  "currency": "GHS", // Only "GHS" is supported for now
+  "country": "GH",   // Only "GH" and "UG" are supported for now
+  "currency": "GHS", // Only "GHS" and "UGX" are supported for now
   "method": "mobile",
   "mobile_provider": "vodafone" // Optional
 }
