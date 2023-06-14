@@ -19,7 +19,7 @@ For South African bank payments please use the following recipient details:
   "street": "14 Main Street", // optional, if sent should include house number as well
   "postal_code": "AB0001", // optional
   "city": "Cape Town", // optional
-  "email": "recipient@email.com", // optional, but highly recommended
+  "email": "recipient@email.com",
   "bank_code": "632005",
   "bank_account": "12345678",
   "phone_number": "+27119785313", // E.164 international format
