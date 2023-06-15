@@ -424,3 +424,7 @@ mtn
 # Zambia
 
 {% include corridors/zmw-bank.md recipient_type='individual' %}
+
+# Kenya
+
+{% include corridors/kes-bank.md recipient_type='individual' %}

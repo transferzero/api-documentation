@@ -1,0 +1,65 @@
+{% include corridors/recipient_name.md %}
+
+## KES::Bank
+
+For Kenyan bank payments please use:
+
+{% capture data-raw %}
+```javascript
+ "details": {
+  {{ recipient_name }},
+  "street": "1 Main Street",
+  "city": "Nairobi",
+  "bank_code": "68",
+  "bank_account": "1234567890",
+  "identity_card_type": "ID",
+  "identity_card_id": "12345678",
+  "transfer_reason": "third_party_person_account",
+  "relationship_to_sender": "Aunt"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix= kes-bank-details  raw=data-raw %}
+
+The currently supported banks and their bank codes are:
+
+{% capture data-raw %}
+```
+Absa Bank: 03
+African Banking Corporation: 35
+Bank of Africa Kenya: 19
+Citibank: 16
+Co-operative Bank of Kenya: 11
+Consolidated Bank of Kenya: 23
+Credit Bank Ltd: 25
+Diamond Trust Bank: 63
+DIB Bank: 75
+ECO Bank Kenya: 43
+Equity Bank Limited: 68
+Family Bank: 70
+First Community Bank: 74
+Guaranty Trust Bank Kenya: 53
+Guardian Bank: 55
+Gulf African Bank : 72
+Housing Finance Co. Kenya: 61
+I&M Bank: 57
+Kingdom Bank: 51
+Kenya Commercial Bank: 01
+KWFT Bank: 78
+Mayfair Bank: 65
+M-Oriental Commercial Bank Limited: 14
+Middle East Bank: 18
+National Bank of Kenya: 12
+NCBA Bank: 07
+Paramount Universal Bank Limited: 50
+Prime Bank: 10
+Sidian Bank: 66
+Stanbic Bank Kenya: 31
+Standard Chartered Bank: 02
+UBA Kenya Bank Ltd: 76
+Victoria Bank Limited: 54
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix= kes-bank-options  raw=data-raw %}
