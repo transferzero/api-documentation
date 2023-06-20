@@ -15,7 +15,7 @@ For Kenyan bank payments please use:
   "identity_card_type": "ID",
   "identity_card_id": "12345678",
   "transfer_reason": "third_party_person_account",
-  "relationship_to_sender": "Aunt"
+  "relationship_to_sender": "Aunt" // optional
 }
 ```
 {% endcapture %}
@@ -63,3 +63,31 @@ Victoria Bank Limited: 54
 {% endcapture %}
 
 {% include language-tabbar.html prefix= kes-bank-options  raw=data-raw %}
+
+{% include corridors/transfer_reasons.md %}
+
+All senders trying to create Kenyan bank payouts need to have the following details present:
+- `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other
+- `"identification_number" => "AB12345678"`
+- `"source_of_funds" => "Salary"`
+
+Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
+
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+      "sender": {
+        "external_id": "<id of sender>",
+        "identification_type": "ID",
+        "identification_number": "AB12345678",
+        "source_of_funds": "Salary",
+        (...)
+      },
+      (...)
+    }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="kes-bank-sender-details" raw=data-raw %}
