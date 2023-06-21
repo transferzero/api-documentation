@@ -393,3 +393,40 @@ ZIPDIN SOLUÇÕES DIGITAIS SOCIEDADE DE CRÉDITO DIRETO S/A: 418
 {% include language-tabbar.html prefix="brl-bank-options" raw=data-raw %}
 
 {% include corridors/transfer_reasons.md %}
+
+All senders trying to create `BRL::Bank` requests need to have the following details present:
+- `"identification_type": "ID"`
+- `"identification_number": "AB12345678"`
+
+The accepted `identification_type`s are:
+
+{% capture data-raw %}
+```
+DL (Driving License)
+PP (Passport)
+ID (National ID)
+OT (Other)
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="brl-bank-identification-types" raw=data-raw %}
+
+Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
+
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+      "sender": {
+        "external_id": "<id of sender>",
+        "identification_type": "ID",
+        "identification_number": "AB12345678",
+        (...)
+      },
+      (...)
+    }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="brl-bank-sender-details" raw=data-raw %}
