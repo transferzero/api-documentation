@@ -99,3 +99,7 @@ Please note that the fields above are generally considered optional for senders 
 {% endcapture %}
 
 {% include language-tabbar.html prefix="kes-bank-sender-details" raw=data-raw %}
+
+<div class="alert alert-warning" markdown="1">
+**Warning** `KES::Bank` payouts are currently in beta phase.
+</div>
