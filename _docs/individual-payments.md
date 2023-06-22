@@ -172,35 +172,7 @@ NG
 
 {% include corridors/ghs-bank.md recipient_type='individual' %}
 
-## GHS::Mobile
-
-For Ghanan mobile payments please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "+233302123456" // E.164 international format
-  "mobile_provider": "tigo" // optional
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="ghs-mobile-details" raw=data-raw %}
-
-Although the `mobile_provider` field is optional, if you send us the proper value we can provider a quicker and faster settlement. The valid values are:
-
-{% capture data-raw %}
-```
-airtel
-mtn
-tigo
-vodafone
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="ghs-mobile-providers" raw=data-raw %}
+{% include corridors/ghs-mobile.md %}
 
 ## GHS::Cash
 
