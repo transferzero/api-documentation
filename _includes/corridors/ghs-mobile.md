@@ -8,7 +8,7 @@ For Ghanan mobile payments please use:
   "first_name": "First",
   "last_name": "Last",
   "phone_number": "+233302123456" // E.164 international format
-  "mobile_provider": "airtel_tigo" // optional
+  "mobile_provider": "vodafone" // optional
 }
 ```
 {% endcapture %}
@@ -19,7 +19,7 @@ Although the `mobile_provider` field is optional, if you send us the proper valu
 
 {% capture data-raw %}
 ```
-airtel_tigo
+airteltigo
 mtn
 vodafone
 ```
