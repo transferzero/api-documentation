@@ -404,7 +404,7 @@ The accepted `identification_type`s are:
 ```
 DL (Driving License)
 PP (Passport)
-ID (National ID)
+ID (National ID or CPF or CNPJ)
 OT (Other)
 ```
 {% endcapture %}
