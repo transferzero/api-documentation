@@ -15,7 +15,7 @@ For Ghanan mobile payments please use:
 
 {% include language-tabbar.html prefix="ghs-mobile-details" raw=data-raw %}
 
-Although the `mobile_provider` field is optional, if you send us the proper value we can provider a quicker and faster settlement. The valid values are:
+Although the `mobile_provider` field is optional, if you send us the proper value we can provide a quicker and faster settlement. The valid values are:
 
 {% capture data-raw %}
 ```
