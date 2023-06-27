@@ -400,3 +400,6 @@ mtn
 # Kenya
 
 {% include corridors/kes-bank.md recipient_type='individual' %}
+
+{% include corridors/kes-mobile.md recipient_type='individual' %}
+
