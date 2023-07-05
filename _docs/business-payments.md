@@ -32,7 +32,7 @@ Please see the following example on how to provide these fields:
 CODE_EXAMPLE_START business-sender-creation
 JSON_START
 {
-    "type": "business",
+    "type": "Business",
     "name": "Company name",
 
     // Country of Incorporation
