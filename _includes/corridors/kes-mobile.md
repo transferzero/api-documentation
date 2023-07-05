@@ -12,7 +12,8 @@ For Kenyan mobile payments please use:
   "identity_card_type": "ID", // refers to the recipient's ID details; Values: "PP": Passport, "ID": National ID or "O": Other
   "identity_card_id": 'AB12345678', // refers to the recipient's ID details
   "transfer_reason": "personal_account",
-  "mobile_provider": "mpesa"
+  "mobile_provider": "mpesa",
+  "relationship_to_sender": "Aunt" // Optional
 }
 ```
 {% endcapture %}
