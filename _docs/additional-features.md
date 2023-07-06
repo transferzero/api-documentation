@@ -39,30 +39,64 @@ POST /v1/account_validations
 
 {
   "phone_number": "+233302123456", // E.164 international format
-  "country": "GH",   // Only "GH" and "UG" are supported for now
-  "currency": "GHS", // Only "GHS" and "UGX" are supported for now
+  "country": "GH",
+  "currency": "GHS",
   "method": "mobile",
-  "mobile_provider": "vodafone" // Optional
+  "mobile_provider": "vodafone" // Mandatory for Uganda, optional for Ghana
 }
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="validation-mobile" raw=data-raw %}
 
-If the `mobile_provider` field is provided, the validation result will be based off `phone_number`-`mobile_provider` registration check.
-
-The valid `mobile_provider` values are:
+The supported `country`s are:
 
 {% capture data-raw %}
 ```
+GH
+UG
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="country-values" raw=data-raw %}
+
+The supported `currency`s are:
+
+{% capture data-raw %}
+```
+GHS
+UGX
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="currency-values" raw=data-raw %}
+
+The valid `mobile_provider` values for Ghana are:
+
+{% capture data-raw %}
+```
+airteltigo
 mtn
-airtel
-tigo
 vodafone
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="mobile_provider-values" raw=data-raw %}
+
+The valid `mobile_provider` values for Uganda are:
+
+{% capture data-raw %}
+```
+airtel
+mtn
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="mobile_provider-values" raw=data-raw %}
+
+<div class="alert alert-info" markdown="1">
+**Note:** Kindly be informed that Airtel has merged with Millicom's Tigo in Ghana to become AirtelTigo
+</div>
 
 The response will either be a `200 OK`, and provide you with the account title:
 
@@ -95,7 +129,6 @@ Or a `422 Unprocessably Entity` status code, with an error description in the bo
 {% endcapture %}
 
 {% include language-tabbar.html prefix="validation-result-failure" raw=data-raw %}
-
 
 Once you have the account title you can compare that with the recipient details you wish to provide us, and only create a transaction if they match.
 
