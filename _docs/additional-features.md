@@ -481,6 +481,14 @@ The response in both cases look like the following (with only one currency retur
 **Warning!** Refrain from using this endpoint more than once in every five minutes.
 </div>
 
+<div class="alert alert-info" markdown="1">
+**Note!** Currencies are case-sensitive, please keep them in uppercase.
+</div>
+
+<div class="alert alert-info" markdown="1">
+**Note!** if you are opereating ZAR market via our partnership with Bidvest, you can either fetch all balances or balances for a single currency using `USD::Bidvest` , `GBP::Bidvest` or `EUR::Bidvest` as the currency name.
+</div>
+
 # Get current exchange rates
 
 To obtain the current exchange rates in the system you can call the following endpoint:
