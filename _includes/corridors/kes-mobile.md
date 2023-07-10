@@ -8,6 +8,7 @@ For Kenyan mobile payments please use:
   "first_name": "First",
   "last_name": "Last",
   "street": "1 Linford Street",
+  "city": "Nairobi", // optional
   "phone_number": "+254123456789", // E.164 international format
   "identity_card_type": "ID", // refers to the recipient's ID details; Values: "PP": Passport, "ID": National ID or "O": Other
   "identity_card_id": 'AB12345678', // refers to the recipient's ID details
