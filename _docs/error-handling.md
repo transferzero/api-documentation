@@ -65,7 +65,7 @@ We categorize most errors into the following categories:
 | 32 | /// | User bank error | Undefined bank error | The user's bank is not accepting transfers at the moment. We will retry the transaction. You can also cancel or edit the transaction | temporary_error |
 | 321 | /// | /// | Beneficiary bank not available | The user's bank is not accepting transfers at the moment. We will retry the transaction. You can also cancel or edit the transaction. | temporary_error |
 | 33 | /// | Not Found | Transaction code already exists | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. | temporary_error |
-| 34 | /// | Suspected Duplicate Transaction | Suspected Duplicate Transaction | This is the case of a possible duplicate transaction, Kindly retry this transaction in the next 15 minutes. You can also edit or cancel this transaction. | temporary_error |
+| 34 | /// | Suspected Duplicate Transaction | Suspected Duplicate Transaction | This is the case of a possible duplicate transaction. Kindly retry this transaction in the next 15 minutes. You can also edit or cancel this transaction. | temporary_error |
 | 331 | /// | /// | Transaction does not exist | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. | temporary_error |
 | 4 | User Error | User error | Unspecified user error | User details are invalid. Please update the details. You can also cancel this transaction. | recipient_error |
 | 41 | /// | Invalid user details | Invalid user details | User details are invalid. Please update the details. You can also cancel this transaction. | recipient_error |
