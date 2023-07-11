@@ -46,10 +46,10 @@ JSON_START
     "address_description": "",
 
     // Company Details
-    "legal_entity_type": "privately_owned_company", // company type
-    "registration_date": "2012-01-25",
-    "registration_number": "VAT1234567",
-    "nature_of_business": "retail_trade", // industry
+    "legal_entity_type": "privately_owned_company", // Company type, Optional
+    "registration_date": "2012-01-25", // Optional
+    "registration_number": "VAT1234567", // Optional
+    "nature_of_business": "retail_trade", // Industry, Optional
 
     // Contact Details
     "phone_number": "+15555551234", // E.164 international format
@@ -81,10 +81,10 @@ SET LIT postal_code "10001"
 SET LIT address_description ""
 
 COMMENT Company Details
-SET ENUM legal_entity_type LegalEntityTypeEnum privately_owned_company
-SET DATE registration_date 2012-01-25"
-SET LIT registration_number "VAT1234567"
-SET ENUM nature_of_business NatureOfBusinessEnum retail_trade
+SET ENUM legal_entity_type LegalEntityTypeEnum privately_owned_company // Company type, Optional
+SET DATE registration_date 2012-01-25" // Optional
+SET LIT registration_number "VAT1234567" // Optional
+SET ENUM nature_of_business NatureOfBusinessEnum retail_trade // Industry, Optional
 
 COMMENT Contact Details
 SET LIT phone_number "+15555551234" // E.164 international format
@@ -119,10 +119,10 @@ CODE_EXAMPLE_END
     "address_description": "",
 
     // Company Details
-    "legal_entity_type": "privately_owned_company", // company type
-    "registration_date": "2012-01-25",
-    "registration_number": "VAT1234567",
-    "nature_of_business": "retail_trade", // industry
+    "legal_entity_type": "privately_owned_company", // Company type, Optional
+    "registration_date": "2012-01-25", // Optional
+    "registration_number": "VAT1234567", // Optional
+    "nature_of_business": "retail_trade", // Industry, Optional
 
     // Contact Details
     "phone_number": "+15555551234", // E.164 international format
@@ -156,13 +156,12 @@ Sender sender = new Sender(
   addressDescription: "",
 
 // Company Details
-  legalEntityType: LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY,
-  registrationDate: DateTime.Parse("2012-01-25"),
-  registrationNumber: "VAT1234567",
-  natureOfBusiness: NatureOfBusinessEnum.RETAIL_TRADE,
+  legalEntityType: LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY, // Company type, Optional
+  registrationDate: DateTime.Parse("2012-01-25"), // Optional
+  registrationNumber: "VAT1234567", // Optional
+  natureOfBusiness: NatureOfBusinessEnum.RETAIL_TRADE, // Industry, Optional
 
 // Contact Details
-  phoneCountry: "US",
   phoneNumber: "+15555551234", // E.164 international format
   email: "info@transferzero.com",
 
@@ -192,13 +191,12 @@ Dim sender as Sender = New Sender(
   addressDescription:="",
 
 ' Company Details
-  legalEntityType:=LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY,
-  registrationDate:=DateTime.Parse("2012-01-25"),
-  registrationNumber:="VAT1234567",
-  natureOfBusiness:=NatureOfBusinessEnum.RETAIL_TRADE,
+  legalEntityType:=LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY, ' Company type, Optional
+  registrationDate:=DateTime.Parse("2012-01-25"), ' Optional
+  registrationNumber:="VAT1234567", ' Optional
+  natureOfBusiness:=NatureOfBusinessEnum.RETAIL_TRADE, ' Industry, Optional
 
 ' Contact Details
-  phoneCountry:="US",
   phoneNumber:="+15555551234", ' E.164 international format
   email:="info@transferzero.com",
 
@@ -228,13 +226,12 @@ sender.setPostalCode("10001");
 sender.setAddressDescription("");
 
 // Company Details
-sender.setLegalEntityType(LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY);
-sender.setRegistrationDate(LocalDate.parse("2012-01-25"));
-sender.setRegistrationNumber("VAT1234567");
-sender.setNatureOfBusiness(NatureOfBusinessEnum.RETAIL_TRADE);
+sender.setLegalEntityType(LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY); // Company type, Optional
+sender.setRegistrationDate(LocalDate.parse("2012-01-25")); // Optional
+sender.setRegistrationNumber("VAT1234567"); // Optional
+sender.setNatureOfBusiness(NatureOfBusinessEnum.RETAIL_TRADE); // Industry, Optional
 
 // Contact Details
-sender.setPhoneCountry("US");
 sender.setPhoneNumber("+15555551234"); // E.164 international format
 sender.setEmail("info@transferzero.com");
 
@@ -264,10 +261,10 @@ sender.postal_code = "10001";
 sender.address_description = "";
 
 // Company Details
-sender.legal_entity_type = "privately_owned_company";
-sender.registration_date = "2012-01-25";
-sender.registration_number = "VAT1234567";
-sender.nature_of_business = "retail_trade";
+sender.legal_entity_type = "privately_owned_company"; // Company type, Optional
+sender.registration_date = "2012-01-25"; // Optional
+sender.registration_number = "VAT1234567"; // Optional
+sender.nature_of_business = "retail_trade"; // Industry, Optional
 
 // Contact Details
 sender.phone_number = "+15555551234"; // E.164 international format
@@ -299,13 +296,12 @@ $sender->setPostalCode("10001");
 $sender->setAddressDescription("");
 
 // Company Details
-$sender->setLegalEntityType("privately_owned_company");
-$sender->setRegistrationDate("2012-01-25");
-$sender->setRegistrationNumber("VAT1234567");
-$sender->setNatureOfBusiness("retail_trade");
+$sender->setLegalEntityType("privately_owned_company"); // Company type, Optional
+$sender->setRegistrationDate("2012-01-25"); // Optional
+$sender->setRegistrationNumber("VAT1234567"); // Optional
+$sender->setNatureOfBusiness("retail_trade"); // Industry, Optional
 
 // Contact Details
-$sender->setPhoneCountry("US");
 $sender->setPhoneNumber("+15555551234"); // E.164 international format
 $sender->setEmail("info@transferzero.com");
 
@@ -335,13 +331,13 @@ sender.postal_code = "10001"
 sender.address_description = ""
 
 # Company Details
-sender.legal_entity_type = "privately_owned_company"
-sender.registration_date = "2012-01-25"
-sender.registration_number = "VAT1234567"
-sender.nature_of_business = "retail_trade"
+sender.legal_entity_type = "privately_owned_company" # Company type, Optional
+sender.registration_date = "2012-01-25" # Optional
+sender.registration_number = "VAT1234567" # Optional
+sender.nature_of_business = "retail_trade" # Industry, Optional
 
 # Contact Details
-sender.phone_number = "+15555551234" # E.164 international format
+sender.phone_number = "+15555551234" # E.164 international format
 sender.email = "info@transferzero.com"
 
 # ID of the sender in your system

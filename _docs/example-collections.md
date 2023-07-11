@@ -121,6 +121,7 @@ JSON_START
     "first_name": "Jane",
     "last_name": "Doe",
 
+    "phone_country": "GH",
     "phone_number": "+233301234567", // E.164 international format
 
     "country": "GH",
@@ -148,6 +149,7 @@ CREATE_START sender Sender
 SET LIT first_name "Jane"
 SET LIT last_name "Doe"
 
+SET LIT phone_country "GH"
 SET LIT phone_number "+233301234567" // E.164 international format
 
 SET LIT country "GH"
@@ -178,6 +180,7 @@ CODE_EXAMPLE_END
     "first_name": "Jane",
     "last_name": "Doe",
 
+    "phone_country": "GH",
     "phone_number": "+233301234567", // E.164 international format
 
     "country": "GH",
@@ -208,7 +211,7 @@ Sender sender = new Sender(
   lastName: "Doe",
 
   phoneCountry: "GH",
-  phoneNumber: "0301234567",
+  phoneNumber: "+233301234567", // E.164 international format
 
   country: "GH",
   city: "Accra",
@@ -236,7 +239,7 @@ Dim sender as Sender = New Sender(
   lastName:="Doe",
 
   phoneCountry:="GH",
-  phoneNumber:="0301234567",
+  phoneNumber:="+233301234567", ' E.164 international format
 
   country:="GH",
   city:="Accra",
@@ -264,7 +267,7 @@ sender.setFirstName("Jane");
 sender.setLastName("Doe");
 
 sender.setPhoneCountry("GH");
-sender.setPhoneNumber("0301234567");
+sender.setPhoneNumber("+233301234567"); // E.164 international format
 
 sender.setCountry("GH");
 sender.setCity("Accra");
@@ -291,6 +294,7 @@ const sender = new TransferZeroSdk.Sender();
 sender.first_name = "Jane";
 sender.last_name = "Doe";
 
+sender.phone_country = "GH";
 sender.phone_number = "+233301234567"; // E.164 international format
 
 sender.country = "GH";
@@ -319,7 +323,7 @@ $sender->setFirstName("Jane");
 $sender->setLastName("Doe");
 
 $sender->setPhoneCountry("GH");
-$sender->setPhoneNumber("0301234567");
+$sender->setPhoneNumber("+233301234567"); // E.164 international format
 
 $sender->setCountry("GH");
 $sender->setCity("Accra");
@@ -346,7 +350,8 @@ sender = TransferZero::Sender.new
 sender.first_name = "Jane"
 sender.last_name = "Doe"
 
-sender.phone_number = "+233301234567" # E.164 international format
+sender.phone_country = "GH"
+sender.phone_number = "+233301234567" # E.164 international format
 
 sender.country = "GH"
 sender.city = "Accra"
@@ -606,7 +611,7 @@ CODE_EXAMPLE_END
 {% capture data-csharp %}
 ```csharp
 PayinMethodDetails details = new PayinMethodDetails(
-  phoneNumber: "+2339999999",
+  phoneNumber: "+2339999999", // E.164 international format
   mobileProvider: PayoutMethodMobileProviderEnum.VODAFONE);
 
 PayinMethod method = new PayinMethod(
@@ -626,7 +631,7 @@ Transaction transaction = new Transaction(
 {% capture data-vb %}
 ```vb
 Dim details as PayinMethodDetails = New PayinMethodDetails(
-  phoneNumber:="+2339999999",
+  phoneNumber:="+2339999999", ' E.164 international format
   mobileProvider:=PayoutMethodMobileProviderEnum.VODAFONE)
 
 Dim method as PayinMethod = New PayinMethod(
@@ -646,7 +651,7 @@ Dim transaction as Transaction = New Transaction(
 {% capture data-java %}
 ```java
 PayinMethodDetails details = new PayinMethodDetails();
-details.setPhoneNumber("+2339999999");
+details.setPhoneNumber("+2339999999"); // E.164 international format
 details.setMobileProvider(PayoutMethodMobileProviderEnum.VODAFONE);
 
 PayinMethod method = new PayinMethod();
@@ -686,7 +691,7 @@ transaction.external_id = "Transaction:GHS:91475";
 {% capture data-php %}
 ```php
 $details = new PayinMethodDetails();
-$details->setPhoneNumber("+2339999999");
+$details->setPhoneNumber("+2339999999"); // E.164 international format
 $details->setMobileProvider("vodafone");
 
 $method = new PayinMethod();
