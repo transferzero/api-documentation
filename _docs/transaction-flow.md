@@ -73,6 +73,7 @@ JSON_START
     "sender": {
       "first_name": "Jane",
       "last_name": "Doe",
+      "phone_country": "US",
       "phone_number": "+15555551234", // E.164 international format
       "country": "US",
       "city": "New York",
@@ -114,6 +115,7 @@ CODE_START
 CREATE_START sender Sender
 SET LIT first_name "Jane"
 SET LIT last_name "Doe"
+SET LIT phone_country "US"
 SET LIT phone_number "+15555551234" // E.164 international format
 SET LIT country "US"
 SET LIT city "New York"
@@ -165,6 +167,7 @@ CODE_EXAMPLE_END
     "sender": {
       "first_name": "Jane",
       "last_name": "Doe",
+      "phone_country": "US",
       "phone_number": "+15555551234", // E.164 international format
       "country": "US",
       "city": "New York",
@@ -337,6 +340,7 @@ transaction.setExternalId("Transaction:NGN:17523");
 const sender = new TransferZeroSdk.Sender();
 sender.first_name = "Jane";
 sender.last_name = "Doe";
+sender.phone_country = "US";
 sender.phone_number = "+15555551234"; // E.164 international format
 sender.country = "US";
 sender.city = "New York";
@@ -422,6 +426,7 @@ $transaction->setExternalId("Transaction:NGN:17523");
 sender = TransferZero::Sender.new
 sender.first_name = "Jane"
 sender.last_name = "Doe"
+sender.phone_country = "US"
 sender.phone_number = "+15555551234" # E.164 international format
 sender.country = "US"
 sender.city = "New York"
@@ -477,6 +482,7 @@ JSON_START
     "first_name": "Jane",
     "last_name": "Doe",
 
+    "phone_country": "US",
     "phone_number": "+15555551234", // E.164 international format
 
     "country": "US",
@@ -505,6 +511,7 @@ CREATE_START sender Sender
 SET LIT first_name "Jane"
 SET LIT last_name "Doe"
 
+SET LIT phone_country "US"
 SET LIT phone_number "+15555551234" // E.164 international format
 
 SET LIT country "US"
@@ -536,6 +543,7 @@ CODE_EXAMPLE_END
     "first_name": "Jane",
     "last_name": "Doe",
 
+    "phone_country": "US",
     "phone_number": "+15555551234", // E.164 international format
 
     "country": "US",
@@ -653,6 +661,7 @@ const sender = new TransferZeroSdk.Sender();
 sender.first_name = "Jane";
 sender.last_name = "Doe";
 
+sender.phone_country = "US";
 sender.phone_number = "+15555551234"; // E.164 international format
 
 sender.country = "US";
@@ -710,6 +719,7 @@ sender = TransferZero::Sender.new
 sender.first_name = "Jane"
 sender.last_name = "Doe"
 
+sender.phone_country = "US"
 sender.phone_number = "+15555551234" # E.164 international format
 
 sender.country = "US"
