@@ -5,3 +5,5 @@ _site
 .bundle
 vendor/bundle
 .idea/
+.tool-versions
+Makefile
