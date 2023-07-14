@@ -21,10 +21,7 @@ For business senders you need to provide different details than for personal sen
 
 * Name of the company
 * Country of incorporation
-* Registration date and number
 * Trading address
-* Company's type
-* Industry / nature of business
 
 Please see the following example on how to provide these fields:
 
