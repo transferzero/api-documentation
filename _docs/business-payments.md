@@ -49,7 +49,7 @@ JSON_START
     "nature_of_business": "retail_trade", // Industry, Optional
 
     // Contact Details
-    "phone_number": "+15555551234", // E.164 international format
+    "phone_number": "+15555551234", // E.164 international format, Optional
     "email": "example@home.org",
 
     // ID of the sender in your system
@@ -84,7 +84,7 @@ SET LIT registration_number "VAT1234567" // Optional
 SET ENUM nature_of_business NatureOfBusinessEnum retail_trade // Industry, Optional
 
 COMMENT Contact Details
-SET LIT phone_number "+15555551234" // E.164 international format
+SET LIT phone_number "+15555551234" // E.164 international format, Optional
 SET LIT email "info@transferzero.com"
 
 COMMENT ID of the sender in your system
@@ -122,7 +122,7 @@ CODE_EXAMPLE_END
     "nature_of_business": "retail_trade", // Industry, Optional
 
     // Contact Details
-    "phone_number": "+15555551234", // E.164 international format
+    "phone_number": "+15555551234", // E.164 international format, Optional
     "email": "example@home.org",
 
     // ID of the sender in your system
@@ -159,7 +159,7 @@ Sender sender = new Sender(
   natureOfBusiness: NatureOfBusinessEnum.RETAIL_TRADE, // Industry, Optional
 
 // Contact Details
-  phoneNumber: "+15555551234", // E.164 international format
+  phoneNumber: "+15555551234", // E.164 international format, Optional
   email: "info@transferzero.com",
 
 // ID of the sender in your system
@@ -194,7 +194,7 @@ Dim sender as Sender = New Sender(
   natureOfBusiness:=NatureOfBusinessEnum.RETAIL_TRADE, ' Industry, Optional
 
 ' Contact Details
-  phoneNumber:="+15555551234", ' E.164 international format
+  phoneNumber:="+15555551234", ' E.164 international format, Optional
   email:="info@transferzero.com",
 
 ' ID of the sender in your system
@@ -229,7 +229,7 @@ sender.setRegistrationNumber("VAT1234567"); // Optional
 sender.setNatureOfBusiness(NatureOfBusinessEnum.RETAIL_TRADE); // Industry, Optional
 
 // Contact Details
-sender.setPhoneNumber("+15555551234"); // E.164 international format
+sender.setPhoneNumber("+15555551234"); // E.164 international format, Optional
 sender.setEmail("info@transferzero.com");
 
 // ID of the sender in your system
@@ -264,7 +264,7 @@ sender.registration_number = "VAT1234567"; // Optional
 sender.nature_of_business = "retail_trade"; // Industry, Optional
 
 // Contact Details
-sender.phone_number = "+15555551234"; // E.164 international format
+sender.phone_number = "+15555551234"; // E.164 international format, Optional
 sender.email = "info@transferzero.com";
 
 // ID of the sender in your system
@@ -299,7 +299,7 @@ $sender->setRegistrationNumber("VAT1234567"); // Optional
 $sender->setNatureOfBusiness("retail_trade"); // Industry, Optional
 
 // Contact Details
-$sender->setPhoneNumber("+15555551234"); // E.164 international format
+$sender->setPhoneNumber("+15555551234"); // E.164 international format, Optional
 $sender->setEmail("info@transferzero.com");
 
 // ID of the sender in your system
@@ -334,7 +334,7 @@ sender.registration_number = "VAT1234567" # Optional
 sender.nature_of_business = "retail_trade" # Industry, Optional
 
 # Contact Details
-sender.phone_number = "+15555551234" # E.164 international format
+sender.phone_number = "+15555551234" # E.164 international format, Optional
 sender.email = "info@transferzero.com"
 
 # ID of the sender in your system
