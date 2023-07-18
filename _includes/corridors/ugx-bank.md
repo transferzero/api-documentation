@@ -323,7 +323,7 @@ The current supported banks and their associated `branch_code`s are:
 
   PRIDE MICROFINANCE Head Office: 57001
 
-  STANBIC BANK Stanbic Bank: 031085 // Main Stanbic Branch
+  STANBIC BANK Stanbic Bank: 31085 // Main Stanbic Branch
   STANBIC BANK Adumani Branch: 46654
   STANBIC BANK Apac Branch: 46055
   STANBIC BANK Arua Branch: 46254
