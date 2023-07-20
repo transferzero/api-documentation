@@ -18,8 +18,7 @@ For Brazilian bank account payments via PIX please use:
   "phone_number": "+552112345678", // recipient phone number in international format
   "pix_key_type": "email",
   "pix_key_value": "person@example.com",
-  "identity_card_type": "ID",
-  "identity_card_id": "01234567890",
+  "identity_card_id": "01234567890", // CPF or CNPJ
   "transfer_reason": "personal_account"
 }
 ```
@@ -50,8 +49,7 @@ For Brazilian bank account payments using bank code and account number please us
   "branch_code": "00001",
   "bank_account": "0009795493",
   "bank_account_type": "10", // 10 for savings, 20 for current, 30 for payment, 40 for salary
-  "identity_card_type": "ID",
-  "identity_card_id": "01234567890",
+  "identity_card_id": "01234567890", // CPF or CNPJ
   "transfer_reason": "personal_account"
 }
 ```
