@@ -29,7 +29,7 @@ Once we find a problem we don't stop processing however. Due to how most of our 
 </div>
 
 <div class="alert alert-note" markdown="1">
-**Note!** Automatic cancellation only affects transactions where we have confirmation that the payment has failed to arrive at the recipient. For corridors where payment confirmation usually takes more than 24 hours (mainly bank and cash transactions) we will only auto-cancel if get confirmation that the payment has failed to receive the recipient. 
+**Note!** Automatic cancellation only affects transactions where we have confirmation that the payment has failed to arrive at the recipient. For corridors where payment confirmation usually takes more than 24 hours (mainly bank and cash transactions) we will only auto-cancel if get confirmation that the payment has failed to receive the recipient.
 </div>
 
 For more info on cancellations please read our [how to cancel recipients and transactions guide]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#cancelling-recipients-and-transactions).
@@ -74,6 +74,7 @@ We categorize most errors into the following categories:
 | 413 | /// | /// | Mobile number not registered for network | Mobile number is not registered on the network. Please update the mobile details. You can also cancel this transaction. | recipient_error |
 | 414 | /// | /// | Mobile number not registered for mobile money | Mobile number is not registered for mobile money. Please update the mobile details. You can also cancel this transaction. | recipient_error |
 | 415 | /// | /// | Invalid OTP Error | The provided otp code is invalid or expired. | recipient_error |
+| 416 | /// | /// | Invalid account number | Account number is invalid. Please update the account details. You can also cancel this transaction. | recipient_error |
 | 42 | /// | Exceeded limits | Exceeded limits | Transfer limits have been exceeded. Please update the details. You can also cancel this transaction. | recipient_error |
 | 421 | /// | /// | Exceeded daily transfer limits | Daily transfer limits have been exceeded. Please update the details. You can also cancel this transaction. | recipient_error |
 | 422 | /// | /// | Bank approval required for transfer | Bank approval needed for transaction. Please update the details. You can also cancel this transaction. | recipient_error |
