@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.27.5`
+Current version of the SDKs are `1.29.0`
+
+1.29.0
+------
+* Add `amount_after_pending` to endpoints `/accounts` and `/accounts/{currency}` for accounts related to Bidvest Bank. This field returns the amount that is currently available taking into consideration the pending transactions for the last 7 days.
 
 1.27.5
 ------
