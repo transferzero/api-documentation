@@ -519,7 +519,7 @@ The response in both cases look like the following (with only one currency retur
 </div>
 
 <div class="alert alert-info" markdown="1">
-**Note!** if you are operating ZAR market via our partnership with Bidvest, you can either fetch all balances or balances for a single currency using `USD::Bidvest` , `GBP::Bidvest` or `EUR::Bidvest` as the currency name.
+**Note!** if you are operating ZAR market via our partnership with Bidvest, you can either fetch all balances or balances for a single currency using `USD::Bidvest` , `GBP::Bidvest` or `EUR::Bidvest` as the currency name. Additionally, you can find `amount_after_pending` balance information which returns the amount currently available taking into consideration the pending transactions for the last 7 days.
 </div>
 
 # Get current exchange rates
