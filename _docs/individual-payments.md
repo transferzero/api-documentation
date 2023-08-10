@@ -25,10 +25,7 @@ For Nigerian bank payments please use:
   "first_name": "First",
   "last_name": "Last",
   "bank_code": "058",
-  "bank_account": "123456789",
-  "bank_account_type": "10" // Optional
-    // 10 for saving
-    // 20 for current accounts
+  "bank_account": "123456789"
 }
 ```
 {% endcapture %}
