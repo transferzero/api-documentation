@@ -1095,7 +1095,16 @@ A transaction object looks like the following:
                 "215": "Unity Bank",
                 "566": "VFD Microfinance Bank",
                 "035": "Wema Bank",
-                "057": "Zenith International "
+                "057": "Zenith International ",
+                "100026": "Carbon / One Finance",
+                "090551": "Fairmoney Microfinance Bank LTD",
+                "100022": "Go Money",
+                "090267": "Kuda Microfinance Bank",
+                "090405": "Moniepoint Microfinance Bank",
+                "100004": "Opay",
+                "100033": "Palmpay",
+                "000023": "Providus Bank",
+                "090110": "VFD Microfinance Bank"
               },
               "validations": {
                 "presence": true,
@@ -1126,7 +1135,16 @@ A transaction object looks like the following:
                     "215": "Unity Bank",
                     "566": "VFD Microfinance Bank",
                     "035": "Wema Bank",
-                    "057": "Zenith International "
+                    "057": "Zenith International ",
+                    "100026": "Carbon / One Finance",
+                    "090551": "Fairmoney Microfinance Bank LTD",
+                    "100022": "Go Money",
+                    "090267": "Kuda Microfinance Bank",
+                    "090405": "Moniepoint Microfinance Bank",
+                    "100004": "Opay",
+                    "100033": "Palmpay",
+                    "000023": "Providus Bank",
+                    "090110": "VFD Microfinance Bank"
                   }
                 }
               }

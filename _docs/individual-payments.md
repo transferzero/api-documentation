@@ -64,6 +64,16 @@ Unity Bank: 215
 VFD Microfinance Bank: 566
 Wema Bank: 035
 Zenith International: 057
+---
+Carbon / One Finance: 100026
+Fairmoney Microfinance Bank LTD: 090551
+Go Money: 100022
+Kuda Microfinance Bank: 090267
+Moniepoint Microfinance Bank: 090405
+Opay: 100004
+Palmpay: 100033
+Providus Bank: 000023
+VFD Microfinance Bank: 090110
 ```
 {% endcapture %}
 
