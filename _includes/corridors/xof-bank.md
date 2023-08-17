@@ -85,22 +85,6 @@ Banque d'Abidjan: CI201
 Mansa Bank: CI211
 Orange Abidjan Compagnie: CI214
 
-# Niger
-Bank Of Africa Niger: NE038
-Banque Internationale pour l'Afrique au Niger: NE040
-Banque Commerciale du Niger: NE057
-Société Nigérienne de Banque: NE064
-Banque Islamique du Niger: NE081
-Ecobank Niger: NE095
-Banque Sahélo-Saharienne pour l'Investissement et le Commerce Niger: NE110
-Banque Atlantique Niger: NE136
-Banque Agricole du Niger: NE164
-CBAO, Groupe Attijariwafa bank, Succursale du Niger: NE168
-Orabank Côte d'Ivoire, Succursale du Niger: NE174
-Banque Régionale de Marchés, Succursale du Niger: NE193
-Banque de l'Habitat du NIGER: NE208
-Coris Bank International, Succursale du Niger: NE210
-
 # Senegal
 Banque Internationale pour le Commerce et l'Industrie du Sénégal: SN010
 Société Générale Sénégal: SN011
