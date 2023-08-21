@@ -54,6 +54,7 @@ Moniepoint Microfinance Bank: 993
 Opay: 305
 Palmpay: B54
 Polaris Bank: 076
+Providus Bank: 101
 Stanbic IBTC Bank: 039
 Standard Chartered Bank PLC: 068
 Sterling bank: 232
