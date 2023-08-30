@@ -4,6 +4,7 @@
     - quick-integration
     - example-payments
     - example-collections
+    - additional-features#proof-of-payment
 
 - title: SDKs
   docs:
