@@ -20,15 +20,35 @@ The current banks supported are:
 
 {% capture data-raw %}
 ```
+AMP
 ANZ Bank
 ASB Bank
+Bank Of Baroda
+Bank Of China (New Zealand) Limited (BOC)
+Bank Of India
 Bank of New Zealand
+China Construction Bank (New Zealand) Limited
+China Construction Bank Corporation (CCB)
 Citibank
+Commonwealth Bank Of Australia
+Cooperatieve Rabobank UA
+Fonterra Co-Operative Group Limited
+Heartland Bank
 HSBC
+ICBC (New Zealand) Limited
 Industrial and Commercial Bank of China
+JPMorgan Chase Bank
 Kiwibank
+Kookmin Bank
+MUFG Bank Ltd
+NBS (Nelson Building Society)
+Rabobank New Zealand Limited
+SBS Bank (Southland Building Society)
+The Cooperative Bank
 TSB Bank
-Westpac
+Westpac Banking Corporation
+Westpac New Zealand Limited (WNZL)
+
 ```
 {% endcapture %}
 
