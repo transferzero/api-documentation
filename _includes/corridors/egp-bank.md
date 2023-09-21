@@ -84,6 +84,8 @@ Please note that the fields above are generally considered optional for senders 
         "external_id": "<id of sender>",
         "identification_type": "ID",
         "identification_number": "AB12345678",
+        "phone_number" => "+201023456789",
+        "email" => "test.sender@email.com",
         "street" => "1, Main Street",
         "birth_date" => "1983-01-01",
         (...)
