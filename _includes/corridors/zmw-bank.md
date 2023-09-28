@@ -452,6 +452,7 @@ Please note that the fields above are generally considered optional for senders 
   "transaction": {
     "sender": {
       "external_id": "<id of sender>",
+      "type": "business",
       "first_name": "First",
       "last_name": "Last",
       "phone_number": "+260961234567",
