@@ -10,7 +10,7 @@ For Zambian bank payments please use:
   {{ recipient_name }},
   "bank_account": "1234567890",
   "branch_code": "ZM210003",
-  "transfer_reason": "personal_account",
+  "transfer_reason": "personal_account"
 }
 ```
 {% endcapture %}
