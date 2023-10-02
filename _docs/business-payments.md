@@ -454,3 +454,7 @@ The valid values for the industry / nature of business are the following:
 # Kenya
 
 {% include corridors/kes-bank.md recipient_type='business' %}
+
+# Egypt
+
+{% include corridors/egp-bank.md recipient_type='business' %}
