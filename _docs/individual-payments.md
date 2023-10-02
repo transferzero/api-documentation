@@ -409,3 +409,6 @@ mtn
 
 {% include corridors/kes-mobile.md recipient_type='individual' %}
 
+# Egypt
+
+{% include corridors/egp-bank.md recipient_type='individual' %}
