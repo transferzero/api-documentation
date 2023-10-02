@@ -9,7 +9,8 @@ For Zambian bank payments please use:
  "details": {
   {{ recipient_name }},
   "bank_account": "1234567890",
-  "branch_code": "ZM210003"
+  "branch_code": "ZM210003",
+  "transfer_reason": "personal_account"
 }
 ```
 {% endcapture %}
@@ -366,8 +367,109 @@ Zambia National Commercial Bank, ZM National Comm. Ndola BusinSouth Sudan Centre
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix= zmw-bank-options  raw=data-raw %}
+{% include language-tabbar.html prefix=zmw-bank-options  raw=data-raw %}
+
+{% include corridors/transfer_reasons.md %}
 
 <div class="alert alert-info" markdown="1">
-**Note** `ZMW::Bank` payouts are currently in beta phase.
+**Note:** Both Individual and Business senders can be used for Zambian bank payouts.
+</div>
+
+Individual senders trying to create Zambian bank payouts need to have the following details present:
+- `"identification_type" => "ID"`
+- `"identification_number" => "AB12345678"`
+- `"street" => "1, Main Street"`
+- `"city" => "Lusaka"`
+
+The accepted `identification_type`s are:
+
+{% capture data-raw %}
+```
+DL (Driving License)
+PP (Passport)
+ID (National ID)
+OT (Other)
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="zmw-bank-identification-types" raw=data-raw %}
+
+Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
+
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+    "sender": {
+      "external_id": "<id of sender>",
+      "identification_type": "ID",
+      "identification_number": "AB12345678",
+      "street": "1, Main Street",
+      "city": "Lusaka",
+      (...)
+    },
+    (...)
+  }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="zmw-bank-individual-sender-details" raw=data-raw %}
+
+Business senders trying to create Zambian bank payouts need to have the following details present:
+- `"first_name" => "First"` - First name of Company Representative
+- `"last_name" => "Last"` - Last name of Company Representative
+- `"phone_number" => "+260961234567"` - Phone number of Company Representative
+- `"registration_number" => "RN123456789"`
+- `"legal_entity_type" => "partnership"`
+- `"street" => "1, Main Street"`
+- `"city" => "Lusaka"`
+
+The valid values for `legal_entity_type` are the following:
+
+{% capture data-raw %}
+```markdown
+- sole_proprietorship: Sole Proprietorship
+- partnership: Partnership
+- privately_owned_company: Privately Owned Company (Limited Company)
+- publicly_owned_company: Publicly Listed Company (PLC)
+- government_owned_entity: Government Owned Entity Trusts
+- trust: Foundations & Similar Entities
+- ngo: Non-Government Organisations / Charities inc Religious bodies and place of worship
+- club_and_society: Clubs and Societies
+- go: GO (Majority Owned Subsidiary of State-Owned Company)
+- financial_institution: Financial Institution
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="legal-entity-type-details" raw=data-raw %}
+
+Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
+
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+    "sender": {
+      "external_id": "<id of sender>",
+      "type": "business",
+      "first_name": "First",
+      "last_name": "Last",
+      "phone_number": "+260961234567",
+      "registration_number": "RN123456789",
+      "legal_entity_type": "partnership",
+      "street": "1, Main Street",
+      "city": "Lusaka",
+      (...)
+    },
+    (...)
+  }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="zmw-bank-business-sender-details" raw=data-raw %}
+
+<div class="alert alert-info" markdown="1">
+**Note:** `ZMW::Bank` payouts are currently in beta phase.
 </div>
