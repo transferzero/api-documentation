@@ -10,7 +10,7 @@ For Ugandan bank payments please use:
   {{ recipient_name }},
   "street": "1 Old Taxi Park",
   "city": "Kampala",
-  "postal_code": "10102",
+  "postal_code": "10102", // optional
   "identity_card_id": "3081900101123411",
   "bank_account": "1234567890",
   "branch_code": "130547",
