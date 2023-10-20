@@ -417,7 +417,7 @@ Please note that the fields above are generally considered optional for senders 
 {% include language-tabbar.html prefix="zmw-bank-individual-sender-details" raw=data-raw %}
 
 Business senders trying to create Zambian bank payouts need to have the following details present:
-- `"phone_number" => "+260961234567"` - Phone number of Company Representative
+- `"phone_number" => "+260961234567"` - (Business phone number)
 - `"registration_number" => "RN123456789"`
 - `"legal_entity_type" => "partnership"`
 - `"street" => "1, Main Street"`
