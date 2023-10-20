@@ -423,6 +423,8 @@ Business senders trying to create Zambian bank payouts need to have the followin
 - `"street" => "1, Main Street"`
 - `"city" => "Lusaka"`
 
+Please note that these sender details are in addition to the General business sender info we ask as highlighted on the Business payments page.
+
 The valid values for `legal_entity_type` are the following:
 
 {% capture data-raw %}
