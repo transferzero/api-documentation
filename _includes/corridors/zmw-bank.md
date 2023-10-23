@@ -417,13 +417,13 @@ Please note that the fields above are generally considered optional for senders 
 {% include language-tabbar.html prefix="zmw-bank-individual-sender-details" raw=data-raw %}
 
 Business senders trying to create Zambian bank payouts need to have the following details present:
-- `"first_name" => "First"` - First name of Company Representative
-- `"last_name" => "Last"` - Last name of Company Representative
-- `"phone_number" => "+260961234567"` - Phone number of Company Representative
+- `"phone_number" => "+260961234567"` - (Business phone number)
 - `"registration_number" => "RN123456789"`
 - `"legal_entity_type" => "partnership"`
 - `"street" => "1, Main Street"`
 - `"city" => "Lusaka"`
+
+Please note that these sender details are in addition to the General business sender info we ask as highlighted on the Business payments page.
 
 The valid values for `legal_entity_type` are the following:
 
