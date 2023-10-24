@@ -211,13 +211,6 @@ For Ghanan cash payment please use:
 # United States
 {% include corridors/us-bank.md recipient_type='individual' %}
 
-# New Zealand
-
-{% include corridors/nzd-bank.md recipient_type='individual' %}
-
-# Canada
-{% include corridors/cad-bank.md recipient_type='individual' %}
-
 # Morocco
 
 ## MAD::Cash
