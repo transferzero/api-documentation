@@ -8,11 +8,15 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.30.0`
+Current version of the SDKs is `1.30.3`
+
+1.30.3
+------
+* Add `narration` as optional field to `EUR::Bank` and `GBP::Bank` corridors.
 
 1.30.0
 ------
-* Add support for `EGP::Bank` corridor
+* Add support for `EGP::Bank` corridor.
 
 1.29.0
 ------
