@@ -68,13 +68,20 @@ UNITED BANK: 0031
 
 {% include corridors/transfer_reasons.md %}
 
-Senders trying to create Egyptian bank payouts need to have the following details present:
+Individual Senders trying to create Egyptian bank payouts need to have the following details present:
 - `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other
 - `"identification_number" => "AB12345678"`
 - `"phone_number" => "+201023456789"`
 - `"email" => "test.sender@email.com"`
 - `"street" => "1, Main Street"`
 - `"birth_date" => "1983-01-01"`
+
+Business Senders trying to create Egyptian bank payouts need to have the following details present:
+- `"registration_number" => "AB12345678"`
+- `"registration_date" => "2020-01-01"`
+- `"phone_number" => "+201023456789"`
+- `"email" => "test.sender@email.com"`
+- `"street" => "1, Main Street"`
 
 Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
 
