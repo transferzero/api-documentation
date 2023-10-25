@@ -12,9 +12,9 @@ For Kenyan bank payments please use:
   "city": "Nairobi", // optional
   "bank_code": "68",
   "bank_account": "1234567890",
-  "identity_card_type": "ID", // refers to the recipient's ID details; Values: "PP": Passport, "ID": National ID, "DL": Driver's License or "OT": Other
-  "identity_card_id": "12345678", // refers to the recipient's ID details
-  "transfer_reason": "third_party_person_account",
+  "identity_card_type": "ID", // optional, refers to the recipient's ID details; Values: "PP": Passport, "ID": National ID, "DL": Driver's License or "OT": Other
+  "identity_card_id": "12345678", // optional, refers to the recipient's ID details
+  "transfer_reason": "third_party_person_account", // optional
   "relationship_to_sender": "Aunt" // optional
 }
 ```
