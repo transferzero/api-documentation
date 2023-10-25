@@ -45,6 +45,7 @@ Bank Zero: 888000
 Bidvest Bank: 462005
 BNP Paribas: 688000
 Capitec Bank: 470010
+Capitec Business: 450105
 Citibank: 350005
 China Construction Bank: 586666
 Discovery Bank: 679000
