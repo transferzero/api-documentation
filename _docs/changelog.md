@@ -12,7 +12,7 @@ Current version of the SDKs are `1.30.1`
 
 1.30.1
 ------
-* Added optional middle name for individual payouts on the `EGP::Bank` corridor
+* Added optional `middle name` for individual payouts on the `EGP::Bank` corridor
 
 1.30.0
 ------
