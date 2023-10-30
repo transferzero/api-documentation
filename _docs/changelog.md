@@ -8,9 +8,9 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.30.4`
+Current version of the SDKs are `1.32.1`
 
-1.30.4
+1.32.1
 ------
 * Added optional middle name for individual payouts on the `EGP::Bank` corridor
 
