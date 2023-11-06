@@ -8,7 +8,12 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.32.1`
+Current version of the SDKs are `1.33.0`
+
+1.33.0
+------
+* [PHP SDK] Drop support for PHP 7.1
+* [PHP SDK] Upgrade Guzzlehttp to 7.3
 
 1.32.1
 ------
