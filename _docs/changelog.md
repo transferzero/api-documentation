@@ -7,6 +7,7 @@ permalink: /docs/changelog/
 {:toc}
 
 Current version of the API is `1`
+
 Current version of the SDKs are `1.33.0`
 
 1.33.0
