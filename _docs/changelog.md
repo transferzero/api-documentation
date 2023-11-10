@@ -17,11 +17,15 @@ Current version of the SDKs are `1.33.0`
 
 1.32.1
 ------
-* Added optional `middle name` for individual payouts on the `EGP::Bank` corridor
+* Add optional `middle_name` field for individual payouts on the `EGP::Bank` corridor.
+
+1.30.3
+------
+* Add `narration` as optional field to `EUR::Bank` and `GBP::Bank` corridors.
 
 1.30.0
 ------
-* Add support for `EGP::Bank` corridor
+* Add support for `EGP::Bank` corridor.
 
 1.29.0
 ------

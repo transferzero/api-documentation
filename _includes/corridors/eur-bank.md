@@ -9,8 +9,9 @@ For EUR IBAN transfers please use:
 "details": {
   {{ recipient_name }},
   "iban": "DE89370400440532013000",
+  "bic": "DEUTDEBBXXX", // Optional
   "bank_name": "Deutsche Bank", // Optional
-  "bic": "DEUTDEBBXXX" // Optional
+  "narration": "Birthday Gift" // Payment reference (max 30 characters) - Optional
 }
 ```
 {% endcapture %}
