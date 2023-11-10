@@ -450,3 +450,7 @@ The valid values for the industry / nature of business are the following:
 # Egypt
 
 {% include corridors/egp-bank.md recipient_type='business' %}
+
+# Nigeria
+
+{% include corridors/usd-bank.md recipient_type='business' %}
