@@ -7,8 +7,16 @@ permalink: /docs/changelog/
 {:toc}
 
 Current version of the API is `1`
+Current version of the SDKs are `1.33.0`
 
-Current version of the SDKs is `1.30.3`
+1.33.0
+------
+* [PHP SDK] Drop support for PHP 7.1
+* [PHP SDK] Upgrade Guzzlehttp to 7.3
+
+1.32.1
+------
+* Added optional `middle name` for individual payouts on the `EGP::Bank` corridor
 
 1.30.3
 ------
