@@ -94,54 +94,7 @@ For Nigerian mobile payments please use:
 **Warning!** The recipient has to be registered and KYC'd with <https://www.mypaga.com>{: .alert-link} before they can receive funds. If they are not registered when the payment occurs then Paga can hold the funds until the user registers and approves themselves.
 </div>
 
-## USD::Bank
-
-For USD bank payments in Nigeria please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "Jane",
-  "last_name": "Doe",
-  "phone_number": "+2347087661234", // optional - E.164 international format
-  "bank_code": "057",
-  "bank_account": "1234567890",
-  "country": "NG"
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="usd-bank-details" raw=data-raw %}
-
-The valid `bank_code` values are:
-
-{% capture data-raw %}
-```
-Access Bank: 044
-FCMB Bank: 214
-Fidelity Bank: 070
-Union Bank: 032
-United Bank for Africa: 033
-Zenith International: 057
-Polaris Bank: 076
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="usd-bank-details" raw=data-raw %}
-
-The valid `country` values are:
-
-{% capture data-raw %}
-```
-NG
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="usd-bank-countries" raw=data-raw %}
-
-<div class="alert alert-warning" markdown="1">
-**Warning** `USD::Bank` payouts in Nigeria are currently in beta phase.
-</div>
+{% include corridors/usd-bank.md recipient_type='individual' %}
 
 ## USD::Cash
 
@@ -169,6 +122,10 @@ NG
 {% endcapture %}
 
 {% include language-tabbar.html prefix="usd-cash-countries" raw=data-raw %}
+
+All individual senders trying to create Nigerian USD bank or cash payouts need to have the following details present:
+
+- `"birth_date" => "1993-07-23"`
 
 <div class="alert alert-warning" markdown="1">
 **Warning** `USD::Cash` payouts in Nigeria are currently in beta phase.
