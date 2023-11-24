@@ -72,27 +72,56 @@ UNITED BANK: 0031
 
 {% include corridors/transfer_reasons.md %}
 
-Individual Senders trying to create Egyptian bank payouts need to have the following details present:
-- `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other
-- `"identification_number" => "AB12345678"`
-- `"phone_number" => "+201023456789"`
-- `"email" => "test.sender@email.com"`
-- `"street" => "1, Main Street"`
-- `"birth_date" => "1983-01-01"`
+{% if include.recipient_type == 'individual' %}
+  <div class="alert alert-info" markdown="1">
+  **Note:** Both Individual and Business senders (C2C, B2C) can be used for Egyptian bank payouts.
+  </div>
 
-Business Senders trying to create Egyptian bank payouts need to have the following details present:
-- `"registration_number" => "AB12345678"`
-- `"registration_date" => "2020-01-01"`
-- `"phone_number" => "+201023456789"`
-- `"email" => "test.sender@email.com"`
-- `"street" => "1, Main Street"`
+  **Individual Senders** trying to create Egyptian bank payouts need to have the following details present:
+  - `"identification_type" => "ID"`
+  - `"identification_number" => "AB12345678"`
+  - `"phone_number" => "+201023456789"`
+  - `"email" => "test.sender@email.com"`
+  - `"street" => "1, Main Street"`
+  - `"birth_date" => "1983-01-01"`
+
+  {% include corridors/identification_types.md %}
+
+  {% include language-tabbar.html prefix="egp-bank-identification-types" raw=data-raw %}
+
+  **Business Senders** trying to create Egyptian bank payouts need to have the following details present:
+  - `"registration_number" => "AB12345678"`
+  - `"registration_date" => "2020-01-01"`
+  - `"phone_number" => "+201023456789"`
+  - `"email" => "test.sender@email.com"`
+  - `"street" => "1, Main Street"`
+
+{% else %}
+  <div class="alert alert-info" markdown="1">
+  **Note:** Only Individual senders (C2B) can be used for Egyptian bank payouts. Support for business senders (B2B) is coming soon!
+  </div>
+
+  **Individual Senders** trying to create Egyptian bank payouts need to have the following details present:
+  - `"identification_type" => "ID"`
+  - `"identification_number" => "AB12345678"`
+  - `"phone_number" => "+201023456789"`
+  - `"email" => "test.sender@email.com"`
+  - `"street" => "1, Main Street"`
+  - `"birth_date" => "1983-01-01"`
+
+  {% include corridors/identification_types.md %}
+
+  {% include language-tabbar.html prefix="egp-bank-identification-types" raw=data-raw %}
+{% endif %}
 
 Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
 
-{% capture data-raw %}
-```javascript
-{
-  "transaction": {
+{% if include.recipient_type == 'individual' %}
+  **For Individual Senders:**
+  {% capture data-raw %}
+  ```javascript
+  {
+    "transaction": {
       "sender": {
         "external_id": "<id of sender>",
         "identification_type": "ID",
@@ -105,9 +134,52 @@ Please note that the fields above are generally considered optional for senders 
       },
       (...)
     }
-}
-```
-{% endcapture %}
+  }
+  ```
+  {% endcapture %}
+
+  {% include language-tabbar.html prefix="egp-bank-sender-details" raw=data-raw %}
+
+  **For Business Senders:**
+  {% capture data-raw %}
+  ```javascript
+  {
+    "transaction": {
+      "sender": {
+        "external_id": "<id of sender>",
+        "registration_number": "AB12345678",
+        "registration_date": "2020-01-01",
+        "phone_number" => "+201023456789",
+        "email" => "test.sender@email.com",
+        "street" => "1, Main Street",
+        (...)
+      },
+      (...)
+    }
+  }
+  ```
+  {% endcapture %}
+{% else %}
+  {% capture data-raw %}
+  ```javascript
+  {
+    "transaction": {
+      "sender": {
+        "external_id": "<id of sender>",
+        "identification_type": "ID",
+        "identification_number": "AB12345678",
+        "phone_number" => "+201023456789",
+        "email" => "test.sender@email.com",
+        "street" => "1, Main Street",
+        "birth_date" => "1983-01-01",
+        (...)
+      },
+      (...)
+    }
+  }
+  ```
+  {% endcapture %}
+{% endif %}
 
 {% include language-tabbar.html prefix="egp-bank-sender-details" raw=data-raw %}
 
