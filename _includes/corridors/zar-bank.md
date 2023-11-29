@@ -24,6 +24,7 @@ For South African bank payments please use the following recipient details:
   "bank_account": "12345678",
   "phone_number": "+27119785313", // E.164 international format
   "transfer_reason": "personal_account", // optional
+  "narration": "Birthday Gift" // Payment reference (max 80 characters) - Optional
   {{ additional_details }}
 }
 ```
