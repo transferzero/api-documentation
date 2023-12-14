@@ -80,8 +80,6 @@ UNITED BANK: 0031
   **Individual Senders** trying to create Egyptian bank payouts need to have the following details present:
   - `"identification_type" => "ID"`
   - `"identification_number" => "AB12345678"`
-  - `"phone_number" => "+201023456789"`
-  - `"email" => "test.sender@email.com"`
   - `"street" => "1, Main Street"`
   - `"birth_date" => "1983-01-01"`
 
@@ -92,8 +90,6 @@ UNITED BANK: 0031
   **Business Senders** trying to create Egyptian bank payouts need to have the following details present:
   - `"registration_number" => "AB12345678"`
   - `"registration_date" => "2020-01-01"`
-  - `"phone_number" => "+201023456789"`
-  - `"email" => "test.sender@email.com"`
   - `"street" => "1, Main Street"`
 
 {% else %}
@@ -104,8 +100,6 @@ UNITED BANK: 0031
   **Individual Senders** trying to create Egyptian bank payouts need to have the following details present:
   - `"identification_type" => "ID"`
   - `"identification_number" => "AB12345678"`
-  - `"phone_number" => "+201023456789"`
-  - `"email" => "test.sender@email.com"`
   - `"street" => "1, Main Street"`
   - `"birth_date" => "1983-01-01"`
 
@@ -126,8 +120,6 @@ Please note that the fields above are generally considered optional for senders 
         "external_id": "<id of sender>",
         "identification_type": "ID",
         "identification_number": "AB12345678",
-        "phone_number" => "+201023456789",
-        "email" => "test.sender@email.com",
         "street" => "1, Main Street",
         "birth_date" => "1983-01-01",
         (...)
@@ -149,8 +141,6 @@ Please note that the fields above are generally considered optional for senders 
         "external_id": "<id of sender>",
         "registration_number": "AB12345678",
         "registration_date": "2020-01-01",
-        "phone_number" => "+201023456789",
-        "email" => "test.sender@email.com",
         "street" => "1, Main Street",
         (...)
       },
