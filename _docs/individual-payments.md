@@ -65,6 +65,14 @@ Unity Bank: 215
 VFD Microfinance Bank: 566
 Wema Bank: 035
 Zenith International: 057
+9 Payment Service Bank Limited: B97
+Globus Bank Limited: 103
+Hope PSBank: C12
+Lotus Bank Limited: 303
+Moneymaster Payment Service Bank Limited: D86
+Parallex Bank Limited: 104
+Taj Bank Limited, 76: 302
+Titan Trust Bank Limited: 102
 ```
 {% endcapture %}
 
