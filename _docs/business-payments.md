@@ -454,3 +454,4 @@ The valid values for the industry / nature of business are the following:
 # Nigeria
 
 {% include corridors/usd-bank.md recipient_type='business' %}
+{% include corridors/ngn-bank.md recipient_type='business' %}
