@@ -20,7 +20,6 @@ The valid `bank_code` values are:
 
 {% capture data-raw %}
 ```
-9 Payment Service Bank Limited: B97
 Access Bank: 044
 Carbon / One Finance: 565
 Citi Bank Group: 023
