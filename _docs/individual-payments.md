@@ -80,22 +80,6 @@ All individual senders trying to create Nigerian USD bank or cash payouts need t
 
 {% include corridors/ghs-mobile.md %}
 
-## GHS::Cash
-
-For Ghanan cash payment please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "+233302123456" // E.164 international format
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="ghs-cash-details" raw=data-raw %}
-
 # Uganda
 
 {% include corridors/ugx-bank.md recipient_type='individual' %}
