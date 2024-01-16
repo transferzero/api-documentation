@@ -49,7 +49,7 @@ Stanbic IBTC Bank: 039
 Standard Chartered Bank PLC: 068
 Sterling bank: 232
 Suntrust Bank: 100
-Taj Bank Limited, 76: 302
+Taj Bank Limited: 302
 Titan Trust Bank Limited: 102
 Union Bank: 032
 United Bank for Africa: 033
