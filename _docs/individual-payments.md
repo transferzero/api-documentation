@@ -15,7 +15,7 @@ This document lists the required details that needs to be sent for each of our p
 
 # Nigeria
 
-{% include corridors/ngn-bank.md recipient_type='business' %}
+{% include corridors/ngn-bank.md recipient_type='individual' %}
 
 ## NGN::Mobile
 
