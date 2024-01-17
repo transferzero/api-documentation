@@ -72,7 +72,6 @@ The valid `mobile_provider` values for Senegal are:
 expresso
 orange
 free
-wave
 ```
 {% endcapture %}
 
