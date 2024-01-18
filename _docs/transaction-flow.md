@@ -1363,8 +1363,10 @@ Funding transactions can be done using the `POST /v1/accounts/debits` endpoint, 
 {% capture data-raw %}
 ```javascript
 {
-  "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
-  "to_type": "Transaction"
+  "debit": {
+    "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
+    "to_type": "Transaction"
+  }
 }
 ```
 {% endcapture %}
@@ -1376,10 +1378,12 @@ You can also supply the `currency` and `amount` parameters, in which case we'll 
 {% capture data-raw %}
 ```javascript
 {
-  "currency": "NGN",
-  "amount": "2000.0",
-  "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
-  "to_type": "Transaction"
+  "debit":{
+    "currency": "NGN",
+    "amount": "2000.0",
+    "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
+    "to_type": "Transaction"
+  }
 }
 ```
 {% endcapture %}
