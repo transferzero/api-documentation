@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.33.0`
+Current versions of the SDKs are `1.34.0`
+
+1.34.0
+------
+* Add support for `USD::Bank` payouts in Egypt.
 
 1.33.0
 ------
