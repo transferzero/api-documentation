@@ -12,6 +12,7 @@ For USD bank payments in Egypt please use:
   "phone_number": "+201023456789",
   "iban": "EG380019000500000000263180002",
   "transfer_reason": "personal_account",
+  "country": "EG"
 }
 ```
 {% endcapture %}
