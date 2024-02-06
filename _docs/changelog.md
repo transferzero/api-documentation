@@ -12,7 +12,7 @@ Current versions of the SDKs are `1.34.1`
 
 1.34.1
 ------
-* Add Bank of Baroda to KES::Bank banks list.
+* Add Bank of Baroda to `KES::Bank` banks list.
 
 1.34.0
 ------
