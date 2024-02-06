@@ -31,6 +31,7 @@ The currently supported banks and their bank codes are:
 Absa Bank: 03
 African Banking Corporation: 35
 Bank of Africa Kenya: 19
+Bank of Baroda: 06
 Citibank: 16
 Co-operative Bank of Kenya: 11
 Consolidated Bank of Kenya: 23
