@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current versions of the SDKs are `1.34.0`
+Current versions of the SDKs are `1.34.1`
+
+1.34.1
+------
+* Add Bank of Baroda to KES::Bank banks list.
 
 1.34.0
 ------
