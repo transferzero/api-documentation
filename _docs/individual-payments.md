@@ -37,41 +37,6 @@ For Nigerian mobile payments please use:
 **Warning!** The recipient has to be registered and KYC'd with <https://www.mypaga.com>{: .alert-link} before they can receive funds. If they are not registered when the payment occurs then Paga can hold the funds until the user registers and approves themselves.
 </div>
 
-## USD::Cash
-
-For USD cash payments in Nigeria please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "Jane",
-  "last_name": "Doe",
-  "phone_number": "+2347087661234", // E.164 international format
-  "country": "NG"
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="usd-cash-details" raw=data-raw %}
-
-The valid `country` values are:
-
-{% capture data-raw %}
-```
-NG
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="usd-cash-countries" raw=data-raw %}
-
-All individual senders trying to create Nigerian USD bank or cash payouts need to have the following details present:
-
-- `"birth_date" => "1993-07-23"`
-
-<div class="alert alert-warning" markdown="1">
-**Warning** `USD::Cash` payouts in Nigeria are currently in beta phase.
-</div>
-
 # Ghana
 
 {% include corridors/ghs-bank.md recipient_type='individual' %}
