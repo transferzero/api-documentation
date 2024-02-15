@@ -37,8 +37,6 @@ For Nigerian mobile payments please use:
 **Warning!** The recipient has to be registered and KYC'd with <https://www.mypaga.com>{: .alert-link} before they can receive funds. If they are not registered when the payment occurs then Paga can hold the funds until the user registers and approves themselves.
 </div>
 
-{% include corridors/usd-bank.md recipient_type='individual' %}
-
 ## USD::Cash
 
 For USD cash payments in Nigeria please use:
