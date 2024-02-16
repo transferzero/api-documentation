@@ -65,6 +65,16 @@ orange
 
 {% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
 
+The valid `mobile_provider` values for Mali are:
+
+{% capture data-raw %}
+```
+orange
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
+
 The valid `mobile_provider` values for Senegal are:
 
 {% capture data-raw %}
