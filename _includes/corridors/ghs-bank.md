@@ -24,28 +24,28 @@ ABSA Ghana Bank (formerly Barclays): 030100
 Access Bank: 280100
 Agricultural Development Bank: 080100
 Bank of Africa: 210100
+Bank of Ghana: 010100
 CAL Bank: 140100
+Consolidated Bank Ghana: 340100
 Ecobank: 130100
 Fidelity Bank: 240100
 First Atlantic Bank: 170100
 First Bank Nigeria: 200100
 First National Bank: 330100
 GCB Bank: 040100
+GHL Bank: 390100
 Guaranty Trust Bank: 230100
 National Investment Bank: 050100
+OmniBSIC: 360100   // SAHEL - Sahara Bank (BSIC) and OmniBank merged to form OmniBSIC
 Prudential Bank: 180100
 Republic HFC Bank: 110100
+Societe Generale Ghana: 090100
 Stanbic Bank: 190100
 Standard Chartered Bank: 020100
 United Bank for Africa: 060100
+Universal Merchant Bank: 100100
 Zenith Bank: 120100
 Apex Bank: 070100
-Bank of Ghana: 010100
-Consolidated Bank Ghana: 340100
-GHL Bank: 390100
-OmniBSIC: 360100   // SAHEL - Sahara Bank (BSIC) and OmniBank merged to form OmniBSIC
-Societe Generale Ghana: 090100
-Universal Merchant Bank: 100100
 ```
 {% endcapture %}
 
