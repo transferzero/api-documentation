@@ -23,6 +23,7 @@ The current banks supported and their `bank_code` values are:
 ABSA Ghana Bank (formerly Barclays): 030100
 Access Bank: 280100
 Agricultural Development Bank: 080100
+Apex Bank: 070100
 Bank of Africa: 210100
 Bank of Ghana: 010100
 CAL Bank: 140100
@@ -45,7 +46,6 @@ Standard Chartered Bank: 020100
 United Bank for Africa: 060100
 Universal Merchant Bank: 100100
 Zenith Bank: 120100
-Apex Bank: 070100
 ```
 {% endcapture %}
 
