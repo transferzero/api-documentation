@@ -9,7 +9,7 @@ For USD bank payments in Egypt please use:
  "details": {
   {{ recipient_name }},
   "street": "1 Main Street",
-  "phone_number": "+201023456789",
+  "phone_number": "+201023456789", // optional
   "iban": "EG380019000500000000263180002",
   "transfer_reason": "personal_account",
   "country": "EG"
