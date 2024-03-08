@@ -59,7 +59,6 @@ HSBC Bank: 587000
 ICICI Bank: 362000
 Investec: 580105
 JP Morgan Bank: 432000
-Mercantile Bank: 450905
 Nedbank: 198765
 Olympus Mobile: 585001
 Peoples Bank: 720026
