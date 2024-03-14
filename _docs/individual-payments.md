@@ -55,9 +55,6 @@ For Nigerian mobile payments please use:
 
 {% include corridors/gbp-bank.md recipient_type='individual' %}
 
-# United States
-{% include corridors/us-bank.md recipient_type='individual' %}
-
 # Morocco
 
 ## MAD::Cash
