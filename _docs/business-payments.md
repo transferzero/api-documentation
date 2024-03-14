@@ -439,10 +439,6 @@ The valid values for the industry / nature of business are the following:
 
 {% include corridors/xaf-bank.md recipient_type='business' %}
 
-# United States
-
-{% include corridors/us-bank.md recipient_type='business' %}
-
 # Kenya
 
 {% include corridors/kes-bank.md recipient_type='business' %}
