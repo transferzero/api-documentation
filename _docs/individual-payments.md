@@ -191,34 +191,7 @@ Please note that the fields above are generally considered optional for senders 
 
 {% include corridors/xaf-bank.md recipient_type='individual' %}
 
-## XAF::Mobile
-
-For mobile payouts to Cameroon, please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "mobile_provider": "orange", // lowercase, see provider values below
-  "phone_number": "+237674044436", // E.164 international format
-  "country": "CM" // "CM" for Cameroon
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="xaf-mobile-details" raw=data-raw %}
-
-The valid `mobile_provider` values for Cameroon are:
-
-{% capture data-raw %}
-```
-orange
-mtn
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="xaf-mobile-providers" raw=data-raw %}
+{% include corridors/xaf-mobile.md %}
 
 # Guinea
 
