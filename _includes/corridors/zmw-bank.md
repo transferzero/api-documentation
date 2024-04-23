@@ -375,6 +375,10 @@ Zambia National Commercial Bank, ZM National Comm. Ndola BusinSouth Sudan Centre
 **Note:** Both Individual and Business senders can be used for Zambian bank payouts.
 </div>
 
+<div class="alert alert-info" markdown="1">
+**Note:** These sender field requirements below (both individual and business sender) are under review with the Central Bank of Zambia and are currently optional. Changes will be communicated.
+</div>
+
 Individual senders trying to create Zambian bank payouts need to have the following details present:
 - `"identification_type" => "ID"`
 - `"identification_number" => "AB12345678"`
