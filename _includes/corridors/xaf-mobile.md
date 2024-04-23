@@ -35,7 +35,6 @@ The valid `mobile_provider` values for the Central African Republic are:
 {% capture data-raw %}
 ```
 orange
-telecel
 ```
 {% endcapture %}
 
@@ -45,7 +44,6 @@ The valid `mobile_provider` values for Chad are:
 
 {% capture data-raw %}
 ```
-airtel
 moov
 ```
 {% endcapture %}
