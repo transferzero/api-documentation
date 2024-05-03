@@ -52,6 +52,7 @@ China Construction Bank: 586666
 Discovery Bank: 679000
 Finbond Mutual Bank: 589000
 First National Bank: 250655
+FirstRand Bank: 201419
 Grindrod Bank: 584000
 Habib Overseas Bank Limited: 700066
 HBZ Bank: 570100
