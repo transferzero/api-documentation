@@ -20,7 +20,6 @@ The available `country`s are:
 
 {% capture data-raw %}
 ```
-CF: Central African Republic
 CG: Congo
 CM: Cameroon
 GA: Gabon
@@ -29,16 +28,6 @@ TD: Chad
 {% endcapture %}
 
 {% include language-tabbar.html prefix="xaf-mobile-details" raw=data-raw %}
-
-The valid `mobile_provider` values for the Central African Republic are:
-
-{% capture data-raw %}
-```
-orange
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="xaf-mobile-providers" raw=data-raw %}
 
 The valid `mobile_provider` values for Chad are:
 
@@ -84,5 +73,5 @@ moov
 {% include language-tabbar.html prefix="xaf-mobile-providers" raw=data-raw %}
 
 <div class="alert alert-warning" markdown="1">
-**Warning** `XAF::Mobile` payouts to **Central African Republic, Chad, Congo and Gabon** are currently in Beta phase.
+**Warning** `XAF::Mobile` payouts to **Chad, Congo and Gabon** are currently in Beta phase.
 </div>

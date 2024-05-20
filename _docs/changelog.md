@@ -12,7 +12,7 @@ Current versions of the SDKs are `1.35.0`
 
 1.35.0
 ------
-* Add support for `CF`, `CG`, `GA` and `TD` CEMAC countries to `XAF::Mobile`.
+* Add support for `CG`, `GA` and `TD` CEMAC countries to `XAF::Mobile`.
 
 1.34.1
 ------
