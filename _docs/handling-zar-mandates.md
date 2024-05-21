@@ -311,3 +311,7 @@ If the mandate doesn’t exist, we will trigger a new process on your behalf.
 {% endcapture %}
 
 {% include language-tabbar.html prefix="zar-bank-details" raw=data-raw %}
+
+<div class="alert alert-warning" markdown="1">
+  **Warning:** Getting a successful validate response before instructing a transaction might be a requirement depending on your configurations in AZA.
+</div>
