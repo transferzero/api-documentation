@@ -17,7 +17,7 @@ For South African bank payments please use the following recipient details:
 "details": {
   {{ recipient_name }},
   "street": "14 Main Street", // optional, if sent should include house number as well
-  "postal_code": "AB0001", // optional
+  "postal_code": "3280", // optional
   "city": "Cape Town", // optional
   "email": "recipient@email.com",
   "bank_code": "632005",
