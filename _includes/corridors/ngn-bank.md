@@ -8,7 +8,7 @@ For Nigerian bank payments please use:
 ```javascript
 "details": {
   {{ recipient_name }},
-  "bank_code": "058", 
+  "bank_code": "058",
   "bank_account": "123456789"
 }
 ```
@@ -33,7 +33,6 @@ First Bank of Nigeria: 011
 Globus Bank Limited: 103
 Go Money: 326
 Guaranty Trust Bank : 058
-Heritage Bank: 030
 Hope PSBank: C12
 Jaiz Bank: 301
 Keystone: 082
