@@ -25,6 +25,7 @@ Access Bank: 044
 Carbon / One Finance: 565
 Citi Bank Group: 023
 EcoBank: 050
+Enterprise bank: 084
 Fairmoney Microfinance Bank LTD: E30
 FCMB Bank: 214
 Fidelity Bank: 070
@@ -40,9 +41,11 @@ Lotus Bank Limited: 303
 Moneymaster Payment Service Bank Limited: D86
 Moniepoint Microfinance Bank: 993
 Opay: 305
+Optimus bank: 105
 Palmpay: B54
 Parallex Bank Limited: 104
 Polaris Bank: 076
+Premium trust bank: 107
 Providus Bank: 101
 Stanbic IBTC Bank: 039
 Standard Chartered Bank PLC: 068
