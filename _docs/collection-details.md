@@ -455,3 +455,66 @@ If there was an issue with the collection, a `payin_method.error` webhook is sen
 {% endcapture%}
 
 {% include language-tabbar.html prefix="collection-xof-mobile-error" raw=data-raw %}
+
+# NGN Bank collections
+
+To initiate NGN bank collection, please use the following details (`phone_number` used below is an example):
+
+{% capture data-raw %}
+
+```javascript
+"input_currency": "NGN",
+"payin_methods": [
+  {
+    "type": "NGN::Bank",
+    "ux_flow": "bank_transfer",
+    "in_details": {
+      "phone_number": "+234787221236", // E.164 international format
+    }
+  }
+],
+```
+
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-ngn-bank" raw=data-raw %}
+
+You will receive bank transfer information in the `out_details`:
+
+{% capture data-raw %}
+
+```javascript
+"out_details": {
+  "style": "bank_transfer",
+  "amount": 0,
+  "currency": "NGN",
+  "bank_code": "bank code",
+  "bank_name": "bank name",
+  "created_at": "created at",
+  "account_name": "account name",
+  "account_number": "account number",
+  "account_reference": "account reference"
+}
+```
+
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-ngn-bank-out" raw=data-raw %}
+
+And human readable instructions can be found in the `payin_methods[0].instructions` hash in the following format:
+
+(instructions for NGN Bank payment)
+
+{% capture data-raw %}
+
+```javascript
+"instructions": {
+  "bank_transfer": "\\nTransfer the exact amount specified to the provided virtual account number.\\nMake sure to complete the payment within one day from the time you receive these instructions.\\n"
+}
+```
+
+{% endcapture %}
+
+{% include language-tabbar.html prefix="collection-ngn-bank-instructions" raw=data-raw %}
+
+Once the funds have been successfully received from the sender, `payin_method.paid_in` and `transaction.paid_in` webhooks will be sent out.
