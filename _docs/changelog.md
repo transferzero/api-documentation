@@ -10,6 +10,10 @@ Current version of the API is `1`
 
 Current versions of the SDKs are `1.34.1`
 
+1.36.0
+------
+* Add support for bank collections for NGN
+
 1.34.1
 ------
 * Add Bank of Baroda to `KES::Bank` banks list.
