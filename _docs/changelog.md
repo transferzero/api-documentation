@@ -8,7 +8,15 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current versions of the SDKs are `1.34.1`
+Current versions of the SDKs are `1.35.1`
+
+1.35.1
+------
+* Removes support for `CF` in  `XAF::Mobile`.
+
+1.35.0
+------
+* Add support for `CF`, `CG`, `GA` and `TD` CEMAC countries to `XAF::Mobile`.
 
 1.36.0
 ------
