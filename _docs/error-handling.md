@@ -56,6 +56,8 @@ We categorize most errors into the following categories:
 | 12 | /// | Timeout error | Timeout error | This transaction is awaiting a status update from the provider. | timeout_error |
 | 13 | /// | Manual reconciliation required | Manual reconciliation required | This transaction requires manual verification. Please wait until this is done. | manual_reconciliation_required |
 | 14 | /// | Pending | Pending | This transaction is awaiting a status update from the provider. | pending |
+| 15 | /// | Unauthorized error | Unauthorized error | This transaction is awaiting a status update from the provider. | pending |
+| 16 | Pending | Pending | Pending | This transaction is under AML review by the payment provider. | pending |
 | 2 | User action required | User action required | User action required | This transaction requires an action by the user. | recipent_action_required |
 | 21 | /// | Pickupable | Pickupable | This transaction is awaiting pickup by the recipient. | recipent_action_required |
 | 22 | /// | Mandate signing required | Mandate signing required  | This transaction required the user to sign a mandate before it can be deposited. | recipent_action_required |
