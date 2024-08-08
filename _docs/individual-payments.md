@@ -250,4 +250,6 @@ mtn
 
 {% include corridors/egp-bank.md recipient_type='individual' %}
 
+{% include corridors/egp-cash.md recipient_type='individual' %}
+
 {% include corridors/usd-bank-egypt.md recipient_type='individual' %}
