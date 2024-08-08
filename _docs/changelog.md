@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current versions of the SDKs are `1.34.1`
+Current versions of the SDKs are `1.36.2`
+
+1.36.2
+------
+* Add support for `EGP::Cash` payouts in Egypt.
 
 1.36.0
 ------
