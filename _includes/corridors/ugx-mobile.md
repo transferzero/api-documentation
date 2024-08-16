@@ -33,7 +33,7 @@ mtn
 All senders trying to create Ugandan mobile payouts need to have the following details present:
 - `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other
 - `"identification_number" => "AB12345678"`
-- `"source_of_funds" => "Salary"`
+- `"nationality" => "FR"`
 - `"phone_number" => "+15555551234"`
 - `"country" => "US"`
 
@@ -47,7 +47,7 @@ Please note that the fields above are generally considered optional for senders 
       "external_id": "<id of sender>",
       "identification_type": "ID",
       "identification_number": "AB12345678",
-      "source_of_funds": "Salary",
+      "nationality" => "FR",
       "phone_number" => "+15555551234",
       "country" => "US",
       (...)
