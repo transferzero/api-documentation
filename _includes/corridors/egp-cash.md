@@ -10,7 +10,8 @@ For Egyptian cash payments please use:
   "last_name": "Last",
   "phone_number": "+201023456789",
   "street": "1 Main Street",
-  "transfer_reason": "personal_account"
+  "transfer_reason": "personal_account",
+  "email": "recipient@email.com" // optional
 }
 ```
 {% endcapture %}
