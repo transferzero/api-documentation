@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current versions of the SDKs are `1.36.2`
+Current version of the SDKs is `1.36.3`
+
+1.36.3
+------
+* Add optional `email` field for individual payouts on the `EGP::Cash` corridor.
 
 1.36.2
 ------
