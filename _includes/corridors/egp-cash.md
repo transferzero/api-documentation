@@ -18,8 +18,6 @@ For Egyptian cash payments please use:
 
 {% include language-tabbar.html prefix=egp-cash-details  raw=data-raw %}
 
-Although the `middle_name` field is optional, having the full name (first, middle and last name as stated on the government issued ID) of the beneficiary is a regulatory requirement and will ensure faster settlement due to less regulatory screening time.
-
 {% include corridors/transfer_reasons.md %}
 
 {% if include.recipient_type == 'individual' %}

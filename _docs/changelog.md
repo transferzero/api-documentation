@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs is `1.36.3`
+Current version of the SDKs is `1.36.4`
+
+1.36.4
+------
+* Makes `middle_name` field mandatory for the `EGP::Cash` corridor.
 
 1.36.3
 ------
