@@ -16,10 +16,10 @@ $gray-light:             lighten($gray-base, 60%) !default;   // #999
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
 $brand-primary:         #001754 !default;
-$brand-success:         #43ac6a !default;
+$brand-success:         #007875 !default;
 $brand-info:            #001754 !default;
 $brand-warning:         rgb(121, 75, 0) !default;
-$brand-danger:          #F04124 !default;
+$brand-danger:          #F78054 !default;
 
 
 //== Scaffolding
@@ -29,7 +29,7 @@ $brand-danger:          #F04124 !default;
 //** Background color for `<body>`.
 $body-bg:               #fff !default;
 //** Global text color on `<body>`.
-$text-color:            $gray-darker !default;
+$text-color:            $gray-dark !default;
 
 //** Global textual link color.
 $link-color:            $brand-primary !default;
@@ -830,7 +830,7 @@ $close-text-shadow:           0 1px 0 #fff !default;
 //
 //##
 
-$code-color:                  #c7254e !default;
+$code-color:                  #D00000 !default;
 $code-bg:                     #f9f2f4 !default;
 
 $kbd-color:                   #fff !default;

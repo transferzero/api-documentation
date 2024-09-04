@@ -8,7 +8,7 @@ permalink: /docs/transaction-flow/
 
 # Introduction
 
-Transactions are the main objects in the TransferZero API, so it's important to understand how to create and manage them. Transactions facilitate money movement from one Sender in a specific currency to one or multiple Recipients in another currency.
+Transactions are the main objects in the AZA Finance API, so it's important to understand how to create and manage them. Transactions facilitate money movement from one Sender in a specific currency to one or multiple Recipients in another currency.
 
 The main flow of a successful transaction flow is the following:
 
