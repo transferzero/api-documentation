@@ -6,6 +6,16 @@ permalink: /docs/error-handling/
 * Table of contents
 {:toc}
 
+# Transaction state as the source of truth
+
+<div class="alert alert-info" markdown="1">
+**Important!** While error codes and other fields provide valuable information about a transaction's status, the ultimate source of truth for determining whether a transaction has been paid out or successfully refunded is the `state` field of the transaction object. Always rely on this field for making final decisions about a transaction's status in your system.
+
+Do not make your decisions based on the `state_reason`, `state_reason_code` or `state_reason_details` fields. These fields are only for information purposes and are not meant to be used for making decisions.
+</div>
+
+You can read further details about the `state` field [here]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#transaction-states).
+
 # Errors during payments
 
 In an ideal world payments always succeed and arrive in the recipient's account. However occasionally there are issues that only occur after the transaction has been funded. There could be various issues, for example:
