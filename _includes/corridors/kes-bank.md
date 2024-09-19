@@ -73,9 +73,7 @@ All senders trying to create Kenyan bank payouts need to have the following deta
 - `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other
 - `"identification_number" => "AB12345678"`
 - `"source_of_funds" => "Salary"`
-- `"street" => "Avenue Park"`
-- `"city" => "Nairobi"`
-- `"country" => "KE"`
+- `"country" => "US"`
 - `"birth_date" => "1993-07-23`
 
 Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
@@ -89,9 +87,7 @@ Please note that the fields above are generally considered optional for senders 
         "identification_type": "ID",
         "identification_number": "AB12345678",
         "source_of_funds": "Salary",
-        "street" => "Avenue Park",
-        "city" => "Nairobi",
-        "country" => "KE",
+        "country" => "US",
         "birth_date" => "1993-07-23",
         (...)
       },
