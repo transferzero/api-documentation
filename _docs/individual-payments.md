@@ -226,7 +226,7 @@ mtn
 
 # South Africa
 
-{% include corridors/zar-bank.md recipient_type='individual' %}
+{% include corridors/zar-bank.md recipient_type='individual_without_middle_name' %}
 
 # Botswana
 
