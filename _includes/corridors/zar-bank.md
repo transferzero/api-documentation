@@ -16,14 +16,10 @@ For South African bank payments please use the following recipient details:
 ```javascript
 "details": {
   {{ recipient_name }},
-  "street": "14 Main Street", // optional, if sent should include house number as well
-  "postal_code": "3280", // optional
-  "city": "Cape Town", // optional
   "email": "recipient@email.com",
   "bank_code": "632005",
   "bank_account": "12345678",
   "phone_number": "+27119785313", // E.164 international format
-  "transfer_reason": "personal_account", // optional
   "narration": "Birthday Gift" // Payment reference (max 80 characters) - Optional
   {{ additional_details }}
 }
