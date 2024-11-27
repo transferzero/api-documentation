@@ -21,16 +21,7 @@ The currently supported banks and their available branches are:
 
 {% capture data-raw %}
 ```
-AB Bank Zambia Limited, AB Bank Zambia Limited Matero, ZM210003
-AB Bank Zambia Limited, Chelston Branch, ZM210005
-AB Bank Zambia Limited, Chilenje Branch, ZM210002
-AB Bank Zambia Limited, Garden Branch, ZM210006
-AB Bank Zambia Limited, Head Office, ZM210000
-AB Bank Zambia Limited, Kalingalinga Branch, ZM210004
-AB Bank Zambia Limited, KITWE, ZM210207
-AB Bank Zambia Limited, Main Cairo Road Branch, ZM210001
-
-ABSA Bank, Livingstone, Zambia, ZM21012
+ABSA Bank, Livingstone, Zambia, ZM021012
 
 Access Bank, ACACIA BRANCH, ZM350003
 Access Bank, CAIRO ROAD, ZM350001
