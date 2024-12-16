@@ -17,26 +17,6 @@ This document lists the required details that needs to be sent for each of our p
 
 {% include corridors/ngn-bank.md recipient_type='individual' %}
 
-## NGN::Mobile
-
-For Nigerian mobile payments please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "+2347087661234" // E.164 international format
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="ngn-mobile-details" raw=data-raw %}
-
-<div class="alert alert-warning" markdown="1">
-**Warning!** The recipient has to be registered and KYC'd with <https://www.mypaga.com>{: .alert-link} before they can receive funds. If they are not registered when the payment occurs then Paga can hold the funds until the user registers and approves themselves.
-</div>
-
 # Ghana
 
 {% include corridors/ghs-bank.md recipient_type='individual' %}
