@@ -4,14 +4,6 @@
 
 For South African bank payments please use the following recipient details:
 
-{% if include.recipient_type == 'business' %}
-  {% capture additional_details %}"contact_first_name": "First", // optional
-  "contact_last_name": "Last", // optional
-  "legal_entity_type": "privately_owned_company", // optional
-  "registration_number": "VAT1234567", // optional
-  "nature_of_business": "retail_trade" // optional{% endcapture %}
-{% endif %}
-
 {% capture data-raw %}
 ```javascript
 "details": {
