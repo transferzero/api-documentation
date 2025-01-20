@@ -9,7 +9,7 @@ For Egyptian bank payments please use:
 "details": {
   {{ recipient_name }},
   "street": "1 Main Street",
-  "phone_number": "+201023456789", // optional
+  "phone_number": "+201023456789", // optional, must be EG number
   "bank_code": "0030",
   "bank_account": "1234567890",
   "transfer_reason": "personal_account",

@@ -8,7 +8,7 @@ For Egyptian cash payments please use:
   "first_name": "First",
   "middle_name": "Middle",
   "last_name": "Last",
-  "phone_number": "+201023456789",
+  "phone_number": "+201023456789", // must be EG number
   "street": "1 Main Street",
   "transfer_reason": "personal_account",
   "email": "recipient@email.com" // optional
