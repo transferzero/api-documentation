@@ -9,7 +9,8 @@ For Ghanan bank payments please use:
 "details": {
   {{ recipient_name }},
   "bank_code": "030100",
-  "bank_account": "123456789"
+  "bank_account": "123456789",
+  "transfer_reason": "third_party_person_account"
 }
 ```
 {% endcapture %}
@@ -81,3 +82,5 @@ Zenith Bank: 10 digits
 {% endcapture %}
 
 {% include language-tabbar.html prefix="ghs-bank-digits" raw=data-raw %}
+
+{% include corridors/transfer_reasons.md %}
