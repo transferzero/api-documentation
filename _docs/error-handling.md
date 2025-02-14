@@ -68,9 +68,11 @@ We categorize most errors into the following categories:
 | 14 | /// | Pending | Pending | This transaction is awaiting a status update from the provider. | pending |
 | 15 | /// | Unauthorized error | Unauthorized error | This transaction is awaiting a status update from the provider. | pending |
 | 16 | Pending | Pending | Pending | This transaction is under AML review by the payment provider. | pending |
+| 17 | /// | Reset rate required | Reset rate required | This transaction is awaiting a rate reset by the system. | pending |
 | 2 | User action required | User action required | User action required | This transaction requires an action by the user. | recipent_action_required |
 | 21 | /// | Pickupable | Pickupable | This transaction is awaiting pickup by the recipient. | recipent_action_required |
 | 22 | /// | Mandate signing required | Mandate signing required  | This transaction required the user to sign a mandate before it can be deposited. | recipent_action_required |
+| 23 | /// | OTP verification required | OTP verification required | This transaction is awaiting OTP verification by the user. | recipent_action_required |
 | 3 | Temporary error | Provider Error | Undefined provider error | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. | temporary_error |
 | 31 | /// | Switch Error | Undefined switch error | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |
 | 311 | /// | /// | Issuer/Switch inoperative | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |
