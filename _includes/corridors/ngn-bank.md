@@ -21,7 +21,9 @@ The valid `bank_code` values are:
 {% capture data-raw %}
 ```
 9 Payment Service Bank Limited: B97
+AB Microfinance Bank: B16
 Access Bank: 044
+Accion Microfinance Bank: 602
 Carbon / One Finance: 565
 Citi Bank Group: 023
 EcoBank: 050
@@ -29,6 +31,7 @@ Enterprise bank: 084
 Fairmoney Microfinance Bank LTD: E30
 FCMB Bank: 214
 Fidelity Bank: 070
+Fina Trust Microfinance Bank: 608
 First Bank of Nigeria: 011
 Globus Bank Limited: 103
 Go Money: 326
@@ -37,9 +40,12 @@ Hope PSBank: C12
 Jaiz Bank: 301
 Keystone: 082
 Kuda Microfinance Bank: 611
+Lapo Microfinance Bank: B23
 Lotus Bank Limited: 303
+Lovonus Microfinance Bank: B18
 Moneymaster Payment Service Bank Limited: D86
 Moniepoint Microfinance Bank: 993
+Mutual Trust Microfinance Bank: A56
 Opay: 305
 Optimus bank: 105
 Palmpay: B54
@@ -47,6 +53,7 @@ Parallex Bank Limited: 104
 Polaris Bank: 076
 Premium trust bank: 107
 Providus Bank: 101
+Sparkle Microfinance Bank: B57
 Stanbic IBTC Bank: 039
 Standard Chartered Bank PLC: 068
 Sterling bank: 232
