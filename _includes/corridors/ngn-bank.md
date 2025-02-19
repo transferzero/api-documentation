@@ -52,6 +52,7 @@ Palmpay: B54
 Parallex Bank Limited: 104
 Polaris Bank: 076
 Premium trust bank: 107
+Prospa Capital Microfinance Bank: D50 (formerly known as GOODNEWS MFB)
 Providus Bank: 101
 Sparkle Microfinance Bank: B57
 Stanbic IBTC Bank: 039
