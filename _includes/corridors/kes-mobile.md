@@ -7,11 +7,11 @@ For Kenyan mobile payments please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "street": "1 Linford Street",
+  "street": "1 Linford Street", // optional
   "city": "Nairobi", // optional
   "phone_number": "+254123456789", // E.164 international format
-  "identity_card_type": "ID", // refers to the recipient's ID details; Values: "PP": Passport, "ID": National ID, "DL": Driver's License or "OT": Other
-  "identity_card_id": 'AB12345678', // refers to the recipient's ID details
+  "identity_card_type": "ID", // optional, refers to the recipient's ID details; Values: "PP": Passport, "ID": National ID, "DL": Driver's License or "OT": Other
+  "identity_card_id": 'AB12345678', // optional, refers to the recipient's ID details
   "transfer_reason": "personal_account",
   "mobile_provider": "mpesa",
   "relationship_to_sender": "Aunt" // Optional
