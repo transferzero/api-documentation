@@ -24,6 +24,7 @@
     - error-handling
     - individual-payments
     - business-payments
+    - account-validation
     - additional-features
     - handling-zar-mandates
     - collection-details
