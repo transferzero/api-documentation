@@ -148,9 +148,7 @@ An invalid account response will return a `422 Unprocessably Entity` status code
 {% capture data-raw %}
 ```javascript
 {
-  "object": {
-    "account_name": null
-  },
+  "object": {},
   "meta": {
     "error": "Account Invalid"
   }
@@ -165,9 +163,7 @@ If we are unable to verify an account due to issues with validation providers (s
 {% capture data-raw %}
 ```javascript
 {
-  "object": {
-    "account_name": null
-  },
+  "object": {},
   "meta": {
     "error": "Account validation failed"
   }
@@ -311,9 +307,7 @@ If we are unable to verify a mobile provider due to issues with validation provi
 {% capture data-raw %}
 ```javascript
 {
-  "object": {
-    "mapped_mobile_provider": null
-  },
+  "object": {},
   "meta": {
     "error": "Account validation failed"
   }
@@ -323,9 +317,9 @@ If we are unable to verify a mobile provider due to issues with validation provi
 
 {% include language-tabbar.html prefix="account-validation-failed-response" raw=data-raw %}
 
-# Account name validation in transactions
+# Account name validation in transactions flow
 
-Another way to limit mispayments due to mistyped account numbers is enabling account name validation on transactions. This feature will block payouts if the account holder's name and the recipient name provided don't match.
+Another way to limit mispayments due to mistyped account numbers is enabling account name validation on transactions. This feature will block payouts if the account holder's name and the recipient name provided in the payout details don't match.
 
 <div class="alert alert-info" markdown="1">
  **Note:** This feature is currently available for `NGN::Bank`, `GHS::Bank` and `GHS::Mobile` payouts only.
@@ -354,7 +348,7 @@ To enable account name validation please enable the `account_validation` trait d
 
 We can also enable name validation by default across all transactions created by you. If this is of interest please contact our team so we can configure your account as such. If the feature is enabled, then it can be disabled on a per-transaction basis by specifying `"account_validation": false` in the `traits` section.
 
-Once the trait is enabled we will do a name enquiry from the bank and check if the name we get back matches the name received in the recipient details. If they match we will go ahead with the payout. If it doesn't we will stop the payout and return an error message describing that the transaction will not proceed unless the recipient details are updated to match the account holder name, or name validation is disabled on the transaction.
+Once the trait is enabled we will do a name enquiry from the bank and check if the name we get back matches the name received in the recipient details. If they match we will go ahead with the payout. If they don't we will stop the payout and return an error message describing that the transaction will not proceed unless the recipient details are updated to match the account holder name.
 
 In both cases we will return the account holder name in the recipient's metadata. For example if you entered `JOHN SMITH` as the recipient name, but the account holder is in fact `JANE DOE` then you will receive a `recipient.error` webhook with the following details:
 
@@ -389,6 +383,76 @@ In both cases we will return the account holder name in the recipient's metadata
 
 {% include language-tabbar.html prefix="recipient-error" raw=data-raw %}
 
-In case the account number doesn't exist at the bank or there is a connectivity issue with the banking system you will receive an error with the following message: `We could not verify that the account entered exists. This could be a temporary error with a bank, or it can mean the details entered were incorrect. We will retry the transaction`.
+In case the account number doesn't exist at the bank or there is a connectivity issue with the banking system you will receive an error with the following message: `We were not able to verify that the provided account exists. This could be a temporary error with a bank, a telco, or it can mean the provided details were incorrect. We will retry the transaction. You can also edit or cancel the payout`.
 
 Unfortunately due to how the banking system works in the supported markets it is not always possible to differentiate an invalid account number from a connectivity issue, hence we will automatically retry the name enquiry until we get a valid response, or the transaction is cancelled.
+
+# Mobile provider (telco) validation in transactions flow
+
+Another way to limit mispayments due to mismatched mobile providers is enabling mobile provider (telco) validation on transactions. This feature will block payouts if the mapped mobile provider (returned from an internal phone number/telco check) and the mobile provider provided in the payout details don't match.
+
+<div class="alert alert-info" markdown="1">
+ **Note:** This feature is currently available for `XOF::Mobile` payouts only. Also kindly be aware that this is a paid service. Please contact our Sales Team at `corporate.sales@azafinance.com` or our Account Management team at `account.mgt@azafinance.com` to request more informations.
+</div>
+
+To enable mobile provider validation please enable the `account_validation` trait during transaction creation (this is the same trait as for account name validation):
+
+<div class="highlight">
+  <p class="hll"><strong>POST</strong> <code>/v1/transactions</code></p>
+</div>
+
+{% capture data-raw %}
+```javascript
+{
+   "transaction":{
+      "traits": {
+        "account_validation": true
+      },
+      // (...) additional transaction details
+   }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="validation-trait" raw=data-raw %}
+
+We can also enable mobile provider validation by default across all transactions created by you. If this is of interest please contact our team so we can configure your account as such. If the feature is enabled, then it can be disabled on a per-transaction basis by specifying `"account_validation": false` in the `traits` section.
+
+Once the trait is enabled we will do a mobile provider check from the telco operator, and make sure the mapped mobile provider we get back matches the mobile provider received in the recipient details. If they match we will go ahead with the payout. If they don't we will stop the payout and return an error message describing that the transaction will not proceed unless the recipient details are updated to match the mobile provider.
+
+In both cases we will return the mobile provider in the recipient’s metadata. For example if you entered `mtn` as mobile provider, but the mobile provider for that particular phone number is in fact `orange` you will receive a `recipient.error` webhook with the following details:
+
+{% capture data-raw %}
+```javascript
+{
+  "webhook": "fd599451-4f3c-4045-91e1-d68ed12ffb75",
+  "event": "recipient.error",
+  "object": {
+    "editable": true,
+    "metadata": {
+      "provider_network_validation": {
+        "valid?": true,
+        "mapped_mobile_provider": "orange"
+      }
+    },
+    "payout_method": {
+      "type": "XOF::Mobile",
+      "details": {
+        "phone_number": "+221774044436",
+        "mobile_provider": "mtn",
+        // (...)
+      },
+    }
+    "state": "error",
+    "state_reason": "The mapped mobile provider doesn't match the payout details' mobile provider. Please edit or cancel the transaction.",
+    // (...)
+  }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="recipient-error" raw=data-raw %}
+
+In case the mobile provider doesn’t exist or there is a connectivity issue with the telco operator system you will receive an error with the following message: `We were not able to verify that the provided account exists. This could be a temporary error with a bank, a telco, or it can mean the provided details were incorrect. We will retry the transaction. You can also edit or cancel the payout`.
+
+Unfortunately due to how the telcos system works in the supported markets it is not always possible to differentiate an invalid mobile provider from a connectivity issue, hence we will automatically retry the mobile provider validation until we get a valid response, or the transaction is cancelled.
