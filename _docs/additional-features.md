@@ -28,7 +28,7 @@ The generic structure of a transaction that collects the equivalent of 100 USD f
 {% capture data-raw %}
 ```javascript
 {
-  "input_currency": "GHS",
+  "input_currency": "XOF",
   "payin_methods": [
     {
       // payin method details
@@ -67,7 +67,7 @@ The response will always look like the following. It is very similar to the stan
 ```javascript
 {
   "object": {
-    "id":"xxxxxxxx",
+    "id":"1f7e1e99-5572-414d-a5dd-83f4728efff8",
     "state": "approved",
     "input_amount": 724.0,
     "input_currency": "NGN",
@@ -77,8 +77,8 @@ The response will always look like the following. It is very similar to the stan
     },
     "payin_methods": [
       {
-        "id": "xxxxxxxx",
-        "type":"GHS::Mobile",
+        "id": "1f7e1e99-5572-414d-a5dd-83f4728efff8",
+        "type":"XOF::Mobile",
         "ux_flow": "ussd_popup",
         "state": "pending",
         "state_reason_details": {
@@ -125,17 +125,17 @@ You can validate your preferred flow by sending a request to the transaction val
 ```javascript
 POST /v1/transactions/validate
 {
-  "input_currency": "GHS",
+  "input_currency": "XOF",
   "payin_methods": [
     {
-      "type": "GHS::Mobile",
+      "type": "XOF::Mobile",
       "ux_flow": "ussd_popup",
       "in_details": {
         "mobile_provider": "mtn"
       }
     },
     {
-      "type": "GHS::Mobile",
+      "type": "XOF::Mobile",
       "ux_flow": "ussd_popup",
       "in_details": {
         "mobile_provider": "vodafone"
@@ -161,23 +161,23 @@ The response would look like the following:
 {% capture data-raw %}
 ```javascript
 {
-  "input_currency": "GHS",
+  "input_currency": "XOF",
   "payin_methods": [
     {
-      "type": "GHS::Mobile",
+      "type": "XOF::Mobile",
       "ux_flow": "ussd_popup",
       "in_details": {
-        "mobile_provider": "mtn"
+        "mobile_provider": "vodafone"
       },
       "errors": {
         "mobile_provider": "invalid"
       }
     },
     {
-      "type": "GHS::Mobile",
+      "type": "XOF::Mobile",
       "ux_flow": "ussd_popup",
       "in_details": {
-        "mobile_provider": "vodafone"
+        "mobile_provider": "mtn"
       },
       "errors": {}
     }
@@ -196,7 +196,7 @@ The response would look like the following:
 
 {% include language-tabbar.html prefix="collection-flow-response" raw=data-raw %}
 
-For the above example, it shows that `mtn` is not available and you can only use `vodafone` to initiate the collection.
+For the above example, it shows that `vodafone` is not available and you can only use `mtn` to initiate the collection.
 
 
 # Auto cancellation and refund of transactions
@@ -279,7 +279,7 @@ The endpoint responds with a list of uploaded proof of payment files, e.g.:
     {
       "thumbnail": "(..)/my_file_thumb.jpg",
       "file_name": "my_file.jpg",
-      "id": "xxxxxxxx",
+      "id": "1f7e1e99-5572-414d-a5dd-83f4728efff8",
       "url": "(..)/my_file.jpg"
     }
   ]

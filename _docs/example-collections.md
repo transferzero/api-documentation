@@ -10,7 +10,7 @@ permalink: /docs/example-collections/
 
 In this example we'll go through all of the steps and give examples on what you'll need to do to implement a call to collect funds from  customers into your internal balance. Once you've read through this guide you'll know everything that is required by us for you to use our collection system.
 
-Let's assume that you would like to obtain funds from one of your Ghanan customer, `Jane Doe`. You have already fully KYC'd her, as she is a recurring user on your site. Her user ID in your system is `Sender:GH:9547`. She creates an order in your system for which she is charged `50 GHS` that she'd like to pay using her mobile wallet. For this transaction let's assume the transaction created in your system has an ID of `Collection:GHS:91475`.
+Let's assume that you would like to obtain funds from one of your Ivorian customer, `Jane Doe`. You have already fully KYC'd her, as she is a recurring user on your site. Her user ID in your system is `Sender:IC:9547`. She creates an order in your system for which she is charged `50 XOF` that she'd like to pay using her mobile wallet. For this transaction let's assume the transaction created in your system has an ID of `Collection:XOF:91475`.
 
 Once you have the details collected on your end, you can then initiate the transaction in our system. This example will guide you through the details you need to set and what calls you need to make. Since the easiest way to access our system is through our SDKs this guide is mainly aimed at users of our SDKs.
 
@@ -108,7 +108,7 @@ Next step is setting up the sender details. Generally you'll need to send us the
 **Note!** Dependent on your KYC processes you might be able opt in to use WTR2 rules for your senders in which case the requirements are slightly relaxed. Please contact us if this is of any interest to you!
 </div>
 
-You should also send us the ID you use in your local system to link to this sender, in this example `Sender:GH:9547`. By doing so you'll be able to handle senders much easier in our system.
+You should also send us the ID you use in your local system to link to this sender, in this example `Sender:IC:9547`. By doing so you'll be able to handle senders much easier in our system.
 
 <div class="alert alert-warning" markdown="1">
 **Warning!** Being able to re-use senders is one of our main requirements for successful onboarding. By linking the senders from your system to our system you can make sure you won't have issues fulfilling this dependency.
@@ -121,13 +121,13 @@ JSON_START
     "first_name": "Jane",
     "last_name": "Doe",
 
-    "phone_country": "GH",
-    "phone_number": "+233301234567", // E.164 international format
+    "phone_country": "IC",
+    "phone_number": "+2250506369100", // E.164 international format
 
-    "country": "GH",
-    "city": "Accra",
+    "country": "IC",
+    "city": "Yamoussoukro",
     "street": "1 La Rd",
-    "postal_code": "GA100",
+    "postal_code": "IC001",
     "address_description": "",
 
     "birth_date": "1974-12-24",
@@ -135,10 +135,10 @@ JSON_START
     // you can usually use your company's contact email address here
     "email": "info@transferzero.com",
 
-    "external_id": "Sender:GH:9547",
+    "external_id": "Sender:IC:9547",
 
     // these fields are mandatory, but you can usually leave them with the following default values:
-    "documents": [ ],
+    "documents": [],
     "ip": "127.0.0.1",
     "metadata": {}
 }
@@ -149,13 +149,13 @@ CREATE_START sender Sender
 SET LIT first_name "Jane"
 SET LIT last_name "Doe"
 
-SET LIT phone_country "GH"
-SET LIT phone_number "+233301234567" // E.164 international format
+SET LIT phone_country "IC"
+SET LIT phone_number "+2250506369100" // E.164 international format
 
-SET LIT country "GH"
-SET LIT city "Accra"
+SET LIT country "IC"
+SET LIT city "Yamoussoukro"
 SET LIT street "1 La Rd"
-SET LIT postal_code "GA100"
+SET LIT postal_code "IC001"
 SET LIT address_description ""
 
 SET DATE birth_date "1974-12-24"
@@ -163,7 +163,7 @@ SET DATE birth_date "1974-12-24"
 COMMENT you can usually use your company's contact email address here
 SET LIT email "info@transferzero.com"
 
-SET LIT external_id "Sender:GH:9547"
+SET LIT external_id "Sender:IC:9547"
 
 COMMENT you'll need to set these fields but usually you can leave them the default
 SET LIT ip "127.0.0.1"
@@ -180,13 +180,13 @@ CODE_EXAMPLE_END
     "first_name": "Jane",
     "last_name": "Doe",
 
-    "phone_country": "GH",
-    "phone_number": "+233301234567", // E.164 international format
+    "phone_country": "IC",
+    "phone_number": "+2250506369100", // E.164 international format
 
-    "country": "GH",
-    "city": "Accra",
+    "country": "IC",
+    "city": "Yamoussoukro",
     "street": "1 La Rd",
-    "postal_code": "GA100",
+    "postal_code": "IC001",
     "address_description": "",
 
     "birth_date": "1974-12-24",
@@ -194,10 +194,10 @@ CODE_EXAMPLE_END
     // you can usually use your company's contact email address here
     "email": "info@transferzero.com",
 
-    "external_id": "Sender:GH:9547",
+    "external_id": "Sender:IC:9547",
 
     // these fields are mandatory, but you can usually leave them with the following default values:
-    "documents": [ ],
+    "documents": [],
     "ip": "127.0.0.1",
     "metadata": {}
 }
@@ -210,13 +210,13 @@ Sender sender = new Sender(
   firstName: "Jane",
   lastName: "Doe",
 
-  phoneCountry: "GH",
-  phoneNumber: "+233301234567", // E.164 international format
+  phoneCountry: "IC",
+  phoneNumber: "+2250506369100", // E.164 international format
 
-  country: "GH",
-  city: "Accra",
+  country: "IC",
+  city: "Yamoussoukro",
   street: "1 La Rd",
-  postalCode: "GA100",
+  postalCode: "IC001",
   addressDescription: "",
 
   birthDate: DateTime.Parse("1974-12-24"),
@@ -224,7 +224,7 @@ Sender sender = new Sender(
 // you can usually use your company's contact email address here
   email: "info@transferzero.com",
 
-  externalId: "Sender:GH:9547",
+  externalId: "Sender:IC:9547",
 
 // you'll need to set these fields but usually you can leave them the default
   ip: "127.0.0.1",
@@ -238,13 +238,13 @@ Dim sender as Sender = New Sender(
   firstName:="Jane",
   lastName:="Doe",
 
-  phoneCountry:="GH",
-  phoneNumber:="+233301234567", ' E.164 international format
+  phoneCountry:="IC",
+  phoneNumber:="+2250506369100", ' E.164 international format
 
-  country:="GH",
-  city:="Accra",
+  country:="IC",
+  city:="Yamoussoukro",
   street:="1 La Rd",
-  postalCode:="GA100",
+  postalCode:="IC001",
   addressDescription:="",
 
   birthDate:=DateTime.Parse("1974-12-24"),
@@ -252,7 +252,7 @@ Dim sender as Sender = New Sender(
 ' you can usually use your company's contact email address here
   email:="info@transferzero.com",
 
-  externalId:="Sender:GH:9547",
+  externalId:="Sender:IC:9547",
 
 ' you'll need to set these fields but usually you can leave them the default
   ip:="127.0.0.1",
@@ -266,13 +266,13 @@ Sender sender = new Sender();
 sender.setFirstName("Jane");
 sender.setLastName("Doe");
 
-sender.setPhoneCountry("GH");
-sender.setPhoneNumber("+233301234567"); // E.164 international format
+sender.setPhoneCountry("IC");
+sender.setPhoneNumber("+2250506369100"); // E.164 international format
 
-sender.setCountry("GH");
-sender.setCity("Accra");
+sender.setCountry("IC");
+sender.setCity("Yamoussoukro");
 sender.setStreet("1 La Rd");
-sender.setPostalCode("GA100");
+sender.setPostalCode("IC001");
 sender.setAddressDescription("");
 
 sender.setBirthDate(LocalDate.parse("1974-12-24"));
@@ -280,7 +280,7 @@ sender.setBirthDate(LocalDate.parse("1974-12-24"));
 // you can usually use your company's contact email address here
 sender.setEmail("info@transferzero.com");
 
-sender.setExternalId("Sender:GH:9547");
+sender.setExternalId("Sender:IC:9547");
 
 // you'll need to set these fields but usually you can leave them the default
 sender.setIp("127.0.0.1");
@@ -294,13 +294,13 @@ const sender = new TransferZeroSdk.Sender();
 sender.first_name = "Jane";
 sender.last_name = "Doe";
 
-sender.phone_country = "GH";
-sender.phone_number = "+233301234567"; // E.164 international format
+sender.phone_country = "IC";
+sender.phone_number = "+2250506369100"; // E.164 international format
 
-sender.country = "GH";
-sender.city = "Accra";
+sender.country = "IC";
+sender.city = "Yamoussoukro";
 sender.street = "1 La Rd";
-sender.postal_code = "GA100";
+sender.postal_code = "IC001";
 sender.address_description = "";
 
 sender.birth_date = "1974-12-24";
@@ -308,7 +308,7 @@ sender.birth_date = "1974-12-24";
 // you can usually use your company's contact email address here
 sender.email = "info@transferzero.com";
 
-sender.external_id = "Sender:GH:9547";
+sender.external_id = "Sender:IC:9547";
 
 // you'll need to set these fields but usually you can leave them the default
 sender.ip = "127.0.0.1";
@@ -322,13 +322,13 @@ $sender = new Sender();
 $sender->setFirstName("Jane");
 $sender->setLastName("Doe");
 
-$sender->setPhoneCountry("GH");
-$sender->setPhoneNumber("+233301234567"); // E.164 international format
+$sender->setPhoneCountry("IC");
+$sender->setPhoneNumber("+2250506369100"); // E.164 international format
 
-$sender->setCountry("GH");
-$sender->setCity("Accra");
+$sender->setCountry("IC");
+$sender->setCity("Yamoussoukro");
 $sender->setStreet("1 La Rd");
-$sender->setPostalCode("GA100");
+$sender->setPostalCode("IC001");
 $sender->setAddressDescription("");
 
 $sender->setBirthDate("1974-12-24");
@@ -336,7 +336,7 @@ $sender->setBirthDate("1974-12-24");
 // you can usually use your company's contact email address here
 $sender->setEmail("info@transferzero.com");
 
-$sender->setExternalId("Sender:GH:9547");
+$sender->setExternalId("Sender:IC:9547");
 
 // you'll need to set these fields but usually you can leave them the default
 $sender->setIp("127.0.0.1");
@@ -350,13 +350,13 @@ sender = TransferZero::Sender.new
 sender.first_name = "Jane"
 sender.last_name = "Doe"
 
-sender.phone_country = "GH"
-sender.phone_number = "+233301234567" # E.164 international format
+sender.phone_country = "IC"
+sender.phone_number = "+2250506369100" # E.164 international format
 
-sender.country = "GH"
-sender.city = "Accra"
+sender.country = "IC"
+sender.city = "Yamoussoukro"
 sender.street = "1 La Rd"
-sender.postal_code = "GA100"
+sender.postal_code = "IC001"
 sender.address_description = ""
 
 sender.birth_date = "1974-12-24"
@@ -364,7 +364,7 @@ sender.birth_date = "1974-12-24"
 # you can usually use your company's contact email address here
 sender.email = "info@transferzero.com"
 
-sender.external_id = "Sender:GH:9547"
+sender.external_id = "Sender:IC:9547"
 
 # you'll need to set these fields but usually you can leave them the default
 sender.ip = "127.0.0.1"
@@ -384,11 +384,11 @@ CODE_EXAMPLE_START recipient-creation
 JSON_START
 {
     "requested_amount": "50",
-    "requested_currency": "GHS",
+    "requested_currency": "XOF",
     "payout_method": {
         "type": "USD::Balance",
         "details": {
-            "reference": "Collection:GHS:91475"
+            "reference": "Collection:XOF:91475"
         }
     }
 }
@@ -396,7 +396,7 @@ JSON_END
 
 CODE_START
 CREATE_START details PayoutMethodDetails
-SET LIT reference "Collection:GHS:91476"
+SET LIT reference "Collection:XOF:91476"
 CREATE_END
 
 CREATE_START payout PayoutMethod
@@ -406,7 +406,7 @@ CREATE_END
 
 CREATE_START recipient Recipient
 SET BIGNUM requested_amount 50
-SET LIT requested_currency "GHS"
+SET LIT requested_currency "XOF"
 SET VAR payout_method payout
 CREATE_END
 CODE_END
@@ -418,11 +418,11 @@ CODE_EXAMPLE_END
 ```javascript
 {
     "requested_amount": "50",
-    "requested_currency": "GHS",
+    "requested_currency": "XOF",
     "payout_method": {
         "type": "USD::Balance",
         "details": {
-            "reference": "Collection:GHS:91475"
+            "reference": "Collection:XOF:91475"
         }
     }
 }
@@ -432,7 +432,7 @@ CODE_EXAMPLE_END
 {% capture data-csharp %}
 ```csharp
 PayoutMethodDetails details = new PayoutMethodDetails(
-  reference: "Collection:GHS:91476");
+  reference: "Collection:XOF:91476");
 
 PayoutMethod payout = new PayoutMethod(
   type: "USD::Balance",
@@ -440,7 +440,7 @@ PayoutMethod payout = new PayoutMethod(
 
 Recipient recipient = new Recipient(
   requestedAmount: 50,
-  requestedCurrency: "GHS",
+  requestedCurrency: "XOF",
   payoutMethod: payout);
 ```
 {% endcapture %}
@@ -448,7 +448,7 @@ Recipient recipient = new Recipient(
 {% capture data-vb %}
 ```vb
 Dim details as PayoutMethodDetails = New PayoutMethodDetails(
-  reference:="Collection:GHS:91476")
+  reference:="Collection:XOF:91476")
 
 Dim payout as PayoutMethod = New PayoutMethod(
   type:="USD::Balance",
@@ -456,7 +456,7 @@ Dim payout as PayoutMethod = New PayoutMethod(
 
 Dim recipient as Recipient = New Recipient(
   requestedAmount:=50,
-  requestedCurrency:="GHS",
+  requestedCurrency:="XOF",
   payoutMethod:=payout)
 ```
 {% endcapture %}
@@ -464,7 +464,7 @@ Dim recipient as Recipient = New Recipient(
 {% capture data-java %}
 ```java
 PayoutMethodDetails details = new PayoutMethodDetails();
-details.setReference("Collection:GHS:91476");
+details.setReference("Collection:XOF:91476");
 
 PayoutMethod payout = new PayoutMethod();
 payout.setType("USD::Balance");
@@ -472,7 +472,7 @@ payout.setDetails(details);
 
 Recipient recipient = new Recipient();
 recipient.setRequestedAmount(new BigDecimal("50"));
-recipient.setRequestedCurrency("GHS");
+recipient.setRequestedCurrency("XOF");
 recipient.setPayoutMethod(payout);
 ```
 {% endcapture %}
@@ -480,7 +480,7 @@ recipient.setPayoutMethod(payout);
 {% capture data-js %}
 ```js
 const details = new TransferZeroSdk.PayoutMethodDetails();
-details.reference = "Collection:GHS:91476";
+details.reference = "Collection:XOF:91476";
 
 const payout = new TransferZeroSdk.PayoutMethod();
 payout.type = "USD::Balance";
@@ -488,7 +488,7 @@ payout.details = details;
 
 const recipient = new TransferZeroSdk.Recipient();
 recipient.requested_amount = 50;
-recipient.requested_currency = "GHS";
+recipient.requested_currency = "XOF";
 recipient.payout_method = payout;
 ```
 {% endcapture %}
@@ -496,7 +496,7 @@ recipient.payout_method = payout;
 {% capture data-php %}
 ```php
 $details = new PayoutMethodDetails();
-$details->setReference("Collection:GHS:91476");
+$details->setReference("Collection:XOF:91476");
 
 $payout = new PayoutMethod();
 $payout->setType("USD::Balance");
@@ -504,7 +504,7 @@ $payout->setDetails($details);
 
 $recipient = new Recipient();
 $recipient->setRequestedAmount(50);
-$recipient->setRequestedCurrency("GHS");
+$recipient->setRequestedCurrency("XOF");
 $recipient->setPayoutMethod($payout);
 ```
 {% endcapture %}
@@ -512,7 +512,7 @@ $recipient->setPayoutMethod($payout);
 {% capture data-ruby %}
 ```ruby
 details = TransferZero::PayoutMethodDetails.new
-details.reference = "Collection:GHS:91476"
+details.reference = "Collection:XOF:91476"
 
 payout = TransferZero::PayoutMethod.new
 payout.type = "USD::Balance"
@@ -520,7 +520,7 @@ payout.details = details
 
 recipient = TransferZero::Recipient.new
 recipient.requested_amount = 50
-recipient.requested_currency = "GHS"
+recipient.requested_currency = "XOF"
 recipient.payout_method = payout
 ```
 {% endcapture %}
@@ -530,7 +530,7 @@ recipient.payout_method = payout
 
 # Collection details
 
-Finally we need to tie the sender and recipient together into a transaction. We also need to set up the collection settings as well. Since we're going to use GHS mobile collection, we'll have to provide the sender's phone number.
+Finally we need to tie the sender and recipient together into a transaction. We also need to set up the collection settings as well. Since we're going to use XOF mobile collection, we'll have to provide the sender's phone number.
 
 <div class="alert alert-info" markdown="1">
 **Note!** While the external ID is generally optional for transactions, sending it can help tie transactions between our systems easier. Also you can use it to block duplicate transactions as we won't allow you to send in another transaction with the same external ID in the future.
@@ -547,27 +547,27 @@ JSON_START
         // recipient details from the previous section
     }],
     "payin_methods": [{
-        "type": "GHS::Mobile", 
+        "type": "XOF::Mobile",
         "ux_flow": "ussd_popup",
         "in_details": {
-            "phone_number": "+2339999999", // E.164 international format
-            "mobile_provider": "vodafone" // Mandatory. One of 'airtel', 'tigo', 'mtn', 'vodafone'
+            "phone_number": "+2250506369100", // E.164 international format
+            "mobile_provider": "mtn" // Mandatory
         }
     }],
-    "input_currency": "GHS",
-    "external_id": "Transaction:GHS:91475",
+    "input_currency": "XOF",
+    "external_id": "Transaction:XOF:91475",
     "metadata": {}
 }
 JSON_END
 
 CODE_START
 CREATE_START details PayinMethodDetails
-SET LIT phone_number "+2339999999" // E.164 international format
+SET LIT phone_number "+2250506369100" // E.164 international format
 SET ENUM mobile_provider PayoutMethodMobileProviderEnum vodafone
 CREATE_END
 
 CREATE_START method PayinMethod
-SET LIT type "GHS::Mobile"
+SET LIT type "XOF::Mobile"
 SET ENUM ux_flow PayinMethodUxFlow ussd_popup
 SET VAR in_details details
 CREATE_END
@@ -576,8 +576,8 @@ CREATE_START transaction Transaction
 SET VAR sender sender
 SET VAR_ARRAY recipients Recipient recipient
 SET VAR_ARRAY payin_methods PayinMethod method
-SET LIT input_currency "GHS"
-SET LIT external_id "Transaction:GHS:91475"
+SET LIT input_currency "XOF"
+SET LIT external_id "Transaction:XOF:91475"
 CREATE_END
 CODE_END
 CODE_EXAMPLE_END
@@ -594,15 +594,15 @@ CODE_EXAMPLE_END
         // recipient details from the previous section
     }],
     "payin_methods": [{
-        "type": "GHS::Mobile", 
+        "type": "XOF::Mobile",
         "ux_flow": "ussd_popup",
         "in_details": {
-            "phone_number": "+2339999999", // E.164 international format
-            "mobile_provider": "vodafone" // Mandatory. One of 'airtel', 'tigo', 'mtn', 'vodafone'
+            "phone_number": "+2250506369100", // E.164 international format
+            "mobile_provider": "mtn" // Mandatory
         }
     }],
-    "input_currency": "GHS",
-    "external_id": "Transaction:GHS:91475",
+    "input_currency": "XOF",
+    "external_id": "Transaction:XOF:91475",
     "metadata": {}
 }
 ```
@@ -611,11 +611,11 @@ CODE_EXAMPLE_END
 {% capture data-csharp %}
 ```csharp
 PayinMethodDetails details = new PayinMethodDetails(
-  phoneNumber: "+2339999999", // E.164 international format
+  phoneNumber: "+2250506369100", // E.164 international format
   mobileProvider: PayoutMethodMobileProviderEnum.VODAFONE);
 
 PayinMethod method = new PayinMethod(
-  type: "GHS::Mobile",
+  type: "XOF::Mobile",
   uxFlow: PayinMethodUxFlow.USSD_POPUP,
   inDetails: details);
 
@@ -623,19 +623,19 @@ Transaction transaction = new Transaction(
   sender: sender,
   recipients: new List<Recipient>() { recipient },
   payinMethods: new List<PayinMethod>() { method },
-  inputCurrency: "GHS",
-  externalId: "Transaction:GHS:91475");
+  inputCurrency: "XOF",
+  externalId: "Transaction:XOF:91475");
 ```
 {% endcapture %}
 
 {% capture data-vb %}
 ```vb
 Dim details as PayinMethodDetails = New PayinMethodDetails(
-  phoneNumber:="+2339999999", ' E.164 international format
+  phoneNumber:="+2250506369100", ' E.164 international format
   mobileProvider:=PayoutMethodMobileProviderEnum.VODAFONE)
 
 Dim method as PayinMethod = New PayinMethod(
-  type:="GHS::Mobile",
+  type:="XOF::Mobile",
   uxFlow:=PayinMethodUxFlow.USSD_POPUP,
   inDetails:=details)
 
@@ -643,19 +643,19 @@ Dim transaction as Transaction = New Transaction(
   sender:=sender,
   recipients:=New List(Of Recipient)() From { recipient },
   payinMethods:=New List(Of PayinMethod)() From { method },
-  inputCurrency:="GHS",
-  externalId:="Transaction:GHS:91475")
+  inputCurrency:="XOF",
+  externalId:="Transaction:XOF:91475")
 ```
 {% endcapture %}
 
 {% capture data-java %}
 ```java
 PayinMethodDetails details = new PayinMethodDetails();
-details.setPhoneNumber("+2339999999"); // E.164 international format
+details.setPhoneNumber("+2250506369100"); // E.164 international format
 details.setMobileProvider(PayoutMethodMobileProviderEnum.VODAFONE);
 
 PayinMethod method = new PayinMethod();
-method.setType("GHS::Mobile");
+method.setType("XOF::Mobile");
 method.setUxFlow(PayinMethodUxFlow.USSD_POPUP);
 method.setInDetails(details);
 
@@ -663,19 +663,19 @@ Transaction transaction = new Transaction();
 transaction.setSender(sender);
 transaction.addRecipientsItem(recipient);
 transaction.addPayinMethodsItem(method);
-transaction.setInputCurrency("GHS");
-transaction.setExternalId("Transaction:GHS:91475");
+transaction.setInputCurrency("XOF");
+transaction.setExternalId("Transaction:XOF:91475");
 ```
 {% endcapture %}
 
 {% capture data-js %}
 ```js
 const details = new TransferZeroSdk.PayinMethodDetails();
-details.phone_number = "+2339999999"; // E.164 international format
+details.phone_number = "+2250506369100"; // E.164 international format
 details.mobile_provider = "vodafone";
 
 const method = new TransferZeroSdk.PayinMethod();
-method.type = "GHS::Mobile";
+method.type = "XOF::Mobile";
 method.ux_flow = "ussd_popup";
 method.in_details = details;
 
@@ -683,19 +683,19 @@ const transaction = new TransferZeroSdk.Transaction();
 transaction.sender = sender;
 transaction.recipients = [recipient];
 transaction.payin_methods = [method];
-transaction.input_currency = "GHS";
-transaction.external_id = "Transaction:GHS:91475";
+transaction.input_currency = "XOF";
+transaction.external_id = "Transaction:XOF:91475";
 ```
 {% endcapture %}
 
 {% capture data-php %}
 ```php
 $details = new PayinMethodDetails();
-$details->setPhoneNumber("+2339999999"); // E.164 international format
+$details->setPhoneNumber("+2250506369100"); // E.164 international format
 $details->setMobileProvider("vodafone");
 
 $method = new PayinMethod();
-$method->setType("GHS::Mobile");
+$method->setType("XOF::Mobile");
 $method->setUxFlow("ussd_popup");
 $method->setInDetails($details);
 
@@ -703,19 +703,19 @@ $transaction = new Transaction();
 $transaction->setSender($sender);
 $transaction->setRecipients([recipient]);
 $transaction->setPayinMethods([method]);
-$transaction->setInputCurrency("GHS");
-$transaction->setExternalId("Transaction:GHS:91475");
+$transaction->setInputCurrency("XOF");
+$transaction->setExternalId("Transaction:XOF:91475");
 ```
 {% endcapture %}
 
 {% capture data-ruby %}
 ```ruby
 details = TransferZero::PayinMethodDetails.new
-details.phone_number = "+2339999999" # E.164 international format
+details.phone_number = "+2250506369100" # E.164 international format
 details.mobile_provider = "vodafone"
 
 method = TransferZero::PayinMethod.new
-method.type = "GHS::Mobile"
+method.type = "XOF::Mobile"
 method.ux_flow = "ussd_popup"
 method.in_details = details
 
@@ -723,8 +723,8 @@ transaction = TransferZero::Transaction.new
 transaction.sender = sender
 transaction.recipients = [recipient]
 transaction.payin_methods = [method]
-transaction.input_currency = "GHS"
-transaction.external_id = "Transaction:GHS:91475"
+transaction.input_currency = "XOF"
+transaction.external_id = "Transaction:XOF:91475"
 ```
 {% endcapture %}
 
@@ -936,7 +936,7 @@ if (configuration.ValidWebhookRequest(url, webhookContent, headers))
         string externalId = payinMethodWebhook.Object.ExternalId;
         if (webhook.Event == "payin_method.error"){
             // handle collection attempt has failed.
-        }           
+        }
     } else if (webhook.Event.StartsWith("transaction")) {
         TransactionWebhook transactionWebhook = configuration.ParseString<TransactionWebhook>(webhookContent);
         Guid transactionId = transactionWebhook.Object.Id;
@@ -980,7 +980,7 @@ If configuration.ValidWebhookRequest(url, webhookContent, headers) Then
         Dim externalId As String = payinMethodWebhook.Object.ExternalId
         If webhook.[Event].Equals("payin_method.error") Then
           ' handle collection attempt has failed.
-        End If        
+        End If
     ElseIf webhook.[Event].StartsWith("transaction") Then
         Dim transactionWebhook As TransactionWebhook = configuration.ParseString(Of TransactionWebhook)(webhookContent)
         Dim transactionId As Guid = transactionWebhook.Object.Id
@@ -1022,7 +1022,7 @@ if (apiClient.validateWebhookRequest(webhookUrl, webhookBody, webhookHeaders)) {
     if (webhook.getEvent().startsWith("payin_method")) {
         PayinMethodWebhook payinMethodWebhook = apiClient.parseResponseString(webhookBody, PayinMethodWebhook.class);
         String externalId = payinMethodWebhook.getObject().getExternalId();
-        
+
         if (webhook.getEvent().equals("payin_method.error")  {
           // handle collection attempt has failed.
         }
@@ -1201,14 +1201,14 @@ While we prefer that you primarily use the webhook facility to get notified abou
 {::comment}
 CODE_EXAMPLE_START get-transaction-call
 JSON_START
-GET /v1/transactions?external_id=Transaction:GHS:91475
+GET /v1/transactions?external_id=Transaction:XOF:91475
 JSON_END
 
 CODE_START
 CREATE_API api TransactionsApi
 
 GET_ENDPOINT_CALL_START TransactionListResponse response api get_transactions
-PARAM LIT external_id "Transaction:GHS:91475"
+PARAM LIT external_id "Transaction:XOF:91475"
 GET_ENDPOINT_CALL_END
 
 LIST_EXTRACT response Transaction transaction
@@ -1219,7 +1219,7 @@ CODE_EXAMPLE_END
 {::comment}AUTO_GENERATED_CONTENT_START{:/comment}
 {% capture data-raw %}
 ```javascript
-GET /v1/transactions?external_id=Transaction:GHS:91475
+GET /v1/transactions?external_id=Transaction:XOF:91475
 ```
 {% endcapture %}
 
@@ -1227,7 +1227,7 @@ GET /v1/transactions?external_id=Transaction:GHS:91475
 ```csharp
 TransactionsApi api = new TransactionsApi(configuration);
 
-TransactionListResponse response = api.GetTransactions(externalId: "Transaction:GHS:91475");
+TransactionListResponse response = api.GetTransactions(externalId: "Transaction:XOF:91475");
 
 if (response.Object.Count > 0) {
   Transaction transaction = response.Object[0];
@@ -1241,7 +1241,7 @@ if (response.Object.Count > 0) {
 ```vb
 Dim api as TransactionsApi = New TransactionsApi(configuration)
 
-Dim response as TransactionListResponse = api.GetTransactions(externalId:="Transaction:GHS:91475")
+Dim response as TransactionListResponse = api.GetTransactions(externalId:="Transaction:XOF:91475")
 
 If response.Object.Count > 0 Then
     Dim transaction As Transaction = response.Object(0)
@@ -1255,7 +1255,7 @@ End If
 ```java
 TransactionsApi api = new TransactionsApi(apiClient);
 
-TransactionListResponse response = api.getTransactions().externalId("Transaction:GHS:91475").execute();
+TransactionListResponse response = api.getTransactions().externalId("Transaction:XOF:91475").execute();
 
 if (response.getObject().size() > 0) {
   Transaction transaction = response.getObject().get(0);
@@ -1269,7 +1269,7 @@ if (response.getObject().size() > 0) {
 ```js
 const api = new TransferZeroSdk.TransactionsApi(apiClient);
 
-const response = await api.getTransactions({external_id: "Transaction:GHS:91475"});
+const response = await api.getTransactions({external_id: "Transaction:XOF:91475"});
 
 if (response.object.length > 0) {
   const transaction = response.object[0];
@@ -1283,7 +1283,7 @@ if (response.object.length > 0) {
 ```php
 $api = new TransactionsApi();
 
-$response = api->getTransactions([external_id => "Transaction:GHS:91475"]);
+$response = api->getTransactions([external_id => "Transaction:XOF:91475"]);
 
 if (count(response->getObject()) > 0) {
   $transaction = response->getObject()[0];
@@ -1297,7 +1297,7 @@ if (count(response->getObject()) > 0) {
 ```ruby
 api = TransferZero::TransactionsApi.new
 
-response = api.get_transactions({external_id: "Transaction:GHS:91475"})
+response = api.get_transactions({external_id: "Transaction:XOF:91475"})
 
 if !response.object.empty?
   transaction = response.object.first
