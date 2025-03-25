@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs is `1.36.4`
+Current version of the SDKs is `1.36.7`
+
+1.36.7
+------
+* Adds support for `wave` as `mobile_provider` for `XOF::Mobile` payouts in Ivory Coast and Senegal.
 
 1.36.4
 ------
