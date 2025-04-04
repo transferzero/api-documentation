@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs is `1.36.4`
+Current version of the SDKs is `1.36.8`
+
+1.36.8
+------
+* Adds account validation support for `XAF::Mobile` in Cameroon via `orange` and `mtn`.
 
 1.36.4
 ------
