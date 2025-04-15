@@ -122,7 +122,7 @@ JSON_START
     "last_name": "Doe",
 
     "phone_country": "US",
-    "phone_number": "5555551234",
+    "phone_number": "+15555551234", // E.164 international format
 
     "country": "US",
     "city": "New York",
@@ -150,7 +150,7 @@ SET LIT first_name "Jane"
 SET LIT last_name "Doe"
 
 SET LIT phone_country "US"
-SET LIT phone_number "5555551234"
+SET LIT phone_number "+15555551234" // E.164 international format
 
 SET LIT country "US"
 SET LIT city "New York"
@@ -181,7 +181,7 @@ CODE_EXAMPLE_END
     "last_name": "Doe",
 
     "phone_country": "US",
-    "phone_number": "5555551234",
+    "phone_number": "+15555551234", // E.164 international format
 
     "country": "US",
     "city": "New York",
@@ -211,7 +211,7 @@ Sender sender = new Sender(
   lastName: "Doe",
 
   phoneCountry: "US",
-  phoneNumber: "5555551234",
+  phoneNumber: "+15555551234", // E.164 international format
 
   country: "US",
   city: "New York",
@@ -239,7 +239,7 @@ Dim sender as Sender = New Sender(
   lastName:="Doe",
 
   phoneCountry:="US",
-  phoneNumber:="5555551234",
+  phoneNumber:="+15555551234", ' E.164 international format
 
   country:="US",
   city:="New York",
@@ -267,7 +267,7 @@ sender.setFirstName("Jane");
 sender.setLastName("Doe");
 
 sender.setPhoneCountry("US");
-sender.setPhoneNumber("5555551234");
+sender.setPhoneNumber("+15555551234"); // E.164 international format
 
 sender.setCountry("US");
 sender.setCity("New York");
@@ -295,7 +295,7 @@ sender.first_name = "Jane";
 sender.last_name = "Doe";
 
 sender.phone_country = "US";
-sender.phone_number = "5555551234";
+sender.phone_number = "+15555551234"; // E.164 international format
 
 sender.country = "US";
 sender.city = "New York";
@@ -323,7 +323,7 @@ $sender->setFirstName("Jane");
 $sender->setLastName("Doe");
 
 $sender->setPhoneCountry("US");
-$sender->setPhoneNumber("5555551234");
+$sender->setPhoneNumber("+15555551234"); // E.164 international format
 
 $sender->setCountry("US");
 $sender->setCity("New York");
@@ -351,7 +351,7 @@ sender.first_name = "Jane"
 sender.last_name = "Doe"
 
 sender.phone_country = "US"
-sender.phone_number = "5555551234"
+sender.phone_number = "+15555551234" # E.164 international format
 
 sender.country = "US"
 sender.city = "New York"

@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "e0ca4173-028f-47e4-9dd0-e05d8d1a140d",
+		"name": "Aza-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3106903"
+	},
+	"item": [
+		{
+			"name": "Basic Endpoints",
+			"item": [
+				{
+					"name": "get currencies",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization-Nonce",
+								"value": "{{nonce}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization-Signature",
+								"value": "{{hmac}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.transferzero.com/v1/info/currencies",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"transferzero",
+								"com"
+							],
+							"path": [
+								"v1",
+								"info",
+								"currencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post transaction",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization-Key",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization-Nonce",
+								"value": "{{nonce}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization-Signature",
+								"value": "{{hmac}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"transaction\":{\n      \"external_id\": \"UPDATE ME!\",\n      \"input_currency\": \"USD\",\n      \"sender\":{\n      \"first_name\": \"Jane\",\n      \"last_name\": \"Doe\",\n      \"phone_number\": \"+15555551234\",\n      \"country\": \"US\",\n      \"city\": \"New York\",\n      \"street\": \"20 W 34th St\",\n      \"postal_code\": \"10001\",\n      \"address_description\": \"\",\n      \"birth_date\": \"1974-12-24\",\n      \"email\": \"info@transferzero.com\",\n      \"external_id\": \"Sender:US:234523\",\n      \"documents\": [ ],\n      \"ip\": \"127.0.0.1\",\n      \"metadata\": {}\n      },\n      \"recipients\":[\n         {\n            \"requested_amount\": 1000,\n            \"requested_currency\": \"GHS\",\n            \"type\": \"person\",\n            \"payout_method\":{\n               \"type\": \"GHS::Mobile\",\n                \"details\": {\n                \"first_name\": \"First\",\n                \"last_name\": \"Last\",\n                \"phone_number\": \"+233302123456\",\n                \"mobile_provider\": \"tigo\"\n                }\n            }\n         }\n      ],\n      \"metadata\": {}\n   }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-sandbox.transferzero.com/v1/transactions/create_and_fund",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"transferzero",
+								"com"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"create_and_fund"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var uuid = require('uuid');",
+					"",
+					"pm.globals.set('nonce', uuid.v4());",
+					"console.log('Nonce: ' + pm.globals.get('nonce'));",
+					"",
+					"const secret = pm.environment.get('api_secret');",
+					"console.log('Secret: ' + secret);",
+					"",
+					"var query = '';",
+					"if (pm.request.querystring && Object.keys(pm.request.querystring).length !== 0) {",
+					"    query = '?' + pm.request.querystring.stringify(pm.request.querystring);",
+					"}",
+					"",
+					"const bodyJson = pm.request.body != '' ? pm.request.body.raw : '';",
+					"const hash = CryptoJS.SHA512(bodyJson);",
+					"console.log('BodyHash: ' + hash);",
+					"",
+					"const toSign = [",
+					"    pm.globals.get('nonce'),",
+					"    pm.request.method,",
+					"    pm.request.url + query,",
+					"    hash.toString(CryptoJS.enc.Hex)",
+					"].join('&');",
+					"console.log('ToSign: ' + toSign);",
+					"",
+					"const signature = CryptoJS.HmacSHA512(toSign, secret);",
+					"console.log('Signature: ' + signature);",
+					"postman.setEnvironmentVariable(\"hmac\", signature);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -2,356 +2,248 @@
 
 ## BRL::Bank
 
-For Brazilian bank account payments please use:
+<div class="alert alert-info" markdown="1">
+**Note** Please be aware that for `BRL::Bank` the field `postal_code` on the `Recipient` is mandatory for transaction/recipient above the following limits - $10,000/Month and $50,000/Year.
+</div>
+
+### PIX Payments
+For Brazilian bank account payments via PIX please use:
 
 {% capture data-raw %}
 ```javascript
 "details" : {
   {{ recipient_name }},
-  "bank_code": "104",
-  "branch_code": "00001",
-  "bank_account": "0009795493",
-  "bank_account_type": "10", // 10 for savings, 20 for current
-  "identity_card_type": "ID",
-  "identity_card_id": "01234567890",
+  "city": "Brasilia",
+  "postal_code": "70070",
+  "pix_key_type": "email",
+  "pix_key_value": "person@example.com",
+  "identity_card_id": "01234567890", // CPF or CNPJ
   "transfer_reason": "personal_account"
 }
 ```
 {% endcapture %}
 
-{% include language-tabbar.html prefix="brl-bank-details" raw=data-raw %}
+{% include language-tabbar.html prefix="brl-bank-pix" raw=data-raw %}
+
+The supported values for `pix_key_type` are:
+```
+cnpj
+cpf
+email
+evp
+phone
+```
+
+### TED Payments
+For Brazilian bank account payments using bank code and account number please use:
+
+{% capture data-raw %}
+```javascript
+"details" : {
+  {{ recipient_name }},
+  "city": "Brasilia",
+  "postal_code": "70070",
+  "bank_code": "104",
+  "branch_code": "00001",
+  "bank_account": "0009795493",
+  "bank_account_type": "10", // 10 for savings, 20 for current, 30 for payment, 40 for salary
+  "identity_card_id": "01234567890", // CPF or CNPJ
+  "transfer_reason": "personal_account"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="brl-bank-ted" raw=data-raw %}
 
 The current banks supported and their `bank_code` values are:
 
 {% capture data-raw %}
 ```
-ACCREDITO - SOCIEDADE DE CRÉDITO DIRETO S.A: 406
-ADVANCED CORRETORA DE CÂMBIO LTDA: 117
-AGK CORRETORA DE CAMBIO S.A: 272
-AL5 S.A. CRÉDITO, FINANCIAMENTO E INVESTIMENTO: 349
-AMAZÔNIA CORRETORA DE CÂMBIO LTDA: 313
-ASAAS GESTÃO FINANCEIRA INSTITUIÇÃO DE PAGAMENTO S.A: 461
-ATIVA INVESTIMENTOS S.A. CORRETORA DE TÍTULOS, CÂMBIO E VALORES: 188
-AVENUE SECURITIES DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 508
-AZUMI DISTRIBUIDORA DE TíTULOS E VALORES MOBILIáRIOS LTDA: 463
-Acesso Soluções de Pagamento S.A: 332
-B&T CORRETORA DE CAMBIO LTDA: 080
-BANCO BARI DE INVESTIMENTOS E FINANCIAMENTOS S.A: 330
-BANCO BRASILEIRO DE CRÉDITO SOCIEDADE ANÔNIMA: 378
-BANCO BV S.A: 413
-BANCO C6 CONSIGNADO S.A: 626
-BANCO CEDULA S.A: 266
-BANCO CLASSICO S.A: 241
-BANCO COOPERATIVO SICOOB S.A. - BANCO SICOOB: 756
-BANCO COOPERATIVO SICREDI S.A: 748
-BANCO CRÉDIT AGRICOLE BRASIL S.A: 222
-BANCO DA AMAZONIA S.A: 003
-BANCO DE BRASILIA S.A: 070
-BANCO DIGIMAIS S.A: 654
-BANCO GENIAL S.A: 125
-BANCO GM S.A: 390
-BANCO HSBC S.A: 269
-BANCO J.P. MORGAN S.A: 376
-BANCO KEB HANA DO BRASIL S.A: 757
-BANCO LETSBANK S.A: 630
-BANCO MASTER S/A: 243
-BANCO MERCEDES-BENZ DO BRASIL S.A: 381
-BANCO MORGAN STANLEY S.A: 066
-BANCO NACIONAL DE DESENVOLVIMENTO ECONOMICO E SOCIAL: 007
-BANCO RANDON S.A: 088
-BANCO RIBEIRAO PRETO S.A: 741
-BANCO RNX S.A: 720
-BANCO RODOBENS S.A: 120
-BANCO SANTANDER (BRASIL) S.A: 033
-BANCO SENFF S.A: 276
-BANCO SOCIETE GENERALE BRASIL S.A: 366
-BANCO SOFISA S.A: 637
-BANCO SOROCRED S.A. - BANCO MÚLTIPLO: 299
-BANCO TOPÁZIO S.A: 082
-BANCO TRIANGULO S.A: 634
-BANCO VOITER S.A: 653
-BANESTES S.A. BANCO DO ESTADO DO ESPIRITO SANTO: 021
-BARI COMPANHIA HIPOTECÁRIA: 268
-BCV - BANCO DE CRÉDITO E VAREJO S.A: 250
-BEXS BANCO DE CÂMBIO S/A: 144
-BGC LIQUIDEZ DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 134
-BMP SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E A EMPRESA DE PEQUENO PORTE LTDA: 274
-BMS SOCIEDADE DE CRÉDITO DIRETO S.A: 377
-BNY Mellon Banco S.A: 017
-BONUSPAGO SOCIEDADE DE CRÉDITO DIRETO S.A: 408
-BR Partners Banco de Investimento S.A: 126
-BR-CAPITAL DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A: 433
-BRK S.A. Crédito, Financiamento e Investimento: 092
-BRL Trust Distribuidora de Títulos e Valores Mobiliários S.A: 173
-BS2 Distribuidora de Títulos e Valores Mobiliários S.A: 292
-Banco ABC Brasil S.A: 246
-Banco ABN Amro S.A: 075
-Banco Agibank S.A: 121
-Banco Alfa S.A: 025
-Banco AndBank (Brasil) S.A: 065
-Banco Arbi S.A: 213
-Banco B3 S.A: 096
-Banco BMG S.A: 318
-Banco BNP Paribas Brasil S.A: 752
-Banco BS2 S.A: 218
-Banco BTG Pactual S.A: 208
-Banco Bandepe S.A: 024
-Banco Bocom BBM S.A: 107
-Banco Bradescard S.A: 063
-Banco Bradesco BBI S.A: 036
-Banco Bradesco BERJ S.A: 122
-Banco Bradesco Financiamentos S.A: 394
-Banco Bradesco S.A: 237
-Banco C6 S.A: 336
-Banco CSF S.A: 368
-Banco Caixa Geral - Brasil S.A: 473
-Banco Cargill S.A: 040
-Banco Cetelem S.A: 739
-Banco Cifra S.A: 233
-Banco Citibank S.A: 745
-Banco Credit Suisse (Brasil) S.A: 505
-Banco Crefisa S.A: 069
-Banco Daycoval S.A: 707
-Banco Digio S.A: 335
-Banco Fator S.A: 265
-Banco Fibra S.A: 224
-Banco Finaxis S.A: 094
-Banco Guanabara S.A: 612
-Banco Inbursa S.A: 012
-Banco Industrial do Brasil S.A: 604
-Banco Inter S.A: 077
-Banco Investcred Unibanco S.A: 249
-Banco ItauBank S.A: 479
-Banco Itaú BBA S.A: 184
-Banco Itaú Consignado S.A: 029
-Banco J. Safra S.A: 074
-Banco John Deere S.A: 217
-Banco KDB do Brasil S.A: 076
-Banco Luso Brasileiro S.A: 600
-Banco MUFG Brasil S.A: 456
-Banco Mercantil do Brasil S.A: 389
-Banco Mizuho do Brasil S.A: 370
-Banco Modal S.A: 746
-Banco Original S.A. 212
-Banco Ourinvest S.A: 712
-Banco Pan S.A: 623
-Banco Paulista S.A: 611
-Banco Pine S.A: 643
-Banco Rabobank International Brasil S.A: 747
-Banco Rendimento S.A: 633
-Banco Safra S.A: 422
-Banco Semear S.A: 743
-Banco Sistema S.A: 754
-Banco Sumitomo Mitsui Brasileiro S.A: 464
-Banco Toyota do Brasil S.A: 387
-Banco Tricury S.A: 018
-Banco VR S.A: 610
-Banco Volkswagen S.A: 393
-Banco Votorantim S.A: 655
-Banco Western Union do Brasil S.A: 119
-Banco Woori Bank do Brasil S.A: 124
-Banco XP S.A: 348
-Banco Yamaha Motor do Brasil S.A: 475
-Banco da China Brasil S.A: 083
-Banco de La Provincia de Buenos Aires: 495
-Banco de la Nacion Argentina: 300
-Banco do Brasil S.A: 001
-Banco do Estado de Sergipe S.A: 047
-Banco do Estado do Pará S.A: 037
-Banco do Estado do Rio Grande do Sul S.A: 041
-Banco do Nordeste do Brasil S.A: 004
-BancoSeguro S.A: 081
-Bank of America Merrill Lynch Banco Múltiplo S.A: 755
-Bexs Corretora de Câmbio S/A: 253
-Biorc Financeira - Crédito, Financiamento e Investimento S.A: 426
-Broker Brasil Corretora de Câmbio Ltda: 142
-CAIXA ECONOMICA FEDERAL: 104
-CAMBIONET CORRETORA DE CÂMBIO LTDA: 309
-CAPITAL CONSIG SOCIEDADE DE CRÉDITO DIRETO S.A: 465
-CAPTALYS DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 512
-CAROL DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS LTDA: 288
-CARTOS SOCIEDADE DE CRÉDITO DIRETO S.A: 324
-CARUANA S.A. - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO: 130
-CDC SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E À EMPRESADE PEQUENO PORTE LTDA: 470
-CIELO S.A. - INSTITUIÇÃO DE PAGAMENTO: 362
-CM CAPITAL MARKETS CORRETORA DE CÂMBIO, TÍTULOS E VALORES MOBILIÁRIOS LTDA: 180
-COBUCCIO SOCIEDADE DE CRÉDITO DIRETO S.A: 402
-COLUNA S/A DISTRIBUIDORA DE TITULOS E VALORES MOBILIÁRIOS: 423
-CONFEDERAÇÃO NACIONAL DAS COOPERATIVAS CENTRAIS DE CRÉDITO E ECONOMIA FAMILIAR E: 133
-CONFEDERAÇÃO NACIONAL DAS COOPERATIVAS CENTRAIS UNICRED LTDA. - UNICRED DO BRASI: 136
-COOPERATIVA DE CREDITO DOS SERVIDORES DA UNIVERSIDADE FEDERAL DO ESPIRITO SANTO: 427
-COOPERATIVA DE CREDITO RURAL DE IBIAM - SULCREDI/IBIAM: 391
-COOPERATIVA DE CREDITO RURAL SEARA - CREDISEARA: 430
-COOPERATIVA DE CRÉDITO MÚTUO DE SERVIDORES PÚBLICOS DO ESTADO DE SÃO PAULO - CRE: 459
-COOPERATIVA DE CRÉDITO MÚTUO DOS DESPACHANTES DE TRÂNSITO DE SANTA CATARINA E RIL: 016
-COOPERATIVA DE CRÉDITO RURAL DE OURO SULCREDI/OURO: 286
-COOPERATIVA DE CRÉDITO RURAL DE PEQUENOS AGRICULTORES E DA REFORMA AGRÁRIA DO CE: 350
-COOPERATIVA DE CRÉDITO, POUPANÇA E SERVIÇOS FINANCEIROS DO CENTRO OESTE - CREDIT: 400
-COOPERATIVA DE ECONOMIA E CREDITO MUTUO DOS SERVIDORES PUBLICOS DE PINHÃO - CRES: 471
-COOPERATIVA DE ECONOMIA E CREDITO MUTUO DOS TRABALHADORES PORTUARIOS DA GRANDE V: 385
-COOPERATIVA DE ECONOMIA E CRÉDITO MÚTUO DOS FABRICANTES DE CALÇADOS DE SAPIRANGA: 328
-COOPERFORTE - COOPERATIVA DE ECONOMIA E CRÉDITO MÚTUO DE FUNCIONÁRIOS DE INSTITU: 379
-CORA SOCIEDADE DE CRÉDITO DIRETO S.A: 403
-CREDIBRF - COOPERATIVA DE CRÉDITO: 440
-CREDICOAMO CREDITO RURAL COOPERATIVA: 010
-CREDIFIT SOCIEDADE DE CRÉDITO DIRETO S.A: 452
-CREDIHOME SOCIEDADE DE CRÉDITO DIRETO S.A: 443
-CREDISAN COOPERATIVA DE CRÉDITO: 089
-CREDIT SUISSE HEDGING-GRIFFO CORRETORA DE VALORES S.A: 011
-CREDSYSTEM SOCIEDADE DE CRÉDITO DIRETO S.A: 428
-CREFAZ SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E A EMPRESA DE PEQUENO PORTE LT: 321
-Casa do Crédito S.A. Sociedade de Crédito ao Microempreendedor: 159
-Central Cooperativa de Crédito no Estado do Espírito Santo - CECOOP: 114
-China Construction Bank (Brasil) Banco Múltiplo S/A: 320
-Citibank N.A: 477
-Codepe Corretora de Valores e Câmbio S.A: 127
-Commerzbank Brasil S.A. - Banco Múltiplo: 163
-Confidence Corretora de Câmbio S.A: 060
-Cooperativa Central de Crédito - Ailos: 085
-Cooperativa de Crédito Rural Coopavel: 281
-Cooperativa de Crédito Rural de Abelardo Luz - Sulcredi/Crediluz: 322
-Cooperativa de Crédito Rural de São Miguel do Oeste - Sulcredi/São Miguel: 273
-Credialiança Cooperativa de Crédito Rural: 098
-Crediare S.A. - Crédito, financiamento e investimento: 429
-Credisis - Central de Cooperativas de Crédito Ltda: 097
-Creditas Sociedade de Crédito Direto S.A: 342
-DELCRED SOCIEDADE DE CRÉDITO DIRETO S.A: 435
-DEUTSCHE BANK S.A. - BANCO ALEMAO: 487
-DMCARD SOCIEDADE DE CRÉDITO DIRETO S.A: 449
-DOCK INSTITUIÇÃO DE PAGAMENTO S.A: 301
-DOURADA CORRETORA DE CÂMBIO LTDA: 311
-EBANX INSTITUICAO DE PAGAMENTOS LTDA: 383
-EFX CORRETORA DE CÂMBIO LTDA: 289
-F.D'GOLD - DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 395
-FAIR CORRETORA DE CAMBIO S.A: 196
-FFA SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E À EMPRESA DE PEQUENO PORTE LTDA: 343
-FIDÚCIA SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E À EMPRESA DE PEQUENO PORTE L: 382
-FITBANK PAGAMENTOS ELETRONICOS S.A: 450
-Facta Financeira S.A. - Crédito Financiamento e Investimento: 149
-Fram Capital Distribuidora de Títulos e Valores Mobiliários S.A: 331
-Frente Corretora de Câmbio Ltda: 285
-GAZINCRED S.A. SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO: 478
-GERENCIANET S.A: 364
-GLOBAL FINANÇAS SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E À EMPRESA DE PEQUENO: 384
-GOLDMAN SACHS DO BRASIL BANCO MULTIPLO S.A: 064
-GUITTA CORRETORA DE CAMBIO LTDA: 146
-Genial Investimentos Corretora de Valores Mobiliários S.A: 278
-Get Money Corretora de Câmbio S.A: 138
-Guide Investimentos S.A. Corretora de Valores: 177
-HEDGE INVESTMENTS DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 458
-HEMERA DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 448
-HS FINANCEIRA S/A CREDITO, FINANCIAMENTO E INVESTIMENTOS: 189
-HSCM - SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E À EMPRESA DE PEQUENO PORTE LT: 312
-HUB INSTITUIÇÃO DE PAGAMENTO S.A: 396
-Haitong Banco de Investimento do Brasil S.A: 078
-Hipercard Banco Múltiplo S.A: 062
-IB Corretora de Câmbio, Títulos e Valores Mobiliários S.A: 271
-ICAP do Brasil Corretora de Títulos e Valores Mobiliários Ltda: 157
-ICBC do Brasil Banco Múltiplo S.A: 132
-ID CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A: 439
-IDEAL CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A: 398
-ITAÚ UNIBANCO S.A: 341
-IUGU INSTITUIÇÃO DE PAGAMENTO S.A: 401
-Intesa Sanpaolo Brasil S.A. - Banco Múltiplo: 139
-Itaú Unibanco Holding S.A: 652
-J17 - SOCIEDADE DE CRÉDITO DIRETO S/A: 451
-JPMorgan Chase Bank, National Association: 488
-Kirton Bank S.A. - Banco Múltiplo: 399
-LAMARA SOCIEDADE DE CRÉDITO DIRETO S.A: 416
-LAR COOPERATIVA DE CRÉDITO - LAR CREDI: 421
-LEVYCAM - CORRETORA DE CAMBIO E VALORES LTDA: 145
-LIGA INVEST DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 469
-LISTO SOCIEDADE DE CREDITO DIRETO S.A: 397
-Lastro RDV Distribuidora de Títulos e Valores Mobiliários Ltda: 293
-Lecca Crédito, Financiamento e Investimento S/A: 105
-MAF DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A: 484
-MAGNETIS - DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 442
-MAGNUM SOCIEDADE DE CRÉDITO DIRETO S.A: 511
-MASTER S/A CORRETORA DE CâMBIO, TíTULOS E VALORES MOBILIáRIOS: 467
-MERCADO PAGO INSTITUIÇÃO DE PAGAMENTO LTDA: 323
-MIDWAY S.A. - CRÉDITO, FINANCIAMENTO E INVESTIMENTO: 358
-MIRAE ASSET WEALTH MANAGEMENT (BRAZIL) CORRETORA DE CÂMBIO, TÍTULOS E VALORES MO: 447
-MONEYCORP BANCO DE CÂMBIO S.A: 259
-MS Bank S.A. Banco de Câmbio: 128
-MÉRITO DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 454
-NEON CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A: 113
-NU FINANCEIRA S.A. - Sociedade de Crédito, Financiamento e Investimento: 386
-NU INVEST CORRETORA DE VALORES S.A: 140
-NU PAGAMENTOS S.A. - INSTITUIÇÃO DE PAGAMENTO: 260
-NUMBRS SOCIEDADE DE CRÉDITO DIRETO S.A: 419
-Nova Futura Corretora de Títulos e Valores Mobiliários Ltda: 191
-Novo Banco Continental S.A. - Banco Múltiplo: 753
-OLIVEIRA TRUST DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIARIOS S.A: 111
-OM DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 319
-OZ CORRETORA DE CÂMBIO S.A: 296
-Omni Banco S.A: 613
-PAGSEGURO INTERNET INSTITUIÇÃO DE PAGAMENTO S.A: 290
-PARANÁ BANCO S.A: 254
-PARATI - CREDITO, FINANCIAMENTO E INVESTIMENTO S.A: 326
-PARMETAL DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 194
-PEFISA S.A. - CRÉDITO, FINANCIAMENTO E INVESTIMENTO: 174
-PICPAY BANK - BANCO MÚLTIPLO S.A: 079
-PICPAY INSTITUIçãO DE PAGAMENTO S.A: 380
-PLANNER SOCIEDADE DE CRÉDITO DIRETO S.A: 410
-PLANTAE S.A. - CRÉDITO, FINANCIAMENTO E INVESTIMENTO: 445
-PORTOCRED S.A. - CREDITO, FINANCIAMENTO E INVESTIMENTO: 108
-PORTOPAR DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS LTDA: 306
-PORTOSEG S.A. - CREDITO, FINANCIAMENTO E INVESTIMENTO: 468
-PRIMACREDI COOPERATIVA DE CRÉDITO DE PRIMAVERA DO LESTE: 279
-Planner Corretora de Valores S.A: 100
-PÓLOCRED SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E À EMPRESA DE PEQUENO PORT: 093
-QI Sociedade de Crédito Direto S.A: 329
-RB INVESTIMENTOS DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS LIMITADA: 283
-REALIZE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A: 374
-RENASCENCA DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 101
-RJI CORRETORA DE TITULOS E VALORES MOBILIARIOS LTDA: 506
-SAGITUR CORRETORA DE CÂMBIO S.A: 270
-SENSO CORRETORA DE CAMBIO E VALORES MOBILIARIOS S.A: 545
-SERVICOOP - COOPERATIVA DE CRÉDITO DOS SERVIDORES PÚBLICOS ESTADUAIS E MUNICIPAI: 190
-SIMPAUL CORRETORA DE CAMBIO E VALORES MOBILIARIOS S.A: 365
-SINGULARE CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A: 363
-SOCIAL BANK BANCO MÚLTIPLO S/A: 412
-SOCINAL S.A. - CRÉDITO, FINANCIAMENTO E INVESTIMENTO: 425
-SOCRED S.A. - SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E À EMPRESA DE PEQUENO P: 183
-STARK SOCIEDADE DE CRÉDITO DIRETO S.A: 462
-STATE STREET BRASIL S.A. - BANCO COMERCIAL: 014
-STONE INSTITUIÇÃO DE PAGAMENTO S.A: 197
-SUMUP SOCIEDADE DE CRÉDITO DIRETO S.A: 404
-SUPERDIGITAL INSTITUIÇÃO DE PAGAMENTO S.A: 340
-SUPERLÓGICA SOCIEDADE DE CRÉDITO DIRETO S.A: 481
-Scotiabank Brasil S.A. Banco Múltiplo: 751
-TORO CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A: 352
-TRINUS CAPITAL DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A: 360
-TRINUS SOCIEDADE DE CRÉDITO DIRETO S.A: 444
-TRUSTEE DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 438
-TULLETT PREBON BRASIL CORRETORA DE VALORES E CÂMBIO LTDA: 131
-Terra Investimentos Distribuidora de Títulos e Valores Mobiliários Ltda: 307
-Travelex Banco de Câmbio S.A: 095
-Treviso Corretora de Câmbio S.A: 143
-UBS Brasil Banco de Investimento S.A: 129
-UBS Brasil Corretora de Câmbio, Títulos e Valores Mobiliários S.A: 015
-UNAVANTI SOCIEDADE DE CRÉDITO DIRETO S/A: 460
-UNIPRIME CENTRAL NACIONAL - CENTRAL NACIONAL DE COOPERATIVA DE CREDITO: 099
-UNIPRIME DO BRASIL - COOPERATIVA DE CRÉDITO: 084
-UP.P SOCIEDADE DE EMPRÉSTIMO ENTRE PESSOAS S.A: 373
-UY3 SOCIEDADE DE CRÉDITO DIRETO S/A: 457
-VALOR SOCIEDADE DE CRÉDITO DIRETO S.A: 195
-VITREO DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A: 367
-VORTX DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS LTDA: 310
-Via Certa Financiadora S.A. - Crédito, Financiamento e Investimentos: 411
-Vip's Corretora de Câmbio Ltda: 298
-WARREN CORRETORA DE VALORES MOBILIÁRIOS E CÂMBIO LTDA: 371
-WILL FINANCEIRA S.A. CRÉDITO, FINANCIAMENTO E INVESTIMENTO: 280
-WORK SOCIEDADE DE CRÉDITO DIRETO S.A: 414
-XP INVESTIMENTOS CORRETORA DE CÂMBIO,TÍTULOS E VALORES MOBILIÁRIOS S/A: 102
-ZEMA CRÉDITO, FINANCIAMENTO E INVESTIMENTO S/A: 359
-ZIPDIN SOLUÇÕES DIGITAIS SOCIEDADE DE CRÉDITO DIRETO S/A: 418
-ÍNDIGO INVESTIMENTOS DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA: 407
-ÓTIMO SOCIEDADE DE CRÉDITO DIRETO S.A: 355
-Órama Distribuidora de Títulos e Valores Mobiliários S.A: 325
+Accredito - Sociedade De Crédito Direto: 406
+Acesso Soluções De Pagamento - Instituição De Pagamento: 332
+Asaas Gestão Financeira Instituição De Pagamento: 461
+Banco Abc Brasil: 246
+Banco Afinz - Banco Múltiplo: 299
+Banco Agibank: 121
+Banco Alfa: 025
+Banco Arbi: 213
+Banco Bari De Investimentos E Financiamentos: 330
+Banco Bmg: 318
+Banco Bradesco: 237
+Banco Bs2: 218
+Banco Btg Pactual: 208
+Banco Bv: 413
+Banco C6: 336
+Banco Citibank: 745
+Banco Cooperativo Sicoob - Banco Sicoob: 756
+Banco Cooperativo Sicredi: 748
+Banco Crefisa: 069
+Banco Csf: 368
+Banco Da Amazonia: 003
+Banco Daycoval: 707
+Banco Digimais: 654
+Banco Digio: 335
+Banco Do Brasil: 001
+Banco Do Estado De Sergipe: 047
+Banco Do Estado Do Pará: 037
+Banco Do Estado Do Rio Grande Do Sul: 041
+Banco Do Nordeste Do Brasil: 004
+Banco Fibra: 224
+Banco Genial: 125
+Banco Guanabara: 612
+Banco Hsbc: 269
+Banco Inbursa: 012
+Banco Industrial Do Brasil: 604
+Banco Inter: 077
+Banco J.P. Morgan: 376
+Banco Keb Hana Do Brasil: 757
+Banco Letsbank: 630
+Banco Luso Brasileiro: 600
+Banco Master S/A: 243
+Banco Mercantil Do Brasil: 389
+Banco Modal: 746
+Banco Ourinvest: 712
+Banco Pan: 623
+Banco Randon: 088
+Banco Rendimento: 633
+Banco Ribeirao Preto: 741
+Banco Safra: 422
+Banco Santander (Brasil): 033
+Banco Semear: 743
+Banco Senff: 276
+Banco Sofisa: 637
+Banco Topázio: 082
+Banco Triangulo: 634
+Banco Voiter: 653
+Banco Votorantim: 655
+Banco Vr: 610
+Banco Western Union Do Brasil: 119
+Banco Woori Bank Do Brasil: 124
+Banco Xp: 348
+Banestes Banco Do Estado Do Espirito Santo: 021
+Bank Of America Merrill Lynch Banco Múltiplo: 755
+Bexs Banco De Câmbio S/A: 144
+Bmp Sociedade De Crédito Ao Microempreendedor E A Empresa De Pequeno Porte Ltda.: 274
+Bonuspago Sociedade De Crédito Direto: 408
+Brb - Banco De Brasilia: 070
+Caixa Economica Federal: 104
+Capital Consig Sociedade De Crédito Direto: 465
+Cartos Sociedade De Crédito Direto: 324
+Caruana - Sociedade De Crédito, Financiamento E Investimento: 130
+Casa Do Crédito Sociedade De Crédito Ao Microempreendedor: 159
+Celcoin Instituicao De Pagamento: 509
+Cielo - Instituição De Pagamento: 362
+Cobuccio S/A - Sociedade De Crédito, Financiamento E Investimentos: 402
+Confederação Nacional Das Cooperativas Centrais De Crédito E Economia Familiar E: 133
+Confederação Nacional Das Cooperativas Centrais Unicred Ltda. - Unicred Do Brasi: 136
+Cooperativa Central De Crédito - Ailos: 085
+Cooperativa De Credito Dos Servidores Da Universidade Federal Do Espirito Santo: 427
+Cooperativa De Crédito Mútuo Dos Despachantes De Trânsito De Santa Catarina E Ri: 016
+Cooperativa De Crédito Rural Coopavel: 281
+Cooperativa De Crédito Rural De Abelardo Luz - Sulcredi/Crediluz: 322
+Cooperativa De Crédito Rural De Pequenos Agricultores E Da Reforma Agrária Do Ce: 350
+Cooperativa De Crédito Rural De São Miguel Do Oeste - Sulcredi/São Miguel: 273
+Cooperativa De Credito Rural Seara - Crediseara: 430
+Cora Sociedade De Crédito Direto: 403
+Credialiança Cooperativa De Crédito Rural: 098
+Credicoamo Credito Rural Cooperativa: 010
+Credifit Sociedade De Crédito Direto: 452
+Credisan Cooperativa De Crédito: 089
+Credisis - Central De Cooperativas De Crédito Ltda.: 097
+Credsystem Sociedade De Crédito Direto: 428
+Delcred Sociedade De Crédito Direto: 435
+Dock Instituição De Pagamento: 301
+Ebanx Instituicao De Pagamentos Ltda.: 383
+Efí - Instituição De Pagamento: 364
+Ewally Instituição De Pagamento: 534
+Fidúcia Sociedade De Crédito Ao Microempreendedor E À Empresa De Pequeno Porte L: 382
+Fitbank Instituição De Pagamentos Eletrônicos: 450
+Gazincred Sociedade De Crédito, Financiamento E Investimento: 478
+Global Finanças Sociedade De Crédito Ao Microempreendedor E À Empresa De Pequeno: 384
+Hscm - Sociedade De Crédito Ao Microempreendedor E À Empresa De Pequeno Porte Lt: 312
+Hub Instituição De Pagamento: 396
+Id Corretora De Títulos E Valores Mobiliários: 439
+Índigo Investimentos Distribuidora De Títulos E Valores Mobiliários Ltda.: 407
+Itaú Unibanco: 341
+Iugu Instituição De Pagamento: 401
+Lar Cooperativa De Crédito - Lar Credi: 421
+Listo Sociedade De Credito Direto: 397
+Magnum Sociedade De Crédito Direto: 511
+Mercado Pago Instituição De Pagamento Ltda.: 323
+Microcash Sociedade De Crédito Ao Microempreendedor E À Empresa De Pequeno Porte: 537
+Midway - Crédito, Financiamento E Investimento: 358
+Neon Pagamentos - Instituição De Pagamento: 536
+Nu Pagamentos - Instituição De Pagamento: 260
+Numbrs Sociedade De Crédito Direto: 419
+Omni Banco: 613
+Ótimo Sociedade De Crédito Direto: 355
+Pagseguro Internet Instituição De Pagamento: 290
+Paraná Banco: 254
+Parati - Credito, Financiamento E Investimento: 326
+Pefisa - Crédito, Financiamento E Investimento: 174
+Picpay Bank - Banco Original S.A: 079
+Picpay Instituição De Pagamento: 380
+Pinbank Brasil Instituição De Pagamento: 529
+Portoseg - Credito, Financiamento E Investimento: 468
+Primacredi Cooperativa De Crédito De Primavera Do Leste: 279
+Qi Sociedade De Crédito Direto: 329
+Realize Crédito, Financiamento E Investimento: 374
+Sisprime Do Brasil - Cooperativa De Crédito: 084
+Social Bank Banco Múltiplo S/A: 412
+Socinal - Crédito, Financiamento E Investimento: 425
+Socred - Sociedade De Crédito Ao Microempreendedor E À Empresa De Pequeno P: 183
+Stark Sociedade De Crédito Direto: 462
+Stone Instituição De Pagamento: 197
+Sumup Sociedade De Crédito Direto: 404
+Superdigital Instituição De Pagamento: 340
+Travelex Banco De Câmbio: 095
+Trinus Sociedade De Crédito Direto: 444
+U4c Instituição De Pagamento: 546
+Uniprime Central Nacional - Central Nacional De Cooperativa De Credito: 099
+Uy3 Sociedade De Crédito Direto S/A: 457
+Via Certa Financiadora - Crédito, Financiamento E Investimentos: 411
+Vortx Distribuidora De Titulos E Valores Mobiliarios Ltda.: 310
+Zema Crédito, Financiamento E Investimento S/A: 359
 ```
 {% endcapture %}
 
 {% include language-tabbar.html prefix="brl-bank-options" raw=data-raw %}
 
 {% include corridors/transfer_reasons.md %}
+
+All senders trying to create `BRL::Bank` requests need to have the following details present:
+- `"identification_type": "ID"`
+- `"identification_number": "AB12345678"`
+
+The accepted `identification_type`s are:
+
+{% capture data-raw %}
+```
+DL (Driving License)
+PP (Passport)
+ID (National ID or CPF or CNPJ)
+OT (Other)
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="brl-bank-identification-types" raw=data-raw %}
+
+Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
+
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+      "sender": {
+        "external_id": "<id of sender>",
+        "identification_type": "ID",
+        "identification_number": "AB12345678",
+        (...)
+      },
+      (...)
+    }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="brl-bank-sender-details" raw=data-raw %}

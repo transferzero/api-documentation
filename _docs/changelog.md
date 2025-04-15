@@ -8,7 +8,91 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.22.0`
+Current version of the SDKs is `1.36.8`
+
+1.36.8
+------
+* Adds account validation support for `XAF::Mobile` in Cameroon via `orange` and `mtn`.
+
+1.36.4
+------
+* Makes `middle_name` field mandatory for the `EGP::Cash` corridor.
+
+1.36.3
+------
+* Add optional `email` field for individual payouts on the `EGP::Cash` corridor.
+
+1.36.2
+------
+* Add support for `EGP::Cash` payouts in Egypt.
+
+1.36.0
+------
+* Add support for bank collections for NGN
+
+1.34.1
+------
+* Add Bank of Baroda to `KES::Bank` banks list.
+
+1.34.0
+------
+* Add support for `USD::Bank` payouts in Egypt.
+
+1.33.0
+------
+* [PHP SDK] Drop support for PHP 7.1
+* [PHP SDK] Upgrade Guzzlehttp to 7.3
+
+1.32.1
+------
+* Add optional `middle_name` field for individual payouts on the `EGP::Bank` corridor.
+
+1.30.3
+------
+* Add `narration` as optional field to `EUR::Bank` and `GBP::Bank` corridors.
+
+1.30.0
+------
+* Add support for `EGP::Bank` corridor.
+
+1.29.0
+------
+* Add `amount_after_pending` to endpoints `/accounts` and `/accounts/{currency}` for accounts related to Bidvest Bank. This field returns the amount that is currently available taking into consideration the pending transactions for the last 7 days.
+
+1.27.5
+------
+* Relax fields for `ZAR::Bank` invididual payouts: `street`, `city`, `postal_code`, `transfer_reason` are now optional
+* Relax fields for `ZAR::Bank` business payouts: `street`, `city`, `postal_code`, `transfer_reason`, `contact_first_name`, `contact_last_name`, `legal_entity_type` are now optional
+* `ZAR::Bank` payouts can now accept either `bank_code` or `branch_code`
+
+1.27.4
+------
+* Add support for `XOF::Mobile` corridor for Benin and Togo
+
+1.27.0
+------
+* Add support for `UGX::Bank` corridor
+
+1.26.1
+------
+* Add support for `CAD::Bank` corridor
+* Update `USD::Bank` corridor to support payments to United States.
+
+1.25.0
+------
+* Add support for `BWP::Bank` and `ZMW::Bank` corridors.
+
+1.24.0
+------
+* Add support for `NZD::Bank` corridor.
+
+1.23.5
+------
+* Update `BRL::Bank` to support PIX payments.
+
+1.23.4
+------
+* Drop mandatory `phone_country` when `phone_number` field is in E. 164 format.
 
 1.22.0
 ------

@@ -9,7 +9,8 @@ For West African bank payments in selected countries please use the following:
 "details" : {
   {{ recipient_name }},
   "iban": "BJ0610100100144390000769", // BBAN format: AA123 12345 123456789012 12
-  "transfer_reason": "personal_account"
+  "transfer_reason": "personal_account",
+  "narration": "Birthday Gift" // Payment reference (max 15 characters) - Optional
 }
 ```
 {% endcapture %}
@@ -85,45 +86,6 @@ Banque d'Abidjan: CI201
 Mansa Bank: CI211
 Orange Abidjan Compagnie: CI214
 
-# Guinea-Bissau
-Banco da Africa Ocidental: GW096
-Banco Da União: GW128
-Ecobank Guinée Bissau: GW143
-Orabank Côte d'Ivoire, Succursale de la Guinée-Bissau: GW172
-Banque Atlantique Côte d'Ivoire, Succursale de Guinée-Bissau: GW195
-
-# Mali
-Banque de Developpement du Mali: ML016
-Banque Internationale pour le Mali: ML041
-Banque Nationale pour le Dévéloppement Agricole: ML043
-Banque Commerciale du Sahel: ML044
-Bank Of Africa Mali: ML045
-Banque Internationale pour le Commerce et l'Industrie du Mali: ML089
-Ecobank Mali: ML090
-Banque Malienne de Solidarité: ML102
-Banque Sahélo-Saharienne pour l'Investissement et le Commerce Mali: ML109
-Banque Atlantique Mali: ML135
-Banque pour le Commerce et l'Industrie du Mali: ML147
-Orabank Côte d'Ivoire, Succursale du Mali: ML173
-CORIS BANK ML: ML181
-United Bank for Africa Mali: ML206
-
-# Niger
-Bank Of Africa Niger: NE038
-Banque Internationale pour l'Afrique au Niger: NE040
-Banque Commerciale du Niger: NE057
-Société Nigérienne de Banque: NE064
-Banque Islamique du Niger: NE081
-Ecobank Niger: NE095
-Banque Sahélo-Saharienne pour l'Investissement et le Commerce Niger: NE110
-Banque Atlantique Niger: NE136
-Banque Agricole du Niger: NE164
-CBAO, Groupe Attijariwafa bank, Succursale du Niger: NE168
-Orabank Côte d'Ivoire, Succursale du Niger: NE174
-Banque Régionale de Marchés, Succursale du Niger: NE193
-Banque de l'Habitat du NIGER: NE208
-Coris Bank International, Succursale du Niger: NE210
-
 # Senegal
 Banque Internationale pour le Commerce et l'Industrie du Sénégal: SN010
 Société Générale Sénégal: SN011
@@ -173,6 +135,9 @@ Coris Bank International Togo: TG182
 {% include language-tabbar.html prefix="xof-bank-options" raw=data-raw %}
 
 {% include corridors/transfer_reasons.md %}
+
+Please note that due to regulatory reasons senders trying to create `XOF::Bank` transactions are required to have the following fields on the sender present as well:
+`street`, `city` and `postal_code`
 
 <div class="alert alert-info" markdown="1">
 **Note** `XOF::Bank` payouts are currently in beta phase.
