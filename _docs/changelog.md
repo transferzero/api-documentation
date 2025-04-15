@@ -8,7 +8,52 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs are `1.29.0`
+Current version of the SDKs is `1.36.8`
+
+1.36.8
+------
+* Adds account validation support for `XAF::Mobile` in Cameroon via `orange` and `mtn`.
+
+1.36.4
+------
+* Makes `middle_name` field mandatory for the `EGP::Cash` corridor.
+
+1.36.3
+------
+* Add optional `email` field for individual payouts on the `EGP::Cash` corridor.
+
+1.36.2
+------
+* Add support for `EGP::Cash` payouts in Egypt.
+
+1.36.0
+------
+* Add support for bank collections for NGN
+
+1.34.1
+------
+* Add Bank of Baroda to `KES::Bank` banks list.
+
+1.34.0
+------
+* Add support for `USD::Bank` payouts in Egypt.
+
+1.33.0
+------
+* [PHP SDK] Drop support for PHP 7.1
+* [PHP SDK] Upgrade Guzzlehttp to 7.3
+
+1.32.1
+------
+* Add optional `middle_name` field for individual payouts on the `EGP::Bank` corridor.
+
+1.30.3
+------
+* Add `narration` as optional field to `EUR::Bank` and `GBP::Bank` corridors.
+
+1.30.0
+------
+* Add support for `EGP::Bank` corridor.
 
 1.29.0
 ------

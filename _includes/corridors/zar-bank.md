@@ -4,26 +4,15 @@
 
 For South African bank payments please use the following recipient details:
 
-{% if include.recipient_type == 'business' %}
-  {% capture additional_details %}"contact_first_name": "First", // optional
-  "contact_last_name": "Last", // optional
-  "legal_entity_type": "privately_owned_company", // optional
-  "registration_number": "VAT1234567", // optional
-  "nature_of_business": "retail_trade" // optional{% endcapture %}
-{% endif %}
-
 {% capture data-raw %}
 ```javascript
 "details": {
   {{ recipient_name }},
-  "street": "14 Main Street", // optional, if sent should include house number as well
-  "postal_code": "AB0001", // optional
-  "city": "Cape Town", // optional
   "email": "recipient@email.com",
   "bank_code": "632005",
   "bank_account": "12345678",
   "phone_number": "+27119785313", // E.164 international format
-  "transfer_reason": "personal_account", // optional
+  "narration": "Birthday Gift" // Payment reference (max 80 characters) - Optional
   {{ additional_details }}
 }
 ```
@@ -45,11 +34,13 @@ Bank Zero: 888000
 Bidvest Bank: 462005
 BNP Paribas: 688000
 Capitec Bank: 470010
+Capitec Business: 450105
 Citibank: 350005
 China Construction Bank: 586666
 Discovery Bank: 679000
 Finbond Mutual Bank: 589000
 First National Bank: 250655
+FirstRand Bank: 201419
 Grindrod Bank: 584000
 Habib Overseas Bank Limited: 700066
 HBZ Bank: 570100
@@ -57,7 +48,6 @@ HSBC Bank: 587000
 ICICI Bank: 362000
 Investec: 580105
 JP Morgan Bank: 432000
-Mercantile Bank: 450905
 Nedbank: 198765
 Olympus Mobile: 585001
 Peoples Bank: 720026

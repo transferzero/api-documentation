@@ -9,7 +9,8 @@ For West African bank payments in selected countries please use the following:
 "details" : {
   {{ recipient_name }},
   "iban": "BJ0610100100144390000769", // BBAN format: AA123 12345 123456789012 12
-  "transfer_reason": "personal_account"
+  "transfer_reason": "personal_account",
+  "narration": "Birthday Gift" // Payment reference (max 15 characters) - Optional
 }
 ```
 {% endcapture %}

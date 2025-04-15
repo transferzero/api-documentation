@@ -6,6 +6,16 @@ permalink: /docs/error-handling/
 * Table of contents
 {:toc}
 
+# Transaction state as the source of truth
+
+<div class="alert alert-info" markdown="1">
+**Important!** While error codes and other fields provide valuable information about a transaction's status, the ultimate source of truth for determining whether a transaction has been paid out or successfully refunded is the `state` field of the transaction object. Always rely on this field for making final decisions about a transaction's status in your system.
+
+Do not make your decisions based on the `state_reason`, `state_reason_code` or `state_reason_details` fields. These fields are only for information purposes and are not meant to be used for making decisions.
+</div>
+
+You can read further details about the `state` field [here]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#transaction-states).
+
 # Errors during payments
 
 In an ideal world payments always succeed and arrive in the recipient's account. However occasionally there are issues that only occur after the transaction has been funded. There could be various issues, for example:
@@ -56,9 +66,13 @@ We categorize most errors into the following categories:
 | 12 | /// | Timeout error | Timeout error | This transaction is awaiting a status update from the provider. | timeout_error |
 | 13 | /// | Manual reconciliation required | Manual reconciliation required | This transaction requires manual verification. Please wait until this is done. | manual_reconciliation_required |
 | 14 | /// | Pending | Pending | This transaction is awaiting a status update from the provider. | pending |
+| 15 | /// | Unauthorized error | Unauthorized error | This transaction is awaiting a status update from the provider. | pending |
+| 16 | Pending | Pending | Pending | This transaction is under AML review by the payment provider. | pending |
+| 17 | /// | Reset rate required | Reset rate required | This transaction is awaiting a rate reset by the system. | pending |
 | 2 | User action required | User action required | User action required | This transaction requires an action by the user. | recipent_action_required |
 | 21 | /// | Pickupable | Pickupable | This transaction is awaiting pickup by the recipient. | recipent_action_required |
 | 22 | /// | Mandate signing required | Mandate signing required  | This transaction required the user to sign a mandate before it can be deposited. | recipent_action_required |
+| 23 | /// | OTP verification required | OTP verification required | This transaction is awaiting OTP verification by the user. | recipent_action_required |
 | 3 | Temporary error | Provider Error | Undefined provider error | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. | temporary_error |
 | 31 | /// | Switch Error | Undefined switch error | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |
 | 311 | /// | /// | Issuer/Switch inoperative | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |

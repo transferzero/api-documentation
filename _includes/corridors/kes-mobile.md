@@ -7,11 +7,11 @@ For Kenyan mobile payments please use:
 "details": {
   "first_name": "First",
   "last_name": "Last",
-  "street": "1 Linford Street",
+  "street": "1 Linford Street", // optional
   "city": "Nairobi", // optional
   "phone_number": "+254123456789", // E.164 international format
-  "identity_card_type": "ID", // refers to the recipient's ID details; Values: "PP": Passport, "ID": National ID, "DL": Driver's License or "OT": Other
-  "identity_card_id": 'AB12345678', // refers to the recipient's ID details
+  "identity_card_type": "ID", // optional, refers to the recipient's ID details; Values: "PP": Passport, "ID": National ID, "DL": Driver's License or "OT": Other
+  "identity_card_id": 'AB12345678', // optional, refers to the recipient's ID details
   "transfer_reason": "personal_account",
   "mobile_provider": "mpesa",
   "relationship_to_sender": "Aunt" // Optional
@@ -37,9 +37,7 @@ All senders trying to create Kenyan mobile payouts need to have the following de
 - `"identification_type" => "ID"` - Values: `"PP"`: Passport, `"ID"`: National ID, `'DL'`: Driver's License, `"OT"`: Other
 - `"identification_number" => "AB12345678"`
 - `"source_of_funds" => "Salary"`
-- `"street" => "Avenue Park"`
-- `"city" => "Nairobi"`
-- `"country" => "KE"`
+- `"country" => "US"`
 - `"birth_date" => "1993-07-23"`
 
 Please note that the fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example:
@@ -53,9 +51,7 @@ Please note that the fields above are generally considered optional for senders 
         "identification_type": "ID",
         "identification_number": "AB12345678",
         "source_of_funds": "Salary",
-        "street" => "Avenue Park",
-        "city" => "Nairobi",
-        "country" => "KE",
+        "country" => "US",
         "birth_date" => "1993-07-23",
         (...)
       },

@@ -61,7 +61,7 @@ There are examples showing how to parse a received webhook message using our SDK
 - [Java 8 webhook example](https://github.com/transferzero/transferzero-sdk-java8/blob/master/example/src/main/java/com/transferzero/test/Application.java#L193)
 - [Ruby webhook example](https://github.com/transferzero/transferzero-sdk-ruby/blob/master/example/client.rb#L237)
 - [Javascript webhook example](https://github.com/transferzero/transferzero-sdk-javascript/blob/master/examples/examples.js#L219)
-- [PHP webhook example](https://github.com/transferzero/transferzero-sdk-php/blob/master/examples/client.php#L310)
+- [PHP webhook example](https://github.com/transferzero/transferzero-sdk-php/blob/master/examples/Client.php#L393)
 - .NET webhook examples:
     - [C# webhook example](https://github.com/transferzero/transferzero-sdk-dotnet/blob/master/examples/TransferZero.Example.CS/Program.cs#L204)
     - [VB.NET webhook example](https://github.com/transferzero/transferzero-sdk-dotnet/blob/master/examples/TransferZero.Example.VB/Example.vb#L164)

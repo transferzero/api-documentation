@@ -11,9 +11,16 @@
     <div id="collapse-{{forloop.index}}" class="panel-collapse collapse" role="tabpanel" aria-label="Side Navigation">
       <div class="list-group">
         {% for item in section.docs %}
-          {% assign item_url = item | prepend:"/docs/" | append:"/" %}
+          {% assign split_item = item | split: "#" %}
+          {% assign item_url = split_item[0] | prepend:"/docs/" | append:"/" %}
           {% assign p = site.docs | where:"url", item_url | first %}
-          <a class="list-group-item {% if item_url == page.url %}active{% endif %}" href="{{ p.url  | prepend: site.baseurl }}">{{ p.title }}</a>
+          {% if item contains "#" %}
+            {% capture full_url %}{{ p.url | prepend: site.baseurl }}#{{ split_item[1] }}{% endcapture %}
+            {% assign section_name = split_item[1] | replace: "-", " " | capitalize %}
+            <a class="list-group-item {% if item_url == page.url %}active{% endif %}" href="{{ full_url }}">{{ section_name }}</a>
+          {% else %}
+            <a class="list-group-item {% if item_url == page.url %}active{% endif %}" href="{{ p.url  | prepend: site.baseurl }}">{{ p.title }}</a>
+          {% endif %}
         {% endfor %}
       </div>
     </div>

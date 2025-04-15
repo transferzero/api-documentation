@@ -1,4 +1,5 @@
 {% include corridors/recipient_name.md %}
+{% include corridors/ugx_identity_card_id.md %}
 
 ## UGX::Bank
 
@@ -10,11 +11,11 @@ For Ugandan bank payments please use:
   {{ recipient_name }},
   "street": "1 Old Taxi Park",
   "city": "Kampala",
-  "postal_code": "10102",
-  "identity_card_id": "3081900101123411",
+  "postal_code": "10102", // optional
   "bank_account": "1234567890",
   "branch_code": "130547",
-  "transfer_reason": "personal_account",
+  "transfer_reason": "personal_account", 
+  {{ ugx_identity_card_id }}
 }
 ```
 {% endcapture %}

@@ -8,7 +8,7 @@ permalink: /docs/transaction-flow/
 
 # Introduction
 
-Transactions are the main objects in the TransferZero API, so it's important to understand how to create and manage them. Transactions facilitate money movement from one Sender in a specific currency to one or multiple Recipients in another currency.
+Transactions are the main objects in the AZA Finance API, so it's important to understand how to create and manage them. Transactions facilitate money movement from one Sender in a specific currency to one or multiple Recipients in another currency.
 
 The main flow of a successful transaction flow is the following:
 
@@ -835,31 +835,32 @@ If WTR2 is not enabled, the `sender` will need to be provided with all of the fo
 
 ### Re-using senders
 
-If you're not using external IDs on the sender then once a sender is created and is used, the next time you MUST send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes. In this case the sender inside the transaction creation call would look like the following:
+For both KYC and auditing purposes, it's crucial to maintain consistency in your sender records. Avoid creating multiple senders for the same person/business. This aspect will also be checked during the onboarding process. To facilitate the reuse of sender information, you can utilise the `external_id` field. This field allows you to assign a unique and custom ID to each sender, ensuring they are easily identifiable.
+
+Additionally, providing the full sender details along with the `external_id` serves two purposes: it helps in sender identification and ensures the accuracy of sender details. Should there be any changes in your sender data, we will cross-reference these details with the external ID and update the sender information as needed.
 
 {% capture data-raw %}
 ```javascript
 {
   "transaction": {
     "sender": {
-      "id": "b6648ba3-1c7b-4f59-8580-684899c84a07"
-    },
-    // (...)
-  }
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="using-sender-id" raw=data-raw %}
-
-Or using external IDs:
-
-{% capture data-raw %}
-```javascript
-{
-  "transaction": {
-    "sender": {
-      "external_id": "SENDER_1234"
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "phone_country": "US",
+      "phone_number": "+15555551234",
+      "country": "US",
+      "city": "New York",
+      "street": "20 W 34th St",
+      "postal_code": "10001",
+      "address_description": "",
+      "birth_date": "1974-12-24",
+      "identification_number": "AB123456",
+      "identification_type": "ID",
+      "email": "info@transferzero.com",
+      "external_id": "Sender:US:234523", // this field MUST be present
+      "documents": [ ],
+      "ip": "127.0.0.1",
+      "metadata": {}
     },
     // (...)
   }
@@ -869,10 +870,8 @@ Or using external IDs:
 
 {% include language-tabbar.html prefix="using-external-id" raw=data-raw %}
 
-In both cases you can also send in additional sender details which will be used to update the sender if their details have changed in our system.
-
 <div class="alert alert-warning" markdown="1">
-**Warning!** For your application to get approved you MUST support either using external IDs for senders, or you'll have to reuse the sender ID for the same sender across transactions. If the sender's details change in your system then you can either use the `PATCH /v1/senders/[transferzer_sender_id]` endpoint to update the sender details you store in our system to keep them up-to-date, or send in the changed sender details the next time you create a transaction with that sender.
+**Warning!** For your application to get approved you MUST support using external IDs for sender reusability across transactions.
 </div>
 
 <div class="alert alert-info" markdown="1">
@@ -1364,8 +1363,10 @@ Funding transactions can be done using the `POST /v1/accounts/debits` endpoint, 
 {% capture data-raw %}
 ```javascript
 {
-  "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
-  "to_type": "Transaction"
+  "debit": {
+    "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
+    "to_type": "Transaction"
+  }
 }
 ```
 {% endcapture %}
@@ -1377,10 +1378,12 @@ You can also supply the `currency` and `amount` parameters, in which case we'll 
 {% capture data-raw %}
 ```javascript
 {
-  "currency": "NGN",
-  "amount": "2000.0",
-  "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
-  "to_type": "Transaction"
+  "debit":{
+    "currency": "NGN",
+    "amount": "2000.0",
+    "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
+    "to_type": "Transaction"
+  }
 }
 ```
 {% endcapture %}
