@@ -35,7 +35,8 @@ For the following example, we will assume you are using the following details to
 {
   "sender": {
     "country": "UG",
-    "phone_number": "+256752403639", // E.164 international format
+    "phone_country": "UG",
+    "phone_number": "752403639",
     "email": "email@domain.com",
     "first_name": "Example",
     "last_name": "User",

@@ -60,6 +60,7 @@ The valid `mobile_provider` values for Ivory Coast are:
 moov
 mtn
 orange
+wave
 ```
 {% endcapture %}
 

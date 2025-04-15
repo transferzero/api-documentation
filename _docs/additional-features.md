@@ -6,198 +6,6 @@ permalink: /docs/additional-features/
 * Table of contents
 {:toc}
 
-# Account name enquiry
-
-Since it's easy to mistype the account number or mobile number for a recipient, we provide a feature where you can
-request more details about an account number, before creating a transaction.
-
-To do this initiate a call to the following endpoint:
-
-## For Bank Accounts:
-
-{% capture data-raw %}
-```javascript
-POST /v1/account_validations
-
-{
-  "bank_account": "12345678", // account number to query
-  "bank_code": "000", // bank code to query - same codes are used as for creating the transactions
-  "country": "NG",   // Only "NG" and "GH" is supported for now
-  "currency": "NGN", // Only "NGN" and "GHS" is supported for now
-  "method": "bank"
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="validation-bank" raw=data-raw %}
-
-## For Mobile Accounts:
-
-{% capture data-raw %}
-```javascript
-POST /v1/account_validations
-
-{
-  "phone_number": "+233302123456", // E.164 international format
-  "country": "GH",
-  "currency": "GHS",
-  "method": "mobile",
-  "mobile_provider": "vodafone" // Mandatory for Uganda, optional for Ghana
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="validation-mobile" raw=data-raw %}
-
-The supported `country`s are:
-
-{% capture data-raw %}
-```
-GH
-UG
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="country-values" raw=data-raw %}
-
-The supported `currency`s are:
-
-{% capture data-raw %}
-```
-GHS
-UGX
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="currency-values" raw=data-raw %}
-
-The valid `mobile_provider` values for Ghana are:
-
-{% capture data-raw %}
-```
-airteltigo
-mtn
-vodafone
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="mobile_provider-values" raw=data-raw %}
-
-The valid `mobile_provider` values for Uganda are:
-
-{% capture data-raw %}
-```
-airtel
-mtn
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="mobile_provider-values" raw=data-raw %}
-
-<div class="alert alert-info" markdown="1">
-**Note:** Kindly be informed that Airtel has merged with Millicom's Tigo in Ghana to become AirtelTigo
-</div>
-
-The response will either be a `200 OK`, and provide you with the account title:
-
-{% capture data-raw %}
-```javascript
-{
-  "object": {
-    "account_name": "Test User"
-  }
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="validation-result" raw=data-raw %}
-
-
-Or a `422 Unprocessably Entity` status code, with an error description in the body:
-
-{% capture data-raw %}
-```javascript
-{
-  "object": {
-    "account_name": null
-  },
-  "meta": {
-    "error": "Account Invalid"
-  }
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="validation-result-failure" raw=data-raw %}
-
-Once you have the account title you can compare that with the recipient details you wish to provide us, and only create a transaction if they match.
-
-Note that an error on name enquiry might both mean that the account doesn't exist, or that there is a connectivity issue with the banking system. Because of this if you get an error message you might need to retry the call a few minutes later.
-
-Also note that GHS mobile validation currently only works for Airtel Tigo and MTN, so mobile numbers belonging to other operators will always return an error.
-
-# Name validation in transactions
-
-Another feature to limit mispayments because of mistyped account numbers is enabling name validation on transactions. This feature will block payouts if the account holder's name and the recipient name provided don't match. The feature is currently available for `NGN::Bank`, `GHS::Bank` and `GHS::Mobile` payouts only.
-
-To enable name validation please enable the `account_validation` trait during transaction creation:
-
-{% capture data-raw %}
-```javascript
-POST /v1/transactions
-
-{
-   "transaction":{
-      "traits": {
-        "account_validation": true
-      },
-      // (...) additional transaction details
-   }
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="validation-trait" raw=data-raw %}
-
-We can also enable name validation by default across all transactions created by you. If this is of interest please contact our team so we can configure your account as such. If the feature is enabled, then it can be disabled on a per-transaction basis by specifying `"account_validation": false` in the `traits` section.
-
-Once the trait is enabled we will do a name enquiry from the bank and check if the name we get back matches the name received in the recipient details. If they match we will go ahead with the payout. If it doesn't we will stop the payout and return an error message describing that the transaction will not proceed unless the recipient details are updated to match the account holder name, or name validation is disabled on the transaction.
-
-In both cases we will return the account holder name in the recipient's metadata. For example if you entered "JOHN SMITH" as the recipient name, but the account holder is in fact "JANE DOE" then you will receive a `recipient.error` webhook with the following details:
-
-{% capture data-raw %}
-```javascript
-{
-  "webhook": "fd599451-4f3c-4045-91e1-d68ed12ffb75",
-  "event": "recipient.error",
-  "object": {
-    "editable": true,
-    "metadata": {
-      "provider_name_validation": {
-        "valid?": true,
-        "account_name": "JANE DOE"
-      }
-    },
-    "payout_method": {
-      "type": "NGN::Bank",
-      "details": {
-        "last_name": "SMITH",
-        "first_name": "JOHN",
-        // (...)
-      },
-    }
-    "state": "error",
-    "state_reason": "The recipient name doesn't match the account holder's name. Please edit or cancel the transaction",
-    // (...)
-  }
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="recipient-error" raw=data-raw %}
-
-In case the account number doesn't exist at the bank or there is a connectivity issue with the banking system you will receive an error with the following message: "We could not verify that the account entered exists. This could be a temporary error with a bank, or it can mean the details entered were incorrect. We will retry the transaction". Unfortunately due to how the banking system works in the supported markets it is not always possible to differentiate an invalid account number from a connectivity issue, hence we will automatically retry the name enquiry until we get a valid response, or the transaction is cancelled.
-
 # Collections from senders
 
 The AZA Finance API can also be used to collect money from various senders.
@@ -220,7 +28,7 @@ The generic structure of a transaction that collects the equivalent of 100 USD f
 {% capture data-raw %}
 ```javascript
 {
-  "input_currency": "GHS",
+  "input_currency": "XOF",
   "payin_methods": [
     {
       // payin method details
@@ -259,7 +67,7 @@ The response will always look like the following. It is very similar to the stan
 ```javascript
 {
   "object": {
-    "id":"xxxxxxxx",
+    "id":"1f7e1e99-5572-414d-a5dd-83f4728efff8",
     "state": "approved",
     "input_amount": 724.0,
     "input_currency": "NGN",
@@ -269,8 +77,8 @@ The response will always look like the following. It is very similar to the stan
     },
     "payin_methods": [
       {
-        "id": "xxxxxxxx",
-        "type":"GHS::Mobile",
+        "id": "1f7e1e99-5572-414d-a5dd-83f4728efff8",
+        "type":"XOF::Mobile",
         "ux_flow": "ussd_popup",
         "state": "pending",
         "state_reason_details": {
@@ -317,17 +125,17 @@ You can validate your preferred flow by sending a request to the transaction val
 ```javascript
 POST /v1/transactions/validate
 {
-  "input_currency": "GHS",
+  "input_currency": "XOF",
   "payin_methods": [
     {
-      "type": "GHS::Mobile",
+      "type": "XOF::Mobile",
       "ux_flow": "ussd_popup",
       "in_details": {
         "mobile_provider": "mtn"
       }
     },
     {
-      "type": "GHS::Mobile",
+      "type": "XOF::Mobile",
       "ux_flow": "ussd_popup",
       "in_details": {
         "mobile_provider": "vodafone"
@@ -353,23 +161,23 @@ The response would look like the following:
 {% capture data-raw %}
 ```javascript
 {
-  "input_currency": "GHS",
+  "input_currency": "XOF",
   "payin_methods": [
     {
-      "type": "GHS::Mobile",
+      "type": "XOF::Mobile",
       "ux_flow": "ussd_popup",
       "in_details": {
-        "mobile_provider": "mtn"
+        "mobile_provider": "vodafone"
       },
       "errors": {
         "mobile_provider": "invalid"
       }
     },
     {
-      "type": "GHS::Mobile",
+      "type": "XOF::Mobile",
       "ux_flow": "ussd_popup",
       "in_details": {
-        "mobile_provider": "vodafone"
+        "mobile_provider": "mtn"
       },
       "errors": {}
     }
@@ -388,7 +196,7 @@ The response would look like the following:
 
 {% include language-tabbar.html prefix="collection-flow-response" raw=data-raw %}
 
-For the above example, it shows that `mtn` is not available and you can only use `vodafone` to initiate the collection.
+For the above example, it shows that `vodafone` is not available and you can only use `mtn` to initiate the collection.
 
 
 # Auto cancellation and refund of transactions
@@ -471,7 +279,7 @@ The endpoint responds with a list of uploaded proof of payment files, e.g.:
     {
       "thumbnail": "(..)/my_file_thumb.jpg",
       "file_name": "my_file.jpg",
-      "id": "xxxxxxxx",
+      "id": "1f7e1e99-5572-414d-a5dd-83f4728efff8",
       "url": "(..)/my_file.jpg"
     }
   ]

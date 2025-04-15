@@ -102,7 +102,6 @@ Banco Luso Brasileiro: 600
 Banco Master S/A: 243
 Banco Mercantil Do Brasil: 389
 Banco Modal: 746
-Banco Original: 212
 Banco Ourinvest: 712
 Banco Pan: 623
 Banco Randon: 088

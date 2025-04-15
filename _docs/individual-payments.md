@@ -15,188 +15,13 @@ This document lists the required details that needs to be sent for each of our p
 
 # Nigeria
 
-## NGN::Bank
-
-For Nigerian bank payments please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "bank_code": "058",
-  "bank_account": "123456789",
-  "bank_account_type": "10" // Optional
-    // 10 for saving
-    // 20 for current accounts
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="ngn-bank-details" raw=data-raw %}
-
-The valid `bank_code` values are:
-
-{% capture data-raw %}
-```
-Access Bank: 044
-Carbon / One Finance: 565
-Citi Bank Group: 023
-EcoBank: 050
-Fairmoney Microfinance Bank LTD: E30
-FCMB Bank: 214
-Fidelity Bank: 070
-First Bank of Nigeria: 011
-Go Money: 326
-Guaranty Trust Bank : 058
-Heritage Bank: 030
-Jaiz Bank: 301
-Keystone: 082
-Kuda Microfinance Bank: 611
-Moniepoint Microfinance Bank: 993
-Opay: 305
-Palmpay: B54
-Polaris Bank: 076
-Stanbic IBTC Bank: 039
-Standard Chartered Bank PLC: 068
-Sterling bank: 232
-Suntrust Bank: 100
-Union Bank: 032
-United Bank for Africa: 033
-Unity Bank: 215
-VFD Microfinance Bank: 566
-Wema Bank: 035
-Zenith International: 057
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="ngn-bank-details" raw=data-raw %}
-
-<div class="alert alert-info" markdown="1">
-**Note!** Diamond Bank was merged with Access Bank in 2019. For Diamond Bank recipients please use Access Bank as the bank code
-</div>
-
-## NGN::Mobile
-
-For Nigerian mobile payments please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "+2347087661234" // E.164 international format
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="ngn-mobile-details" raw=data-raw %}
-
-<div class="alert alert-warning" markdown="1">
-**Warning!** The recipient has to be registered and KYC'd with <https://www.mypaga.com>{: .alert-link} before they can receive funds. If they are not registered when the payment occurs then Paga can hold the funds until the user registers and approves themselves.
-</div>
-
-## USD::Bank
-
-For USD bank payments in Nigeria please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "Jane",
-  "last_name": "Doe",
-  "phone_number": "+2347087661234", // optional - E.164 international format
-  "bank_code": "057",
-  "bank_account": "1234567890",
-  "country": "NG"
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="usd-bank-details" raw=data-raw %}
-
-The valid `bank_code` values are:
-
-{% capture data-raw %}
-```
-Access Bank: 044
-FCMB Bank: 214
-Fidelity Bank: 070
-Union Bank: 032
-United Bank for Africa: 033
-Zenith International: 057
-Polaris Bank: 076
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="usd-bank-details" raw=data-raw %}
-
-The valid `country` values are:
-
-{% capture data-raw %}
-```
-NG
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="usd-bank-countries" raw=data-raw %}
-
-<div class="alert alert-warning" markdown="1">
-**Warning** `USD::Bank` payouts in Nigeria are currently in beta phase.
-</div>
-
-## USD::Cash
-
-For USD cash payments in Nigeria please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "Jane",
-  "last_name": "Doe",
-  "phone_number": "+2347087661234", // E.164 international format
-  "country": "NG"
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="usd-cash-details" raw=data-raw %}
-
-The valid `country` values are:
-
-{% capture data-raw %}
-```
-NG
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="usd-cash-countries" raw=data-raw %}
-
-<div class="alert alert-warning" markdown="1">
-**Warning** `USD::Cash` payouts in Nigeria are currently in beta phase.
-</div>
+{% include corridors/ngn-bank.md recipient_type='individual' %}
 
 # Ghana
 
 {% include corridors/ghs-bank.md recipient_type='individual' %}
 
 {% include corridors/ghs-mobile.md %}
-
-## GHS::Cash
-
-For Ghanan cash payment please use:
-
-{% capture data-raw %}
-```javascript
-"details": {
-  "first_name": "First",
-  "last_name": "Last",
-  "phone_number": "+233302123456" // E.164 international format
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="ghs-cash-details" raw=data-raw %}
 
 # Uganda
 
@@ -209,16 +34,6 @@ For Ghanan cash payment please use:
 {% include corridors/eur-bank.md recipient_type='individual' %}
 
 {% include corridors/gbp-bank.md recipient_type='individual' %}
-
-# United States
-{% include corridors/us-bank.md recipient_type='individual' %}
-
-# New Zealand
-
-{% include corridors/nzd-bank.md recipient_type='individual' %}
-
-# Canada
-{% include corridors/cad-bank.md recipient_type='individual' %}
 
 # Morocco
 
@@ -391,7 +206,7 @@ mtn
 
 # South Africa
 
-{% include corridors/zar-bank.md recipient_type='individual' %}
+{% include corridors/zar-bank.md recipient_type='individual_without_middle_name' %}
 
 # Botswana
 
@@ -411,3 +226,10 @@ mtn
 
 {% include corridors/kes-mobile.md recipient_type='individual' %}
 
+# Egypt
+
+{% include corridors/egp-bank.md recipient_type='individual' %}
+
+{% include corridors/egp-cash.md recipient_type='individual' %}
+
+{% include corridors/usd-bank-egypt.md recipient_type='individual' %}
