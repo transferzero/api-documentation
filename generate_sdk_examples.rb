@@ -279,39 +279,41 @@ def parse_data(prefix, data)
       var_camel = var.gsub(/_(\w)/){$1.upcase}
       var_camel_upper = var.split("_").map(&:capitalize).join
 
-      has_var = true
+      splitted_value = value.split(' // ')
+      value = splitted_value.first
+      comment = splitted_value.count > 1 ? splitted_value.last : ''
 
       case type
       when "BIGNUM"
-        code[:csharp] << "  #{var_camel}: #{value},\n"
-        code[:vb] << "  #{var_camel}:=#{value},\n"
-        code[:java] << "#{name}.set#{var_camel_upper}(new BigDecimal(\"#{value}\"));\n"
-        code[:js] << "#{name}.#{var} = #{value};\n"
-        code[:php] << "$#{name}->set#{var_camel_upper}(#{value});\n"
-        code[:ruby] << "#{name}.#{var} = #{value}\n"
+        code[:csharp] << "  #{var_camel}: #{value},#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:vb] << "  #{var_camel}:=#{value},#{comment.empty? ? '' : " ' #{comment}"}\n"
+        code[:java] << "#{name}.set#{var_camel_upper}(new BigDecimal(\"#{value}\"));#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:js] << "#{name}.#{var} = #{value};#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:php] << "$#{name}->set#{var_camel_upper}(#{value});#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:ruby] << "#{name}.#{var} = #{value}#{comment.empty? ? '' : " # #{comment}"}\n"
       when "VAR"
-        code[:csharp] << "  #{var_camel}: #{value},\n"
-        code[:vb] << "  #{var_camel}:=#{value},\n"
-        code[:java] << "#{name}.set#{var_camel_upper}(#{value});\n"
-        code[:js] << "#{name}.#{var} = #{value};\n"
-        code[:php] << "$#{name}->set#{var_camel_upper}($#{value});\n"
-        code[:ruby] << "#{name}.#{var} = #{value}\n"
+        code[:csharp] << "  #{var_camel}: #{value},#{comment.empty? ? nil : " // #{comment}"}\n"
+        code[:vb] << "  #{var_camel}:=#{value},#{comment.empty? ? '' : " ' #{comment}"}\n"
+        code[:java] << "#{name}.set#{var_camel_upper}(#{value});#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:js] << "#{name}.#{var} = #{value};#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:php] << "$#{name}->set#{var_camel_upper}($#{value});#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:ruby] << "#{name}.#{var} = #{value}#{comment.empty? ? '' : " # #{comment}"}\n"
       when "LIT"
-        code[:csharp] << "  #{var_camel}: #{value},\n"
-        code[:vb] << "  #{var_camel}:=#{value},\n"
-        code[:java] << "#{name}.set#{var_camel_upper}(#{value});\n"
-        code[:js] << "#{name}.#{var} = #{value};\n"
-        code[:php] << "$#{name}->set#{var_camel_upper}(#{value});\n"
-        code[:ruby] << "#{name}.#{var} = #{value}\n"
+        code[:csharp] << "  #{var_camel}: #{value},#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:vb] << "  #{var_camel}:=#{value},#{comment.empty? ? '' : " ' #{comment}"}\n"
+        code[:java] << "#{name}.set#{var_camel_upper}(#{value});#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:js] << "#{name}.#{var} = #{value};#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:php] << "$#{name}->set#{var_camel_upper}(#{value});#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:ruby] << "#{name}.#{var} = #{value}#{comment.empty? ? '' : " # #{comment}"}\n"
       when "VAR_ARRAY"
         var_klass = value.split(" ").first
         var_value = value.split(" ").last
-        code[:csharp] << "  #{var_camel}: new List<#{var_klass}>() { #{var_value} },\n"
-        code[:vb] << "  #{var_camel}:=New List(Of #{var_klass})() From { #{var_value} },\n"
-        code[:java] << "#{name}.add#{var_camel_upper}Item(#{var_value});\n"
-        code[:js] << "#{name}.#{var} = [#{var_value}];\n"
-        code[:php] << "$#{name}->set#{var_camel_upper}([#{var_value}]);\n"
-        code[:ruby] << "#{name}.#{var} = [#{var_value}]\n"
+        code[:csharp] << "  #{var_camel}: new List<#{var_klass}>() { #{var_value} },#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:vb] << "  #{var_camel}:=New List(Of #{var_klass})() From { #{var_value} },#{comment.empty? ? '' : " ' #{comment}"}\n"
+        code[:java] << "#{name}.add#{var_camel_upper}Item(#{var_value});#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:js] << "#{name}.#{var} = [#{var_value}];#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:php] << "$#{name}->set#{var_camel_upper}([#{var_value}]);#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:ruby] << "#{name}.#{var} = [#{var_value}]#{comment.empty? ? '' : " # #{comment}"}\n"
       when "ENUM"
         enum_klass = value.split(" ").first
         enum_value = value.split(" ").last
@@ -319,26 +321,33 @@ def parse_data(prefix, data)
         if enum_value[0] =~ /[0-9]/
           enum_value_conv = "_" + enum_value.upcase
         end
-        code[:csharp] << "  #{var_camel}: #{enum_klass}.#{enum_value_conv},\n"
-        code[:vb] << "  #{var_camel}:=#{enum_klass}.#{enum_value_conv},\n"
-        code[:java] << "#{name}.set#{var_camel_upper}(#{enum_klass}.#{enum_value_conv});\n"
-        code[:js] << "#{name}.#{var} = \"#{enum_value}\";\n"
-        code[:php] << "$#{name}->set#{var_camel_upper}(\"#{enum_value}\");\n"
-        code[:ruby] << "#{name}.#{var} = \"#{enum_value}\"\n"
+        code[:csharp] << "  #{var_camel}: #{enum_klass}.#{enum_value_conv},#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:vb] << "  #{var_camel}:=#{enum_klass}.#{enum_value_conv},#{comment.empty? ? '' : " ' #{comment}"}\n"
+        code[:java] << "#{name}.set#{var_camel_upper}(#{enum_klass}.#{enum_value_conv});#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:js] << "#{name}.#{var} = \"#{enum_value}\";#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:php] << "$#{name}->set#{var_camel_upper}(\"#{enum_value}\");#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:ruby] << "#{name}.#{var} = \"#{enum_value}\"#{comment.empty? ? '' : " # #{comment}"}\n"
       when "DATE"
-        code[:csharp] << "  #{var_camel}: DateTime.Parse(\"#{value}\"),\n".gsub('""', '"')
-        code[:vb] << "  #{var_camel}:=DateTime.Parse(\"#{value}\"),\n".gsub('""', '"')
-        code[:java] << "#{name}.set#{var_camel_upper}(LocalDate.parse(\"#{value}\"));\n".gsub('""', '"')
-        code[:js] << "#{name}.#{var} = \"#{value}\";\n".gsub('""', '"')
-        code[:php] << "$#{name}->set#{var_camel_upper}(\"#{value}\");\n".gsub('""', '"')
-        code[:ruby] << "#{name}.#{var} = \"#{value.to_s}\"\n".gsub('""', '"')
+        code[:csharp] << "  #{var_camel}: DateTime.Parse(\"#{value}\"),#{comment.empty? ? '' : " // #{comment}"}\n".gsub(
+          '""', '"'
+        )
+        code[:vb] << "  #{var_camel}:=DateTime.Parse(\"#{value}\"),#{comment.empty? ? '' : " ' #{comment}"}\n".gsub('""',
+                                                                                                                    '"')
+        code[:java] << "#{name}.set#{var_camel_upper}(LocalDate.parse(\"#{value}\"));#{comment.empty? ? '' : " // #{comment}"}\n".gsub(
+          '""', '"'
+        )
+        code[:js] << "#{name}.#{var} = \"#{value}\";#{comment.empty? ? '' : " // #{comment}"}\n".gsub('""', '"')
+        code[:php] << "$#{name}->set#{var_camel_upper}(\"#{value}\");#{comment.empty? ? '' : " // #{comment}"}\n".gsub(
+          '""', '"'
+        )
+        code[:ruby] << "#{name}.#{var} = \"#{value}\"#{comment.empty? ? '' : " # #{comment}"}\n".gsub('""', '"')
       when "EMPTY_ARRAY"
-        code[:csharp] << "  #{var_camel}: new List<#{value}>(),\n"
-        code[:vb] << "  #{var_camel}:=New List(Of #{value})()),\n"
-        code[:java] << "#{name}.set#{var_camel_upper}(new ArrayList<>());\n"
-        code[:js] << "#{name}.#{var} = [];\n"
-        code[:php] << "$#{name}->set#{var_camel_upper}([]);\n"
-        code[:ruby] << "#{name}.#{var} = []\n"
+        code[:csharp] << "  #{var_camel}: new List<#{value}>(),#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:vb] << "  #{var_camel}:=New List(Of #{value})()),#{comment.empty? ? '' : " ' #{comment}"}\n"
+        code[:java] << "#{name}.set#{var_camel_upper}(new ArrayList<>());#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:js] << "#{name}.#{var} = [];#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:php] << "$#{name}->set#{var_camel_upper}([]);#{comment.empty? ? '' : " // #{comment}"}\n"
+        code[:ruby] << "#{name}.#{var} = []#{comment.empty? ? '' : " # #{comment}"}\n"
       end
     when /LIST_EXTRACT ([^ ]*) ([^ ]*) ([^ ]*)/
       list = $1

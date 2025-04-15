@@ -6,6 +6,16 @@ permalink: /docs/error-handling/
 * Table of contents
 {:toc}
 
+# Transaction state as the source of truth
+
+<div class="alert alert-info" markdown="1">
+**Important!** While error codes and other fields provide valuable information about a transaction's status, the ultimate source of truth for determining whether a transaction has been paid out or successfully refunded is the `state` field of the transaction object. Always rely on this field for making final decisions about a transaction's status in your system.
+
+Do not make your decisions based on the `state_reason`, `state_reason_code` or `state_reason_details` fields. These fields are only for information purposes and are not meant to be used for making decisions.
+</div>
+
+You can read further details about the `state` field [here]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#transaction-states).
+
 # Errors during payments
 
 In an ideal world payments always succeed and arrive in the recipient's account. However occasionally there are issues that only occur after the transaction has been funded. There could be various issues, for example:
@@ -26,6 +36,10 @@ Once we find a problem we don't stop processing however. Due to how most of our 
 
 <div class="alert alert-warning" markdown="1">
 **Warning!** Any transaction that is not cancelled in our system - even ones that seemingly have a fatal error in their description could potentially pay out in the future. If you don't wish a transaction to pay out and you'd like to recover the debited funds you HAVE TO cancel the transaction, and then make sure it got cancelled before updating your system.
+</div>
+
+<div class="alert alert-note" markdown="1">
+**Note!** Automatic cancellation only affects transactions where we have confirmation that the payment has failed to arrive at the recipient. For corridors where payment confirmation usually takes more than 24 hours (mainly bank and cash transactions) we will only auto-cancel if get confirmation that the payment has failed to receive the recipient.
 </div>
 
 For more info on cancellations please read our [how to cancel recipients and transactions guide]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#cancelling-recipients-and-transactions).
@@ -52,15 +66,20 @@ We categorize most errors into the following categories:
 | 12 | /// | Timeout error | Timeout error | This transaction is awaiting a status update from the provider. | timeout_error |
 | 13 | /// | Manual reconciliation required | Manual reconciliation required | This transaction requires manual verification. Please wait until this is done. | manual_reconciliation_required |
 | 14 | /// | Pending | Pending | This transaction is awaiting a status update from the provider. | pending |
+| 15 | /// | Unauthorized error | Unauthorized error | This transaction is awaiting a status update from the provider. | pending |
+| 16 | Pending | Pending | Pending | This transaction is under AML review by the payment provider. | pending |
+| 17 | /// | Reset rate required | Reset rate required | This transaction is awaiting a rate reset by the system. | pending |
 | 2 | User action required | User action required | User action required | This transaction requires an action by the user. | recipent_action_required |
 | 21 | /// | Pickupable | Pickupable | This transaction is awaiting pickup by the recipient. | recipent_action_required |
 | 22 | /// | Mandate signing required | Mandate signing required  | This transaction required the user to sign a mandate before it can be deposited. | recipent_action_required |
+| 23 | /// | OTP verification required | OTP verification required | This transaction is awaiting OTP verification by the user. | recipent_action_required |
 | 3 | Temporary error | Provider Error | Undefined provider error | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. | temporary_error |
 | 31 | /// | Switch Error | Undefined switch error | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |
 | 311 | /// | /// | Issuer/Switch inoperative | The central switch is not accepting transfers at the moment. We will retry the transaction. You can also edit or cancel this transaction. | temporary_error |
 | 32 | /// | User bank error | Undefined bank error | The user's bank is not accepting transfers at the moment. We will retry the transaction. You can also cancel or edit the transaction | temporary_error |
 | 321 | /// | /// | Beneficiary bank not available | The user's bank is not accepting transfers at the moment. We will retry the transaction. You can also cancel or edit the transaction. | temporary_error |
 | 33 | /// | Not Found | Transaction code already exists | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. | temporary_error |
+| 34 | /// | Suspected Duplicate Transaction | Suspected Duplicate Transaction | This is the case of a possible duplicate transaction. Kindly retry this transaction in the next 15 minutes. You can also edit or cancel this transaction. | temporary_error |
 | 331 | /// | /// | Transaction does not exist | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. | temporary_error |
 | 4 | User Error | User error | Unspecified user error | User details are invalid. Please update the details. You can also cancel this transaction. | recipient_error |
 | 41 | /// | Invalid user details | Invalid user details | User details are invalid. Please update the details. You can also cancel this transaction. | recipient_error |
@@ -69,6 +88,7 @@ We categorize most errors into the following categories:
 | 413 | /// | /// | Mobile number not registered for network | Mobile number is not registered on the network. Please update the mobile details. You can also cancel this transaction. | recipient_error |
 | 414 | /// | /// | Mobile number not registered for mobile money | Mobile number is not registered for mobile money. Please update the mobile details. You can also cancel this transaction. | recipient_error |
 | 415 | /// | /// | Invalid OTP Error | The provided otp code is invalid or expired. | recipient_error |
+| 416 | /// | /// | Invalid account number | Account number is invalid. Please update the account details. You can also cancel this transaction. | recipient_error |
 | 42 | /// | Exceeded limits | Exceeded limits | Transfer limits have been exceeded. Please update the details. You can also cancel this transaction. | recipient_error |
 | 421 | /// | /// | Exceeded daily transfer limits | Daily transfer limits have been exceeded. Please update the details. You can also cancel this transaction. | recipient_error |
 | 422 | /// | /// | Bank approval required for transfer | Bank approval needed for transaction. Please update the details. You can also cancel this transaction. | recipient_error |

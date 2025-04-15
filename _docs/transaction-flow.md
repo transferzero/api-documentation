@@ -8,7 +8,7 @@ permalink: /docs/transaction-flow/
 
 # Introduction
 
-Transactions are the main objects in the TransferZero API, so it's important to understand how to create and manage them. Transactions facilitate money movement from one Sender in a specific currency to one or multiple Recipients in another currency.
+Transactions are the main objects in the AZA Finance API, so it's important to understand how to create and manage them. Transactions facilitate money movement from one Sender in a specific currency to one or multiple Recipients in another currency.
 
 The main flow of a successful transaction flow is the following:
 
@@ -74,7 +74,7 @@ JSON_START
       "first_name": "Jane",
       "last_name": "Doe",
       "phone_country": "US",
-      "phone_number": "5555551234",
+      "phone_number": "+15555551234", // E.164 international format
       "country": "US",
       "city": "New York",
       "street": "20 W 34th St",
@@ -116,7 +116,7 @@ CREATE_START sender Sender
 SET LIT first_name "Jane"
 SET LIT last_name "Doe"
 SET LIT phone_country "US"
-SET LIT phone_number "5555551234"
+SET LIT phone_number "+15555551234" // E.164 international format
 SET LIT country "US"
 SET LIT city "New York"
 SET LIT street "20 W 34th St"
@@ -168,7 +168,7 @@ CODE_EXAMPLE_END
       "first_name": "Jane",
       "last_name": "Doe",
       "phone_country": "US",
-      "phone_number": "5555551234",
+      "phone_number": "+15555551234", // E.164 international format
       "country": "US",
       "city": "New York",
       "street": "20 W 34th St",
@@ -212,7 +212,7 @@ Sender sender = new Sender(
   firstName: "Jane",
   lastName: "Doe",
   phoneCountry: "US",
-  phoneNumber: "5555551234",
+  phoneNumber: "+15555551234", // E.164 international format
   country: "US",
   city: "New York",
   street: "20 W 34th St",
@@ -255,7 +255,7 @@ Dim sender as Sender = New Sender(
   firstName:="Jane",
   lastName:="Doe",
   phoneCountry:="US",
-  phoneNumber:="5555551234",
+  phoneNumber:="+15555551234", ' E.164 international format
   country:="US",
   city:="New York",
   street:="20 W 34th St",
@@ -298,7 +298,7 @@ Sender sender = new Sender();
 sender.setFirstName("Jane");
 sender.setLastName("Doe");
 sender.setPhoneCountry("US");
-sender.setPhoneNumber("5555551234");
+sender.setPhoneNumber("+15555551234"); // E.164 international format
 sender.setCountry("US");
 sender.setCity("New York");
 sender.setStreet("20 W 34th St");
@@ -341,7 +341,7 @@ const sender = new TransferZeroSdk.Sender();
 sender.first_name = "Jane";
 sender.last_name = "Doe";
 sender.phone_country = "US";
-sender.phone_number = "5555551234";
+sender.phone_number = "+15555551234"; // E.164 international format
 sender.country = "US";
 sender.city = "New York";
 sender.street = "20 W 34th St";
@@ -384,7 +384,7 @@ $sender = new Sender();
 $sender->setFirstName("Jane");
 $sender->setLastName("Doe");
 $sender->setPhoneCountry("US");
-$sender->setPhoneNumber("5555551234");
+$sender->setPhoneNumber("+15555551234"); // E.164 international format
 $sender->setCountry("US");
 $sender->setCity("New York");
 $sender->setStreet("20 W 34th St");
@@ -427,7 +427,7 @@ sender = TransferZero::Sender.new
 sender.first_name = "Jane"
 sender.last_name = "Doe"
 sender.phone_country = "US"
-sender.phone_number = "5555551234"
+sender.phone_number = "+15555551234" # E.164 international format
 sender.country = "US"
 sender.city = "New York"
 sender.street = "20 W 34th St"
@@ -483,7 +483,7 @@ JSON_START
     "last_name": "Doe",
 
     "phone_country": "US",
-    "phone_number": "5555551234",
+    "phone_number": "+15555551234", // E.164 international format
 
     "country": "US",
     "city": "New York",
@@ -512,7 +512,7 @@ SET LIT first_name "Jane"
 SET LIT last_name "Doe"
 
 SET LIT phone_country "US"
-SET LIT phone_number "5555551234"
+SET LIT phone_number "+15555551234" // E.164 international format
 
 SET LIT country "US"
 SET LIT city "New York"
@@ -544,7 +544,7 @@ CODE_EXAMPLE_END
     "last_name": "Doe",
 
     "phone_country": "US",
-    "phone_number": "5555551234",
+    "phone_number": "+15555551234", // E.164 international format
 
     "country": "US",
     "city": "New York",
@@ -575,7 +575,7 @@ Sender sender = new Sender(
   lastName: "Doe",
 
   phoneCountry: "US",
-  phoneNumber: "5555551234",
+  phoneNumber: "+15555551234", // E.164 international format
 
   country: "US",
   city: "New York",
@@ -604,7 +604,7 @@ Dim sender as Sender = New Sender(
   lastName:="Doe",
 
   phoneCountry:="US",
-  phoneNumber:="5555551234",
+  phoneNumber:="+15555551234", ' E.164 international format
 
   country:="US",
   city:="New York",
@@ -633,7 +633,7 @@ sender.setFirstName("Jane");
 sender.setLastName("Doe");
 
 sender.setPhoneCountry("US");
-sender.setPhoneNumber("5555551234");
+sender.setPhoneNumber("+15555551234"); // E.164 international format
 
 sender.setCountry("US");
 sender.setCity("New York");
@@ -662,7 +662,7 @@ sender.first_name = "Jane";
 sender.last_name = "Doe";
 
 sender.phone_country = "US";
-sender.phone_number = "5555551234";
+sender.phone_number = "+15555551234"; // E.164 international format
 
 sender.country = "US";
 sender.city = "New York";
@@ -691,7 +691,7 @@ $sender->setFirstName("Jane");
 $sender->setLastName("Doe");
 
 $sender->setPhoneCountry("US");
-$sender->setPhoneNumber("5555551234");
+$sender->setPhoneNumber("+15555551234"); // E.164 international format
 
 $sender->setCountry("US");
 $sender->setCity("New York");
@@ -720,7 +720,7 @@ sender.first_name = "Jane"
 sender.last_name = "Doe"
 
 sender.phone_country = "US"
-sender.phone_number = "5555551234"
+sender.phone_number = "+15555551234" # E.164 international format
 
 sender.country = "US"
 sender.city = "New York"
@@ -785,7 +785,7 @@ The `metadata` field can store any information you wish to store with the sender
 
 ### Phone number
 
-The sender's phone number is composed of two parts, the `phone_country` (in ISO 2-letter format), and the `phone_number`. The phone number should be specified without the international prefix.
+The sender's phone number is required to be in E. 164 international format.
 
 ### Documents
 
@@ -835,31 +835,32 @@ If WTR2 is not enabled, the `sender` will need to be provided with all of the fo
 
 ### Re-using senders
 
-If you're not using external IDs on the sender then once a sender is created and is used, the next time you MUST send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes. In this case the sender inside the transaction creation call would look like the following:
+For both KYC and auditing purposes, it's crucial to maintain consistency in your sender records. Avoid creating multiple senders for the same person/business. This aspect will also be checked during the onboarding process. To facilitate the reuse of sender information, you can utilise the `external_id` field. This field allows you to assign a unique and custom ID to each sender, ensuring they are easily identifiable.
+
+Additionally, providing the full sender details along with the `external_id` serves two purposes: it helps in sender identification and ensures the accuracy of sender details. Should there be any changes in your sender data, we will cross-reference these details with the external ID and update the sender information as needed.
 
 {% capture data-raw %}
 ```javascript
 {
   "transaction": {
     "sender": {
-      "id": "b6648ba3-1c7b-4f59-8580-684899c84a07"
-    },
-    // (...)
-  }
-}
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="using-sender-id" raw=data-raw %}
-
-Or using external IDs:
-
-{% capture data-raw %}
-```javascript
-{
-  "transaction": {
-    "sender": {
-      "external_id": "SENDER_1234"
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "phone_country": "US",
+      "phone_number": "+15555551234",
+      "country": "US",
+      "city": "New York",
+      "street": "20 W 34th St",
+      "postal_code": "10001",
+      "address_description": "",
+      "birth_date": "1974-12-24",
+      "identification_number": "AB123456",
+      "identification_type": "ID",
+      "email": "info@transferzero.com",
+      "external_id": "Sender:US:234523", // this field MUST be present
+      "documents": [ ],
+      "ip": "127.0.0.1",
+      "metadata": {}
     },
     // (...)
   }
@@ -869,10 +870,8 @@ Or using external IDs:
 
 {% include language-tabbar.html prefix="using-external-id" raw=data-raw %}
 
-In both cases you can also send in additional sender details which will be used to update the sender if their details have changed in our system.
-
 <div class="alert alert-warning" markdown="1">
-**Warning!** For your application to get approved you MUST support either using external IDs for senders, or you'll have to reuse the sender ID for the same sender across transactions. If the sender's details change in your system then you can either use the `PATCH /v1/senders/[transferzer_sender_id]` endpoint to update the sender details you store in our system to keep them up-to-date, or send in the changed sender details the next time you create a transaction with that sender.
+**Warning!** For your application to get approved you MUST support using external IDs for sender reusability across transactions.
 </div>
 
 <div class="alert alert-info" markdown="1">
@@ -948,12 +947,14 @@ A few common examples:
 The requested amount is rounded to a specific number of decimal places and this depends on the currency. The decimal place information can be obtained from our currencies API endpoint - [/info/currencies/out](http://api.transferzero.com/documentation/#/Currency%20Info/info-currencies-out).
 
 For some currencies however, we are not able to pay out subunits and they will always be rounded up.
-These currencies are KES, TZS, UGX and NGN.
+These currencies are XOF, XAF, KES, TZS, UGX and NGN.
 
 The current list of currencies and associated decimal places is below -
 
 * `AED`, `CAD`, `CHF`, `CNY`, `EUR`, `GHS`, `GBP`, `MAD`, `USD`, `ZAR`: 2
-* `JPY`, `KES`, `KRW`, `NGN`, `TZS`, `UGX`, `XOF`: 0
+* `JPY`, `KES`, `KRW`, `NGN`, `TZS`, `UGX`, `XOF`, `XAF`: 0
+
+Also note for `XOF` and `XAF` some mobile operators will only pay out in multiples of 5, so the paid amount might be rounded up to the nearest five. Example if you wish to pay out `102 XOF`, the recipient will actually get `105 XOF`
 
 ### Payout details
 
@@ -998,8 +999,7 @@ A transaction object looks like the following:
       "street": "fake street",
       "postal_code": "fak3 one",
       "city": "London",
-      "phone_country": "UG",
-      "phone_number": "752403639",
+      "phone_number": "+256752403639", // E.164 international format
       "email": "example@home.org",
       "ip": "127.0.0.1",
       "external_id": "76f69f5e-912f-43e5-bf3a-9081dbc476f4",
@@ -1069,22 +1069,31 @@ A transaction object looks like the following:
             "bank_code": {
               "type": "select",
               "options": {
+                "565": "Carbon / One Finance",
                 "063": "Diamond Bank",
                 "050": "EcoBank",
+                "E30": "Fairmoney Microfinance Bank LTD",
                 "214": "FCMB Bank",
                 "070": "Fidelity Bank",
                 "011": "First Bank of Nigeria",
+                "326": "Go Money",
                 "058": "Guaranty Trust Bank ",
                 "030": "Heritage Bank",
                 "301": "Jaiz Bank",
                 "082": "Keystone ",
+                "611": "Kuda Microfinance Bank",
                 "014": "Mainstreet ",
+                "993": "Moniepoint Microfinance Bank",
+                "305": "Opay",
+                "B54": "Palmpay",
                 "076": "Polaris Bank",
+                "101": "Providus Bank",
                 "039": "Stanbic IBTC Bank ",
                 "232": "Sterling bank",
                 "032": "Union Bank",
                 "033": "United Bank for Africa ",
                 "215": "Unity Bank",
+                "566": "VFD Microfinance Bank",
                 "035": "Wema Bank",
                 "057": "Zenith International "
               },
@@ -1092,22 +1101,31 @@ A transaction object looks like the following:
                 "presence": true,
                 "inclusion": {
                   "in": {
+                    "565": "Carbon / One Finance",
                     "063": "Diamond Bank",
                     "050": "EcoBank",
+                    "E30": "Fairmoney Microfinance Bank LTD",
                     "214": "FCMB Bank",
                     "070": "Fidelity Bank",
                     "011": "First Bank of Nigeria",
+                    "326": "Go Money",
                     "058": "Guaranty Trust Bank ",
                     "030": "Heritage Bank",
                     "301": "Jaiz Bank",
                     "082": "Keystone ",
+                    "611": "Kuda Microfinance Bank",
                     "014": "Mainstreet ",
+                    "993": "Moniepoint Microfinance Bank",
+                    "305": "Opay",
+                    "B54": "Palmpay",
                     "076": "Polaris Bank",
+                    "101": "Providus Bank",
                     "039": "Stanbic IBTC Bank ",
                     "232": "Sterling bank",
                     "032": "Union Bank",
                     "033": "United Bank for Africa ",
                     "215": "Unity Bank",
+                    "566": "VFD Microfinance Bank",
                     "035": "Wema Bank",
                     "057": "Zenith International "
                   }
@@ -1194,7 +1212,7 @@ When you are processing a collection this object will be used to specify the det
   {
     "type": "GHS::Mobile",
     "in_details": {
-      "phone_number": "+2339999999",
+      "phone_number": "+2339999999", // E.164 international format
       "mobile_provider": "vodafone"
     }
   }
@@ -1345,8 +1363,10 @@ Funding transactions can be done using the `POST /v1/accounts/debits` endpoint, 
 {% capture data-raw %}
 ```javascript
 {
-  "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
-  "to_type": "Transaction"
+  "debit": {
+    "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
+    "to_type": "Transaction"
+  }
 }
 ```
 {% endcapture %}
@@ -1358,10 +1378,12 @@ You can also supply the `currency` and `amount` parameters, in which case we'll 
 {% capture data-raw %}
 ```javascript
 {
-  "currency": "NGN",
-  "amount": "2000.0",
-  "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
-  "to_type": "Transaction"
+  "debit":{
+    "currency": "NGN",
+    "amount": "2000.0",
+    "to_id": "5f44026b-7904-4c30-87d6-f8972d790ded",
+    "to_type": "Transaction"
+  }
 }
 ```
 {% endcapture %}
@@ -1378,11 +1400,21 @@ If you choose to include the optional currency and/or amount params:
 
 Once the transaction is funded, we will immediately start trying to pay out the recipient(s).
 
+<div class="alert alert-warning" markdown="1">
+**Warning!** Funding call will return a `HTTP 200` in case of successful funding or a `HTTP 422` in case of unsuccessful funding (for example because you are out of funds). In any other case it is best to double check the state of the transaction to see whether the funding call had been successful or not.
+</div>
+
 ## Creating and funding a transaction simultaneously
 
 If you wish to create a transaction and fund it immediately, it is possible to do so by using the `POST /v1/transactions/create_and_fund` endpoint. This functions in the same way as creating a transaction, except that the `external_id` field is required in this case.
 
 In order to use this endpoint, you must first establish an account with us in the input currency of the transactions you wish to create, and ensure that this account is funded appropriately. Also note that by using this endpoint you will miss the two step approval process, as this will be implicitly assumed.
+
+<div class="alert alert-warning" markdown="1">
+**Warning!** Calling `create_and_fund` might take a long time to finish, sometimes more than a minute. Make sure your client settings allow longer timeouts when calling this endpoint, and also make sure that in case you do receive a timeout-like error (which can be either a connection timeout, a read timeout, or gateway errors like HTTP 502, 503 or 504) you verify that the transaction was not created by calling the `GET /v1/transactions?external_id=[YOUR_TRANSACTION_ID]` endpoint.
+
+A good practice is that any time you don't receive a `HTTP 422` error but something else you double check that the transaction was clearly not created. Only in case you receive a `HTTP 422` can you be certain that the transaction was not created on our end.
+</div>
 
 # Checking the state of the transaction
 

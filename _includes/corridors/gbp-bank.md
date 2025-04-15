@@ -13,9 +13,10 @@ For GBP Payments with account number and sort code please use:
 ```javascript
 "details": {
   {{ recipient_name }},
-  "bank_name": "Lloyds Bank",
   "bank_account": "12345678",
-  "sort_code": "123456"
+  "sort_code": "123456",
+  "bank_name": "Lloyds Bank", // Optional
+  "narration": "Birthday Gift" // Payment reference (max 30 characters) - Optional
 }
 ```
 {% endcapture %}
@@ -28,9 +29,10 @@ For GBP IBAN transfers please use:
 ```javascript
 "details": {
   {{ recipient_name }},
-  "bank_name": "Lloyds Bank",
   "iban": "GB29LOYD60161331926819",
-  "bic": "LOYDGB2L" // Optional
+  "bic": "LOYDGB2L", // Optional
+  "bank_name": "Lloyds Bank", // Optional
+  "narration": "Birthday Gift" // Payment reference (max 30 characters) - Optional
 }
 ```
 {% endcapture %}

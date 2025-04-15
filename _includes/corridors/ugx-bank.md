@@ -1,0 +1,451 @@
+{% include corridors/recipient_name.md %}
+{% include corridors/ugx_identity_card_id.md %}
+
+## UGX::Bank
+
+For Ugandan bank payments please use:
+
+{% capture data-raw %}
+```javascript
+"details": {
+  {{ recipient_name }},
+  "street": "1 Old Taxi Park",
+  "city": "Kampala",
+  "postal_code": "10102", // optional
+  "bank_account": "1234567890",
+  "branch_code": "130547",
+  "transfer_reason": "personal_account", 
+  {{ ugx_identity_card_id }}
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="ugx-bank-details" raw=data-raw %}
+
+The current supported banks and their associated `branch_code`s are:
+
+{% capture data-raw %}
+```
+  ABC CAPITAL BANK LTD Head Office: 31001
+
+  BANK OF AFRICA Arua Branch: 130854
+  BANK OF AFRICA Equatoria Branch: 130247
+  BANK OF AFRICA Head Office: 130447
+  BANK OF AFRICA Jinja Branch: 130341
+  BANK OF AFRICA Kampala Road: 130747
+  BANK OF AFRICA Lira Branch: 131155
+  BANK OF AFRICA Main Branch: 130147
+  BANK OF AFRICA Mbale Branch: 131042
+  BANK OF AFRICA Mbarara Branch: 131262
+  BANK OF AFRICA Ndeeba Branch: 130647
+  BANK OF AFRICA Ntinda Branch: 130947
+  BANK OF AFRICA The Park Branch: 130547
+
+  BANK OF BARODA Iganga Branch: 20241
+  BANK OF BARODA Jinja Branch: 20141
+  BANK OF BARODA Kampala Main Branch: 20147
+  BANK OF BARODA Kansanga Branch: 20347
+  BANK OF BARODA Kawempe Branch: 20447
+  BANK OF BARODA Lira Branch: 20155
+  BANK OF BARODA Mbale Branch: 20142
+  BANK OF BARODA Mbarara Branch: 20162
+  BANK OF BARODA Mukono Branch: 20547
+  BANK OF BARODA Railway Station Branch: 20247
+
+  BANK OF INDIA Head Office: 34047
+
+  BANK OF UGANDA Kampala Road: 990147
+
+  BARCLAYS BANK OF UGANDA Abaita Ababiri: 13547
+  BARCLAYS BANK OF UGANDA Airport: 17547
+  BARCLAYS BANK OF UGANDA Arua Branch: 12654
+  BARCLAYS BANK OF UGANDA Bugolobi Branch: 10347
+  BARCLAYS BANK OF UGANDA Busia Town Branch: 11242
+  BARCLAYS BANK OF UGANDA Bussia Border Branch: 18442
+  BARCLAYS BANK OF UGANDA Entebbe Town: 14147
+  BARCLAYS BANK OF UGANDA Fort Portal Branch: 14360
+  BARCLAYS BANK OF UGANDA Garden City Prestige Centre: 11547
+  BARCLAYS BANK OF UGANDA Garden City: 10447
+  BARCLAYS BANK OF UGANDA Gulu Branch: 13255
+  BARCLAYS BANK OF UGANDA Hannington Road: 12047
+  BARCLAYS BANK OF UGANDA Head Office: 13847
+  BARCLAYS BANK OF UGANDA Hoima Branch: 13055
+  BARCLAYS BANK OF UGANDA Iganga Branch: 12741
+  BARCLAYS BANK OF UGANDA Ishaka Branch: 17762
+  BARCLAYS BANK OF UGANDA Jinja Branch: 14741
+  BARCLAYS BANK OF UGANDA Kabale Branch: 13361
+  BARCLAYS BANK OF UGANDA Kampala Road Branch: 13447
+  BARCLAYS BANK OF UGANDA Kamwokya Branch: 15847
+  BARCLAYS BANK OF UGANDA Kansanga Branch: 15647
+  BARCLAYS BANK OF UGANDA Kasese Branch: 11860
+  BARCLAYS BANK OF UGANDA Katwe Branch: 16447
+  BARCLAYS BANK OF UGANDA Kawempe Branch: 10147
+  BARCLAYS BANK OF UGANDA Kitgum Branch: 17355
+  BARCLAYS BANK OF UGANDA Koboko Branch: 14954
+  BARCLAYS BANK OF UGANDA Lira Branch: 12555
+  BARCLAYS BANK OF UGANDA Lubowa Branch: 16147
+  BARCLAYS BANK OF UGANDA Lugazi Branch: 15541
+  BARCLAYS BANK OF UGANDA Lugogo Branch: 12347
+  BARCLAYS BANK OF UGANDA Luwuum Street Branch: 12847
+  BARCLAYS BANK OF UGANDA Malaba Branch: 11642
+  BARCLAYS BANK OF UGANDA Masaka Branch: 13134
+  BARCLAYS BANK OF UGANDA Masindi Branch: 12955
+  BARCLAYS BANK OF UGANDA Mbale Branch: 12442
+  BARCLAYS BANK OF UGANDA Mbarara Branch: 14062
+  BARCLAYS BANK OF UGANDA Mukono: 10847
+  BARCLAYS BANK OF UGANDA Nakawa Branch: 13947
+  BARCLAYS BANK OF UGANDA Nankulabye: 11947
+  BARCLAYS BANK OF UGANDA Nansana: 11147
+  BARCLAYS BANK OF UGANDA Natete Branch: 12147
+  BARCLAYS BANK OF UGANDA Ndeeba: 10647
+  BARCLAYS BANK OF UGANDA Nkozi: 16234
+  BARCLAYS BANK OF UGANDA Ntinda: 16947
+  BARCLAYS BANK OF UGANDA Oasis Mall: 10947
+  BARCLAYS BANK OF UGANDA Old Kampala Branch: 15047
+  BARCLAYS BANK OF UGANDA Owino Branch: 14847
+  BARCLAYS BANK OF UGANDA Park Royale Branch: 10247
+  BARCLAYS BANK OF UGANDA Parliament Avenue: 11747
+  BARCLAYS BANK OF UGANDA Prime Implex Plaza: 12247
+  BARCLAYS BANK OF UGANDA Rubaga: 10547
+  BARCLAYS BANK OF UGANDA Rwenzori Courts: 13747
+  BARCLAYS BANK OF UGANDA Shauriyako Branch: 11347
+  BARCLAYS BANK OF UGANDA Soroti Branch: 18042
+  BARCLAYS BANK OF UGANDA Tankhill Parade Branch: 13647
+  BARCLAYS BANK OF UGANDA Tororo Branch: 11442
+  BARCLAYS BANK OF UGANDA Wandegeya Branch: 15747
+
+  CAIRO INTERNATIONAL BANK Kampala Branch: 180147
+  CAIRO INTERNATIONAL BANK Kikuubo Branch: 180247
+
+  CENTENARY RURAL DEVELOPMENT Arua Branch: 162054
+  CENTENARY RURAL DEVELOPMENT Bugiri Branch: 164642
+  CENTENARY RURAL DEVELOPMENT Bwaise Branch: 162447
+  CENTENARY RURAL DEVELOPMENT Corporate Branch: 162247
+  CENTENARY RURAL DEVELOPMENT Entebbe Road Branch: 163047
+  CENTENARY RURAL DEVELOPMENT Fortportal Branch: 165560
+  CENTENARY RURAL DEVELOPMENT GHoima Branch: 168047
+  CENTENARY RURAL DEVELOPMENT GMbarara Branch: 165062
+  CENTENARY RURAL DEVELOPMENT Gulu Branch: 167555
+  CENTENARY RURAL DEVELOPMENT Head Office Branch: 168547
+  CENTENARY RURAL DEVELOPMENT Ibanda Branch: 165262
+  CENTENARY RURAL DEVELOPMENT Ishaka Branch: 166562
+  CENTENARY RURAL DEVELOPMENT Kabale Branch: 167061
+  CENTENARY RURAL DEVELOPMENT Kapchorwa: 163242
+  CENTENARY RURAL DEVELOPMENT Kasese Branch: 161560
+  CENTENARY RURAL DEVELOPMENT Kiboga Branch: 169147
+  CENTENARY RURAL DEVELOPMENT Kitgum Branch: 167455
+  CENTENARY RURAL DEVELOPMENT Kyenjonjo Branch: 165660
+  CENTENARY RURAL DEVELOPMENT Kyotera Branch: 166034
+  CENTENARY RURAL DEVELOPMENT Lira Branch: 161055
+  CENTENARY RURAL DEVELOPMENT Masaka Branch: 164034
+  CENTENARY RURAL DEVELOPMENT Masindi Branch: 168147
+  CENTENARY RURAL DEVELOPMENT Mbale Branch: 163142
+  CENTENARY RURAL DEVELOPMENT Mityana Branch: 169047
+  CENTENARY RURAL DEVELOPMENT Mukono Branch: 164247
+  CENTENARY RURAL DEVELOPMENT Nakivubo Road Branch: 162147
+  CENTENARY RURAL DEVELOPMENT Namirembe Road Branch: 162547
+  CENTENARY RURAL DEVELOPMENT Nateete Branch: 162847
+  CENTENARY RURAL DEVELOPMENT Nebbi Branch: 167654
+  CENTENARY RURAL DEVELOPMENT Ntungamo: 165362
+  CENTENARY RURAL DEVELOPMENT Rukungiri Branch: 165162
+  CENTENARY RURAL DEVELOPMENT Soroti Branch: 164542
+  CENTENARY RURAL DEVELOPMENT Tororo Branch: 169542
+  CENTENARY RURAL DEVELOPMENT Wakiso Branch: 163447
+  CENTENARY RURAL DEVELOPMENT Wobulenzi Branch: 163547
+
+  CITIBANK Head Office: 220147
+
+  COMMERCIAL BANK OF AFRICA Head Office: 36001
+
+  CRANE BANK Gulu Branch: 170255
+  CRANE BANK Iganga Branch: 170241
+  CRANE BANK Jinja Branch: 170141
+  CRANE BANK Kabale Branch: 170161
+  CRANE BANK Kampala Branch: 170147
+  CRANE BANK Lira Branch: 170155
+  CRANE BANK Mbale Branch: 170142
+  CRANE BANK Mbarara Branch: 170162
+
+  DFCU Bank Acacia Avenue: 50647
+  DFCU Bank Arua Branch: 50454
+  DFCU Bank Bugolobi Branch: 54147
+  DFCU Bank Dokolo Branch: 54755
+  DFCU Bank Gulu Branch: 50955
+  DFCU Bank Hoima Branch: 51360
+  DFCU Bank Impala Branch: 50147
+  DFCU Bank Isingiro Branch: 54862
+  DFCU Bank Jinja Branch: 54641
+  DFCU Bank Jinja Road Branch: 50747
+  DFCU Bank Kikubo Branch: 54247
+  DFCU Bank Lira Branch: 50555
+  DFCU Bank Makerere University: 50847
+  DFCU Bank Masaka Branch: 50334
+  DFCU Bank Mbale Branch: 51142
+  DFCU Bank Mbarara Branch: 51262
+  DFCU Bank Nakasero Branch: 54447
+  DFCU Bank Ndeeba Branch: 54547
+  DFCU Bank Nsambya Branch: 51047
+  DFCU Bank Owino Branch: 54347
+  DFCU Bank Pader Branch: 54055
+  DFCU Bank William Street Branch: 50247
+  DFCU Bank kitgum Branch: 51455
+
+  DIAMOND TRUST BANK Arua Branch: 190854
+  DIAMOND TRUST BANK Busia Branch: 191047
+  DIAMOND TRUST BANK Industrial Area Branch: 190947
+  DIAMOND TRUST BANK Jinja Branch: 190641
+  DIAMOND TRUST BANK Kampala Road Main Branch: 190147
+  DIAMOND TRUST BANK Kikuubo Branch: 190247
+  DIAMOND TRUST BANK Kitintale Branch: 190547
+  DIAMOND TRUST BANK Lira Branch: 191247
+  DIAMOND TRUST BANK Malaba Branch: 191347
+  DIAMOND TRUST BANK Nakumatt Oasis Mall Branch: 191447
+  DIAMOND TRUST BANK Ndeeba Branch: 191147
+  DIAMOND TRUST BANK Ntinda Branch: 190747
+  DIAMOND TRUST BANK Old Kampala Branch: 190347
+  DIAMOND TRUST BANK Wandegeya Branch: 190447
+
+  ECOBANK (U) LTD Bombo Road: 29004
+  ECOBANK (U) LTD Bugema University: 29009
+  ECOBANK (U) LTD Entebbe: 29005
+  ECOBANK (U) LTD Forest Mall Lugogo: 29011
+  ECOBANK (U) LTD Head office Branch: 29998
+  ECOBANK (U) LTD Jinja: 29013
+  ECOBANK (U) LTD Kikuubo: 29002
+  ECOBANK (U) LTD Kyambogo University: 29010
+  ECOBANK (U) LTD Mukono: 29003
+  ECOBANK (U) LTD Ndeeba: 29006
+  ECOBANK (U) LTD Oasis: 29007
+  ECOBANK (U) LTD Wandegeya: 29008
+
+  EQUITY BANK Adjumani: 301954
+  EQUITY BANK Arua Park: 303847
+  EQUITY BANK Bombo: 300647
+  EQUITY BANK Bukuya: 301847
+  EQUITY BANK Busia: 300842
+  EQUITY BANK Busiika: 301747
+  EQUITY BANK Bwera: 302160
+  EQUITY BANK Hoima: 302655
+  EQUITY BANK Jinja Road: 300247
+  EQUITY BANK Jinja: 302741
+  EQUITY BANK Kabalagala: 303547
+  EQUITY BANK Kajjansi: 301047
+  EQUITY BANK Kalwere: 304147
+  EQUITY BANK Kamwokya: 300147
+  EQUITY BANK Kasangati: 300447
+  EQUITY BANK Katwe: 300347
+  EQUITY BANK Kawempe: 304247
+  EQUITY BANK Kayunga: 300547
+  EQUITY BANK Kiboga: 302347
+  EQUITY BANK Kisizi: 302061
+  EQUITY BANK Kisoro: 300747
+  EQUITY BANK KyNigeriaera: 301247
+  EQUITY BANK Lira: 302955
+  EQUITY BANK Luwero: 301147
+  EQUITY BANK Lyantonde: 301362
+  EQUITY BANK Market Street: 303247
+  EQUITY BANK Masindi: 302855
+  EQUITY BANK Mbarara: 303162
+  EQUITY BANK Mityana: 301647
+  EQUITY BANK Mubende: 303047
+  EQUITY BANK Nakawa: 300947
+  EQUITY BANK Nakulabye: 303947
+  EQUITY BANK Ndeeba: 303447
+  EQUITY BANK New Taxi Park: 304047
+  EQUITY BANK Oasis: 303647
+  EQUITY BANK Rushere: 302562
+  EQUITY BANK Tirinyi: 301442
+  EQUITY BANK Tororo: 301542
+  EQUITY BANK Venus Plaza: 303347
+  EQUITY BANK William Street: 303747
+  EQUITY BANK Zirobwe: 302247
+
+  FINCA UGANDA Head Office: 53001
+
+  GLOBAL TRUST BANK Bwaise Branch: 240647
+  GLOBAL TRUST BANK Head Office: 240147
+  GLOBAL TRUST BANK Mbale Branch: 240742
+  GLOBAL TRUST BANK Mukono Branch: 240547
+  GLOBAL TRUST BANK Nakivubo Branch: 240247
+  GLOBAL TRUST BANK Natete Branch: 240447
+  GLOBAL TRUST BANK Paidha Branch: 240954
+  GLOBAL TRUST BANK Pallisa Branch: 240842
+  GLOBAL TRUST BANK Parliament Branch: 240347
+
+  GUARANTEE TRUST BANK Buganda Road Branch: 271147
+  GUARANTEE TRUST BANK Head Office: 270147
+  GUARANTEE TRUST BANK Kabale Branch: 271361
+  GUARANTEE TRUST BANK Mbarara Branch: 271462
+  GUARANTEE TRUST BANK Nakivubo Branch: 271247
+  GUARANTEE TRUST BANK Owino Branch: 271547
+
+  HOUSING FINANCE BANK Arua Branch: 230754
+  HOUSING FINANCE BANK Kampala Road: 230147
+  HOUSING FINANCE BANK Mbale Branch: 230842
+  HOUSING FINANCE BANK Mbarara Branch: 230562
+  HOUSING FINANCE BANK Nakasero Branch: 230247
+  HOUSING FINANCE BANK Namuwongo Branch: 230347
+  HOUSING FINANCE BANK Ntinda Branch: 230447
+
+  IMPERIAL BANK Kyaggwe Road: 320247
+
+  KCB BANK UGANDA LTD Arua: 253354
+  KCB BANK UGANDA LTD Ben Kiwanuka Branch: 253547
+  KCB BANK UGANDA LTD Elgon Masaba: 255042
+  KCB BANK UGANDA LTD Fort Portal Branch: 253960
+  KCB BANK UGANDA LTD Gulu Branch: 253855
+  KCB BANK UGANDA LTD Head Office: 252947
+  KCB BANK UGANDA LTD Hoima Branch: 253655
+  KCB BANK UGANDA LTD Jinja: 255141
+  KCB BANK UGANDA LTD Kampala Road Branch: 253047
+  KCB BANK UGANDA LTD Lira Branch: 253155
+  KCB BANK UGANDA LTD Luwum Street Branch: 253247
+  KCB BANK UGANDA LTD Mbarara Branch: 253462
+  KCB BANK UGANDA LTD Oasis Mall Branch: 253747
+  KCB BANK UGANDA LTD Sixth Street: 255247
+
+  NATIONAL BANK OF COMMERCE Kabale Branch: 150161
+  NATIONAL BANK OF COMMERCE Kampala Branch: 150147
+
+  NC BANK UGANDA Head Office Rwenzori Towers: 350147
+
+  OPPORTUNITY BANK UGNADA Head Office: 61001
+
+  ORIENT BANK Entebbe Airport Branch: 110747
+  ORIENT BANK Entebbe Town Branch: 110647
+  ORIENT BANK Jinja Branch: 110241
+  ORIENT BANK Kawempe Branch: 110847
+  ORIENT BANK Main Branch: 110147
+  ORIENT BANK Mbale Branch: 110942
+  ORIENT BANK Nkrumah Road Branch: 110447
+  ORIENT BANK William Street Branch: 110547
+
+  POST BANK UGANDA Head Office: 56001
+
+  PRIDE MICROFINANCE Head Office: 57001
+
+  STANBIC BANK Stanbic Bank: 031085 // Main Stanbic Branch
+  STANBIC BANK Adumani Branch: 46654
+  STANBIC BANK Apac Branch: 46055
+  STANBIC BANK Arua Branch: 46254
+  STANBIC BANK Budibugyo Branch: 45560
+  STANBIC BANK Buliisa: 47955
+  STANBIC BANK Bushenyi Branch: 44162
+  STANBIC BANK Busia Branch: 43042
+  STANBIC BANK Bwamiramira: 45847
+  STANBIC BANK City Branch: 40847
+  STANBIC BANK Entebbe Airport: 41847
+  STANBIC BANK Entebbe Main Branch: 41747
+  STANBIC BANK Forest Mall: 47847
+  STANBIC BANK Fortportal Branch: 45360
+  STANBIC BANK Garden City: 40647
+  STANBIC BANK Gulu Branch: 45955
+  STANBIC BANK Head Office: 40047
+  STANBIC BANK Hoima Branch: 45755
+  STANBIC BANK IBC: 40147
+  STANBIC BANK IPS Branch: 40447
+  STANBIC BANK Ibanda Branch: 43962
+  STANBIC BANK Iganga Branch: 42741
+  STANBIC BANK Industrial Area Branch: 48347
+  STANBIC BANK Ishaka Branch: 44062
+  STANBIC BANK Jinja Main Branch: 42641
+  STANBIC BANK Kabalagala Branch: 48247
+  STANBIC BANK Kabale Branch: 44861
+  STANBIC BANK Kabwohe Branch: 44362
+  STANBIC BANK Kakira Branch: 47341
+  STANBIC BANK Kalangala Branch: 45134
+  STANBIC BANK Kampala Corporate Branch: 40247
+  STANBIC BANK Kamuli Branch: 42841
+  STANBIC BANK KamwNigeriae Branch: 48048
+  STANBIC BANK Kapchorwa Branch: 43342
+  STANBIC BANK Kasese Branch: 45460
+  STANBIC BANK Katwe Branch: 41047
+  STANBIC BANK Kiboga: 42547
+  STANBIC BANK Kigumba Branch: 47055
+  STANBIC BANK Kihihi Branch: 45061
+  STANBIC BANK Kikuubo: 41147
+  STANBIC BANK Kinyara Branch: 46855
+  STANBIC BANK Kireka: 40947
+  STANBIC BANK Kisoro Branch: 44761
+  STANBIC BANK Kitgum Branch: 46755
+  STANBIC BANK Koboko Branch: 47254
+  STANBIC BANK Kotido Branch: 45242
+  STANBIC BANK Kumi Branch: 43742
+  STANBIC BANK Kyambogo: 41347
+  STANBIC BANK Kyotera Branch: 44537
+  STANBIC BANK Lira Branch: 46155
+  STANBIC BANK Lugazi Branch: 42447
+  STANBIC BANK Lugogo: 40347
+  STANBIC BANK Luwero Branch: 42047
+  STANBIC BANK Lyantonde Branch: 44662
+  STANBIC BANK Makerere University Branch: 41647
+  STANBIC BANK Malaba Branch: 43142
+  STANBIC BANK Masaka Branch: 44434
+  STANBIC BANK Masindi Branch: 45655
+  STANBIC BANK Mbale Branch: 43242
+  STANBIC BANK Mbarara Branch: 43862
+  STANBIC BANK Mityana Branch: 42247
+  STANBIC BANK Moroto Branch: 43542
+  STANBIC BANK Moyo Branch: 46454
+  STANBIC BANK Mpigi Branch: 42147
+  STANBIC BANK Mubende Branch: 42347
+  STANBIC BANK Mukono Branch: 41947
+  STANBIC BANK Mulago Branch: 46947
+  STANBIC BANK Mutukula: 47434
+  STANBIC BANK Nakasero: 47647
+  STANBIC BANK Nakivubo: 41447
+  STANBIC BANK Nateete Branch: 48147
+  STANBIC BANK Nebbi Branch: 46354
+  STANBIC BANK Ntinda Branch: 47747
+  STANBIC BANK Ntungamo Branch: 44262
+  STANBIC BANK OPC: 40547
+  STANBIC BANK Pader Branch: 40755
+  STANBIC BANK Pakwach Branch: 46555
+  STANBIC BANK Pallisa Branch: 43442
+  STANBIC BANK Rukungiri Branch: 44961
+  STANBIC BANK Soroti Branch: 43642
+  STANBIC BANK Stanbic Bank Nakawa: 41247
+  STANBIC BANK Tororo Branch: 42942
+  STANBIC BANK Wandegeya: 41547
+  STANBIC BANK William Street: 47547
+
+  STANDARD CHARTERED BANK Garden City: 80847
+  STANDARD CHARTERED BANK Gulu Branch: 81155
+  STANDARD CHARTERED BANK Jinja Branch: 80641
+  STANDARD CHARTERED BANK Kampala City Branch: 80347
+  STANDARD CHARTERED BANK Kampala Head Office: 80147
+  STANDARD CHARTERED BANK Kampala SpKenya Road Branch: 80247
+  STANDARD CHARTERED BANK Kikuubo Branch: 80947
+  STANDARD CHARTERED BANK Lugogo Branch: 80747
+  STANDARD CHARTERED BANK Mbale Branch: 80562
+  STANDARD CHARTERED BANK Mbarara Branch: 80442
+  STANDARD CHARTERED BANK Ntinda Branch: 81047
+
+  TROPICAL BANK OF AFRICA Jinja Branch: 60241
+  TROPICAL BANK OF AFRICA Kampala Main: 60147
+  TROPICAL BANK OF AFRICA Kansanga Branch: 60647
+  TROPICAL BANK OF AFRICA Kawempe BranchÂ: 60747
+  TROPICAL BANK OF AFRICA Masaka Branch: 60334
+  TROPICAL BANK OF AFRICA Nakivubo Branch: 60547
+  TROPICAL BANK OF AFRICA Ntinda Branch: 60447
+  TROPICAL BANK OF AFRICA Oasis Mall Branch: 60847
+
+  UBA BANK Fortportal: 260960
+  UBA BANK Jinja Branch: 260641
+  UBA BANK Jinja Road Branch: 260147
+  UBA BANK Kansanga Branch: 260547
+  UBA BANK Masaka road Branch: 260447
+  UBA BANK Mbale Branch: 260742
+  UBA BANK Mbarara Branch: 260862
+  UBA BANK Mukono Branch: 260347
+  UBA BANK William Street Branch: 260247
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="ugx-bank-options" raw=data-raw %}
+
+{% include corridors/transfer_reasons.md %}
+
+<div class="alert alert-warning" markdown="1">
+**Warning** `UGX::Bank` payouts are currently in beta phase.
+</div>

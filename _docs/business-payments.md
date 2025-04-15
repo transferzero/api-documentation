@@ -21,10 +21,7 @@ For business senders you need to provide different details than for personal sen
 
 * Name of the company
 * Country of incorporation
-* Registration date and number
 * Trading address
-* Company's type
-* Industry / nature of business
 
 Please see the following example on how to provide these fields:
 
@@ -46,14 +43,13 @@ JSON_START
     "address_description": "",
 
     // Company Details
-    "legal_entity_type": "privately_owned_company", // company type
-    "registration_date": "2012-01-25",
-    "registration_number": "VAT1234567",
-    "nature_of_business": "retail_trade", // industry
+    "legal_entity_type": "privately_owned_company", // Company type, Optional
+    "registration_date": "2012-01-25", // Optional
+    "registration_number": "VAT1234567", // Optional
+    "nature_of_business": "retail_trade", // Industry, Optional
 
     // Contact Details
-    "phone_country": "US",
-    "phone_number": "5555551234",
+    "phone_number": "+15555551234", // E.164 international format, Optional
     "email": "example@home.org",
 
     // ID of the sender in your system
@@ -82,14 +78,13 @@ SET LIT postal_code "10001"
 SET LIT address_description ""
 
 COMMENT Company Details
-SET ENUM legal_entity_type LegalEntityTypeEnum privately_owned_company
-SET DATE registration_date 2012-01-25"
-SET LIT registration_number "VAT1234567"
-SET ENUM nature_of_business NatureOfBusinessEnum retail_trade
+SET ENUM legal_entity_type LegalEntityTypeEnum privately_owned_company // Company type, Optional
+SET DATE registration_date 2012-01-25" // Optional
+SET LIT registration_number "VAT1234567" // Optional
+SET ENUM nature_of_business NatureOfBusinessEnum retail_trade // Industry, Optional
 
 COMMENT Contact Details
-SET LIT phone_country "US"
-SET LIT phone_number "5555551234"
+SET LIT phone_number "+15555551234" // E.164 international format, Optional
 SET LIT email "info@transferzero.com"
 
 COMMENT ID of the sender in your system
@@ -121,14 +116,13 @@ CODE_EXAMPLE_END
     "address_description": "",
 
     // Company Details
-    "legal_entity_type": "privately_owned_company", // company type
-    "registration_date": "2012-01-25",
-    "registration_number": "VAT1234567",
-    "nature_of_business": "retail_trade", // industry
+    "legal_entity_type": "privately_owned_company", // Company type, Optional
+    "registration_date": "2012-01-25", // Optional
+    "registration_number": "VAT1234567", // Optional
+    "nature_of_business": "retail_trade", // Industry, Optional
 
     // Contact Details
-    "phone_country": "US",
-    "phone_number": "5555551234",
+    "phone_number": "+15555551234", // E.164 international format, Optional
     "email": "example@home.org",
 
     // ID of the sender in your system
@@ -159,14 +153,13 @@ Sender sender = new Sender(
   addressDescription: "",
 
 // Company Details
-  legalEntityType: LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY,
-  registrationDate: DateTime.Parse("2012-01-25"),
-  registrationNumber: "VAT1234567",
-  natureOfBusiness: NatureOfBusinessEnum.RETAIL_TRADE,
+  legalEntityType: LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY, // Company type, Optional
+  registrationDate: DateTime.Parse("2012-01-25"), // Optional
+  registrationNumber: "VAT1234567", // Optional
+  natureOfBusiness: NatureOfBusinessEnum.RETAIL_TRADE, // Industry, Optional
 
 // Contact Details
-  phoneCountry: "US",
-  phoneNumber: "5555551234",
+  phoneNumber: "+15555551234", // E.164 international format, Optional
   email: "info@transferzero.com",
 
 // ID of the sender in your system
@@ -195,14 +188,13 @@ Dim sender as Sender = New Sender(
   addressDescription:="",
 
 ' Company Details
-  legalEntityType:=LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY,
-  registrationDate:=DateTime.Parse("2012-01-25"),
-  registrationNumber:="VAT1234567",
-  natureOfBusiness:=NatureOfBusinessEnum.RETAIL_TRADE,
+  legalEntityType:=LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY, ' Company type, Optional
+  registrationDate:=DateTime.Parse("2012-01-25"), ' Optional
+  registrationNumber:="VAT1234567", ' Optional
+  natureOfBusiness:=NatureOfBusinessEnum.RETAIL_TRADE, ' Industry, Optional
 
 ' Contact Details
-  phoneCountry:="US",
-  phoneNumber:="5555551234",
+  phoneNumber:="+15555551234", ' E.164 international format, Optional
   email:="info@transferzero.com",
 
 ' ID of the sender in your system
@@ -231,14 +223,13 @@ sender.setPostalCode("10001");
 sender.setAddressDescription("");
 
 // Company Details
-sender.setLegalEntityType(LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY);
-sender.setRegistrationDate(LocalDate.parse("2012-01-25"));
-sender.setRegistrationNumber("VAT1234567");
-sender.setNatureOfBusiness(NatureOfBusinessEnum.RETAIL_TRADE);
+sender.setLegalEntityType(LegalEntityTypeEnum.PRIVATELY_OWNED_COMPANY); // Company type, Optional
+sender.setRegistrationDate(LocalDate.parse("2012-01-25")); // Optional
+sender.setRegistrationNumber("VAT1234567"); // Optional
+sender.setNatureOfBusiness(NatureOfBusinessEnum.RETAIL_TRADE); // Industry, Optional
 
 // Contact Details
-sender.setPhoneCountry("US");
-sender.setPhoneNumber("5555551234");
+sender.setPhoneNumber("+15555551234"); // E.164 international format, Optional
 sender.setEmail("info@transferzero.com");
 
 // ID of the sender in your system
@@ -267,14 +258,13 @@ sender.postal_code = "10001";
 sender.address_description = "";
 
 // Company Details
-sender.legal_entity_type = "privately_owned_company";
-sender.registration_date = "2012-01-25";
-sender.registration_number = "VAT1234567";
-sender.nature_of_business = "retail_trade";
+sender.legal_entity_type = "privately_owned_company"; // Company type, Optional
+sender.registration_date = "2012-01-25"; // Optional
+sender.registration_number = "VAT1234567"; // Optional
+sender.nature_of_business = "retail_trade"; // Industry, Optional
 
 // Contact Details
-sender.phone_country = "US";
-sender.phone_number = "5555551234";
+sender.phone_number = "+15555551234"; // E.164 international format, Optional
 sender.email = "info@transferzero.com";
 
 // ID of the sender in your system
@@ -303,14 +293,13 @@ $sender->setPostalCode("10001");
 $sender->setAddressDescription("");
 
 // Company Details
-$sender->setLegalEntityType("privately_owned_company");
-$sender->setRegistrationDate("2012-01-25");
-$sender->setRegistrationNumber("VAT1234567");
-$sender->setNatureOfBusiness("retail_trade");
+$sender->setLegalEntityType("privately_owned_company"); // Company type, Optional
+$sender->setRegistrationDate("2012-01-25"); // Optional
+$sender->setRegistrationNumber("VAT1234567"); // Optional
+$sender->setNatureOfBusiness("retail_trade"); // Industry, Optional
 
 // Contact Details
-$sender->setPhoneCountry("US");
-$sender->setPhoneNumber("5555551234");
+$sender->setPhoneNumber("+15555551234"); // E.164 international format, Optional
 $sender->setEmail("info@transferzero.com");
 
 // ID of the sender in your system
@@ -339,14 +328,13 @@ sender.postal_code = "10001"
 sender.address_description = ""
 
 # Company Details
-sender.legal_entity_type = "privately_owned_company"
-sender.registration_date = "2012-01-25"
-sender.registration_number = "VAT1234567"
-sender.nature_of_business = "retail_trade"
+sender.legal_entity_type = "privately_owned_company" # Company type, Optional
+sender.registration_date = "2012-01-25" # Optional
+sender.registration_number = "VAT1234567" # Optional
+sender.nature_of_business = "retail_trade" # Industry, Optional
 
 # Contact Details
-sender.phone_country = "US"
-sender.phone_number = "5555551234"
+sender.phone_number = "+15555551234" # E.164 international format, Optional
 sender.email = "info@transferzero.com"
 
 # ID of the sender in your system
@@ -439,10 +427,30 @@ The valid values for the industry / nature of business are the following:
 
 {% include corridors/gbp-bank.md recipient_type='business' %}
 
-# West Africa / XOF
+# WAEMU Region / XOF
 
 {% include corridors/xof-bank.md recipient_type='business' %}
 
 # South Africa
 
 {% include corridors/zar-bank.md recipient_type='business' %}
+
+# CEMAC Region / XAF
+
+{% include corridors/xaf-bank.md recipient_type='business' %}
+
+# Kenya
+
+{% include corridors/kes-bank.md recipient_type='business' %}
+
+# Egypt
+
+{% include corridors/egp-bank.md recipient_type='business' %}
+
+# Nigeria
+
+{% include corridors/ngn-bank.md recipient_type='business' %}
+
+# Uganda
+
+{% include corridors/ugx-bank.md recipient_type='business' %}
