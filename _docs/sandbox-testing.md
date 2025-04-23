@@ -307,11 +307,141 @@ Once the collection request is processed, you'd receive a `payin_method.error` w
 
 {% include language-tabbar.html prefix="collection-xof-mobile-error" raw=data-raw %}
 
+# Automated Testing with Simulated Data
+
+<strong>Welcome to the AZA automated testing playground!</strong>
+
+This guide will show you how to safely test your integration with our API using simulated transactions, without real data or money involved, in our Sandbox environment.
+
+# Why Use Simulated Testing?
+
+Simulated testing lets you:
+
+- <strong>Validate integration flows</strong> (e.g. account validation and transaction creation/payout).
+
+- <strong>Simulate different transactions and recipients states</strong> (paid, pending, temporary errors, recipient errors and sender errors).
+
+- <strong>Catch errors early</strong>, before they hit production.
+
+All tests happen in our Sandbox environment, using deterministic test data, making responses consistent and predictable.
 
 # Account validation
 
-When testing our account validation feature for GHS and NGN bank payments any account number starting with a `9` will return a failure. All other account numbers will return a user with name `TEST USER`. For GHS mobile similalry phone numbers ending in an `8` or `9` will return a failure, while others return a user with name `TEST USER`. This applies to both the [account name enquiry]({{ "/docs/additional-features/" | prepend: site.baseurl }}#account-name-enquiry) feature and the [name validation in transactions]({{ "/docs/additional-features/" | prepend: site.baseurl }}#name-validation-in-transactions) feature.
+We currently support simulated account validation tests in our Sandbox environment for the following countries/corridors:
+- <strong>Ghana</strong> (`GHS::Bank` and `GHS::Mobile`)
+- <strong>Nigeria</strong> (`NGN::Bank`)
+- <strong>Uganda</strong> (`UGX::Mobile`)
 
-# Testing additional scenarios
+<br>
 
-When developing your integration and you wish to test a different scenario you can also ping us in your partners slack channel where we're happy to help you set up the scenarios during normal working hours.
+The account validation test is a simulation of the account validation flow, which is used to verify the validity of a recipient's account before sending money. The test will return a success or failure response based on the provided `bank_account` or `phone_number` (depending on the corridor) last (or last 2) digit(s).
+
+- For `GHS::Bank` and `GHS::Mobile` a `bank_account` or `phone_number` ending in a digit between `0` and `8` will return a successful response, whereas setting `9` as last digit will return a failure response (for the full request details please refer to the [Ghana Account Validation Documentation]({{ "/docs/account-validation/" | prepend: site.baseurl }}#ghana)).
+
+- For `NGN::Bank` a `bank_account` ending in a digit between `0` and `9` will return a successful response, whereas setting `39` as the last 2 digits will return a failure response (for the full request details please refer to the [Nigeria Account Validation Documentation]({{ "/docs/account-validation/" | prepend: site.baseurl }}#nigeria)).
+
+- For `UGX::Mobile` a `phone_number` ending in a digit between `0` and `9` will return a successful response, whereas setting `29` as the last 2 digits will return a failure response (for the full request details please refer to the [Uganda Account Validation Documentation]({{ "/docs/account-validation/" | prepend: site.baseurl }}#uganda)).
+
+Please refer to the [Account Validation Responses]({{ "/docs/account-validation/" | prepend: site.baseurl }}#responses) section for more detailed informations about the possible responses you can expect to be returned for each scenario (kindly note that the system failure/connectivity issue scenario - `Account validation failed` error response - is not currently available to be tested in Sandbox).
+
+# Payouts
+
+We currently support simulated payouts tests in our Sandbox environment for the following countries/corridors:
+- <strong>Ghana</strong> (`GHS::Bank` and `GHS::Mobile`)
+- <strong>Nigeria</strong> (`NGN::Bank`)
+- <strong>Uganda</strong> (`UGX::Mobile`)
+- <strong>CEMAC Region (XAF)</strong> (`XAF::Mobile`)
+- <strong>WAEMU Region (XOF)</strong> (`XOF::Mobile`)
+
+<br>
+
+Kindly reference the table below when testing our simulated payout feature, showing the expected setup and corresponding responses for different countries and corridors (`category`, `code` and `description` will be returned in the `state_reason_details` object - please refer to the [Receiving error messages]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#receiving-error-messages) section for more informations):
+
+## Ghana
+### GHS::Bank
+
+<div class="alert alert-info" markdown="1">
+  **Note:** Please refer to the [GHS::Bank payouts documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}#ghsbank) for more details about the full request.
+</div>
+
+| Account number ending with | Example Account Number | Category (Transaction status) | Code | Description |
+|----------------------------|------------------------|-------------------------------|------|-------------|
+| 00                         | 12345678900            | paid                          | 0    | The transaction was successfully completed. |
+| 01                         | 12345678901            | pending                       | 14   | This transaction is awaiting a status update from the provider. |
+| 18                         | 12345678918            | temporary_error               | 3    | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. |
+| 19                         | 12345678919            | sender_error                  | 5    | Transaction cannot be processed. Please cancel this transaction. |
+| 39                         | 12345678939            | recipient_error               | 421  | Daily transfer limits have been exceeded. Please update the details. You can also cancel this transaction. |
+
+### GHS::Mobile
+
+<div class="alert alert-info" markdown="1">
+  **Note:** Please refer to the [GHS::Mobile payouts documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}#ghsmobile) for more details about the full request.
+</div>
+
+| Phone number ending with | Example Phone Number | Category (Transaction status) | Code | Description |
+|--------------------------|----------------------|-------------------------------|------|-------------|
+| 00                       | +233302123400        | paid                          | 0    | The transaction was successfully completed. |
+| 01                       | +233302123401        | pending                       | 14   | This transaction is awaiting a status update from the provider. |
+| 18                       | +233302123418        | temporary_error               | 3    | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. |
+| 19                       | +233302123419        | sender_error                  | 5    | Transaction cannot be processed. Please cancel this transaction. |
+| 39                       | +233302123439        | recipient_error               | 421  | Daily transfer limits have been exceeded. Please update the details. You can also cancel this transaction. |
+
+## Nigeria
+### NGN::Bank
+
+<div class="alert alert-info" markdown="1">
+  **Note:** Please refer to the [NGN::Bank payouts documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}#ngnbank) for more details about the full request.
+</div>
+
+| Account number ending with | Example Account Number | Category (Transaction status) | Code | Description |
+|----------------------------|------------------------|-------------------------------|------|-------------|
+| 00                         | 12345678900            | paid                          | 0    | The transaction was successfully completed. |
+| 01                         | 12345678901            | pending                       | 14   | This transaction is awaiting a status update from the provider. |
+| 08                         | 12345678908            | temporary_error               | 3    | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. |
+| 19                         | 12345678919            | recipient_error               | 416  | Account number is invalid. Please update the account details. You can also cancel this transaction. |
+| 71                         | 12345678971            | sender_error                  | 511  | Sender is not allowed to transact. Please cancel this transaction. |
+
+## Uganda
+### UGX::Mobile
+
+<div class="alert alert-info" markdown="1">
+  **Note:** Please refer to the [UGX::Mobile payouts documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}#ugxmobile) for more details about the full request.
+</div>
+
+| Phone number ending with | Example Phone Number | Category (Transaction status) | Code | Description |
+|--------------------------|----------------------|-------------------------------|------|-------------|
+| 00                       | +256772123400        | paid                          | 0    | The transaction was successfully completed. |
+| 11                       | +256772123411        | pending                       | 14   | This transaction is awaiting a status update from the provider. |
+| 18                       | +256772123418        | temporary_error               | 331  | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. |
+| 19                       | +256772123419        | recipient_error               | 42   | Transfer limits have been exceeded. Please update the details. You can also cancel this transaction. |
+| 49                       | +256772123449        | sender_error                  | 5    | Transaction cannot be processed. Please cancel this transaction. |
+
+## CEMAC Region (XAF)
+### XAF::Mobile
+
+<div class="alert alert-info" markdown="1">
+  **Note:** Please refer to the [XAF::Mobile payouts documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}#xafmobile) for more details about the full request.
+</div>
+
+| Phone number ending with | Example Phone Number | Category (Transaction status) | Code | Description |
+|--------------------------|----------------------|-------------------------------|------|-------------|
+| 00                       | +237674044400        | paid                          | 0    | The transaction was successfully completed. |
+| 01                       | +237674044401        | pending                       | 14   | This transaction is awaiting a status update from the provider. |
+| 8                        | +237674044408        | temporary_error               | 331  | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. |
+| 09                       | +237674044409        | sender_error                  | 531  | Invalid transaction details provided. Please cancel this transaction. |
+| 69                       | +237674044469        | recipient_error               | 42   | Transfer limits have been exceeded. Please update the details. You can also cancel this transaction. |
+
+## WAEMU Region (XOF)
+### XOF::Mobile
+
+<div class="alert alert-info" markdown="1">
+  **Note:** Please refer to the [XOF::Mobile payouts documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}#xofmobile) for more details about the full request.
+</div>
+
+| Phone number ending with | Example Phone Number | Category (Transaction status) | Code | Description |
+|--------------------------|----------------------|-------------------------------|------|-------------|
+| 00                       | +221774044400        | paid                          | 0    | The transaction was successfully completed. |
+| 01                       | +221774044401        | pending                       | 14   | This transaction is awaiting a status update from the provider. |
+| 8                        | +221774044408        | temporary_error               | 331  | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. |
+| 09                       | +221774044409        | sender_error                  | 531  | Invalid transaction details provided. Please cancel this transaction. |
+| 69                       | +221774044469        | recipient_error               | 42   | Transfer limits have been exceeded. Please update the details. You can also cancel this transaction. |
