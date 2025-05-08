@@ -956,6 +956,11 @@ The current list of currencies and associated decimal places is below -
 
 Also note for `XOF` and `XAF` some mobile operators will only pay out in multiples of 5, so the paid amount might be rounded up to the nearest five. Example if you wish to pay out `102 XOF`, the recipient will actually get `105 XOF`
 
+See the table below for examples on how rounding off and decimal places are handled
+![api-flow-diagram]({{ "/img/transaction_flow/decimal-places-1.png" | prepend: site.baseurl }})
+![api-flow-diagram]({{ "/img/transaction_flow/decimal-places-2.png" | prepend: site.baseurl }})
+![api-flow-diagram]({{ "/img/transaction_flow/decimal-places-3.png" | prepend: site.baseurl }})
+
 ### Payout details
 
 The payout details depend on the chosen payout type. Please check the [Payout documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}) for more details, and you can also find example calls at the [API reference documentation](https://api.transferzero.com/documentation#transactions).
