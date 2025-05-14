@@ -340,7 +340,11 @@ The account validation test is a simulation of the account validation flow, whic
 
 - For `NGN::Bank` a `bank_account` ending in a digit between `0` and `9` will return a successful response, whereas setting `39` as the last 2 digits will return a failure response (for the full request details please refer to the [Nigeria Account Validation Documentation]({{ "/docs/account-validation/" | prepend: site.baseurl }}#nigeria)).
 
-- For `UGX::Mobile` a `phone_number` ending in a digit between `0` and `9` will return a successful response, whereas setting `29` as the last 2 digits will return a failure response (for the full request details please refer to the [Uganda Account Validation Documentation]({{ "/docs/account-validation/" | prepend: site.baseurl }}#uganda)).
+- For `UGX::Mobile` with `airtel` set as mobile provider a `phone_number` ending in a digit between `0` and `9` will return a successful response, whereas setting `29` as the last 2 digits will return a failure response.
+
+- For `UGX::Mobile` with `mtn` set as mobile provider a `phone_number` ending in a digit between `0` and `9` will return a successful response, whereas setting `19` as the last 2 digits will return a failure response.
+
+For the full request details please refer to the [Uganda Account Validation Documentation]({{ "/docs/account-validation/" | prepend: site.baseurl }}#uganda).
 
 Please refer to the [Account Validation Responses]({{ "/docs/account-validation/" | prepend: site.baseurl }}#responses) section for more detailed informations about the possible responses you can expect to be returned for each scenario (kindly note that the system failure/connectivity issue scenario - `Account validation failed` error response - is not currently available to be tested in Sandbox).
 
@@ -408,13 +412,24 @@ Kindly reference the table below when testing our simulated payout feature, show
   **Note:** Please refer to the [UGX::Mobile payouts documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}#ugxmobile) for more details about the full request.
 </div>
 
+- With `airtel` set as mobile provider:
+
 | Phone number ending with | Example Phone Number | Category (Transaction status) | Code | Description |
 |--------------------------|----------------------|-------------------------------|------|-------------|
-| 00                       | +256772123400        | paid                          | 0    | The transaction was successfully completed. |
-| 11                       | +256772123411        | pending                       | 14   | This transaction is awaiting a status update from the provider. |
+| 00                       | +256752123400        | paid                          | 0    | The transaction was successfully completed. |
+| 11                       | +256752123411        | pending                       | 14   | This transaction is awaiting a status update from the provider. |
+| 18                       | +256752123418        | temporary_error               | 331  | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. |
+| 19                       | +256752123419        | recipient_error               | 42   | Transfer limits have been exceeded. Please update the details. You can also cancel this transaction. |
+| 49                       | +256752123449        | sender_error                  | 5    | Transaction cannot be processed. Please cancel this transaction. |
+
+- With `mtn` set as mobile provider:
+
+| Phone number ending with | Example Phone Number | Category (Transaction status) | Code | Description |
+|--------------------------|----------------------|-------------------------------|------|-------------|
+| 0                        | +256772123400        | paid                          | 0    | The transaction was successfully completed. |
+| 1                        | +256772123411        | pending                       | 14   | This transaction is awaiting a status update from the provider. |
 | 18                       | +256772123418        | temporary_error               | 331  | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. |
-| 19                       | +256772123419        | recipient_error               | 42   | Transfer limits have been exceeded. Please update the details. You can also cancel this transaction. |
-| 49                       | +256772123449        | sender_error                  | 5    | Transaction cannot be processed. Please cancel this transaction. |
+| 09                       | +256772123419        | recipient_error               | 414  | Mobile number is not registered for mobile money. Please update the mobile details. You can also cancel this transaction. |
 
 ## CEMAC Region (XAF)
 ### XAF::Mobile
