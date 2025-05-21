@@ -837,6 +837,8 @@ If WTR2 is not enabled, the `sender` will need to be provided with all of the fo
 
 Some markets require senders to provide their source of funds, to this effect we have listed some examples of source of funds that can be used:
 
+Examples
+
 * `Personal Savings` - Money saved from previous income, investments, or other sources.
 * `Income` - Wages, salaries, bonuses, and other earnings from employment.
 * `Business Profits` - Income generated from running a business.
