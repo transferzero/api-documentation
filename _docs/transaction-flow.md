@@ -835,7 +835,7 @@ If WTR2 is not enabled, the `sender` will need to be provided with all of the fo
 
 ### Source of Funds
 
-Examples
+Some markets require senders to provide their source of funds, to this effect we have listed some examples of source of funds that can be used:
 
 * `Personal Savings` - Money saved from previous income, investments, or other sources.
 * `Income` - Wages, salaries, bonuses, and other earnings from employment.
@@ -845,6 +845,10 @@ Examples
 * `Pension Releases` - Payments made from retirement accounts or pension plans.
 * `Sale of Assets` - Money received from the sale of property, investments, or other assets.
 * `Grants` - Non-repayable funds, often provided by charities, foundations, or government agencies
+
+<div class="alert alert-info" markdown="1">
+**Note!** Please note that this field is an open text field and is not validated on the AZA API.
+</div>
 
 ### Re-using senders
 
