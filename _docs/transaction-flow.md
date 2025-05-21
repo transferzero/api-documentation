@@ -833,6 +833,25 @@ If WTR2 is not enabled, the `sender` will need to be provided with all of the fo
 **Warning!** Due to regulatory requirements the WTR2 mode is not compatible with the `MAD::Cash` and `XOF::Cash` corridors. Plese check the documentation on these corridors on what extra detail you need to provide to be compliant.
 </div>
 
+### Source of Funds
+
+Some markets require senders to provide their source of funds, to this effect we have listed some examples of source of funds that can be used:
+
+Examples
+
+* `Personal Savings` - Money saved from previous income, investments, or other sources.
+* `Income` - Wages, salaries, bonuses, and other earnings from employment.
+* `Business Profits` - Income generated from running a business.
+* `Dividends` - Payments made to shareholders from the profits of a company.
+* `Inheritances` - Money or property received from a deceased person's estate.
+* `Pension Releases` - Payments made from retirement accounts or pension plans.
+* `Sale of Assets` - Money received from the sale of property, investments, or other assets.
+* `Grants` - Non-repayable funds, often provided by charities, foundations, or government agencies
+
+<div class="alert alert-info" markdown="1">
+**Note!** Please note that this field is an open text field and is not validated on the AZA API.
+</div>
+
 ### Re-using senders
 
 For both KYC and auditing purposes, it's crucial to maintain consistency in your sender records. Avoid creating multiple senders for the same person/business. This aspect will also be checked during the onboarding process. To facilitate the reuse of sender information, you can utilise the `external_id` field. This field allows you to assign a unique and custom ID to each sender, ensuring they are easily identifiable.
