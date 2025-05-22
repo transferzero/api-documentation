@@ -98,15 +98,15 @@ vodafone
 </div>
 
 ## Uganda
-### UGX::Mobile
+### UGX::Mobile - Airtel
 
 {% capture data-raw %}
 ```javascript
 Request
 
 {
-  "phone_number": "+256772123456", // E.164 international format
-  "mobile_provider": "mtn",
+  "phone_number": "+256572123456", // E.164 international format
+  "mobile_provider": "airtel",
   "country": "UG",
   "currency": "UGX",
   "method": "mobile"
@@ -116,12 +116,11 @@ Request
 
 {% include language-tabbar.html prefix="ugx-mobile-name-validation" raw=data-raw %}
 
-The valid `mobile_provider` values for Uganda are:
+The valid `mobile_provider` values for Uganda (for account name validation) are:
 
 {% capture data-raw %}
 ```
 airtel
-mtn
 ```
 {% endcapture %}
 
@@ -359,6 +358,35 @@ You can perform an account status validation by initiating a call to the followi
 </div>
 
 We support account status validation in the following markets:
+
+## Uganda
+### UGX::Mobile - MTN
+
+{% capture data-raw %}
+```javascript
+Request
+
+{
+  "phone_number": "+256772123456", // E.164 international format
+  "mobile_provider": "mtn",
+  "country": "UG",
+  "currency": "UGX",
+  "method": "mobile"
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="ugx-mobile-name-validation" raw=data-raw %}
+
+The valid `mobile_provider` values for Uganda (for account status validation) are:
+
+{% capture data-raw %}
+```
+mtn
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="uganda-mobile-providers" raw=data-raw %}
 
 ## CEMAC Region / XAF
 ### XAF::Mobile
