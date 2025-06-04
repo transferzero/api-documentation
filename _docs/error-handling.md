@@ -92,6 +92,7 @@ We categorize most errors into the following categories:
 | 42 | /// | Exceeded limits | Exceeded limits | Transfer limits have been exceeded. Please update the details. You can also cancel this transaction. | recipient_error |
 | 421 | /// | /// | Exceeded daily transfer limits | Daily transfer limits have been exceeded. Please update the details. You can also cancel this transaction. | recipient_error |
 | 422 | /// | /// | Bank approval required for transfer | Bank approval needed for transaction. Please update the details. You can also cancel this transaction. | recipient_error |
+| 423 | /// | /// | Maximum Balance exceeded | Account has reached maximum balance. It cannot accept more funds. | recipient_error |
 | 43 | /// | User action required | User not allowed to receive funds | User not allowed to receive funds. Please update the details. You can also cancel this transaction. | recipient_error |
 | 431 | /// | /// | User account is dormant | User account is dormant. Please update the details. You can also cancel this transaction. | recipient_error |
 | 432 | /// | /// | User account has invalid status | User account has invalid status. Please update the details. You can also cancel this transaction. | recipient_error |
