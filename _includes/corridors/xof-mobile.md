@@ -1,6 +1,6 @@
 ## XOF::Mobile
 
-For mobile payouts to countries in the WAEMU region please use :
+For mobile payouts to countries in the WAEMU region please use:
 
 {% capture data-raw %}
 ```javascript
@@ -9,7 +9,7 @@ For mobile payouts to countries in the WAEMU region please use :
   "last_name": "Last",
   "mobile_provider": "orange", // lowercase, see provider values below
   "phone_number": "+221774044436", // mobile number in E.164 international format
-  "country": "SN" 
+  "country": "SN"
   "transfer_reason": "personal_account" // optional
 }
 ```
@@ -22,10 +22,10 @@ The available `country`s are:
 {% capture data-raw %}
 ```
 BJ: Benin
-BF: Burkina Faso 
-CI: Ivory Coast 
-SN: Senegal 
-TG: Togo 
+BF: Burkina Faso
+CI: Ivory Coast
+SN: Senegal
+TG: Togo
 ```
 {% endcapture %}
 
