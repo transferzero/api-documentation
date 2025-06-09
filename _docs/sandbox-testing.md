@@ -438,6 +438,8 @@ Kindly reference the table below when testing our simulated payout feature, show
   **Note:** Please refer to the [XAF::Mobile payouts documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}#xafmobile) for more details about the full request.
 </div>
 
+#### Cameroon
+
 | Phone number ending with | Example Phone Number | Category (Transaction status) | Code | Description |
 |--------------------------|----------------------|-------------------------------|------|-------------|
 | 00                       | +237674044400        | paid                          | 0    | The transaction was successfully completed. |
@@ -445,6 +447,15 @@ Kindly reference the table below when testing our simulated payout feature, show
 | 38                       | +237674044438        | temporary_error               | 3    | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. |
 | 09                       | +237674044409        | sender_error                  | 531  | Invalid transaction details provided. Please cancel this transaction. |
 | 69                       | +237674044469        | recipient_error               | 42   | Transfer limits have been exceeded. Please update the details. You can also cancel this transaction. |
+
+#### Gabon
+
+| Phone number ending with | Example Phone Number | Category (Transaction status) | Code | Description |
+|--------------------------|----------------------|-------------------------------|------|-------------|
+| 0                        | +24174709400         | paid                          | 0    | The transaction was successfully completed. |
+| 1                        | +24174709401         | pending                       | 14   | This transaction is awaiting a status update from the provider. |
+| 08                       | +24174709408         | temporary_error               | 3    | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. |
+| 09                       | +24174709409         | recipient_error               | 423  | Account has reached maximum balance. It cannot accept more funds. |
 
 ## WAEMU Region (XOF)
 ### XOF::Mobile
