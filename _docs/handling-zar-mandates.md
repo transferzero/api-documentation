@@ -227,6 +227,12 @@ If the mandate doesn’t exist, we will trigger a new process on your behalf.
 
 {% include language-tabbar.html prefix="zar-bank-details" raw=data-raw %}
 
+<div class="alert alert-info" markdown="1">
+  **Note:** On production, the recipient of a ZAR transaction will receive an email with instructions and a link that they can open to fill and sign the mandate. Once they sign the mandate, you can proceed to create the transaction using the same details used in the validate api call.
+
+  On sandbox, no emails are sent. You can reach out to our support team to sign the mandate on your behalf thus enabling you to create a transaction with a valid signed mandate.
+</div>
+
 ### Mandate failed to initiate (HTTP `422`)
 {% capture data-raw %}
 ```javascript
