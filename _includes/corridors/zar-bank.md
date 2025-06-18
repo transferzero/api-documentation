@@ -141,6 +141,4 @@ Please note that due to regulatory reasons senders trying to create `ZAR::Bank` 
 **Note** To accept payments in South Africa the recipient has to sign a mandate form online. The link to the form will be sent over the recipient's mobile phone number and email address, and have to be filled out online. Once the mandate is signed it is valid for one year and the recipient doesn't need to do these steps again. When sending funds to the same recipient please make sure their name and bank details are the same, otherwise they might be asked to sign the mandate form again.
 </div>
 
-<div class="alert alert-warning" markdown="1">
-**Warning** `ZAR::Bank` payouts are currently in beta phase.
-</div>
+Please note that depending on your app configuration on AZA, you may be required to initiate a mandate before creating a transaction. See the [handling pre-transaction mandates]({{ "/docs/handling-zar-mandates/" | prepend: site.baseurl }}) for more details.
