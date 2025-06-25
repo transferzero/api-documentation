@@ -8,7 +8,11 @@ permalink: /docs/changelog/
 
 Current version of the API is `1`
 
-Current version of the SDKs is `1.36.8`
+Current version of the SDKs is `1.37.0`
+
+1.37.0
+------
+* Adds the `street` field to the `NGN::Bank` corridor.
 
 1.36.8
 ------
