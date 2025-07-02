@@ -9,7 +9,8 @@ For Nigerian bank payments please use:
 "details": {
   {{ recipient_name }},
   "bank_code": "058",
-  "bank_account": "123456789"
+  "bank_account": "123456789",
+  "street": "1 Main Street"
 }
 ```
 {% endcapture %}
@@ -75,3 +76,25 @@ Zenith International: 057
 <div class="alert alert-info" markdown="1">
 **Note!** Diamond Bank was merged with Access Bank in 2019. For Diamond Bank recipients please use Access Bank as the bank code
 </div>
+
+All senders trying to create Nigerian bank payouts need to have the `street` field present:
+- `"street" => "1 Main Street"`
+
+Please note that the field above is generally considered optional for senders for other payment corridors (WTR2 rules apply - kindly refer to the [sender WTR2 rules]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#wtr2) section for further details). If you wish to use an existing sender who's currently missing the `street` field you can provide it alongside the `id` or `external_id` field in the sender details. For example:
+
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+    "sender": {
+      "external_id": "<id of sender>",
+      "street": "1 Main Street",
+      (...)
+    },
+    (...)
+  }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="ngn-bank-sender-details" raw=data-raw %}
