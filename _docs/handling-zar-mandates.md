@@ -18,6 +18,7 @@ If the mandate doesn’t exist, we will trigger a new process on your behalf.
   "transaction": {
     "input_currency": "USD",
     "sender": {
+      "external_id": "sender-123abc",
       "country": "US",
       "phone_number": "+12124567890",
       "email": "test@example.com",
@@ -30,7 +31,6 @@ If the mandate doesn’t exist, we will trigger a new process on your behalf.
       "documents": [],
       "ip": "127.0.0.1",
       "metadata": {
-        "sendRef": "SENDER-1234"
       }
     },
     "recipients": [
@@ -57,7 +57,6 @@ If the mandate doesn’t exist, we will trigger a new process on your behalf.
       }
     ],
     "metadata": {
-      "sendRef": "LOCAL-ID-1234"
     },
     "external_id": "806ec63a-a5a7-43cc-9d75-1ee74fbcc026"
   }
