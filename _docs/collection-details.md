@@ -222,7 +222,7 @@ If there was an issue with the collection, a `payin_method.error` webhook is sen
 
 # NGN Bank collections
 
-To initiate NGN bank collection, please use the following details (`phone_number` used below is an example):
+To initiate an NGN bank collection, please use the following details (the details used below are only an example):
 
 {% capture data-raw %}
 
@@ -233,7 +233,9 @@ To initiate NGN bank collection, please use the following details (`phone_number
     "type": "NGN::Bank",
     "ux_flow": "bank_transfer",
     "in_details": {
-      "phone_number": "+234787221236", // E.164 international format
+      "phone_number": "+2348187221236", // Optional (if sent must be in E.164 international format)
+      "account_name": "John Doe",
+      "account_number": "1234567890"
     }
   }
 ],
@@ -243,21 +245,22 @@ To initiate NGN bank collection, please use the following details (`phone_number
 
 {% include language-tabbar.html prefix="collection-ngn-bank" raw=data-raw %}
 
-You will receive bank transfer information in the `out_details`:
+You will receive bank transfer information in the `out_details`.
+
+Example of `out_details` for NGN Bank collection:
 
 {% capture data-raw %}
 
 ```javascript
 "out_details": {
   "style": "bank_transfer",
-  "amount": 0,
-  "currency": "NGN",
-  "bank_code": "bank code",
-  "bank_name": "bank name",
-  "created_at": "created at",
-  "account_name": "account name",
-  "account_number": "account number",
-  "account_reference": "account reference"
+  "amount": 1000.0,
+  "bank_code": "057",
+  "bank_name": "Zenith Bank",
+  "reference": "AZS5B7C7D9FJ366Z",
+  "account_name": "John Doe",
+  "account_number": "1234567890",
+  "checkout_url": "https://checkout.btservicesnigeria.com?account_number=1234567890&account_name=John+Doe&bank_code=057&bank_name=Zenith+Bank&amount=1000.0&reference=AZS5B7C7D9FJ366Z",
 }
 ```
 
@@ -265,7 +268,7 @@ You will receive bank transfer information in the `out_details`:
 
 {% include language-tabbar.html prefix="collection-ngn-bank-out" raw=data-raw %}
 
-And human readable instructions can be found in the `payin_methods[0].instructions` hash in the following format:
+Instructions to complete the payment can be found in the `payin_methods[0].instructions` object in the following format:
 
 (instructions for NGN Bank payment)
 
@@ -273,7 +276,7 @@ And human readable instructions can be found in the `payin_methods[0].instructio
 
 ```javascript
 "instructions": {
-  "bank_transfer": "\\nTransfer the exact amount specified to the provided virtual account number.\\nMake sure to complete the payment within one day from the time you receive these instructions.\\n"
+  "bank_transfer": "Please follow the link in the `checkout_url` field to find the payment instructions."
 }
 ```
 
