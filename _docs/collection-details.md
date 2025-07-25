@@ -234,7 +234,7 @@ To initiate an NGN bank collection, please use the following details (the detail
     "ux_flow": "bank_transfer",
     "in_details": {
       "phone_number": "+2348187221236", // Optional (if sent must be in E.164 international format)
-      "account_name": "John Doe",
+      "account_name": "Test Merchant",
       "account_number": "1234567890"
     }
   }
@@ -258,9 +258,9 @@ Example of `out_details` for NGN Bank collection:
   "bank_code": "057",
   "bank_name": "Zenith Bank",
   "reference": "AZS5B7C7D9FJ366Z",
-  "account_name": "John Doe",
+  "account_name": "Test Merchant",
   "account_number": "1234567890",
-  "checkout_url": "https://checkout.btservicesnigeria.com?account_number=1234567890&account_name=John+Doe&bank_code=057&bank_name=Zenith+Bank&amount=1000.0&reference=AZS5B7C7D9FJ366Z",
+  "checkout_url": "https://checkout.btservicesnigeria.com?account_number=1234567890&account_name=Test+Merchant&bank_code=057&bank_name=Zenith+Bank&amount=1000.0&reference=AZS5B7C7D9FJ366Z",
 }
 ```
 
