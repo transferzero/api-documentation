@@ -90,6 +90,28 @@ tmoney
 
 {% include language-tabbar.html prefix="xof-mobile-providers" raw=data-raw %}
 
+All senders trying to create XOF::mobile Togo payouts need to have the `phone_number` field present:
+- `"phone_number" => "+15555551234"`
+
+Please note that the field above is generally considered optional for senders for other payment corridors (WTR2 rules apply - kindly refer to the [sender WTR2 rules]({{ "/docs/transaction-flow/" | prepend: site.baseurl }}#wtr2) section for further details). If you wish to use an existing sender who's currently missing the `phone_number` field you can provide it alongside the `id` or `external_id` field in the sender details. For example:
+
+{% capture data-raw %}
+```javascript
+{
+  "transaction": {
+    "sender": {
+      "external_id": "<id of sender>",
+      "phone_number": "+15555551234",
+      (...)
+    },
+    (...)
+  }
+}
+```
+{% endcapture %}
+
+{% include language-tabbar.html prefix="xof-mobile-sender-details" raw=data-raw %}
+
 {% include corridors/transfer_reasons.md %}
 
 <div class="alert alert-info" markdown="1">
