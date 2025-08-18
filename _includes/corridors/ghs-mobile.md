@@ -9,7 +9,8 @@ For Ghanan mobile payments please use:
   "last_name": "Last",
   "phone_number": "+233302123456" // E.164 international format
   "mobile_provider": "vodafone",
-  "transfer_reason": "third_party_person_account"
+  "transfer_reason": "third_party_person_account",
+  "gender": "M" // options are M or F
 }
 ```
 {% endcapture %}

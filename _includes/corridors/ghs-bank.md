@@ -2,26 +2,6 @@
 
 ## GHS::Bank
 
-All senders trying to create Ghanian bank payouts need to have the following details present:
-- `"country" => "US"`
-
-Please note that the field above is generally considered optional for senders for other payment corridors (WTR2 rules apply - kindly refer to the <a href="{{ "/docs/transaction-flow/#wtr2" | prepend: site.baseurl }}" class="link">sender WTR2 rules</a> section for further details). If you wish to use an existing sender who’s currently missing the country field you can provide it alongside the `id` or `external_id` field in the sender details. For example:
-
-{% capture data-raw %}
-```javascript
-{
-  "transaction": {
-      "sender": {
-        "external_id": "<id of sender>",
-        "country" => "US",
-        (...)
-      },
-      (...)
-    }
-}
-```
-{% endcapture %}
-
 For Ghanan bank payments please use:
 
 {% capture data-raw %}
@@ -30,7 +10,7 @@ For Ghanan bank payments please use:
   {{ recipient_name }},
   "bank_code": "030100",
   "bank_account": "123456789",
-  "transfer_reason": "third_party_person_account"
+  "transfer_reason": "third_party_person_account",
   "gender": "M" // options are M or F
 }
 ```
