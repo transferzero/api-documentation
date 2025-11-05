@@ -18,7 +18,7 @@ To use our API please register and obtain valid API keys on the [AZA Finance dev
 
 Initially the keys will only be valid to be used on our sandbox environment at `https://api-sandbox.transferzero.com`. This environment is a testing environment where you can test our API using test funds. The environment also provides a few tools to help testing, for more info please check the  [sandbox testing]({{ "/docs/sandbox-testing/" | prepend: site.baseurl }}) documentation.
 
-Please check our two main examples, one for [handling payments]({{ "/docs/example-payments/" | prepend: site.baseurl}}), and one for [handling collections]({{ "/docs/example-collections/" | prepend: site.baseurl}}) as a starting point.
+Please check our main example for [handling payments]({{ "/docs/example-payments/" | prepend: site.baseurl}}).
 
 Once development is finished against our API in the sandbox environment, please contact us again where our representatives will validate your implementation and if successful allow access to our production environment.
 
