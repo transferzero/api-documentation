@@ -16,7 +16,3 @@ This document lists the required details that needs to be sent for each of our p
 # Brazil
 
 {% include corridors/brl-bank-beta.md recipient_type='individual' %}
-
-# India
-
-{% include corridors/inr-bank.md recipient_type='individual' %}
