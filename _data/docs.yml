@@ -3,7 +3,6 @@
     - home
     - quick-integration
     - example-payments
-    - example-collections
     - additional-features#proof-of-payment
 
 - title: SDKs
@@ -27,7 +26,6 @@
     - account-validation
     - additional-features
     - handling-zar-mandates
-    - collection-details
     - developer-portal
     - sandbox-testing
     - reports-api

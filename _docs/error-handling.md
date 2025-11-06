@@ -112,9 +112,6 @@ We categorize most errors into the following categories:
 | 542 | /// | /// | Explicit cancellation requested by sender | Transaction was cancelled by the sender. Please cancel this transaction. | sender_error |
 | 543 | /// | /// | Explicit cancellation requested by provider | Transaction was cancelled by the provider. Please update the recipient details. You can also cancel this transaction. | recipient_error |
 
-# Note
-The categories `recipient_action_required` and `recipient_error` get mapped to `user_action_required` and `user_invalid_data_error` when dealing with a Collection Transaction.
-
 # Pending transactions
 
 Occasionally a transaction has neither errored, nor has paid out. We call these transactions pending. There are two main cases for pending transactions:
@@ -122,7 +119,6 @@ Occasionally a transaction has neither errored, nor has paid out. We call these 
 * For any kind of cash pickup transactions, pending means that the recipient has received a pickup notice, but didn't pick up the funds yet. This is also called the `recipient_action_required` state. These transactions can be cancelled, in which case the pickup notice will be invalidated and the recipient will not be able to use it to pick up the funds anymore.
 * For some providers there might need to be action taken by the beneficiary to pick up the funds, for example they need to sign a mandate form. TTransactions here will also be in the `recipient_action_required` state.
 * For other transactions pending means that the recipient's bank or mobile provider is still processing the transaction and will note at a later date whether it could deposit the funds or not. These transactions will have a `may_cancel` field set to `false`. If you try to cancel them using the `DELETE /v1/recipients/[TRANSFERZERO_RECIPIENT_ID]` endpoint they get cancelled right after we get confirmation from our bank or mobile provider that the funds could not be debited. However if the confirmation we receive says that the funds are sent out these transactions will not be cancelled, they will be marked as successful.
-* For collections in `user_action_required` means that we sent the notification to the User and we are currently awaiting for the User to proceed with sending the funds.
 
 <div class="alert alert-info" markdown="1">
 **Note!** Occasionally a transaction can end up in a "pending loop", where once we get confirmation that the transaction has failed we immediately retry the payment - potentially making it pending again. To cancel these transactions you can either use the auto-cancellation feature (which is enabled by default), or ask our CS team to help cancel them.

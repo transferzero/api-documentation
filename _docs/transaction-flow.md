@@ -21,7 +21,7 @@ Unfortunately not all transactions are successful. The main causes of issues are
 
 * Transactions are cancelled automatically if they are not funded within the first hour of creation.
 * The recipient details might be wrong (for example the destination bank account number is invalid), or there are other issues blocking the successful payout. In these cases the transaction has to be cancelled.
-* Once the transaction is cancelled, we will refund the money to the sender. Funds from account balances are always refunded automatically to the account balance. Funds from other types of payins might require manual processing however.
+* Once the transaction is cancelled, we will refund the money automatically to the account balance.
 
 ## Flow Diagram
 
@@ -1222,46 +1222,7 @@ If there is an error with the transaction you can find the error message in this
 
 ## input_amount and input_currency
 
-This is the amount that has to be collected from the sender, or funded from the internal balance.
-
-## payin_methods
-
-When you are processing a collection this object will be used to specify the details of where you expect the money to come from.
-
-### details when collecting money from a customer
-
-{% capture data-raw %}
-```javascript
-"payin_methods": [
-  {
-    "type": "GHS::Mobile",
-    "in_details": {
-      "phone_number": "+2339999999", // E.164 international format
-      "mobile_provider": "vodafone"
-    }
-  }
-]
-```
-{% endcapture %}
-
-{% include language-tabbar.html prefix="collection-sender-example" raw=data-raw %}
-
-Please Check the [Collection page]({{ "/docs/collection-details/" | prepend: site.baseurl }}) to see more examples.
-
-### state
-
-The state of the payin method, which can be one of the following:
-
-* `incomplete`: Some fields need to be filled in `in_details` before we can initiate the collection request.
-* `initial`: All required fields in `in_details` are present and collection process with the sender will start.
-* `pending`: Collection process has been started, waiting for sender to send funds.
-* `success`: Collection succeeded.
-* `processing`: Collection succeeded but waiting for final confirmation of receipt.
-* `error`: Collection failed. No funds received from sender. You can update or retry the PayinMethod.
-* `mispaid`: Collection succeeded but sender sent the wrong amount.
-* `canceled`: The transaction has been canceled and we will refund the sender soon.
-* `refunded`: The sender has been refunded the amount they sent in.
-* `exception`: An exception happened during processing of the collection. Please contact support.
+This is the amount that has to be funded from the internal balance.
 
 ### state_reason_details
 
@@ -1377,10 +1338,6 @@ The external ID of a transaction, if present.
 # Funding transactions
 
 When using our system to send funds to customers then usually you'll be using your internal account to fund these transactions. Please contact us so we can set up this internal account with us. If this is the case you'll need to explicitly fund transactions once they are created so we know that you are happy with the transaction to go forward.
-
-<div class="alert alert-info" markdown="1">
-**Note!** You can also use our system to do the collection from the senders. For more information on how to handle some collections, please visit [Collections]({{ "/docs/additional-features/" | prepend: site.baseurl }}#collections-from-senders){: .alert-link}. You can also check the [API reference documentation](https://api.transferzero.com/documentation#fetching-possible-payin-methods){: .alert-link}
-</div>
 
 Funding transactions can be done using the `POST /v1/accounts/debits` endpoint, with the following body:
 
