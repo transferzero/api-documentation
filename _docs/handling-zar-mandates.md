@@ -94,6 +94,7 @@ If the mandate doesn’t exist, we will trigger a new process on your behalf.
         "transaction_state": "initial",
         "type": "person",
         "retriable": true,
+        "mandate_id": "97e79719-06e4-4794-aeeb-d2d9415d983a",
         "payout_method": {
           "type": "ZAR::Bank",
           "details": {
@@ -167,6 +168,7 @@ If the mandate doesn’t exist, we will trigger a new process on your behalf.
         "transaction_state": "initial",
         "type": "person",
         "retriable": true,
+        "mandate_id": "97e79719-06e4-4794-aeeb-d2d9415d983a",
         "payout_method": {
           "type": "ZAR::Bank",
           "details": {
@@ -230,6 +232,10 @@ If the mandate doesn’t exist, we will trigger a new process on your behalf.
   **Note:** On production, the recipient of a ZAR transaction will receive an email with instructions and a link that they can open to fill and sign the mandate. Once they sign the mandate, you can proceed to create the transaction using the same details used in the validate api call.
 
   On sandbox, no emails are sent. You can reach out to our support team to sign the mandate on your behalf thus enabling you to create a transaction with a valid signed mandate.
+</div>
+
+<div class="alert alert-info" markdown="1">
+  **Mandate ID:** When a mandate has been initiated for the recipient (whether it is already signed or still in progress), the recipient object includes a `mandate_id` attribute holding the UUID of the mandate. The field is omitted when no mandate exists yet — for example when initiation failed and a retry is required.
 </div>
 
 ### Mandate failed to initiate (HTTP `422`)
