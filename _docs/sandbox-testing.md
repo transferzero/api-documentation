@@ -38,6 +38,7 @@ We currently support simulated account validation tests in our Sandbox environme
 - <strong>Ghana</strong> (`GHS::Bank` and `GHS::Mobile`)
 - <strong>Nigeria</strong> (`NGN::Bank`)
 - <strong>Uganda</strong> (`UGX::Mobile`)
+- <strong>Mozambique</strong> (`MZN::Mobile`)
 
 <br>
 
@@ -61,6 +62,7 @@ We currently support simulated payouts tests in our Sandbox environment for the 
 - <strong>Ghana</strong> (`GHS::Bank` and `GHS::Mobile`)
 - <strong>Nigeria</strong> (`NGN::Bank`)
 - <strong>Uganda</strong> (`UGX::Mobile`)
+- <strong>Mozambique</strong> (`MZN::Mobile`)
 - <strong>CEMAC Region (XAF)</strong> (`XAF::Mobile`)
 - <strong>WAEMU Region (XOF)</strong> (`XOF::Mobile`)
 
@@ -137,6 +139,21 @@ Kindly reference the table below when testing our simulated payout feature, show
 | 1                        | +256772123411        | pending                       | 14   | This transaction is awaiting a status update from the provider. |
 | 18                       | +256772123418        | temporary_error               | 331  | There was an issue while creating the transaction. We will retry the payment. You can also edit or cancel this transaction. |
 | 09                       | +256772123419        | recipient_error               | 414  | Mobile number is not registered for mobile money. Please update the mobile details. You can also cancel this transaction. |
+
+## Mozambique
+### MZN::Mobile
+
+<div class="alert alert-info" markdown="1">
+  **Note:** Please refer to the [MZN::Mobile payouts documentation]({{ "/docs/individual-payments/" | prepend: site.baseurl }}#mznmobile) for more details about the full request.
+</div>
+
+| Phone number ending with | Example Phone Number | Category (Transaction status) | Code | Description |
+|--------------------------|----------------------|-------------------------------|------|-------------|
+| 00                       | +258123456700        | paid                          | 0    | The transaction was successfully completed. |
+| 01                       | +258123456701        | pending                       | 14   | This transaction is awaiting a status update from the provider. |
+| 18                       | +258123456718        | temporary_error               | 3    | The payment provider is not accepting transactions at the moment. We will retry the transaction at a later date. You can also edit or cancel this transaction. |
+| 19                       | +258123456719        | sender_error                  | 5    | Transaction cannot be processed. Please cancel this transaction. |
+| 39                       | +258123456739        | recipient_error               | 421  | Daily transfer limits have been exceeded. Please update the details. You can also cancel this transaction. |
 
 ## CEMAC Region (XAF)
 ### XAF::Mobile

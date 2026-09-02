@@ -10,6 +10,10 @@ Current version of the API is `1`
 
 Current version of the SDKs is `1.37.1`
 
+1.38.0
+------
+* Add support for the `MZN::Mobile` corridor.
+
 1.37.1
 ------
 * Add support for `account_name` and `account_number` in `NGN::Bank` collections.

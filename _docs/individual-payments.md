@@ -106,6 +106,10 @@ The payment reference can also be provided in the recipient details hash optiona
 **Note** For a list of Cashplus pickup points please contact us
 </div>
 
+# Mozambique
+
+{% include corridors/mzn-mobile.md %}
+
 # WAEMU Region / XOF
 
 ## XOF::Cash
